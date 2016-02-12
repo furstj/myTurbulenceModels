@@ -1,0 +1,3 @@
+turbulentTransportModels/myTurbulentTransportModels.C
+
+LIB = $(FOAM_USER_LIBBIN)/libmyIncompressibleTurbulenceModels
