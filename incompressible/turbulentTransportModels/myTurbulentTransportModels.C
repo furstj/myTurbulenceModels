@@ -64,8 +64,8 @@ namespace Foam {
 // RAS models
 // -------------------------------------------------------------------------- //
 
-#include "mykOmegaSST.H"
-makeRASModel(mykOmegaSST);
+// #include "mykOmegaSST.H"
+// makeRASModel(mykOmegaSST);
 
 #include "gammaSST.H"
 makeRASModel(gammaSST);
