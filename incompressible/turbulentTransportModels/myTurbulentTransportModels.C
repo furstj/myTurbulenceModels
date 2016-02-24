@@ -70,11 +70,18 @@ namespace Foam {
 #include "gammaSST.H"
 makeRASModel(gammaSST);
 
+
 #include "mykkLOmega.H"
 makeRASModel(mykkLOmega);
 
 #include "mykkLOmegaFS.H"
 makeRASModel(mykkLOmegaFS);
+
+#include "mykkLOmegaPh.H"
+makeRASModel(mykkLOmegaPh);
+
+#include "mykkLOmegaDev.H"
+makeRASModel(mykkLOmegaDev);
 
 
 // -------------------------------------------------------------------------- //
