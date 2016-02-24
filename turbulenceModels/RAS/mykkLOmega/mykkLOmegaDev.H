@@ -94,7 +94,7 @@ protected:
     
     // Fields
     
-    virtual tmp<volScalarField> lambdaEff(const volScalarField& lambdaT) const;
+    virtual tmp<volScalarField> lambdaT() const;
 
     virtual tmp<volScalarField> fTaul
     (

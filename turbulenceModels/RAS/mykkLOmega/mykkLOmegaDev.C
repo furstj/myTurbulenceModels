@@ -36,7 +36,7 @@ namespace RASModels
 
 
 template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::lambdaEff(const volScalarField& lambdaT) const
+tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::lambdaT() const
 {
   
   volScalarField fINT2("fINT2", min(scalar(1), 0.9*sqr(this->kl_/this->kt_)) );
@@ -44,11 +44,11 @@ tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::lambdaEff(const volScal
   volScalarField lambdaF("lambdaF", sqrt(this->kt_ + this->kl_ * fINT2) / this->omega_);
   
   return tmp<volScalarField>(new volScalarField(
-	"lambdaEff",
-	min( this->Clambda_ * this->y_, lambdaF)
+	"lambdaT",
+	sqrt(this->kt_ + this->kl_ * fINT2) / this->omega_
   ));
 }
-
+  
 template<class BasicTurbulenceModel>
 tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::fTaul
 (

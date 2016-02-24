@@ -93,6 +93,16 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::BetaTS(const volScalarFiel
 
 
 template<class BasicTurbulenceModel>
+tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::lambdaT() const
+{
+  
+    return tmp<volScalarField>(new volScalarField(
+            "lambdaT",
+            sqrt(this->kt_) / (this->omega_ + this->omegaMin_)
+        ));
+}
+
+template<class BasicTurbulenceModel>
 tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::lambdaEff(const volScalarField& lambdaT) const
 {
   
@@ -657,16 +667,16 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
     
     eddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
 
-    const volScalarField lambdaT(sqrt(this->kt_)/(this->omega_ + this->omegaMin_));
+    const volScalarField lambdaT_ = lambdaT();
   
-    const volScalarField lambdaEff_ = lambdaEff(lambdaT);
+    const volScalarField lambdaEff_ = lambdaEff(lambdaT_);
 
     const volScalarField fw
       (  "fw",
         pow
         (
             lambdaEff_
-           /(lambdaT + dimensionedScalar("SMALL", dimLength, ROOTVSMALL)),
+           /(lambdaT_ + dimensionedScalar("SMALL", dimLength, ROOTVSMALL)),
             2.0/3.0
         )
     );
@@ -745,7 +755,7 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
         )
       - fvm::Sp(alpha*rho*Cw2_*sqr(fw)*omega_, omega_)
       + alpha*rho*(
-            Cw3_*fOmega(lambdaEff_, lambdaT)*alphaTEff*sqr(fw)*sqrt(kt_)
+            Cw3_*fOmega(lambdaEff_, lambdaT_)*alphaTEff*sqr(fw)*sqrt(kt_)
         )().dimensionedInternalField()/pow3(y_.dimensionedInternalField())
     );
 
@@ -825,7 +835,7 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
       fSS(Omega)().write();
       Cmu(sqrt(S2))().write();
       fTaul(lambdaEff_,ktL,Omega)().write(); 
-      fOmega(lambdaEff_,lambdaT)().write();
+      fOmega(lambdaEff_,lambdaT_)().write();
       phiBP(Omega)().write();
       phiNAT(ReOmega,fNatCrit)().write();
       y_.write();
