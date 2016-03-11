@@ -500,11 +500,11 @@ mykkLOmega<BasicTurbulenceModel>::mykkLOmega
             0.09
         )
     ),
-    Prtheta_
+    PrTheta_
     (
         dimensioned<scalar>::lookupOrAddToDict
         (
-            "Prtheta",
+            "PrTheta",
             this->coeffDict_,
             0.85
         )
@@ -625,7 +625,6 @@ bool mykkLOmega<BasicTurbulenceModel>::read()
         CwR_.readIfPresent(this->coeffDict());
         Clambda_.readIfPresent(this->coeffDict());
         CmuStd_.readIfPresent(this->coeffDict());
-        Prtheta_.readIfPresent(this->coeffDict());
         Sigmak_.readIfPresent(this->coeffDict());
         Sigmaw_.readIfPresent(this->coeffDict());
 
@@ -773,7 +772,7 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
     (
      fvm::ddt(alpha, rho, kl_)
       + fvm::div(alphaRhoPhi, kl_)
-      - fvm::laplacian(this->nu(), kl_)
+      - fvm::laplacian(alpha*rho*this->nu(), kl_)
      ==
         alpha*rho*Pkl
       - fvm::Sp(alpha*rho*(Rbp + Rnat + Dl/(kl_ + kMin_)), kl_)
@@ -815,6 +814,15 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
     // Re-calculate turbulent viscosity
     nut_ = nuts + nutl;
     nut_.correctBoundaryConditions();
+
+#ifdef HAVE_ALPHAT
+    // Re-calculate thermal diffusivity
+    this->alphat_ = alpha * rho * 
+      ( 
+       fw * kt_ / max(kt_ + kl_,kMin_) * nuts / this->PrTheta_ 
+       + (scalar(1.0) - fw) * CalphaTheta_ * sqrt(kt_) * lambdaEff_
+	);
+#endif    
 
     if (debug && this->runTime_.outputTime()) {
       lambdaEff_.write();

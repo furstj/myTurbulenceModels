@@ -78,7 +78,7 @@ Description
             CwR            1.5
             Clambda        2.495
             CmuStd         0.09
-            Prtheta        0.85
+            Prt            0.85
             Sigmak         1
             Sigmaw         1.17
         }
@@ -148,7 +148,7 @@ protected:
     dimensionedScalar CwR_;
     dimensionedScalar Clambda_;
     dimensionedScalar CmuStd_;
-    dimensionedScalar Prtheta_;
+    dimensionedScalar PrTheta_;
     dimensionedScalar Sigmak_;
     dimensionedScalar Sigmaw_;
     
