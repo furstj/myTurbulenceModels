@@ -108,9 +108,10 @@ tmp<volScalarField> gammaSST<BasicTurbulenceModel>::FPG() const
             FPG_[i] = min(1 + CPG2_.value()*lambdaThetaL[i] + 
             CPG3_.value()*min(lambdaThetaL[i]+0.0681,0), 
             CPG2lim_.value());
+        FPG_[i] = max(FPG_[i], 0.0);
     }
 
-    return max(tFPG, 0.0);
+    return tFPG;
 }
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
@@ -348,9 +349,9 @@ void gammaSST<BasicTurbulenceModel>::correct()
     volScalarField divU(fvc::div(fvc::absolute(this->phi(), U)));
 
     tmp<volTensorField> tgradU = fvc::grad(U);
-    volScalarField S2(2*magSqr(symm(tgradU())));
-    volScalarField S(sqrt(S2));
-    volScalarField W(sqrt(2*magSqr(skew(tgradU()))));
+    const volScalarField S2(2*magSqr(symm(tgradU())));
+    const volScalarField S("S", sqrt(S2));
+    const volScalarField W("Omega", sqrt(2*magSqr(skew(tgradU()))));
 
     volScalarField G(this->GName(), nut*S*W);
     tgradU.clear();
@@ -358,12 +359,12 @@ void gammaSST<BasicTurbulenceModel>::correct()
     // Update omega and G at the wall
     omega_.boundaryField().updateCoeffs();
 
-    volScalarField CDkOmega
-    (
+    const volScalarField CDkOmega
+        ( "CD",
         (2*this->alphaOmega2_)*(fvc::grad(k_) & fvc::grad(omega_))/omega_
-    );
-
-    volScalarField F1(this->F1(CDkOmega));
+        );
+    
+    const volScalarField F1("F1", this->F1(CDkOmega));
 
     {
         volScalarField gamma(this->gamma(F1));
@@ -394,10 +395,16 @@ void gammaSST<BasicTurbulenceModel>::correct()
     }
 
     // Turbulent kinetic energy equation
-    volScalarField FonLim = min( max(sqr(this->y_)*S/this->nu() / (
-        2.2*ReThetacLim_) - 1., 0.), 3.);
-    volScalarField PkLim = 5*Ck_ * max(gammaInt()-0.2,0.) * (1-gammaInt()) * FonLim * 
-        max(3*CSEP_*this->nu() - this->nut_, 0.*this->nut_) * S * W;
+    const volScalarField FonLim(
+        "FonLim",
+        min( max(sqr(this->y_)*S/this->nu() / (
+            2.2*ReThetacLim_) - 1., 0.), 3.)
+    );
+    const volScalarField PkLim(
+        "PkLim",
+        5*Ck_ * max(gammaInt()-0.2,0.) * (1-gammaInt()) * FonLim * 
+        max(3*CSEP_*this->nu() - this->nut_, 0.*this->nut_) * S * W
+    );
 
     tmp<fvScalarMatrix> kEqn
     (
@@ -432,7 +439,21 @@ void gammaSST<BasicTurbulenceModel>::correct()
     solve(gammaEqn);
 
     bound(gammaInt_,scalar(0));
-    
+
+    if (debug && this->runTime_.outputTime()) {
+        S.write();
+        W.write();
+        F1.write();
+        CDkOmega.write();
+        const volScalarField Pgamma("Pgamma", Pgamma1*(scalar(1)-gammaInt_));
+        Pgamma.write();
+        const volScalarField Egamma("Egamma", Pgamma2*(scalar(1)-ce2_*gammaInt_));
+        Egamma.write();
+        FonLim.write();
+        PkLim.write();
+        Fonset(S)().write();
+        FPG()().write();
+    }
 }
 
 

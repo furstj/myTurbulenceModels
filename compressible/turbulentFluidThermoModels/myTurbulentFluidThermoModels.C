@@ -72,6 +72,10 @@ namespace Foam {
 makeRASModel(gammaSST);
 
 #define HAVE_ALPHAT
+
+#include "kv2Omega.H"
+makeRASModel(kv2Omega);
+
 #include "mykkLOmega.H"
 makeRASModel(mykkLOmega);
 
