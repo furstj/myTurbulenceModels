@@ -35,21 +35,58 @@ namespace RASModels
 // * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * * //
 
 template<class BasicTurbulenceModel>
+tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::Ue(const volScalarField& p, const volVectorField& U) const
+{
+
+    if ( p.dimensions() == dimensionSet(0, 2, -2, 0, 0) ) 
+    { 
+        dimensionedScalar pTot("pTot", p.dimensions(), 
+        gMax( volScalarField( p + 0.5*magSqr(U) ) ) );
+        
+        return tmp<volScalarField>(new volScalarField(
+            "Ue",
+            sqrt( 2.0 * (pTot - p) )
+        ));
+    } 
+    else 
+    {
+        const basicThermo& thermo =
+            this->mesh_.objectRegistry::lookupObject<basicThermo>("thermophysicalProperties");
+
+        const volScalarField& he = thermo.he(); 
+        volScalarField h("h", he);
+        if (he.name() == "e") 
+            h += p / thermo.rho();
+     
+        dimensionedScalar hTot("hTot", h.dimensions(),
+        gMax( volScalarField(h + 0.5*magSqr(U) ) ) );
+        
+        return tmp<volScalarField>(new volScalarField(
+            "Ue",
+            sqrt( 2.0 * (hTot - h) )
+        ));
+    }
+}
+
+template<class BasicTurbulenceModel>
 tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::L(const volScalarField& ReOmega) const
 {
     const volScalarField& p = this->mesh_.objectRegistry::lookupObject<volScalarField>("p");
     const volVectorField& U_ = this->U_;
 
-    dimensionedScalar pTot("pTot", p.dimensions(), 
-    gMax( volScalarField( p + 0.5*magSqr(U_) ) ) );
-    
     dimensionedScalar uMin("uMin", dimVelocity, VSMALL);
-    
-    volScalarField Ue = sqrt( 2.0 * (pTot - p) ); 
     
     volScalarField dpdx = (fvc::grad(p) & U_) / max( mag(U_), uMin); 
   
-    volScalarField K = - this->nu() / pow3(max(Ue,uMin)) * dpdx;
+    tmp<volScalarField> K;
+    if ( p.dimensions() == dimensionSet(0, 2, -2, 0, 0) ) 
+        K = - this->nu() / pow3(max(Ue(p,U_),uMin)) * dpdx;
+    else
+    {
+        const basicThermo& thermo =
+            this->mesh_.objectRegistry::lookupObject<basicThermo>("thermophysicalProperties");
+        K = - this->nu() / pow3(max(Ue(p,U_),uMin)) * dpdx / thermo.rho();
+    }
 
     return ( sqr(ReOmega) * K );
 }

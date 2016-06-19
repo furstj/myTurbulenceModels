@@ -94,6 +94,7 @@ protected:
 
     // Fields
     
+    virtual tmp<volScalarField> Ue(const volScalarField& p, const volVectorField& U) const;
     virtual tmp<volScalarField> L(const volScalarField& ReOmega) const;
 
     virtual tmp<volScalarField> CtsCrit(const volScalarField& L) const;

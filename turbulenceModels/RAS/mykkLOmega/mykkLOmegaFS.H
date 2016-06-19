@@ -61,6 +61,7 @@ SourceFiles
 #define mykkLOmegaFS_H
 
 #include "mykkLOmega.H"
+#include "basicThermo.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -91,6 +92,8 @@ protected:
     // Model coefficients
     
     // Fields
+    
+    virtual tmp<volScalarField> Ue(const volScalarField& p, const volVectorField& U) const;
     
     virtual tmp<volScalarField> L(const volScalarField& ReOmega) const;
 
