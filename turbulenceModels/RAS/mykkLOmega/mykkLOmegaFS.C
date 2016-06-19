@@ -51,7 +51,10 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::L(const volScalarField& 
   
     volScalarField K = - this->nu() / pow3(max(Ue,uMin)) * dpdx;
 
-    return ( sqr(ReOmega) * K );
+    return tmp<volScalarField>(new volScalarField( 
+	   "L",
+	   sqr(ReOmega) * K 
+    ));
 }
 
 template<class BasicTurbulenceModel>
@@ -201,6 +204,13 @@ void mykkLOmegaFS<BasicTurbulenceModel>::correct()
     mykkLOmega<BasicTurbulenceModel>::correct();
 
     if (debug && this->runTime_.outputTime()) {
+      tmp<volTensorField> tgradU(fvc::grad(this->U_));
+      const volTensorField& gradU = tgradU();
+      const volScalarField Omega(sqrt(2.0)*mag(skew(gradU)));
+      const volScalarField ReOmega("ReOmega", sqr(this->y_)*Omega/this->nu());
+      const volScalarField L_ = L(ReOmega);
+      L_.write();
+      lambdaTheta(L_)().write();
     }
 }
 

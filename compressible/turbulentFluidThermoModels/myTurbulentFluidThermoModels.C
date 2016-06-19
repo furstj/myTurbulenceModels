@@ -79,6 +79,11 @@ makeRASModel(kv2Omega);
 #include "mykkLOmega.H"
 makeRASModel(mykkLOmega);
 
+#include "mykkLOmegaPh.H"
+makeRASModel(mykkLOmegaPh);
+
+#include "mykkLOmegaFS.H"
+makeRASModel(mykkLOmegaFS);
 
 // -------------------------------------------------------------------------- //
 // LES models
