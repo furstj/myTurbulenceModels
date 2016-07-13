@@ -69,7 +69,7 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::Ue(const volScalarField&
 }
 
 template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::L(const volScalarField& ReOmega) const
+tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::K() const
 {
     const volScalarField& p = this->mesh_.objectRegistry::lookupObject<volScalarField>("p");
     const volVectorField& U_ = this->U_;
@@ -89,8 +89,8 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::L(const volScalarField& 
     }
 
     return tmp<volScalarField>(new volScalarField( 
-	   "L",
-	   sqr(ReOmega) * K 
+	   "K",
+	   K 
     ));
 }
 
@@ -141,11 +141,11 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::CnatCrit(const volScalar
 template<class BasicTurbulenceModel>
 tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::BetaTS(const volScalarField& ReOmega) const
 {
-    volScalarField L_ = L(ReOmega);
+    volScalarField L("L", sqr(ReOmega) * K());
 
     return tmp<volScalarField>(new volScalarField(
             "BetaTS",
-            scalar(1) - exp(-sqr(max(ReOmega - CtsCrit(L_), scalar(0)))/this->Ats_)
+            scalar(1) - exp(-sqr(max(ReOmega - CtsCrit(L), scalar(0)))/this->Ats_)
         ));
 }
 
@@ -156,14 +156,14 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::phiNAT
     const volScalarField& fNatCrit
 ) const
 {
-    volScalarField L_ = L(ReOmega);
+    volScalarField L("L", sqr(ReOmega) * K());
 
     return tmp<volScalarField>(new volScalarField(
         "phiNAT",
         max
         (
             ReOmega
-            - CnatCrit(L_)
+            - CnatCrit(L)
             / (
                 fNatCrit + dimensionedScalar("ROTVSMALL", dimless, ROOTVSMALL)
             ),
@@ -245,9 +245,10 @@ void mykkLOmegaFS<BasicTurbulenceModel>::correct()
       const volTensorField& gradU = tgradU();
       const volScalarField Omega(sqrt(2.0)*mag(skew(gradU)));
       const volScalarField ReOmega("ReOmega", sqr(this->y_)*Omega/this->nu());
-      const volScalarField L_ = L(ReOmega);
-      L_.write();
-      lambdaTheta(L_)().write();
+      const volScalarField L("L", sqr(ReOmega) * K() );
+      L.write();
+      lambdaTheta(L)().write();
+      K()().write();
     }
 }
 

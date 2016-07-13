@@ -36,49 +36,145 @@ namespace RASModels
 
 
 template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::lambdaT() const
+tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::Ue(const volScalarField& p, const volVectorField& U) const
 {
-  
-  volScalarField fINT2("fINT2", min(scalar(1), 0.9*sqr(this->kl_/this->kt_)) );
 
-  volScalarField lambdaF("lambdaF", sqrt(this->kt_ + this->kl_ * fINT2) / this->omega_);
-  
-  return tmp<volScalarField>(new volScalarField(
-	"lambdaT",
-	sqrt(this->kt_ + this->kl_ * fINT2) / this->omega_
-  ));
+    if ( p.dimensions() == dimensionSet(0, 2, -2, 0, 0) ) 
+    { 
+        dimensionedScalar pTot("pTot", p.dimensions(), 
+        gMax( volScalarField( p + 0.5*magSqr(U) ) ) );
+        
+        return tmp<volScalarField>(new volScalarField(
+            "Ue",
+            sqrt( 2.0 * (pTot - p) )
+        ));
+    } 
+    else 
+    {
+        const basicThermo& thermo =
+            this->mesh_.objectRegistry::lookupObject<basicThermo>("thermophysicalProperties");
+
+        const volScalarField& he = thermo.he(); 
+        volScalarField h("h", he);
+        if (he.name() == "e") 
+            h += p / thermo.rho();
+     
+        dimensionedScalar hTot("hTot", h.dimensions(),
+        gMax( volScalarField(h + 0.5*magSqr(U) ) ) );
+        
+        return tmp<volScalarField>(new volScalarField(
+            "Ue",
+            sqrt( 2.0 * (hTot - h) )
+        ));
+    }
 }
-  
+
 template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::fTaul
-(
-    const volScalarField& lambdaEff,
-    const volScalarField& ktL,
-    const volScalarField& Omega
-) const
+tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::K() const
+{
+    const volScalarField& p = this->mesh_.objectRegistry::lookupObject<volScalarField>("p");
+    const volVectorField& U_ = this->U_;
+
+    dimensionedScalar uMin("uMin", dimVelocity, VSMALL);
+    
+    volScalarField dpdx = (fvc::grad(p) & U_) / max( mag(U_), uMin); 
+
+    tmp<volScalarField> K;
+    if ( p.dimensions() == dimensionSet(0, 2, -2, 0, 0) ) 
+        K = - this->nu() / pow3(max(Ue(p,U_),uMin)) * dpdx;
+    else
+    {
+        const basicThermo& thermo =
+            this->mesh_.objectRegistry::lookupObject<basicThermo>("thermophysicalProperties");
+        K = - this->nu() / pow3(max(Ue(p,U_),uMin)) * dpdx / thermo.rho();
+    }
+
+    return tmp<volScalarField>(new volScalarField( 
+	   "K",
+	   K 
+    ));
+}
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::RevByReTheta(const volScalarField& L) const
+{
+    volScalarField Lapg = max( min(L, 0.0), -1.5);
+    return  2.1884 * ( 1.0 - 0.95419*Lapg - 0.13183*sqr(Lapg) );
+}
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::lambdaTheta(const volScalarField& L) const
 {
     return tmp<volScalarField>(new volScalarField(
-        "fTaul",
-        scalar(1)
-        - exp
+        "lambdaTheta",
+        L / sqr(RevByReTheta(L))
+    ));
+}
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::ReThetac(const volScalarField& lambda) const
+{
+    return tmp<volScalarField>(new volScalarField(
+        "ReThetac",
+        //200.69 / (1.0 - 55.287 * lambda + 3.4992e+05 * pow4(lambda) ) 
+	1000.0 / 2.1884 * exp( 30.2813*min( max(lambda,-0.0681), 0.0) )
+    ));   
+}
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::CtsCrit(const volScalarField& L) const
+{
+    return tmp<volScalarField>(new volScalarField(
+        "CtsCrit",
+        ReThetac(lambdaTheta(L)) * RevByReTheta(L)
+    ));
+}
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::CnatCrit(const volScalarField& L) const
+{
+    return tmp<volScalarField>(new volScalarField(
+            "CnatCrit",
+            // this->CnatCrit_ * CtsCrit(L) / 439.19
+	    this->CnatCrit_/1000.0 * CtsCrit(L)
+        ));
+}
+
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::BetaTS(const volScalarField& ReOmega) const
+{
+    volScalarField L("L", sqr(ReOmega) * K());
+
+    return tmp<volScalarField>(new volScalarField(
+            "BetaTS",
+            scalar(1) - exp(-sqr(max(ReOmega - CtsCrit(L), scalar(0)))/this->Ats_)
+        ));
+}
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField> mykkLOmegaDev<BasicTurbulenceModel>::phiNAT
+(
+    const volScalarField& ReOmega,
+    const volScalarField& fNatCrit
+) const
+{
+    volScalarField L("L", sqr(ReOmega) * K());
+
+    return tmp<volScalarField>(new volScalarField(
+        "phiNAT",
+        max
         (
-            -this->CtauL_ * ktL
-            /
-            (
-                sqr
-                (
-                    lambdaEff * this->omega_
-                    + dimensionedScalar
-                    (
-                        "ROOTVSMALL",
-                        dimLength*inv(dimTime),
-                        ROOTVSMALL
-                    )
-                )
-            )
+            ReOmega
+            - CnatCrit(L)
+            / (
+                fNatCrit + dimensionedScalar("ROTVSMALL", dimless, ROOTVSMALL)
+            ),
+            scalar(0)
         )
     ));
 }
+
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
@@ -113,9 +209,6 @@ mykkLOmegaDev<BasicTurbulenceModel>::mykkLOmegaDev
       Info << "| WARNING: This is unstable development model! |" << endl;
       Info << "================================================" << endl;
       
-      this->CnatCrit_ = 1800;
-      this->CrNat_ = 0.04;
-
         // Evaluating nut_ is complex so start from the field read from file
         this->nut_.correctBoundaryConditions();
         
@@ -155,6 +248,14 @@ void mykkLOmegaDev<BasicTurbulenceModel>::correct()
     mykkLOmega<BasicTurbulenceModel>::correct();
 
     if (debug && this->runTime_.outputTime()) {
+      tmp<volTensorField> tgradU(fvc::grad(this->U_));
+      const volTensorField& gradU = tgradU();
+      const volScalarField Omega(sqrt(2.0)*mag(skew(gradU)));
+      const volScalarField ReOmega("ReOmega", sqr(this->y_)*Omega/this->nu());
+      const volScalarField L("L", sqr(ReOmega) * K() );
+      L.write();
+      lambdaTheta(L)().write();
+      K()().write();
     }
 }
 

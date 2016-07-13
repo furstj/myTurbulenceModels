@@ -94,15 +94,26 @@ protected:
     
     // Fields
     
-    virtual tmp<volScalarField> lambdaT() const;
-
-    virtual tmp<volScalarField> fTaul
-    (
-        const volScalarField& lambdaEff,
-        const volScalarField& ktL,
-        const volScalarField& omega
+    virtual tmp<volScalarField> Ue(const volScalarField& p, const volVectorField& U) const;
+    
+    virtual tmp<volScalarField> K() const;
+    
+    virtual tmp<volScalarField> RevByReTheta(const volScalarField& L) const;
+    
+    virtual tmp<volScalarField> lambdaTheta(const volScalarField& L) const;
+    
+    virtual tmp<volScalarField> ReThetac(const volScalarField& lambda) const;
+    
+    virtual tmp<volScalarField> CtsCrit(const volScalarField& L) const;
+    
+    virtual tmp<volScalarField> CnatCrit(const volScalarField& L) const;
+    
+    virtual tmp<volScalarField> BetaTS(const volScalarField& ReOmega) const;
+    
+    virtual tmp<volScalarField> phiNAT(
+        const volScalarField& ReOmega,
+        const volScalarField& fNatCrit
     ) const;
-
     
 public:
 
