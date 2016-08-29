@@ -737,7 +737,7 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
     );
 
 
-    omega_.boundaryField().updateCoeffs();
+    omega_.boundaryFieldRef().updateCoeffs();
 
     // Turbulence specific dissipation rate equation
     tmp<fvScalarMatrix> omegaEqn
@@ -755,11 +755,11 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
       - fvm::Sp(alpha*rho*Cw2_*sqr(fw)*omega_, omega_)
       + alpha*rho*(
             Cw3_*fOmega(lambdaEff_, lambdaT_)*alphaTEff*sqr(fw)*sqrt(kt_)
-        )().dimensionedInternalField()/pow3(y_.dimensionedInternalField())
+		   )().internalField()/pow3(y_.internalField())
     );
 
-    omegaEqn().relax();
-    omegaEqn().boundaryManipulate(omega_.boundaryField());
+    omegaEqn.ref().relax();
+    omegaEqn.ref().boundaryManipulate(omega_.boundaryFieldRef());
 
     solve(omegaEqn);
     bound(omega_, omegaMin_);
@@ -778,8 +778,8 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
       - fvm::Sp(alpha*rho*(Rbp + Rnat + Dl/(kl_ + kMin_)), kl_)
     );
 
-    klEqn().relax();
-    klEqn().boundaryManipulate(kl_.boundaryField());
+    klEqn.ref().relax();
+    klEqn.ref().boundaryManipulate(kl_.boundaryFieldRef());
 
     solve(klEqn);
     bound(kl_, kMin_);
@@ -799,8 +799,8 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
       - fvm::Sp(alpha*rho*(omega_ + Dt/(kt_+ kMin_)), kt_)
     );
 
-    ktEqn().relax();
-    ktEqn().boundaryManipulate(kt_.boundaryField());
+    ktEqn.ref().relax();
+    ktEqn.ref().boundaryManipulate(kt_.boundaryFieldRef());
 
     solve(ktEqn);
     bound(kt_, kMin_);

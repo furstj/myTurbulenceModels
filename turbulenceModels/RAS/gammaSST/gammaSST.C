@@ -100,7 +100,7 @@ tmp<volScalarField> gammaSST<BasicTurbulenceModel>::FPG() const
 
     tmp<volScalarField> tFPG(new volScalarField("FPG", lambdaThetaL));
  
-    volScalarField& FPG_ = tFPG();
+    volScalarField& FPG_ = tFPG.ref();
     forAll(FPG_, i) {
         if (lambdaThetaL[i]>=0) 
             FPG_[i] = min(1 + CPG1_.value()*lambdaThetaL[i], CPG1lim_.value());
@@ -357,7 +357,7 @@ void gammaSST<BasicTurbulenceModel>::correct()
     tgradU.clear();
 
     // Update omega and G at the wall
-    omega_.boundaryField().updateCoeffs();
+    omega_.boundaryFieldRef().updateCoeffs();
 
     const volScalarField CDkOmega
         ( "CD",
@@ -386,9 +386,9 @@ void gammaSST<BasicTurbulenceModel>::correct()
             )
         );
 
-        omegaEqn().relax();
+        omegaEqn.ref().relax();
 
-        omegaEqn().boundaryManipulate(omega_.boundaryField());
+        omegaEqn.ref().boundaryManipulate(omega_.boundaryFieldRef());
 
         solve(omegaEqn);
         bound(omega_, this->omegaMin_);
@@ -416,11 +416,11 @@ void gammaSST<BasicTurbulenceModel>::correct()
         - fvm::Sp(max(gammaInt(),scalar(0.1)) * alpha*rho*this->betaStar_*omega_, k_)
     );
 
-    kEqn().relax();
+    kEqn.ref().relax();
     solve(kEqn);
     bound(k_, this->kMin_);
 
-    this->correctNut(S2);
+    this->correctNut(S2, this->F23());
 
    // Intermittency equation (2)
     volScalarField Pgamma1 = Flength_ * S * gammaInt_ * Fonset(S);
@@ -435,7 +435,7 @@ void gammaSST<BasicTurbulenceModel>::correct()
             alpha*rho*Pgamma2 - fvm::Sp(alpha*rho*ce2_*Pgamma2, gammaInt_)
         ); 
     
-    gammaEqn().relax();
+    gammaEqn.ref().relax();
     solve(gammaEqn);
 
     bound(gammaInt_,scalar(0));

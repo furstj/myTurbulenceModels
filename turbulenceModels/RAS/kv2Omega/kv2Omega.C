@@ -736,7 +736,7 @@ void kv2Omega<BasicTurbulenceModel>::correct()
     );
 
 
-    omega_.boundaryField().updateCoeffs();
+    omega_.boundaryFieldRef().updateCoeffs();
 
     // Turbulence specific dissipation rate equation
     tmp<fvScalarMatrix> omegaEqn
@@ -757,8 +757,8 @@ void kv2Omega<BasicTurbulenceModel>::correct()
             )
         );
     
-    omegaEqn().relax();
-    omegaEqn().boundaryManipulate(omega_.boundaryField());
+    omegaEqn.ref().relax();
+    omegaEqn.ref().boundaryManipulate(omega_.boundaryFieldRef());
 
     solve(omegaEqn);
     bound(omega_, omegaMin_);
@@ -779,8 +779,8 @@ void kv2Omega<BasicTurbulenceModel>::correct()
             )
     );
 
-    v2Eqn().relax();
-    v2Eqn().boundaryManipulate(v2_.boundaryField());
+    v2Eqn.ref().relax();
+    v2Eqn.ref().boundaryManipulate(v2_.boundaryFieldRef());
 
     solve(v2Eqn);
     bound(v2_, kMin_);
@@ -799,8 +799,8 @@ void kv2Omega<BasicTurbulenceModel>::correct()
             )
         );
     
-    kEqn().relax();
-    kEqn().boundaryManipulate(k_.boundaryField());
+    kEqn.ref().relax();
+    kEqn.ref().boundaryManipulate(k_.boundaryFieldRef());
 
     solve(kEqn);
     bound(k_, kMin_);
