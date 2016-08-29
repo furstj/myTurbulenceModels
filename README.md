@@ -9,8 +9,8 @@ There is an **Allwmake** script which should compile a dynamic library.
 
 Please be sure to use correct branch:
 
-* **OF3** compatible with OpenFOAM 3.0
-* **default** development branch oriented to latest version of OpenFOAM
+* **OF30** compatible with OpenFOAM 3.0
+* **master** development branch oriented to latest version of OpenFOAM
 
 ### Running
 Put
