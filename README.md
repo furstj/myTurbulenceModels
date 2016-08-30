@@ -23,7 +23,15 @@ or
 
 to your controlDict.
 
-Then you can select additional turbulence models via turbulenceProperties.
+Then you can select additional turbulence models via turbulenceProperties, namely:
+* **mykkLOmega** - the k-kl-omega model of Walters & Cokljat 
+* **mykkLOmegaPh** - modification of the k-kl-omega for APG using Pohlhausen profiles
+* **mykkLOmegaFS** - modification of the k-kl-omega for APG using Falkner-Skan profiles
+* **mykkLOmegaDev** - experimental development version
+* **kv2Omega** - k-v2-omega model of Walters & Lopez
+* **gammaSST** - gamma-SST model of Menter, Smirnov, Liu, Avancha
+
+There are some test cases in **testCases** directory.
 
 ## Documentation
 
