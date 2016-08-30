@@ -1,0 +1,12 @@
+set term png enh
+set output "cf.png"
+
+set yrange [0:0.01]
+
+set ylabel "c_f"
+set xlabel "Re_x"
+
+set grid
+
+plot "../ercoftac_t3a_cf.dat" ti "Experiment", \
+     "postProcessing/surfaces/5000/wallShearStress_wall.raw" us (5.4*$1/1.5e-5):(-2*$4/5.4**2) with linespoint ti "Result"
