@@ -88,6 +88,9 @@ makeRASModel(mykkLOmegaPh);
 #include "mykkLOmegaFS.H"
 makeRASModel(mykkLOmegaFS);
 
+#include "mykkLOmegaDev.H"
+makeRASModel(mykkLOmegaDev);
+
 // -------------------------------------------------------------------------- //
 // LES models
 // -------------------------------------------------------------------------- //
