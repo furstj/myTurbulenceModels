@@ -85,6 +85,8 @@ makeRASModel(mykkLOmegaPh);
 #include "mykkLOmegaDev.H"
 makeRASModel(mykkLOmegaDev);
 
+#include "kOmegaWilcox06.H"
+makeRASModel(kOmegaWilcox06);
 
 // -------------------------------------------------------------------------- //
 // LES models
