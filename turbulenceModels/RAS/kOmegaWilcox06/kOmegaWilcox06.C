@@ -37,12 +37,81 @@ namespace RASModels
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * //
 
 template<class BasicTurbulenceModel>
-void kOmegaWilcox06<BasicTurbulenceModel>::correctNut()
+void kOmegaWilcox06<BasicTurbulenceModel>::correctNut(const volScalarField& S2)
 {
-    this->nut_ = k_/omega_;
+    this->nut_ = k_ / this->omegaTilde(S2);
     this->nut_.correctBoundaryConditions();
+
+    BasicTurbulenceModel::correctNut();
 }
 
+template<class BasicTurbulenceModel>
+void kOmegaWilcox06<BasicTurbulenceModel>::correctNut()
+{
+    correctNut(2*magSqr(dev(symm(fvc::grad(this->U_)))));
+}
+
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField> 
+kOmegaWilcox06<BasicTurbulenceModel>::omegaTilde(const volScalarField& S2) const
+{
+    return tmp<volScalarField>
+        (
+            new volScalarField
+            (
+                "omegaBar",
+                max(omega_, Clim_*sqrt(S2/Cmu_))
+        )
+        );
+}
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField> 
+kOmegaWilcox06<BasicTurbulenceModel>::beta(const volTensorField& gradU) const
+{
+    volTensorField Omega(skew(gradU));
+    volSymmTensorField Shat(symm(gradU) - 0.5*tr(gradU)*I);
+    volScalarField Xomega( mag( (Omega & Omega) && Shat ) / pow(Cmu_*omega_,3) );
+
+    return tmp<volScalarField>
+        (
+            new volScalarField
+            (
+                "beta",
+                beta0_ * (1 + 85*Xomega) / (1 + 100*Xomega)
+            )
+        );
+}
+
+
+template<class BasicTurbulenceModel>
+tmp<fvScalarMatrix> 
+kOmegaWilcox06<BasicTurbulenceModel>::kSource() const
+{
+    return tmp<fvScalarMatrix>
+        (
+            new fvScalarMatrix
+            (
+                k_,
+                dimVolume*this->rho_.dimensions()*k_.dimensions()/dimTime
+            )
+        );
+}
+
+template<class BasicTurbulenceModel>
+tmp<fvScalarMatrix> 
+kOmegaWilcox06<BasicTurbulenceModel>::omegaSource() const
+{
+    return tmp<fvScalarMatrix>
+        (
+            new fvScalarMatrix
+            (
+                omega_,
+                dimVolume*this->rho_.dimensions()*omega_.dimensions()/dimTime
+            )
+        );
+}
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
@@ -70,23 +139,31 @@ kOmegaWilcox06<BasicTurbulenceModel>::kOmegaWilcox06
         transport,
         propertiesName
     ),
-
     Cmu_
     (
         dimensioned<scalar>::lookupOrAddToDict
         (
-            "betaStar",
+            "Cmu",
             this->coeffDict_,
             0.09
         )
     ),
-    beta_
+    beta0_ 
     (
         dimensioned<scalar>::lookupOrAddToDict
         (
-            "beta",
+            "beta0",
             this->coeffDict_,
-            0.072
+            0.0708
+        )
+    ),
+    Clim_
+    (
+        dimensioned<scalar>::lookupOrAddToDict
+        (
+            "Clim",
+            this->coeffDict_,
+            0.875
         )
     ),
     gamma_
@@ -104,7 +181,7 @@ kOmegaWilcox06<BasicTurbulenceModel>::kOmegaWilcox06
         (
             "alphaK",
             this->coeffDict_,
-            0.5
+            0.6
         )
     ),
     alphaOmega_
@@ -114,6 +191,15 @@ kOmegaWilcox06<BasicTurbulenceModel>::kOmegaWilcox06
             "alphaOmega",
             this->coeffDict_,
             0.5
+        )
+    ),
+    sigmaD_
+    (
+        dimensioned<scalar>::lookupOrAddToDict
+        (
+            "sigmaD",
+            this->coeffDict_,
+            0.125
         )
     ),
 
@@ -161,10 +247,12 @@ bool kOmegaWilcox06<BasicTurbulenceModel>::read()
     if (eddyViscosity<RASModel<BasicTurbulenceModel> >::read())
     {
         Cmu_.readIfPresent(this->coeffDict());
-        beta_.readIfPresent(this->coeffDict());
+        beta0_.readIfPresent(this->coeffDict());
         gamma_.readIfPresent(this->coeffDict());
         alphaK_.readIfPresent(this->coeffDict());
         alphaOmega_.readIfPresent(this->coeffDict());
+        Clim_.readIfPresent(this->coeffDict());
+        sigmaD_.readIfPresent(this->coeffDict());
 
         return true;
     }
@@ -188,39 +276,47 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
     const rhoField& rho = this->rho_;
     const surfaceScalarField& alphaRhoPhi = this->alphaRhoPhi_;
     const volVectorField& U = this->U_;
-    volScalarField& nut = this->nut_;
 
     eddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
 
     volScalarField divU(fvc::div(fvc::absolute(this->phi(), U)));
 
     tmp<volTensorField> tgradU = fvc::grad(U);
-    volScalarField G
-    (
+
+    volScalarField G(
         this->GName(),
-        nut*(tgradU() && dev(twoSymm(tgradU())))
+        this->nut_ * ( dev(twoSymm(tgradU())) && tgradU() ) 
     );
-    tgradU.clear();
 
     // Update omega and G at the wall
     omega_.boundaryField().updateCoeffs();
 
-    // Turbulence specific dissipation rate equation
+    tmp<volScalarField> beta_ = this->beta(tgradU);
+    tgradU.clear();
+
+    volScalarField CDkOmega = max(
+        sigmaD_/omega_*(fvc::grad(k_) & fvc::grad(omega_)),
+        dimensionedScalar("0", sqr(inv(dimTime)), 0.0)
+    );
+
+    // Turbulent frequency equation 
+    // source term modified according to NLR-TP-2001-238
+    dimensionedScalar kMin("kMin", sqr(dimVelocity), VSMALL);
     tmp<fvScalarMatrix> omegaEqn
-    (
-        fvm::ddt(alpha, rho, omega_)
-      + fvm::div(alphaRhoPhi, omega_)
-      - fvm::laplacian(alpha*rho*DomegaEff(), omega_)
-     ==
-        gamma_*alpha*rho*G*omega_/k_
-      - fvm::SuSp(((2.0/3.0)*gamma_)*alpha*rho*divU, omega_)
-      - fvm::Sp(beta_*alpha*rho*omega_, omega_)
+        (
+            fvm::ddt(alpha, rho, omega_)
+            + fvm::div(alphaRhoPhi, omega_)
+            - fvm::laplacian(alpha*rho*DomegaEff(), omega_)
+            ==
+            gamma_ * alpha * rho * G * omega_ / max(k_, kMin)
+            - fvm::SuSp(((2.0/3.0)*gamma_)*alpha*rho*divU, omega_)
+            - fvm::Sp(beta_*alpha*rho*omega_, omega_)
+            + CDkOmega
+            + omegaSource()
     );
 
     omegaEqn().relax();
-
     omegaEqn().boundaryManipulate(omega_.boundaryField());
-
     solve(omegaEqn);
     bound(omega_, this->omegaMin_);
 
@@ -235,6 +331,7 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
         alpha*rho*G
       - fvm::SuSp((2.0/3.0)*alpha*rho*divU, k_)
       - fvm::Sp(Cmu_*alpha*rho*omega_, k_)
+      + kSource()
     );
 
     kEqn().relax();

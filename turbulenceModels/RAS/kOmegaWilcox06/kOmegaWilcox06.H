@@ -43,10 +43,12 @@ Description
         kOmegaWilcox06Coeffs
         {
             Cmu         0.09;  // Equivalent to betaStar
-            alpha       0.52;
-            beta        0.072;
-            alphak      0.5;
-            alphaOmega  0.5;
+            gamma       0.52;  // Denoted by alpha in the paper
+            beta0       0.0708; 
+            alphak      0.6;   // Denoted by sigmaK in the paper
+            alphaOmega  0.5;   // Denoted by sigmaOmega in the paper
+            sigmaD      0.125; // Denoted by sigmaD0 in the paper
+	    Clim        0.875;
         }
     \endverbatim
 
@@ -55,11 +57,11 @@ SourceFiles
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef kOmegaWilcox06_H
-#define kOmegaWilcox06_H
+    #ifndef kOmegaWilcox06_H
+    #define kOmegaWilcox06_H
 
-#include "RASModel.H"
-#include "eddyViscosity.H"
+    #include "RASModel.H"
+    #include "eddyViscosity.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -69,41 +71,48 @@ namespace RASModels
 {
 
 /*---------------------------------------------------------------------------*\
-                           Class kOmegaWilcox06 Declaration
-\*---------------------------------------------------------------------------*/
+    Class kOmegaWilcox06 Declaration
+    \*---------------------------------------------------------------------------*/
 
 template<class BasicTurbulenceModel>
 class kOmegaWilcox06
 :
     public eddyViscosity<RASModel<BasicTurbulenceModel> >
 {
-
+    
 protected:
-
+    
     // Protected data
-
-        // Model coefficients
-
-            dimensionedScalar Cmu_;
-            dimensionedScalar beta_;
-            dimensionedScalar gamma_;
-            dimensionedScalar alphaK_;
-            dimensionedScalar alphaOmega_;
-
-
-        // Fields
-
-            volScalarField k_;
-            volScalarField omega_;
-
-
+    
+    // Model coefficients
+    
+    dimensionedScalar Cmu_;
+    dimensionedScalar beta0_;
+    dimensionedScalar Clim_;
+    dimensionedScalar gamma_;
+    dimensionedScalar alphaK_;
+    dimensionedScalar alphaOmega_;
+    dimensionedScalar sigmaD_;
+    
+    
+    // Fields
+    
+    volScalarField k_;
+    volScalarField omega_;
+    
+    
     // Protected Member Functions
-
-        virtual void correctNut();
-
+    
+    virtual void correctNut(const volScalarField& S2);
+    virtual void correctNut();
+    
+    virtual tmp<volScalarField> omegaTilde(const volScalarField& S2) const;
+    virtual tmp<volScalarField> beta(const volTensorField& gradU) const;
+    virtual tmp<fvScalarMatrix> kSource() const;
+    virtual tmp<fvScalarMatrix> omegaSource() const;
 
 public:
-
+    
     typedef typename BasicTurbulenceModel::alphaField alphaField;
     typedef typename BasicTurbulenceModel::rhoField rhoField;
     typedef typename BasicTurbulenceModel::transportModel transportModel;
@@ -114,90 +123,90 @@ public:
 
 
     // Constructors
-
-        //- Construct from components
-        kOmegaWilcox06
-        (
-            const alphaField& alpha,
-            const rhoField& rho,
-            const volVectorField& U,
-            const surfaceScalarField& alphaRhoPhi,
-            const surfaceScalarField& phi,
-            const transportModel& transport,
-            const word& propertiesName = turbulenceModel::propertiesName,
-            const word& type = typeName
-        );
-
-
+    
+    //- Construct from components
+    kOmegaWilcox06
+    (
+        const alphaField& alpha,
+        const rhoField& rho,
+        const volVectorField& U,
+        const surfaceScalarField& alphaRhoPhi,
+        const surfaceScalarField& phi,
+        const transportModel& transport,
+        const word& propertiesName = turbulenceModel::propertiesName,
+        const word& type = typeName
+    );
+    
+    
     //- Destructor
     virtual ~kOmegaWilcox06()
-    {}
-
-
+        {}
+    
+    
     // Member Functions
-
-        //- Read RASProperties dictionary
-        virtual bool read();
-
-        //- Return the effective diffusivity for k
-        tmp<volScalarField> DkEff() const
+    
+    //- Read RASProperties dictionary
+    virtual bool read();
+    
+    //- Return the effective diffusivity for k
+    tmp<volScalarField> DkEff() const
         {
             return tmp<volScalarField>
-            (
-                new volScalarField
                 (
-                    "DkEff",
-                    alphaK_*this->nut_ + this->nu()
-                )
-            );
+                    new volScalarField
+                    (
+                        "DkEff",
+                        alphaK_*this->k_/this->omega_ + this->nu()
+                    )
+                );
         }
 
-        //- Return the effective diffusivity for omega
-        tmp<volScalarField> DomegaEff() const
+    //- Return the effective diffusivity for omega
+    tmp<volScalarField> DomegaEff() const
         {
             return tmp<volScalarField>
-            (
-                new volScalarField
                 (
-                    "DomegaEff",
-                    alphaOmega_*this->nut_ + this->nu()
-                )
-            );
+                    new volScalarField
+                    (
+                        "DomegaEff",
+                        alphaOmega_*this->k_/this->omega_ + this->nu()
+                    )
+                );
         }
 
-        //- Return the turbulence kinetic energy
-        virtual tmp<volScalarField> k() const
+    //- Return the turbulence kinetic energy
+    virtual tmp<volScalarField> k() const
         {
             return k_;
         }
 
-        //- Return the turbulence specific dissipation rate
-        virtual tmp<volScalarField> omega() const
+    //- Return the turbulence specific dissipation rate
+    virtual tmp<volScalarField> omega() const
         {
             return omega_;
         }
 
-        //- Return the turbulence kinetic energy dissipation rate
-        virtual tmp<volScalarField> epsilon() const
+    //- Return the turbulence kinetic energy dissipation rate
+    virtual tmp<volScalarField> epsilon() const
         {
             return tmp<volScalarField>
-            (
-                new volScalarField
                 (
-                    IOobject
+                    new volScalarField
                     (
-                        "epsilon",
-                        this->mesh_.time().timeName(),
-                        this->mesh_
-                    ),
-                    Cmu_*k_*omega_,
-                    omega_.boundaryField().types()
-                )
-            );
+                        IOobject
+                        (
+                            "epsilon",
+                            this->mesh_.time().timeName(),
+                            this->mesh_
+                        ),
+                        Cmu_*k_*omega_,
+                        omega_.boundaryField().types()
+                    )
+                );
         }
 
-        //- Solve the turbulence equations and correct the turbulence viscosity
-        virtual void correct();
+    //- Solve the turbulence equations and correct the turbulence viscosity
+    virtual void correct();
 };
 
 
@@ -207,12 +216,12 @@ public:
 } // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-#ifdef NoRepository
-#   include "kOmegaWilcox06.C"
-#endif
+    #ifdef NoRepository
+    #   include "kOmegaWilcox06.C"
+    #endif
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#endif
+    #endif
 
 // ************************************************************************* //
