@@ -28,10 +28,16 @@ Group
     grpRASTurbulence
 
 Description
-    Re-visited high Reynolds-number k-omega turbulence model for
-    incompressible and compressible flows.
+    An algebraic transition model for incompressible and compressible flows.
 
-    References:
+    References:    
+    \verbatim
+        Kubacki, S. & Dick, E. (2016)
+	An algebraic model for prediction of bypass and separation-induced transition 
+        in turbomachinery boundary layer flows
+	ETMM11 conference proceedings, Palermo
+    \endverbatim
+
     \verbatim
         Wilcox, D. C. (2008).
         Formulation of the k-omega Turbulence Model Revisited
@@ -49,6 +55,14 @@ Description
             alphaOmega  0.5;   // Denoted by sigmaOmega in the paper
             sigmaD      0.125; // Denoted by sigmaD0 in the paper
 	    Clim        0.875;
+            al          0.45;
+            Agamma     12.0;
+            CS         21.0;
+            CA          1.0;
+            Cpsi       10.0;
+            CW          6.0;
+            Csep        2.0;
+            Av        550.0;
         }
     \endverbatim
 
@@ -93,21 +107,31 @@ protected:
     dimensionedScalar alphaK_;
     dimensionedScalar alphaOmega_;
     dimensionedScalar sigmaD_;
-    
-    
+    dimensionedScalar al_;
+    dimensionedScalar Agamma_;
+    dimensionedScalar CS_;
+    dimensionedScalar CA_;
+    dimensionedScalar Cpsi_;
+    dimensionedScalar CW_;
+    dimensionedScalar Csep_;
+    dimensionedScalar AV_;
+
     // Fields
-    
+    const volScalarField& y_;
     volScalarField k_;
     volScalarField omega_;
     
     
     // Protected Member Functions
     
-    virtual void correctNut(const volScalarField& S2);
     virtual void correctNut();
-    
-    virtual tmp<volScalarField> omegaTilde(const volScalarField& S2) const;
+    virtual void correctNut(const volScalarField& nus, const volScalarField& nul);
+
+    virtual tmp<volScalarField> intermittency() const;
+    virtual tmp<volScalarField> nus(const volScalarField& S, const volScalarField& fSS) const;
+    virtual tmp<volScalarField> nul(const volScalarField& S, const volScalarField& fSS) const;
     virtual tmp<volScalarField> beta(const volTensorField& gradU) const;
+    virtual tmp<volScalarField> fSS(const volScalarField& S, const volScalarField& W) const;
     virtual tmp<fvScalarMatrix> kSource() const;
     virtual tmp<fvScalarMatrix> omegaSource() const;
 
