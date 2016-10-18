@@ -451,7 +451,7 @@ void kOmegaTrans<BasicTurbulenceModel>::correct()
             gamma_ * alpha * rho * G * omega_ / max(k_, kMin)
             - fvm::SuSp(((2.0/3.0)*gamma_)*alpha*rho*divU, omega_)
             - fvm::Sp(beta_*alpha*rho*omega_, omega_)
-            + CDkOmega
+            + rho * CDkOmega
             + omegaSource()
     );
 
