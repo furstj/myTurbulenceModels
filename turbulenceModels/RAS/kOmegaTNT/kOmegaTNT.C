@@ -166,7 +166,7 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
     omega_.boundaryFieldRef().updateCoeffs();
 
     volScalarField CDkOmega = max(
-        this->alphaD_ / omega_ * (fvc::grad(k_) & fvc::grad(omega_)),
+        this->alphaD_ / max(omega_, this->omegaMin()) * (fvc::grad(k_) & fvc::grad(omega_)),
         dimensionedScalar("0",inv(sqr(dimTime)), 0.0)
     );
 
@@ -178,7 +178,7 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
       + fvm::div(alphaRhoPhi, omega_)
       - fvm::laplacian(alpha * rho * this->DomegaEff(), omega_)
      ==
-        this->gamma_ * alpha * rho * G * omega_/k_
+        this->gamma_ * alpha * rho * G * omega_/max(k_,this->kMin())
       - fvm::SuSp(((2.0/3.0)*this->gamma_)*alpha * rho * divU, omega_)
       - fvm::Sp(this->beta_ * alpha * rho * omega_, omega_)
       + alpha * rho * CDkOmega  
@@ -191,7 +191,7 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
     omegaEqn.ref().boundaryManipulate(omega_.boundaryFieldRef());
     solve(omegaEqn);
     fvOptions.correct(omega_);
-    bound(omega_, this->omegaMin_);
+    bound(omega_, this->omegaMin());
 
     // Turbulent kinetic energy equation
     tmp<fvScalarMatrix> kEqn
