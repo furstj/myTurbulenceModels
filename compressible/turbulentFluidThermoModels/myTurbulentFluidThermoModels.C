@@ -74,6 +74,9 @@ makeRASModel(gammaSST);
 #include "kOmegaTNT.H"
 makeRASModel(kOmegaTNT);
 
+#include "kOmegaWilcox06.H"
+makeRASModel(kOmegaWilcox06);
+
 #define HAVE_ALPHAT
 
 #include "kv2Omega.H"
