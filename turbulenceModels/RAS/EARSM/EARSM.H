@@ -41,33 +41,18 @@ Description
     \verbatim
         EARSMCoeffs
         {
-            A0             4.04
-            AS             2.12
-            Anu            3.8
-            ABP            0.6
-            ANAT           200
-            ATS            200
-            CBPcrit        1.5
-            CNC            0.1
-            CNATcrit       1450
-            CINT           0.95
-            CTScrit        1000
-            CRNAT          0.02
-            C11            3.4e-6
-            C12            1.0e-10
-            CR             0.32
-            CalphaTheta    0.035
-            CSS            3.0
-            Ctau1          4360
-            Cw1            0.44
-            Cw2            0.92
-            CwR            1.15
-            Clambda        2.495
             betaStar       0.09
-            Prt            0.85
-            sigmaK         1
-            sigmaW         1.17
-            sigmaW2        1.856
+	    gamma1         0.518
+            gamma2         0.44
+	    beta1          0.0747
+	    beta2          0.0828
+	    alphaK1        1.1
+	    alphaK2        1.1
+	    alphaOmega1    0.53
+	    alphaOmega2    1.0
+	    alphaD1        1.0
+	    alphaD2        0.4
+            kInf           1.e-10
         }
     \endverbatim
 
@@ -110,39 +95,30 @@ protected:
     // Protected data
     
     // Model coefficients
-    
-    dimensionedScalar A0_;
-    dimensionedScalar AS_;
-    dimensionedScalar Anu_;
-    dimensionedScalar ABP_;
-    dimensionedScalar ANAT_;
-    dimensionedScalar ATS_;
-    dimensionedScalar CBPcrit_;
-    dimensionedScalar CNC_;
-    dimensionedScalar CNATcrit_;
-    dimensionedScalar CINT_;
-    dimensionedScalar CTScrit_;
-    dimensionedScalar CRNAT_;
-    dimensionedScalar C11_;
-    dimensionedScalar C12_;
-    dimensionedScalar CR_;
-    dimensionedScalar CalphaTheta_;
-    dimensionedScalar CSS_;
-    dimensionedScalar Ctau1_;
-    dimensionedScalar Cw1_;
-    dimensionedScalar Cw2_;
-    dimensionedScalar CwR_;
-    dimensionedScalar Clambda_;
+
     dimensionedScalar betaStar_;
-    dimensionedScalar PrTheta_;
-    dimensionedScalar sigmaK_;
-    dimensionedScalar sigmaW_;
-    dimensionedScalar sigmaW2_;
+
+    dimensionedScalar gamma1_;
+    dimensionedScalar gamma2_;
+
+    dimensionedScalar beta1_;
+    dimensionedScalar beta2_;
+
+    dimensionedScalar alphaK1_;
+    dimensionedScalar alphaK2_;
+    
+    dimensionedScalar alphaOmega1_;
+    dimensionedScalar alphaOmega2_;
+    
+    dimensionedScalar alphaD1_;
+    dimensionedScalar alphaD2_;
+
+    dimensionedScalar kInf_;
+
     
     // Fields
     
     volScalarField k_;
-    volScalarField v2_;
     volScalarField omega_;
 
     //- Wall distance
@@ -153,56 +129,51 @@ protected:
 
     // Protected Member Functions
 
+    virtual tmp<volScalarField> fMix(const volScalarField& gradKgradOmegaByOmega) const;
+    
+    tmp<volScalarField> blend
+    (
+        const volScalarField& fMix,
+        const dimensionedScalar& psi1,
+        const dimensionedScalar& psi2
+    ) const
+    {
+        return fMix*(psi1 - psi2) + psi2;
+    }
+
+    tmp<volScalarField> alphaK(const volScalarField& fMix) const
+    {
+        return blend(fMix, alphaK1_, alphaK2_);
+    }
+
+    tmp<volScalarField> alphaOmega(const volScalarField& fMix) const
+    {
+        return blend(fMix, alphaOmega1_, alphaOmega2_);
+    }
+
+    tmp<volScalarField> alphaD(const volScalarField& fMix) const
+    {
+        return blend(fMix, alphaD1_, alphaD2_);
+    }
+
+    tmp<volScalarField> beta(const volScalarField& fMix) const
+    {
+        return blend(fMix, beta1_, beta2_);
+    }
+
+    tmp<volScalarField> gamma(const volScalarField& fMix) const
+    {
+        return blend(fMix, gamma1_, gamma2_);
+    }
+
     virtual void correctNut();
 
-    virtual tmp<volScalarField> fv(const volScalarField& Ret) const;
-
-    virtual tmp<volScalarField> fINT() const;
-
-    virtual tmp<volScalarField> fSS(const volScalarField& W) const;
-    
-    virtual tmp<volScalarField> Cmu(const volScalarField& S) const;
-    
-    virtual tmp<volScalarField> betaTS(const volScalarField& ReW) const;
-    
-    virtual tmp<volScalarField> lambdaT() const;
-
-    virtual tmp<volScalarField> lambdaEff(const volScalarField& lambdaT) const;
-
-    virtual tmp<volScalarField> fTaul
-    (
-        const volScalarField& lambdaEff,
-        const volScalarField& v2l,
-        const volScalarField& W
+    virtual volScalarField N(
+        const volScalarField& A3p,
+        const volScalarField& P1,
+        const volScalarField& P2
     ) const;
     
-    virtual tmp<volScalarField> alphaT
-    (
-        const volScalarField& lambdaEff,
-        const volScalarField& fv,
-        const volScalarField& v2s
-    ) const;
-    
-  /*
-    virtual tmp<volScalarField> fOmega
-    (
-        const volScalarField& lambdaEff,
-        const volScalarField& lambdaT
-    ) const;
-  */
-    
-    virtual tmp<volScalarField> phiBP(const volScalarField& W) const;
-    
-    virtual tmp<volScalarField> phiNAT
-    (
-        const volScalarField& ReOmega,
-        const volScalarField& fNatCrit
-    ) const;
-    
-    virtual tmp<volScalarField> D(const volScalarField& k) const;
-
-    virtual tmp<volScalarField> F1() const;
-
     virtual void correctNonlinearStress(const volTensorField& gradU);
 
 public:
@@ -238,63 +209,67 @@ public:
 
 
     // Member Functions
-
-        //- Re-read model coefficients if they have changed
-        virtual bool read();
-
-        //- Return the effective diffusivity for k
-        tmp<volScalarField> DkEff(const volScalarField& alphaT) const
+    
+    //- Re-read model coefficients if they have changed
+    virtual bool read();
+    
+    //- Return the effective diffusivity for k
+    tmp<volScalarField> DkEff(const volScalarField& fMix) const
         {
             return tmp<volScalarField>
-            (
-                new volScalarField("DkEff", alphaT/sigmaK_ + this->nu())
-            );
+                (
+                    new volScalarField("DkEff", alphaK(fMix)*this->nut_ + this->nu())
+                );
         }
-
-        //- Return the effective diffusivity for omega
-        tmp<volScalarField> DomegaEff(const volScalarField& alphaT) const
+    
+    //- Return the effective diffusivity for omega
+    tmp<volScalarField> DomegaEff(const volScalarField& fMix) const
         {
             return tmp<volScalarField>
-            (
-                new volScalarField("DomegaEff", alphaT/sigmaW_ + this->nu())
-            );
+                (
+                    new volScalarField("DomegaEff", alphaOmega(fMix)*this->nut_ + this->nu())
+                );
         }
-
-        //- Return the total fluctuation kinetic energy
-        virtual tmp<volScalarField> k() const
+    
+    //- Return the total fluctuation kinetic energy
+    virtual tmp<volScalarField> k() const
         {
             return k_;
         }
-
-        //- Return the wall normal fluctuation kinetic energy
-        virtual tmp<volScalarField> v2() const
-        {
-            return v2_;
-        }
-
-        //- Return the turbulence specific dissipation rate
-        virtual tmp<volScalarField> omega() const
+    
+    
+    //- Return the turbulence specific dissipation rate
+    virtual tmp<volScalarField> omega() const
         {
             return omega_;
         }
-
-        //- Return the total fluctuation kinetic energy dissipation rate
+    
+    //- Return the total fluctuation kinetic energy dissipation rate
     virtual tmp<volScalarField> epsilon() const
         {
             return tmp<volScalarField>
                 (
-                    new volScalarField(
-                        "epsilon", 
-                        omega_ * min(k_, v2_) + D(k_)
-                    ));
+                    new volScalarField
+                    (
+                    IOobject
+                    (
+                        "epsilon",
+                        this->mesh_.time().timeName(),
+                        this->mesh_
+                    ),
+                    betaStar_*k_*omega_,
+                    omega_.boundaryField().types()
+                    )
+                );
+            
         }
-                    
-        //- Validate the turbulence fields after construction
-        //  Update turbulence viscosity and other derived fields as requires
-        virtual void validate();
-
-        //- Solve the turbulence equations and correct the turbulence viscosity
-        virtual void correct();
+    
+    //- Validate the turbulence fields after construction
+    //  Update turbulence viscosity and other derived fields as requires
+    virtual void validate();
+    
+    //- Solve the turbulence equations and correct the turbulence viscosity
+    virtual void correct();
 };
 
 
