@@ -77,6 +77,9 @@ makeRASModel(kOmegaTNT);
 #include "kOmegaWilcox06.H"
 makeRASModel(kOmegaWilcox06);
 
+#include "EARSM.H"
+makeRASModel(EARSM);
+
 #define HAVE_ALPHAT
 
 #include "kv2Omega.H"
