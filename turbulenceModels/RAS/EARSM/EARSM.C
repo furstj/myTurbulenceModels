@@ -137,10 +137,10 @@ void EARSM<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& g
     volSymmTensorField S(tau * dev(symm(gradU)));
     volTensorField     W(tau * skew(gradU));
 
-    volScalarField IIS  = S && S;
-    volScalarField IIW  = W && T(W);
-    // volScalarField IIIS = (S & S) && S;
-    volScalarField IV   = (S & W) && T(W);
+    volScalarField IIS  = tr(S & S);
+    volScalarField IIW  = tr(W & W);
+    // volScalarField IIIS = tr(S & S & S);
+    volScalarField IV   = tr(S & W & W);
     
     scalar Neq = 81.0 / 20.0;
     scalar CDiff = 2.2;
@@ -154,25 +154,25 @@ void EARSM<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& g
     volScalarField Q = 5.0/6.0*(sqr(N) - 2*IIW)*(2*sqr(N)-IIW);
 
     volScalarField beta1 = -N*(2.0*sqr(N) - 7.0*IIW) / Q;
-    volScalarField beta3 = -12 * IV / (N * Q);
-    volScalarField beta4 = -2 * (sqr(N)  - 2.0*IIW) / Q;
-    volScalarField beta6 = -6 * N / Q;
-    volScalarField beta9 =  6 / Q;
+    volScalarField beta3 = -12.0 * IV / (N * Q);
+    volScalarField beta4 = -2.0 * (sqr(N)  - 2.0*IIW) / Q;
+    volScalarField beta6 = -6.0 * N / Q;
+    volScalarField beta9 =  6.0 / Q;
 
+    
     volScalarField Cmu = - 0.5 * (beta1 + IIW * beta6);
 
-    this->nut_ = Cmu / betaStar_ * this->k_ / this->omega_;
+    this->nut_ = Cmu * this->k_ * tau;
     this->nut_.correctBoundaryConditions();
 
     
-    this->nonlinearStress_ = this->k_ * (
-        beta3 * ( symm(W & W) - (1.0/3.0) * IIW * I )
-        + beta4 * symm( (S & W) - (W & S) )
-        + beta6 * ( symm(S & W & W) + symm(W & W & S) - IIS * S - (2.0/3.0) * IV * I)
-        + beta9 * ( symm(W & S & W & W) - symm(W & W & S & W))
+    this->nonlinearStress_ = this->k_ * symm(
+        beta3 * ( (W & W) - (1.0/3.0) * IIW * I )
+        + beta4 * ( (S & W) - (W & S) )
+        + beta6 * ( (S & W & W) + (W & W & S) - IIW * S - (2.0/3.0) * IV * I)
+        + beta9 * ( (W & S & W & W) - (W & W & S & W) )
     );
 
-    this->nonlinearStress_.correctBoundaryConditions();
 }
 
 
