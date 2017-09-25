@@ -42,26 +42,6 @@ namespace RASModels
 
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> EARSMTrans<BasicTurbulenceModel>::fMix
-(
-    const volScalarField& gradKgradOmegaByOmega
-) const
-{
-    tmp<volScalarField> Gamma = min
-        (
-            max
-            (
-                sqrt(k_) / (betaStar_ * omega_ * y_),
-                500.0 * this->nu() / (omega_ * sqr(y_))
-            ),
-            20.0 * k_ /
-            max( sqr(y_) * gradKgradOmegaByOmega, 200.0 * kInf_)
-        );
-    
-    
-    return tanh(1.5 * pow4(Gamma));
-}
 
 
 template<class BasicTurbulenceModel>
@@ -213,117 +193,65 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
         )
     ),
 
-    gamma1_
+    sigmaK_
     (
         dimensioned<scalar>::lookupOrAddToDict
         (
-            "gamma1",
+            "sigmaK",
             this->coeffDict_,
-            0.518
+            1.5
         )
     ),
 
-    gamma2_
+    alphaOmega_
     (
         dimensioned<scalar>::lookupOrAddToDict
         (
-            "gamma2",
+            "alphaOmega",
             this->coeffDict_,
-            0.44
+            5.0/9.0
         )
     ),
 
-    beta1_
+    beta_
     (
         dimensioned<scalar>::lookupOrAddToDict
         (
-            "beta1",
+            "beta",
             this->coeffDict_,
-            0.0747
+            3.0/40.0
         )
     ),
 
-    beta2_
+    sigmaOmega_
     (
         dimensioned<scalar>::lookupOrAddToDict
         (
-            "beta2",
+            "sigmaOmega",
             this->coeffDict_,
-            0.0828
+            2.0
         )
     ),
 
-    alphaK1_
+    sigmaD_
     (
         dimensioned<scalar>::lookupOrAddToDict
         (
-            "alphaK1",
+            "sigmaD",
             this->coeffDict_,
-            1.1
+            0.5
         )
     ),
 
-    alphaK2_
+    Ctau_
     (
         dimensioned<scalar>::lookupOrAddToDict
         (
-            "alphaK2",
+            "Ctau",
             this->coeffDict_,
-            1.1
+            6.0
         )
     ),
-
-    alphaOmega1_
-    (
-        dimensioned<scalar>::lookupOrAddToDict
-        (
-            "alphaOmega1",
-            this->coeffDict_,
-            0.53
-        )
-    ),
-
-    alphaOmega2_
-    (
-        dimensioned<scalar>::lookupOrAddToDict
-        (
-            "alphaOmega2",
-            this->coeffDict_,
-            1.0
-        )
-    ),
-
-    alphaD1_
-    (
-        dimensioned<scalar>::lookupOrAddToDict
-        (
-            "alphaD1",
-            this->coeffDict_,
-            1.0
-        )
-    ),
-
-    alphaD2_
-    (
-        dimensioned<scalar>::lookupOrAddToDict
-        (
-            "alphaD2",
-            this->coeffDict_,
-            0.4
-        )
-    ),
-
-    kInf_
-    (
-        dimensioned<scalar>::lookupOrAddToDict
-        (
-            "kInf_",
-            this->coeffDict_,
-            sqr(dimVelocity),
-            1.e-10
-        )
-    ),
-
 
     k_
     (
@@ -337,6 +265,7 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
         ),
         this->mesh_
     ),
+
     omega_
     (
         IOobject
@@ -349,6 +278,7 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
         ),
         this->mesh_
     ),
+
     y_(wallDist::New(this->mesh_).y())
 {
     bound(k_, this->kMin_);
@@ -369,17 +299,12 @@ bool EARSMTrans<BasicTurbulenceModel>::read()
     if (nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >::read())
     {    
         betaStar_.readIfPresent(this->coeffDict());
-        gamma1_.readIfPresent(this->coeffDict());
-        gamma2_.readIfPresent(this->coeffDict());
-        beta1_.readIfPresent(this->coeffDict());
-        beta2_.readIfPresent(this->coeffDict());
-        alphaK1_.readIfPresent(this->coeffDict());
-        alphaK2_.readIfPresent(this->coeffDict());
-        alphaOmega1_.readIfPresent(this->coeffDict());
-        alphaOmega2_.readIfPresent(this->coeffDict());
-        alphaD1_.readIfPresent(this->coeffDict());
-        alphaD2_.readIfPresent(this->coeffDict());
-        kInf_.readIfPresent(this->coeffDict());
+        sigmaK_.readIfPresent(this->coeffDict());
+        alphaOmega_.readIfPresent(this->coeffDict());
+        beta_.readIfPresent(this->coeffDict());
+        sigmaOmega_.readIfPresent(this->coeffDict());
+        sigmaD_.readIfPresent(this->coeffDict());
+        Ctau_.readIfPresent(this->coeffDict());
 
         return true;
     }
@@ -414,8 +339,11 @@ void EARSMTrans<BasicTurbulenceModel>::correct()
     const surfaceScalarField& alphaRhoPhi = this->alphaRhoPhi_;
     const volVectorField& U = this->U_;
     volScalarField& nut = this->nut_;
+
     fv::options& fvOptions(fv::options::New(this->mesh_));
-    
+
+    nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
+
     volScalarField divU(fvc::div(fvc::absolute(this->phi(), U)));
 
     tmp<volTensorField>   tgradU = fvc::grad(U);
@@ -426,44 +354,34 @@ void EARSMTrans<BasicTurbulenceModel>::correct()
         (nut * dev(twoSymm(tgradU())) - this->nonlinearStress_) && tgradU()
     );
     
-
     omega_.boundaryFieldRef().updateCoeffs();
 
-    volScalarField gradKgradOmegaByOmega
-    (
-        (fvc::grad(k_) & fvc::grad(omega_)) / omega_
+    volScalarField CDkOmega = max(
+        this->sigmaD_ / max(omega_, this->omegaMin()) * (fvc::grad(k_) & fvc::grad(omega_)),
+        dimensionedScalar("0",inv(sqr(dimTime)), 0.0)
     );
 
-    volScalarField fMix( this->fMix(gradKgradOmegaByOmega) );
+    tmp<fvScalarMatrix> omegaEqn
+    (
+        fvm::ddt(alpha, rho, omega_)
+      + fvm::div(alphaRhoPhi, omega_)
+      - fvm::laplacian(alpha * rho * this->DomegaEff(), omega_)
+     ==
+        this->alphaOmega_ * alpha * rho * G * omega_/max(k_,this->kMin())
+      - fvm::SuSp(((2.0/3.0)*this->alphaOmega_)*alpha * rho * divU, omega_)
+      - fvm::Sp(this->beta_ * alpha * rho * omega_, omega_)
+      + alpha * rho * CDkOmega  
+      + fvOptions(alpha, rho, omega_)
+    );
 
-    {
-        volScalarField gamma( this->gamma(fMix) );
-        volScalarField beta( this->beta(fMix) );
-        volScalarField alphaD( this->alphaD(fMix) );
 
-        tmp<volScalarField> CDOmega = alphaD * alpha * rho *
-            max( gradKgradOmegaByOmega, dimensionedScalar("zero", inv(sqr(dimTime)), 0.0));
-        
-        tmp<fvScalarMatrix> omegaEqn
-        (
-            fvm::ddt(alpha, rho, omega_)
-          + fvm::div(alphaRhoPhi, omega_)
-          - fvm::laplacian(alpha*rho*DomegaEff(fMix), omega_)
-         ==
-            alpha*rho*gamma * omega_ / max(k_, this->kMin_) * G
-            - fvm::SuSp((2.0/3.0)*alpha*rho*gamma*divU, omega_)
-            - fvm::Sp(alpha*rho*beta*omega_, omega_)
-            + CDOmega
-            + fvOptions(alpha, rho, omega_)            
-        );
+    omegaEqn.ref().relax();
+    fvOptions.constrain(omegaEqn.ref());
+    omegaEqn.ref().boundaryManipulate(omega_.boundaryFieldRef());
+    solve(omegaEqn);
+    fvOptions.correct(omega_);
+    bound(omega_, this->omegaMin());
 
-        omegaEqn.ref().relax();
-        fvOptions.constrain(omegaEqn.ref());
-        omegaEqn.ref().boundaryManipulate(omega_.boundaryFieldRef());
-        solve(omegaEqn);
-        fvOptions.correct(omega_);
-        bound(omega_, this->omegaMin_);
-    }
     
     
     // Turbulent kinetic energy equation
@@ -471,11 +389,11 @@ void EARSMTrans<BasicTurbulenceModel>::correct()
     (
         fvm::ddt(alpha, rho, k_)
       + fvm::div(alphaRhoPhi, k_)
-      - fvm::laplacian(alpha*rho*DkEff(fMix), k_)
+      - fvm::laplacian(alpha*rho*DkEff(), k_)
      ==
         alpha*rho*G
       - fvm::SuSp((2.0/3.0)*alpha*rho*divU, k_)
-        - fvm::Sp(betaStar_*alpha*rho*omega_, k_)
+        - fvm::Sp(this->betaStar_*alpha*rho*omega_, k_)
       + fvOptions(alpha, rho, k_)
     );
 

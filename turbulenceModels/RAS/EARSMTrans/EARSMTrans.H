@@ -22,7 +22,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::RASModels::EARSM
+    Foam::RASModels::EARSMTrans
 
 Group
     grpRASTurbulence
@@ -92,23 +92,18 @@ protected:
 
     dimensionedScalar betaStar_;
 
-    dimensionedScalar gamma1_;
-    dimensionedScalar gamma2_;
+    dimensionedScalar sigmaK_;
 
-    dimensionedScalar beta1_;
-    dimensionedScalar beta2_;
+    dimensionedScalar alphaOmega_;
 
-    dimensionedScalar alphaK1_;
-    dimensionedScalar alphaK2_;
+    dimensionedScalar beta_;
+
+    dimensionedScalar sigmaOmega_;
     
-    dimensionedScalar alphaOmega1_;
-    dimensionedScalar alphaOmega2_;
+    dimensionedScalar sigmaD_;
     
-    dimensionedScalar alphaD1_;
-    dimensionedScalar alphaD2_;
-
-    dimensionedScalar kInf_;
-
+    dimensionedScalar Ctau_;
+    
     
     // Fields
     
@@ -125,40 +120,6 @@ protected:
 
     virtual tmp<volScalarField> fMix(const volScalarField& gradKgradOmegaByOmega) const;
     
-    tmp<volScalarField> blend
-    (
-        const volScalarField& fMix,
-        const dimensionedScalar& psi1,
-        const dimensionedScalar& psi2
-    ) const
-    {
-        return fMix*(psi1 - psi2) + psi2;
-    }
-
-    tmp<volScalarField> alphaK(const volScalarField& fMix) const
-    {
-        return blend(fMix, alphaK1_, alphaK2_);
-    }
-
-    tmp<volScalarField> alphaOmega(const volScalarField& fMix) const
-    {
-        return blend(fMix, alphaOmega1_, alphaOmega2_);
-    }
-
-    tmp<volScalarField> alphaD(const volScalarField& fMix) const
-    {
-        return blend(fMix, alphaD1_, alphaD2_);
-    }
-
-    tmp<volScalarField> beta(const volScalarField& fMix) const
-    {
-        return blend(fMix, beta1_, beta2_);
-    }
-
-    tmp<volScalarField> gamma(const volScalarField& fMix) const
-    {
-        return blend(fMix, gamma1_, gamma2_);
-    }
 
     virtual void correctNut();
 
@@ -208,20 +169,20 @@ public:
     virtual bool read();
     
     //- Return the effective diffusivity for k
-    tmp<volScalarField> DkEff(const volScalarField& fMix) const
+    tmp<volScalarField> DkEff() const
         {
             return tmp<volScalarField>
                 (
-                    new volScalarField("DkEff", alphaK(fMix)*this->nut_ + this->nu())
+                    new volScalarField("DkEff", this->nut_/sigmaK_ + this->nu())
                 );
         }
     
     //- Return the effective diffusivity for omega
-    tmp<volScalarField> DomegaEff(const volScalarField& fMix) const
+    tmp<volScalarField> DomegaEff() const
         {
             return tmp<volScalarField>
                 (
-                    new volScalarField("DomegaEff", alphaOmega(fMix)*this->nut_ + this->nu())
+                    new volScalarField("DomegaEff", this->nut_/sigmaOmega_ + this->nu())
                 );
         }
     
