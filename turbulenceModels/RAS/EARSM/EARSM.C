@@ -172,7 +172,8 @@ void EARSM<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& g
         + beta9 * ( symm(W & S & W & W) - symm(W & W & S & W))
     );
 
-    this->nonlinearStress_.correctBoundaryConditions();
+    this->nonlinearStress_ *= 0.0; 
+    //this->nonlinearStress_.correctBoundaryConditions();
 }
 
 
