@@ -24,7 +24,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "EARSM.H"
+#include "EARSMTrans.H"
 #include "fvOptions.H"
 #include "bound.H"
 #include "wallDist.H"
@@ -43,7 +43,7 @@ namespace RASModels
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * //
 
 template<class BasicTurbulenceModel>
-tmp<volScalarField> EARSM<BasicTurbulenceModel>::fMix
+tmp<volScalarField> EARSMTrans<BasicTurbulenceModel>::fMix
 (
     const volScalarField& gradKgradOmegaByOmega
 ) const
@@ -65,14 +65,14 @@ tmp<volScalarField> EARSM<BasicTurbulenceModel>::fMix
 
 
 template<class BasicTurbulenceModel>
-void EARSM<BasicTurbulenceModel>::correctNut()
+void EARSMTrans<BasicTurbulenceModel>::correctNut()
 {
   correctNonlinearStress(fvc::grad(this->U_));
 }
 
 
 template<class BasicTurbulenceModel>
-volScalarField EARSM<BasicTurbulenceModel>::N
+volScalarField EARSMTrans<BasicTurbulenceModel>::N
 (
     const volScalarField& A3p,
     const volScalarField& P1,
@@ -124,7 +124,7 @@ volScalarField EARSM<BasicTurbulenceModel>::N
 
 
 template<class BasicTurbulenceModel>
-void EARSM<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& gradU)
+void EARSMTrans<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& gradU)
 {
     scalar Ctau = 6.0;
     volScalarField tau(
@@ -173,14 +173,13 @@ void EARSM<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& g
         + beta9 * ( (W & S & W & W) - (W & W & S & W) )
     );
 
-    this->nonlinearStress_.correctBoundaryConditions();
 }
 
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
 template<class BasicTurbulenceModel>
-EARSM<BasicTurbulenceModel>::EARSM
+EARSMTrans<BasicTurbulenceModel>::EARSMTrans
 (
     const alphaField& alpha,
     const rhoField& rho,
@@ -365,7 +364,7 @@ EARSM<BasicTurbulenceModel>::EARSM
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
 template<class BasicTurbulenceModel>
-bool EARSM<BasicTurbulenceModel>::read()
+bool EARSMTrans<BasicTurbulenceModel>::read()
 {
     if (nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >::read())
     {    
@@ -392,14 +391,14 @@ bool EARSM<BasicTurbulenceModel>::read()
 
 
 template<class BasicTurbulenceModel>
-void EARSM<BasicTurbulenceModel>::validate()
+void EARSMTrans<BasicTurbulenceModel>::validate()
 {
     this->correctNut();
 }
 
 
 template<class BasicTurbulenceModel>
-void EARSM<BasicTurbulenceModel>::correct()
+void EARSMTrans<BasicTurbulenceModel>::correct()
 {
 
     if (!this->turbulence_)
