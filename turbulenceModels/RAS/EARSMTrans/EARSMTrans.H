@@ -118,8 +118,6 @@ protected:
 
     // Protected Member Functions
 
-    virtual tmp<volScalarField> fMix(const volScalarField& gradKgradOmegaByOmega) const;
-    
 
     virtual void correctNut();
 
