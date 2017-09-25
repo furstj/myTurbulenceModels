@@ -80,6 +80,9 @@ makeRASModel(kOmegaWilcox06);
 #include "EARSM.H"
 makeRASModel(EARSM);
 
+#include "kOmegaTrans.H"
+makeRASModel(kOmegaTrans);
+
 #define HAVE_ALPHAT
 
 #include "kv2Omega.H"
