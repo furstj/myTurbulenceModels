@@ -95,10 +95,13 @@ makeRASModel(mykkLOmegaPh);
 makeRASModel(mykkLOmegaDev);
 
 #include "kOmegaTrans.H"
-makeRASModel(kOmegaTrans)
+makeRASModel(kOmegaTrans);
+
+#include "EARSMWallin.H"
+makeRASModel(EARSMWallin);
 
 #include "EARSMTrans.H"
-makeRASModel(EARSMTrans)
+makeRASModel(EARSMTrans);
 
 // -------------------------------------------------------------------------- //
 // LES models

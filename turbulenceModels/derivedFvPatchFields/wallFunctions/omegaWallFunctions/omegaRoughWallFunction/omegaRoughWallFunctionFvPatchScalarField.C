@@ -64,6 +64,7 @@ void omegaRoughWallFunctionFvPatchScalarField::writeLocalEntries(Ostream& os) co
     os.writeKeyword("E") << E_ << token::END_STATEMENT << nl;
     os.writeKeyword("beta1") << beta1_ << token::END_STATEMENT << nl;
     os.writeKeyword("blended") << blended_ << token::END_STATEMENT << nl;
+    os.writeKeyword("roughnessHeight") << roughnessHeight_ << token::END_STATEMENT << nl;
 }
 
 
@@ -242,7 +243,23 @@ void omegaRoughWallFunctionFvPatchScalarField::calculate
 
         const scalar w = cornerWeights[facei];
 
-        const scalar omegaVis = 6*nuw[facei]/(beta1_*sqr(y[facei]));
+	const scalar uTau = Cmu25 * sqrt(k[celli]);
+	
+	const scalar ksPlus = roughnessHeight_ * uTau / nuw[facei];
+
+	scalar SR;
+        
+	if (ksPlus > 25.0)
+        {
+            SR = 100.0/ksPlus;
+        }
+        else
+        {
+            const scalar ksPlusMin = min(4.3*pow(yPlus,0.85), 8.0);
+            SR = sqr(50/max(ksPlus,ksPlusMin));
+        }
+        
+        const scalar omegaVis = sqr(uTau)*SR/nuw[facei];
         const scalar omegaLog = sqrt(k[celli])/(Cmu25*kappa_*y[facei]);
 
         // Switching between the laminar sub-layer and the log-region rather
@@ -296,6 +313,7 @@ omegaRoughWallFunctionFvPatchScalarField::omegaRoughWallFunctionFvPatchScalarFie
     E_(9.8),
     beta1_(0.075),
     blended_(false),
+    roughnessHeight_(0.0),
     yPlusLam_(nutWallFunctionFvPatchScalarField::yPlusLam(kappa_, E_)),
     G_(),
     omega_(),
@@ -321,6 +339,7 @@ omegaRoughWallFunctionFvPatchScalarField::omegaRoughWallFunctionFvPatchScalarFie
     E_(ptf.E_),
     beta1_(ptf.beta1_),
     blended_(ptf.blended_),
+    roughnessHeight_(ptf.roughnessHeight_),
     yPlusLam_(ptf.yPlusLam_),
     G_(),
     omega_(),
@@ -345,6 +364,7 @@ omegaRoughWallFunctionFvPatchScalarField::omegaRoughWallFunctionFvPatchScalarFie
     E_(dict.lookupOrDefault<scalar>("E", 9.8)),
     beta1_(dict.lookupOrDefault<scalar>("beta1", 0.075)),
     blended_(dict.lookupOrDefault<Switch>("blended", false)),
+    roughnessHeight_(dict.lookupOrDefault<scalar>("roughnessHeight",0.0)),
     yPlusLam_(nutWallFunctionFvPatchScalarField::yPlusLam(kappa_, E_)),
     G_(),
     omega_(),
@@ -370,6 +390,7 @@ omegaRoughWallFunctionFvPatchScalarField::omegaRoughWallFunctionFvPatchScalarFie
     E_(owfpsf.E_),
     beta1_(owfpsf.beta1_),
     blended_(owfpsf.blended_),
+    roughnessHeight_(owfpsf.roughnessHeight_),
     yPlusLam_(owfpsf.yPlusLam_),
     G_(),
     omega_(),
@@ -393,6 +414,7 @@ omegaRoughWallFunctionFvPatchScalarField::omegaRoughWallFunctionFvPatchScalarFie
     E_(owfpsf.E_),
     beta1_(owfpsf.beta1_),
     blended_(owfpsf.blended_),
+    roughnessHeight_(owfpsf.roughnessHeight_),
     yPlusLam_(owfpsf.yPlusLam_),
     G_(),
     omega_(),

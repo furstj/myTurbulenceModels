@@ -68,6 +68,7 @@ Usage
         E            | Model coefficient       | no          | 9.8
         beta1        | Model coefficient       | no          | 0.075
         blended      | Blending switch         | no          | false
+	roughnessHeight | equivalent roughness | no          | 0.0
     \endtable
 
     Example of the boundary condition specification:
@@ -129,6 +130,9 @@ protected:
         //- beta1 coefficient
         Switch blended_;
 
+        //- Height
+        scalar roughnessHeight_;
+    
         //- y+ at the edge of the laminar sublayer
         scalar yPlusLam_;
 

@@ -80,6 +80,9 @@ makeRASModel(kOmegaWilcox06);
 #include "EARSM.H"
 makeRASModel(EARSM);
 
+#include "EARSMWallin.H"
+makeRASModel(EARSMWallin);
+
 #include "EARSMTrans.H"
 makeRASModel(EARSMTrans);
 
