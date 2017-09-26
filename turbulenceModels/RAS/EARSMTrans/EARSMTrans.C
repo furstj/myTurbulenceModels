@@ -193,13 +193,13 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
         )
     ),
 
-    sigmaK_
+    alphaK_
     (
         dimensioned<scalar>::lookupOrAddToDict
         (
-            "sigmaK",
+            "alphaK",
             this->coeffDict_,
-            1.5
+            2.0/3.0
         )
     ),
 
@@ -209,7 +209,7 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
         (
             "alphaOmega",
             this->coeffDict_,
-            5.0/9.0
+            0.5
         )
     ),
 
@@ -223,16 +223,6 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
         )
     ),
 
-    sigmaOmega_
-    (
-        dimensioned<scalar>::lookupOrAddToDict
-        (
-            "sigmaOmega",
-            this->coeffDict_,
-            2.0
-        )
-    ),
-
     sigmaD_
     (
         dimensioned<scalar>::lookupOrAddToDict
@@ -240,6 +230,16 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
             "sigmaD",
             this->coeffDict_,
             0.5
+        )
+    ),
+
+    gamma_
+    (
+        dimensioned<scalar>::lookupOrAddToDict
+        (
+            "gamma",
+            this->coeffDict_,
+            5.0/9.0
         )
     ),
 
@@ -299,11 +299,11 @@ bool EARSMTrans<BasicTurbulenceModel>::read()
     if (nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >::read())
     {    
         betaStar_.readIfPresent(this->coeffDict());
-        sigmaK_.readIfPresent(this->coeffDict());
+        alphaK_.readIfPresent(this->coeffDict());
         alphaOmega_.readIfPresent(this->coeffDict());
         beta_.readIfPresent(this->coeffDict());
-        sigmaOmega_.readIfPresent(this->coeffDict());
         sigmaD_.readIfPresent(this->coeffDict());
+        gamma_.readIfPresent(this->coeffDict());
         Ctau_.readIfPresent(this->coeffDict());
 
         return true;
@@ -367,7 +367,7 @@ void EARSMTrans<BasicTurbulenceModel>::correct()
       + fvm::div(alphaRhoPhi, omega_)
       - fvm::laplacian(alpha * rho * this->DomegaEff(), omega_)
      ==
-        this->alphaOmega_ * alpha * rho * G * omega_/max(k_,this->kMin())
+        this->gamma_ * alpha * rho * G * omega_/max(k_,this->kMin())
       - fvm::SuSp(((2.0/3.0)*this->alphaOmega_)*alpha * rho * divU, omega_)
       - fvm::Sp(this->beta_ * alpha * rho * omega_, omega_)
       + alpha * rho * CDkOmega  

@@ -41,11 +41,11 @@ Description
         EARSMTransCoeffs
         {
             betaStar       0.09
-	    sigmaK         1.5
-	    alphaOmega     0.55
+	    alphaK         2./3.      // sigma^*
+	    alphaOmega     0.5        // sigma
 	    beta           0.075
-	    sigmaOmega     2.0
-	    sigmaD         0.52
+	    sigmaD         0.5
+	    gamma          5./9.
 	    Ctau           6.0
         }
     \endverbatim
@@ -92,15 +92,15 @@ protected:
 
     dimensionedScalar betaStar_;
 
-    dimensionedScalar sigmaK_;
+    dimensionedScalar alphaK_;
 
     dimensionedScalar alphaOmega_;
 
     dimensionedScalar beta_;
 
-    dimensionedScalar sigmaOmega_;
-    
     dimensionedScalar sigmaD_;
+
+    dimensionedScalar gamma_;
     
     dimensionedScalar Ctau_;
     
@@ -171,7 +171,7 @@ public:
         {
             return tmp<volScalarField>
                 (
-                    new volScalarField("DkEff", this->nut_/sigmaK_ + this->nu())
+                    new volScalarField("DkEff", alphaK_*this->nut_ + this->nu())
                 );
         }
     
@@ -180,7 +180,7 @@ public:
         {
             return tmp<volScalarField>
                 (
-                    new volScalarField("DomegaEff", this->nut_/sigmaOmega_ + this->nu())
+                    new volScalarField("DomegaEff", alphaOmega_*this->nut_ + this->nu())
                 );
         }
     

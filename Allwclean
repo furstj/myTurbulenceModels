@@ -1,8 +1,9 @@
 #!/bin/sh
 cd ${0%/*} || exit 1    # Run from this directory
 
+wclean
 wclean turbulenceModels
-wclean libso incompressible
+wclean incompressible
 wclean compressible
 
 # ----------------------------------------------------------------- end-of-file
