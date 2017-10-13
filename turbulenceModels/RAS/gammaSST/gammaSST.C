@@ -367,8 +367,8 @@ void gammaSST<BasicTurbulenceModel>::correct()
     const volScalarField F1("F1", this->F1(CDkOmega));
 
     {
-        volScalarField gamma(this->gamma(F1));
-        volScalarField beta(this->beta(F1));
+        volScalarField::Internal gamma(this->gamma(F1));
+        volScalarField::Internal beta(this->beta(F1));
 
         // Turbulent frequency equation
         tmp<fvScalarMatrix> omegaEqn
