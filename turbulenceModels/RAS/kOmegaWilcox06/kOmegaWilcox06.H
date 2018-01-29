@@ -66,8 +66,6 @@ class kOmegaWilcox06
     
     dimensionedScalar Clim_; 
     
-    dimensionedScalar Prt_;
-    
     // Fields
     
     volScalarField k_;

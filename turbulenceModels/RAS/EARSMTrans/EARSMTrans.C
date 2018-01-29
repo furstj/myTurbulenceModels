@@ -106,12 +106,11 @@ volScalarField EARSMTrans<BasicTurbulenceModel>::N
 template<class BasicTurbulenceModel>
 void EARSMTrans<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& gradU)
 {
-    scalar Ctau = 6.0;
     volScalarField tau(
         max
         (
             1.0 / (this->betaStar_ * this->omega_),
-            Ctau * sqrt(this->nu() / (this->betaStar_ * max(this->k_, this->kMin_) * this->omega_))
+            Ctau_ * sqrt(this->nu() / (this->betaStar_ * max(this->k_, this->kMin_) * this->omega_))
         ));
     
     volSymmTensorField S(tau * dev(symm(gradU)));
@@ -139,7 +138,6 @@ void EARSMTrans<BasicTurbulenceModel>::correctNonlinearStress(const volTensorFie
     volScalarField beta6 = -6.0 * N / Q;
     volScalarField beta9 =  6.0 / Q;
 
-    
     volScalarField Cmu = - 0.5 * (beta1 + IIW * beta6);
 
     this->nut_ = Cmu * this->k_ * tau;
@@ -152,6 +150,8 @@ void EARSMTrans<BasicTurbulenceModel>::correctNonlinearStress(const volTensorFie
         + beta6 * ( (S & W & W) + (W & W & S) - IIW * S - (2.0/3.0) * IV * I)
         + beta9 * ( (W & S & W & W) - (W & W & S & W) )
     );
+
+    BasicTurbulenceModel::correctNut();
 
 }
 
@@ -253,6 +253,36 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
         )
     ),
 
+    CSS_
+    (
+        dimensioned<scalar>::lookupOrAddToDict
+        (
+            "CSS",
+            this->coeffDict_,
+            3.25
+        )
+    ),
+
+    CT_
+    (
+        dimensioned<scalar>::lookupOrAddToDict
+        (
+            "CT",
+            this->coeffDict_,
+            14.5/8.
+        )
+    ),
+
+    AT_
+    (
+        dimensioned<scalar>::lookupOrAddToDict
+        (
+            "AT",
+            this->coeffDict_,
+            1.0
+        )
+    ),
+
     k_
     (
         IOobject
@@ -305,7 +335,10 @@ bool EARSMTrans<BasicTurbulenceModel>::read()
         sigmaD_.readIfPresent(this->coeffDict());
         gamma_.readIfPresent(this->coeffDict());
         Ctau_.readIfPresent(this->coeffDict());
-
+        CSS_.readIfPresent(this->coeffDict());
+        CT_.readIfPresent(this->coeffDict());
+        AT_.readIfPresent(this->coeffDict());
+	
         return true;
     }
     else
@@ -347,11 +380,15 @@ void EARSMTrans<BasicTurbulenceModel>::correct()
     volScalarField divU(fvc::div(fvc::absolute(this->phi(), U)));
 
     tmp<volTensorField>   tgradU = fvc::grad(U);
+    volScalarField  W( sqrt(2*magSqr(skew(tgradU()))) );
+    volScalarField fSS = exp( -sqr(CSS_*this->nu()*W/max(k_,this->kMin_)) );
+    volScalarField zetaT = max(k_/(this->nu()*W) - CT_, 0.0);
+    volScalarField gammaInt = min(zetaT / AT_, 1.0);
 
     volScalarField G
     (
         this->GName(),
-        (nut * dev(twoSymm(tgradU())) - this->nonlinearStress_) && tgradU()
+        (fSS * nut * dev(twoSymm(tgradU())) - this->nonlinearStress_) && tgradU()
     );
     
     omega_.boundaryFieldRef().updateCoeffs();
@@ -391,7 +428,7 @@ void EARSMTrans<BasicTurbulenceModel>::correct()
       + fvm::div(alphaRhoPhi, k_)
       - fvm::laplacian(alpha*rho*DkEff(), k_)
      ==
-        alpha*rho*G
+        gammaInt * alpha*rho*G
       - fvm::SuSp((2.0/3.0)*alpha*rho*divU, k_)
         - fvm::Sp(this->betaStar_*alpha*rho*omega_, k_)
       + fvOptions(alpha, rho, k_)

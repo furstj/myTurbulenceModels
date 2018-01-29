@@ -41,12 +41,15 @@ Description
         EARSMTransCoeffs
         {
             betaStar       0.09
-	    alphaK         2./3.      // sigma^*
+	    alphaK         1.01       // sigma^*
 	    alphaOmega     0.5        // sigma
 	    beta           0.075
-	    sigmaD         0.5
+	    sigmaD         0.52
 	    gamma          5./9.
 	    Ctau           6.0
+	    CSS            3.25
+	    CT             14.5/8
+	    AT             1.0
         }
     \endverbatim
 
@@ -103,7 +106,13 @@ protected:
     dimensionedScalar gamma_;
     
     dimensionedScalar Ctau_;
+
+    dimensionedScalar CSS_;
+
+    dimensionedScalar CT_;
     
+    dimensionedScalar AT_;
+
     
     // Fields
     

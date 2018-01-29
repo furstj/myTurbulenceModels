@@ -153,6 +153,8 @@ void EARSMWallin<BasicTurbulenceModel>::correctNonlinearStress(const volTensorFi
         + beta9 * ( (W & S & W & W) - (W & W & S & W) )
     );
 
+    BasicTurbulenceModel::correctNut();
+
 }
 
 

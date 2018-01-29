@@ -180,7 +180,6 @@ bool kOmegaWilcox06<BasicTurbulenceModel>::read()
       sigmaOmega_.readIfPresent(this->coeffDict());
       sigmaD_.readIfPresent(this->coeffDict());
       Clim_.readIfPresent(this->coeffDict());
-      Prt_.readIfPresent(this->coeffDict());
       
       return true;
     }
@@ -279,6 +278,8 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correctNut(const volSymmTensorField& 
   // Re-calculate viscosity
   this->nut_ = k_/omegaBar(Sbar);
   this->nut_.correctBoundaryConditions();
+
+  BasicTurbulenceModel::correctNut();
 }
 
 template<class BasicTurbulenceModel>
