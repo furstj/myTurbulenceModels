@@ -49,6 +49,9 @@ namespace Foam {
   typedef RASModel<transportModelIncompressibleTurbulenceModel> 
   RAStransportModelIncompressibleTurbulenceModel; 
 
+  typedef LESModel<transportModelIncompressibleTurbulenceModel> 
+  LEStransportModelIncompressibleTurbulenceModel; 
+
 }
 
 #define makeRASModel(Type)                                                     \
@@ -107,5 +110,7 @@ makeRASModel(EARSMTrans);
 // LES models
 // -------------------------------------------------------------------------- //
 
+#include "XLES.H"
+makeLESModel(XLES)
 
 // ************************************************************************* //
