@@ -55,7 +55,7 @@ tmp<volScalarField::Internal> XLES<BasicTurbulenceModel>::Pk
 ) const
 {
   tmp<volScalarField::Internal> P_ = G;
-  
+
   if (productionLimiter_)
   {
     P_ = min(P_, 20*this->betaStar_*this->k_()*this->omega_());
@@ -64,7 +64,7 @@ tmp<volScalarField::Internal> XLES<BasicTurbulenceModel>::Pk
   if (shockLimiter_)
   {
     tmp<volTensorField> tgradU = fvc::grad(this->U_);
-    P_ = min(P_, this->k_()*magSqr(dev(symm(tgradU())))());
+    P_ = min(P_, this->k_()*mag(dev(symm(tgradU())))());
   }
 
   return P_;
