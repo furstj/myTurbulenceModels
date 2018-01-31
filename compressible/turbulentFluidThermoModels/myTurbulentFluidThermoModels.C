@@ -53,6 +53,9 @@ namespace Foam {
   typedef RASModel< EddyDiffusivity<fluidThermoCompressibleTurbulenceModel> >
   RASfluidThermoCompressibleTurbulenceModel;
 
+  typedef LESModel< EddyDiffusivity<fluidThermoCompressibleTurbulenceModel> >
+  LESfluidThermoCompressibleTurbulenceModel;
+
 }
 
 #define makeRASModel(Type)                                                     \
@@ -106,6 +109,9 @@ makeRASModel(mykkLOmegaFS);
 // -------------------------------------------------------------------------- //
 // LES models
 // -------------------------------------------------------------------------- //
+
+#include "XLES.H"
+makeLESModel(XLES);
 
 
 // ************************************************************************* //
