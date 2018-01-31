@@ -33,8 +33,14 @@ Description
         KOK, Johan C., H. S. DOL, B. OSKAM a Harmen VAN DER VEN. 
 	EXTRA-LARGE EDDY SIMULATION OF MASSIVELY SEPARATED FLOWS. 
 	AIAA Paper. 2004, (2004–264), 1–12. doi:10.2514/6.2004-264
+
+	KOK, J. C. a H. VAN DER VEN. 
+	Destabilizing free shear layers in X-LES using a stochastic subgrid-scale model. 
+	In: Notes on Numerical Fluid Mechanics and Multidisciplinary Design. 2010, p. 179–189. 
+	ISBN 9783642141676. doi:10.1007/978-3-642-14168-3-15
     \endverbatim
 
+  
     The default model coefficients are
     \verbatim
         kOmegaCoeffs
@@ -47,6 +53,7 @@ Description
             alphaD      0.5;   // sigmaD in the article
             productionLimiter  true;
             shockLimiter       true;
+	    stochasticModel    false;
         }
     \endverbatim
 
@@ -66,6 +73,7 @@ SourceFiles
 #include "kOmegaBase.H"
 #include "LESModel.H"
 #include "LESeddyViscosity.H"
+#include "Random.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -94,6 +102,8 @@ class XLES
     XLES(const XLES&);
     XLES& operator=(const XLES&);
 
+    Random RanGen_;
+
 protected:
 
     // Protected data
@@ -108,6 +118,8 @@ protected:
     //- DES coefficient
     dimensionedScalar CDES_;
 
+    //- Selects the stochastic model [Kok at all, 2009]
+    Switch stochasticModel_;
 
     // Protected Member Functions
 
@@ -119,7 +131,12 @@ protected:
 
     tmp<volScalarField::Internal> epsilonByk() const;
 
-    virtual tmp<fvScalarMatrix> omegaSource() const;
+    virtual tmp<volScalarField::Internal> Pk
+    (
+        const volScalarField::Internal& G
+    ) const;
+    
+   virtual tmp<fvScalarMatrix> omegaSource() const;
 
     virtual void correctNut();
 

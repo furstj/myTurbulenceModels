@@ -49,6 +49,29 @@ tmp<volScalarField::Internal> XLES<BasicTurbulenceModel>::FDES() const
 }
 
 template<class BasicTurbulenceModel>
+tmp<volScalarField::Internal> XLES<BasicTurbulenceModel>::Pk
+(
+   const volScalarField::Internal& G
+) const
+{
+  tmp<volScalarField::Internal> P_ = G;
+  
+  if (productionLimiter_)
+  {
+    P_ = min(P_, 20*this->betaStar_*this->k_()*this->omega_());
+  }
+
+  if (shockLimiter_)
+  {
+    tmp<volTensorField> tgradU = fvc::grad(this->U_);
+    P_ = min(P_, this->k_()*magSqr(dev(symm(tgradU())))());
+  }
+
+  return P_;
+}
+  
+
+template<class BasicTurbulenceModel>
 tmp<volScalarField::Internal> XLES<BasicTurbulenceModel>::epsilonByk() const
 {
     return FDES() * this->betaStar_ * this->omega_;
@@ -70,11 +93,17 @@ tmp<fvScalarMatrix> XLES<BasicTurbulenceModel>::omegaSource() const
 template<class BasicTurbulenceModel>
 void XLES<BasicTurbulenceModel>::correctNut()
 {
-  this->nut_ = min
-    (
-     this->k_/this->omega_,
-     this->betaStar_*CDES_*this->delta()*sqrt(this->k_)
-     );
+  volScalarField::Internal FDES_ = FDES();
+  
+  forAll(this->nut_,i)
+  {
+    this->nut_[i] = this->k_[i]/this->omega_[i]/FDES_[i];
+    if (stochasticModel_ && FDES_[i]>1.0)
+    {
+      scalar xi = RanGen_.GaussNormal();
+      this->nut_[i] *= sqr(xi);
+    }
+  }
 
   this->nut_.correctBoundaryConditions();
   fv::options::New(this->mesh_).correct(this->nut_);
@@ -111,7 +140,9 @@ XLES<BasicTurbulenceModel>::XLES
         transport,
         propertiesName
     ),
-    
+
+    RanGen_(label(0)),
+
     alphaD_
     (
         dimensioned<scalar>::lookupOrAddToDict
@@ -150,7 +181,19 @@ XLES<BasicTurbulenceModel>::XLES
             this->coeffDict_,
             0.61
         )
+     ),
+
+    stochasticModel_
+    (
+        Switch::lookupOrAddToDict
+        (
+            "stochasticModel",
+            this->coeffDict_,
+            false
+        )
     )
+
+
 {
     this->coeffDict_.set("alphaK", 2.0/3.0);
     this->coeffDict_.set("beta", 0.75);
@@ -180,7 +223,8 @@ bool XLES<BasicTurbulenceModel>::read()
         productionLimiter_.readIfPresent("productionLimiter", this->coeffDict());
         shockLimiter_.readIfPresent("shockLimiter", this->coeffDict());
         CDES_.readIfPresent(this->coeffDict());
-
+        stochasticModel_.readIfPresent("stochasticModel", this->coeffDict());
+	
         return true;
     }
     else
