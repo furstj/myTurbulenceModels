@@ -174,6 +174,9 @@ void EARSM<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& g
     );
 
     this->nonlinearStress_.correctBoundaryConditions();
+
+    BasicTurbulenceModel::correctNut();
+
 }
 
 
