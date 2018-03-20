@@ -1,3 +1,4 @@
 derivedFvPatchFields/wallFunctions/omegaWallFunctions/omegaRoughWallFunction/omegaRoughWallFunctionFvPatchScalarField.C
+derivedFvPatchFields/omegaViscosityRatio/omegaViscosityRatioFvPatchScalarField.C
 
 LIB = $(FOAM_USER_LIBBIN)/libmyTurbulenceModels
