@@ -585,10 +585,15 @@ mykkLOmega<BasicTurbulenceModel>::mykkLOmega
         // Evaluating nut_ is complex so start from the field read from file
         this->nut_.correctBoundaryConditions();
 
-        this->printCoeffs(type);
-
-	if (debug) 
-	  Info << "Debug switch is on!" << endl;
+        if (type == typeName)
+        {
+            this->printCoeffs(type);
+            if (debug) 
+            {
+                Info << "Debug switch is on!" << endl;
+            }
+        }
+        
     }
 }
 
