@@ -50,6 +50,15 @@ Description
 
     All these corrections and updates are included in this implementation.
 
+    Moreover the model includes also the lengthscale correction given in 
+
+    \verbatim
+        Lopez, M., & Keith Walters, D. (2016). 
+        A Recommended Correction to the k T − k L − omega Transition-Sensitive 
+        Eddy-Viscosity Model. 
+        Journal of Fluids Engineering, 139(2), 24501.
+    \endverbatim
+
     The default model coefficients are
     \verbatim
         mykkLOmegaCoeffs
@@ -81,6 +90,7 @@ Description
             Prt            0.85
             Sigmak         1
             Sigmaw         1.17
+            lengthScaleCorrection true;
         }
     \endverbatim
 
@@ -151,7 +161,8 @@ protected:
     dimensionedScalar PrTheta_;
     dimensionedScalar Sigmak_;
     dimensionedScalar Sigmaw_;
-    
+    Switch lengthScaleCorrection_;
+
     // Fields
     
     volScalarField kt_;

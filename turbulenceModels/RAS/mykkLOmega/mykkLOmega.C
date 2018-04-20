@@ -527,6 +527,15 @@ mykkLOmega<BasicTurbulenceModel>::mykkLOmega
             1.17
         )
     ),
+    lengthScaleCorrection_
+    (
+        Switch::lookupOrAddToDict
+        (
+            "lengthScaleCorrection",
+            this->coeffDict_,
+            true
+        )
+    ),
     kt_
     (
         IOobject
@@ -585,10 +594,15 @@ mykkLOmega<BasicTurbulenceModel>::mykkLOmega
         // Evaluating nut_ is complex so start from the field read from file
         this->nut_.correctBoundaryConditions();
 
-        this->printCoeffs(type);
-
-	if (debug) 
-	  Info << "Debug switch is on!" << endl;
+        if (type == typeName)
+        {
+            this->printCoeffs(type);
+            if (debug) 
+            {
+                Info << "Debug switch is on!" << endl;
+            }
+        }
+        
     }
 }
 
@@ -627,6 +641,7 @@ bool mykkLOmega<BasicTurbulenceModel>::read()
         CmuStd_.readIfPresent(this->coeffDict());
         Sigmak_.readIfPresent(this->coeffDict());
         Sigmaw_.readIfPresent(this->coeffDict());
+        lengthScaleCorrection_.readIfPresent("lengthScaleCorrection", this->coeffDict());
 
         return true;
     }
@@ -699,14 +714,21 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
 
     const volScalarField ktL("ktL", kt_ - ktS);
     const volScalarField ReOmega("ReOmega", sqr(y_)*Omega/this->nu());
+    
+    volScalarField dEff("dEff", this->y_);
+    if (lengthScaleCorrection_) 
+    {
+        dEff = lambdaEff_/Clambda_;
+    }
+
     const volScalarField nutl
-      (  "nutl",
+        (  "nutl",
         min
         (
             C11_*fTaul(lambdaEff_, ktL, Omega)*Omega*sqr(lambdaEff_)
-           *sqrt(ktL)*lambdaEff_/this->nu()
-          + C12_*BetaTS(ReOmega)*ReOmega*sqr(y_)*Omega
-        ,
+            *sqrt(ktL)*lambdaEff_/this->nu()
+            + C12_*BetaTS(ReOmega)*sqr(dEff)*Omega/this->nu()*sqr(dEff)*Omega
+            ,
             0.5*(kl_ + ktL)/(sqrt(S2) + omegaMin_)
         )
     );
