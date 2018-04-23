@@ -100,8 +100,12 @@ void XLES<BasicTurbulenceModel>::correctNut()
     this->nut_[i] = this->k_[i]/this->omega_[i]/FDES_[i];
     if (stochasticModel_ && FDES_[i]>1.0)
     {
-      scalar xi = RanGen_.GaussNormal();
-      this->nut_[i] *= sqr(xi);
+#if OPENFOAM_PLUS >= 1712
+        scalar xi = RanGen_.GaussNormal<scalar>();
+#else
+        scalar xi = RanGen_.GaussNormal();
+#endif
+        this->nut_[i] *= sqr(xi);
     }
   }
 

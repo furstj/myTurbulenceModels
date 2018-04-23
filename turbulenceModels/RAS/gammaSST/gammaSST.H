@@ -73,6 +73,7 @@ SourceFiles
 #ifndef gammaSST_H
 #define gammaSST_H
 
+#include "fvOptions.H"
 #include "kOmegaSST.H"
 #include "eddyViscosity.H"
 
