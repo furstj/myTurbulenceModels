@@ -420,7 +420,11 @@ void gammaSST<BasicTurbulenceModel>::correct()
     solve(kEqn);
     bound(k_, this->kMin_);
 
+#if OPENFOAM_PLUS >= 1712
+    this->correctNut(S2);
+#else
     this->correctNut(S2, this->F23());
+#endif
 
    // Intermittency equation (2)
     volScalarField Pgamma1 = Flength_ * S * gammaInt_ * Fonset(S);
