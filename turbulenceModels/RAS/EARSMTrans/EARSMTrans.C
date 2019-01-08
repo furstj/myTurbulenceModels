@@ -114,7 +114,7 @@ void EARSMTrans<BasicTurbulenceModel>::correctNonlinearStress(const volTensorFie
         ));
     
     volSymmTensorField S(tau * dev(symm(gradU)));
-    volTensorField     W(tau * skew(gradU));
+    volTensorField     W(-tau * skew(gradU));
 
     volScalarField IIS  = tr(S & S);
     volScalarField IIW  = tr(W & W);
