@@ -115,7 +115,7 @@ void EARSMWallin<BasicTurbulenceModel>::correctNonlinearStress(const volTensorFi
         ));
     
     volSymmTensorField S(tau * dev(symm(gradU)));
-    volTensorField     W(tau * skew(gradU));
+    volTensorField     W(-tau * skew(gradU)); // NOTE Wij = -skew(grad(U))
 
     volScalarField IIS  = tr(S & S);
     volScalarField IIW  = tr(W & W);
