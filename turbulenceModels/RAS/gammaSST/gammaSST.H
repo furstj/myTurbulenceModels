@@ -29,6 +29,12 @@ Description
     laminar-turbulent transition on arbitrary geometries and grid topo-
     logies.
 
+    \verbatim
+        MENTER, Florian R., Pavel E. SMIRNOV, Tao LIU a Ravikanth AVANCHA. 
+        A one-equation local correlation-based transition model. 
+        Flow, Turbulence and Combustion. 2015, 95(4), 583–619. ISSN 1386-6184. 
+        doi:10.1007/s10494-015-9622-4
+    \endverbatim
 
     The default model coefficients correspond to the following:
     @verbatim
@@ -64,6 +70,9 @@ Description
                 CTU3            1.0;
         }
     @endverbatim
+
+Author
+    Jiri Furst <Jiri.Furst@gmail.com>
 
 SourceFiles
     gammaSST.C

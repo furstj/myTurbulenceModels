@@ -283,6 +283,16 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
         )
     ),
 
+    productionLimiter_
+    (
+        Switch::lookupOrAddToDict
+        (
+            "productionLimiter",
+            this->coeffDict_,
+            false
+        )
+    ),
+
     k_
     (
         IOobject
@@ -338,7 +348,8 @@ bool EARSMTrans<BasicTurbulenceModel>::read()
         CSS_.readIfPresent(this->coeffDict());
         CT_.readIfPresent(this->coeffDict());
         AT_.readIfPresent(this->coeffDict());
-	
+        productionLimiter_.readIfPresent("productionLimiter", this->coeffDict());
+        
         return true;
     }
     else
@@ -390,6 +401,11 @@ void EARSMTrans<BasicTurbulenceModel>::correct()
         this->GName(),
         (fSS * nut * dev(twoSymm(tgradU())) - this->nonlinearStress_) && tgradU()
     );
+
+    if (productionLimiter_)
+    {
+        G = min(G, 10*betaStar_*k_*omega_);
+    }
     
     omega_.boundaryFieldRef().updateCoeffs();
 

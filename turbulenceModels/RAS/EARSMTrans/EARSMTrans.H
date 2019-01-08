@@ -50,6 +50,7 @@ Description
 	    CSS            3.25
 	    CT             14.5/8
 	    AT             1.0
+            productionLimiter false;
         }
     \endverbatim
 
@@ -113,6 +114,7 @@ protected:
     
     dimensionedScalar AT_;
 
+    Switch productionLimiter_;
     
     // Fields
     
