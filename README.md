@@ -30,6 +30,7 @@ Then you can select additional turbulence models via turbulenceProperties, namel
 * **mykkLOmegaDev** - experimental development version
 * **kv2Omega** - k-v2-omega model of Walters & Lopez
 * **gammaSST** - gamma-SST model of Menter, Smirnov, Liu, Avancha
+* **EARSM** - Explicit algebraic Reynolds stress model with optional curvature correction
 
 There are some test cases in **testCases** directory.
 
