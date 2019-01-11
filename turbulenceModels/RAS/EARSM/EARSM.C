@@ -134,15 +134,33 @@ void EARSM<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& g
             Ctau * sqrt(this->nu() / (this->betaStar_ * max(this->k_, this->kMin_) * this->omega_))
         ));
     
-    volSymmTensorField S(tau * dev(symm(gradU)));
-    volTensorField     W(-tau * skew(gradU));
+    volSymmTensorField S("S", tau * dev(symm(gradU)));
+    volTensorField     W("W", -tau * skew(gradU));
     // NOTE: Wij = 1/2(dui/dxj - duj/dxi) = - skew(grad(U))
 
     volScalarField IIS  = tr(S & S);
-    volScalarField IIW  = tr(W & W);
-    // volScalarField IIIS = tr(S & S & S);
-    volScalarField IV   = tr(S & W & W);
+
+    if (this->curvatureCorrection_)
+    {
+        const volVectorField& U = this->U_;
+        const surfaceScalarField& phi = this->phi_;
+
+        volSymmTensorField DSDt = tau*dev(symm(fvc::grad(fvc::ddt(U)))) + fvc::div(phi,S);
+        volVectorField SDeps = *(skew(S & DSDt))*2;
+        volScalarField IIIS = tr(S & S & S);
+        
+        volTensorField B = (pow(IIS,2)*I + 12*IIIS*S + 6*IIS*(S&S))/
+            max(2*pow(IIS,3) - 12*pow(IIIS,2), 1.e-10);
+
+        volVectorField BSDeps = B & SDeps;
+        volTensorField Wr = *(BSDeps);
+        
+        W -= (tau/this->A0_)*Wr;
+    }
     
+    volScalarField IIW  = tr(W & W);
+    volScalarField IV   = tr(S & W & W);
+
     scalar Neq = 81.0 / 20.0;
     scalar CDiff = 2.2;
     volScalarField beta1eq = - 6.0/5.0 * Neq / (sqr(Neq) - 2*IIW);
@@ -329,6 +347,26 @@ EARSM<BasicTurbulenceModel>::EARSM
         )
     ),
 
+    curvatureCorrection_
+    (
+        Switch::lookupOrAddToDict
+        (
+            "curvatureCorrection",
+            this->coeffDict_,
+            false
+        )
+    ),
+
+    A0_
+    (
+        dimensioned<scalar>::lookupOrAddToDict
+        (
+            "A0",
+            this->coeffDict_,
+            -0.72
+        )
+    ),
+
 
     k_
     (
@@ -385,6 +423,8 @@ bool EARSM<BasicTurbulenceModel>::read()
         alphaD1_.readIfPresent(this->coeffDict());
         alphaD2_.readIfPresent(this->coeffDict());
         kInf_.readIfPresent(this->coeffDict());
+        curvatureCorrection_.readIfPresent("curvatureCorrection", this->coeffDict());
+        A0_.readIfPresent(this->coeffDict());
 
         return true;
     }
