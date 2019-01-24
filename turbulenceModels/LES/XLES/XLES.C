@@ -103,7 +103,7 @@ void XLES<BasicTurbulenceModel>::correctNut()
 #if OPENFOAM_PLUS >= 1712
         scalar xi = RanGen_.GaussNormal<scalar>();
 #else
-        scalar xi = RanGen_.scalarNormal();
+        scalar xi = RanGen_.GaussNormal();
 #endif
         this->nut_[i] *= sqr(xi);
     }
