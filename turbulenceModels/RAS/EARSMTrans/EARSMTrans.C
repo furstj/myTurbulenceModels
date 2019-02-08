@@ -114,7 +114,7 @@ void EARSMTrans<BasicTurbulenceModel>::correctNonlinearStress(const volTensorFie
         ));
     
     volSymmTensorField S(tau * dev(symm(gradU)));
-    volTensorField     W(tau * skew(gradU));
+    volTensorField     W(-tau * skew(gradU));
 
     volScalarField IIS  = tr(S & S);
     volScalarField IIW  = tr(W & W);
@@ -259,7 +259,7 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
         (
             "CSS",
             this->coeffDict_,
-            3.25
+            2.75 //3.25
         )
     ),
 
@@ -280,6 +280,16 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
             "AT",
             this->coeffDict_,
             1.0
+        )
+    ),
+
+    productionLimiter_
+    (
+        Switch::lookupOrAddToDict
+        (
+            "productionLimiter",
+            this->coeffDict_,
+            false
         )
     ),
 
@@ -338,7 +348,8 @@ bool EARSMTrans<BasicTurbulenceModel>::read()
         CSS_.readIfPresent(this->coeffDict());
         CT_.readIfPresent(this->coeffDict());
         AT_.readIfPresent(this->coeffDict());
-	
+        productionLimiter_.readIfPresent("productionLimiter", this->coeffDict());
+        
         return true;
     }
     else
@@ -390,6 +401,11 @@ void EARSMTrans<BasicTurbulenceModel>::correct()
         this->GName(),
         (fSS * nut * dev(twoSymm(tgradU())) - this->nonlinearStress_) && tgradU()
     );
+
+    if (productionLimiter_)
+    {
+        G = min(G, 10*betaStar_*k_*omega_);
+    }
     
     omega_.boundaryFieldRef().updateCoeffs();
 

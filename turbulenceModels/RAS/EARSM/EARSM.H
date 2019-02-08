@@ -53,8 +53,13 @@ Description
 	    alphaD1        1.0
 	    alphaD2        0.4
             kInf           1.e-10
+            curvatureCorrection false
+            A0             -0.72
         }
     \endverbatim
+
+Author
+    Jiri Furst <Jiri.Furst@gmail.com>
 
 SourceFiles
     EARSM.C
@@ -115,6 +120,9 @@ protected:
 
     dimensionedScalar kInf_;
 
+    Switch curvatureCorrection_;
+    
+    dimensionedScalar A0_;
     
     // Fields
     
