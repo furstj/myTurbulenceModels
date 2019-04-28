@@ -144,8 +144,10 @@ void EARSM<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& g
     {
         const volVectorField& U = this->U_;
         const surfaceScalarField& phi = this->phi_;
+        const rhoField& rho = this->rho_;
 
-        volSymmTensorField DSDt = tau*dev(symm(fvc::grad(fvc::ddt(U)))) + fvc::div(phi,S);
+        volSymmTensorField DSDt = tau*dev(symm(fvc::grad(fvc::ddt(U)))) 
+		+ fvc::div(phi/fvc::interpolate(rho),S,"div(phiv,S)");
         volVectorField SDeps = *(skew(S & DSDt))*2;
         volScalarField IIIS = tr(S & S & S);
         
