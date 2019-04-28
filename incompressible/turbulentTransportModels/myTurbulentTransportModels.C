@@ -100,9 +100,6 @@ makeRASModel(mykkLOmegaFS);
 #include "mykkLOmegaPh.H"
 makeRASModel(mykkLOmegaPh);
 
-#include "mykkLOmegaDev.H"
-makeRASModel(mykkLOmegaDev);
-
 #include "kOmegaTrans.H"
 makeRASModel(kOmegaTrans);
 
