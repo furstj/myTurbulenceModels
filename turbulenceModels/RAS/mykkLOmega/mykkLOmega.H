@@ -59,6 +59,14 @@ Description
         Journal of Fluids Engineering, 139(2), 24501.
     \endverbatim
 
+    and optional correction of time-scale in fTaul given in eq. 55 in 
+    \verbatim
+        Accordi, I. a., & de Lemos, M. J. S. (2015). 
+	Single-point transition modeling using the laminar kinetic energy concept. 
+	International Journal of Heat and Mass Transfer, 89, 1095–1109. 
+        https://doi.org/10.1016/j.ijheatmasstransfer.2015.05.040
+    \endverbatim
+
     The default model coefficients are
     \verbatim
         mykkLOmegaCoeffs
@@ -91,6 +99,7 @@ Description
             Sigmak         1
             Sigmaw         1.17
             lengthScaleCorrection true;
+	    timeScaleCorrection   false;
         }
     \endverbatim
 
@@ -162,6 +171,7 @@ protected:
     dimensionedScalar Sigmak_;
     dimensionedScalar Sigmaw_;
     Switch lengthScaleCorrection_;
+    Switch timeScaleCorrection_;
 
     // Fields
     
