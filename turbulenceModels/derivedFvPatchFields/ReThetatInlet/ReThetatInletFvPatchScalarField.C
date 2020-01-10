@@ -155,9 +155,15 @@ void ReThetatInletFvPatchScalarField::write
 ) const
 {
     fvPatchScalarField::write(os);
+#if OPENFOAM_PLUS > 1712
+    os.writeEntryIfDifferent<word>("U", "U", UName_);
+    os.writeEntryIfDifferent<word>("k", "k", kName_);
+    os.writeEntryIfDifferent<word>("phi", "phi", this->phiName_);
+#else
     writeEntryIfDifferent<word>(os, "U", "U", UName_);
     writeEntryIfDifferent<word>(os, "k", "k", kName_);
     writeEntryIfDifferent<word>(os, "phi", "phi", this->phiName_);
+#endif
     writeEntry("value", os);
 }
 

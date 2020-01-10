@@ -632,7 +632,8 @@ void omegaRoughWallFunctionFvPatchScalarField::manipulateMatrix
     matrix.setValues
     (
         constraintCells,
-        scalarField(constraintomega.xfer())
+        //scalarField(constraintomega.xfer())
+	constraintomega
     );
 
     fvPatchField<scalar>::manipulateMatrix(matrix);

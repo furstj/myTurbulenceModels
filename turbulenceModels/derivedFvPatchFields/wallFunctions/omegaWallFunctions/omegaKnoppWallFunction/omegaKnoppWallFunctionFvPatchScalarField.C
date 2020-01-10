@@ -586,7 +586,8 @@ void omegaKnoppWallFunctionFvPatchScalarField::manipulateMatrix
     matrix.setValues
     (
         constraintCells,
-        scalarField(constraintomega.xfer())
+	constraintomega
+        //scalarField(constraintomega.xfer())
     );
 
     fvPatchField<scalar>::manipulateMatrix(matrix);
