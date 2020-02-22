@@ -36,7 +36,7 @@ namespace Foam
 
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * //
 
-tmp<scalarField> nutUKnoppWallFunctionFvPatchScalarField::calcNut() const
+tmp<scalarField> nutUKnoppWallFunctionFvPatchScalarField::nut() const
 {
     const label patchi = patch().index();
 
@@ -285,7 +285,7 @@ void nutUKnoppWallFunctionFvPatchScalarField::write(Ostream& os) const
 {
     fvPatchField<scalar>::write(os);
     writeLocalEntries(os);
-    writeEntry("value", os);
+    writeEntry(os,"value", *this);
 }
 
 

@@ -145,8 +145,8 @@ void omegaViscosityRatioFvPatchScalarField::updateCoeffs()
 void omegaViscosityRatioFvPatchScalarField::write(Ostream& os) const
 {
     fvPatchScalarField::write(os);
-    ratio_.writeEntry("ratio", os);
-    writeEntry("value", os);
+    writeEntry(os, "ratio", ratio_);
+    writeEntry(os, "value", *this);
 }
 
 void omegaViscosityRatioFvPatchScalarField::autoMap
@@ -155,7 +155,7 @@ void omegaViscosityRatioFvPatchScalarField::autoMap
 )
 {
     fixedValueFvPatchField<scalar>::autoMap(m);
-    ratio_.autoMap(m);
+    m(ratio_, ratio_);
 }
 
 
