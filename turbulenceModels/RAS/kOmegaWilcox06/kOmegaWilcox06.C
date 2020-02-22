@@ -206,7 +206,17 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
     {
       return;
     }
+
+  // Local references
+  const alphaField& alpha = this->alpha_;
+  const rhoField& rho = this->rho_;
+  const surfaceScalarField& alphaRhoPhi = this->alphaRhoPhi_;
+  const volVectorField& U = this->U_;
+  volScalarField& nut = this->nut_;
+  fv::options& fvOptions(fv::options::New(this->mesh_));
   
+  BasicTurbulenceModel::correct();
+
   volTensorField gradU(fvc::grad(this->U_));
   volSymmTensorField Sbar(dev(symm(gradU)));
     
@@ -227,7 +237,10 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
   Xomega.clear();
   Shat.clear();
   Omega.clear();
-  
+
+  // Update omega and G at the wall
+  omega_.boundaryFieldRef().updateCoeffs();
+
   volScalarField CDkOmega = max(
 				sigmaD_/omega_*(fvc::grad(k_) & fvc::grad(omega_)),
 				dimensionedScalar("0", inv(sqr(dimTime)), 0.0)
@@ -237,36 +250,39 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
   // source term modified according to NLR-TP-2001-238
   tmp<fvScalarMatrix> omegaEqn
     (
-     fvm::ddt(omega_)
-     + fvm::div(this->phi_, omega_)
-     - fvm::laplacian(DomegaEff(), omega_)
+     fvm::ddt(alpha, rho, omega_)
+     + fvm::div(alphaRhoPhi, omega_)
+     - fvm::laplacian(alpha*rho*DomegaEff(), omega_)
      ==
-     alphaOmega_*GbyNu
-     - fvm::Sp(beta_*fBeta*omega_, omega_)
-     + CDkOmega
+     alpha()*rho()*alphaOmega_*GbyNu
+     - fvm::Sp(alpha()*rho()*beta_*fBeta*omega_, omega_)
+      + alpha()*rho()*CDkOmega()
      );
   
     omegaEqn.ref().relax();
-    
+    fvOptions.constrain(omegaEqn.ref());
     omegaEqn.ref().boundaryManipulate(omega_.boundaryFieldRef());
     
     solve(omegaEqn);
+    fvOptions.correct(omega_);
     bound(omega_, this->omegaMin_);
        
     // Turbulent kinetic energy equation
     
     tmp<fvScalarMatrix> kEqn
       (
-       fvm::ddt(k_)
-       + fvm::div(this->phi_, k_)
-       - fvm::laplacian(DkEff(), k_)
+       fvm::ddt(alpha, rho, k_)
+       + fvm::div(alphaRhoPhi, k_)
+       - fvm::laplacian(alpha*rho*DkEff(), k_)
        ==
-       G 
-       - fvm::Sp(betaStar_*omega_, k_)
+       alpha()*rho()*G 
+       - fvm::Sp(alpha()*rho()*betaStar_*omega_, k_)
        );
     
     kEqn.ref().relax();
+    fvOptions.constrain(kEqn.ref());
     solve(kEqn);
+    fvOptions.correct(k_);
     bound(k_, this->kMin_);
     
     this->correctNut(Sbar);

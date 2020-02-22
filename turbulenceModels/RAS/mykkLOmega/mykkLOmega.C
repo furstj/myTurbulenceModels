@@ -130,7 +130,7 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::fTaul
             (
                 sqr
                 (
-                    lambdaEff*Omega
+                    (this->timeScaleCorrection_ ? lambdaEff*this->omega_ : lambdaEff*Omega)
                     + dimensionedScalar
                     (
                         "ROOTVSMALL",
@@ -536,6 +536,15 @@ mykkLOmega<BasicTurbulenceModel>::mykkLOmega
             true
         )
     ),
+    timeScaleCorrection_
+    (
+        Switch::lookupOrAddToDict
+        (
+            "timeScaleCorrection",
+            this->coeffDict_,
+            false
+        )
+    ),
     kt_
     (
         IOobject
@@ -642,6 +651,7 @@ bool mykkLOmega<BasicTurbulenceModel>::read()
         Sigmak_.readIfPresent(this->coeffDict());
         Sigmaw_.readIfPresent(this->coeffDict());
         lengthScaleCorrection_.readIfPresent("lengthScaleCorrection", this->coeffDict());
+        timeScaleCorrection_.readIfPresent("timeScaleCorrection", this->coeffDict());
 
         return true;
     }
