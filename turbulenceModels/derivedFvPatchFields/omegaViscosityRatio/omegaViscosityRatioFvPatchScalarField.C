@@ -44,9 +44,13 @@ omegaViscosityRatioFvPatchScalarField::omegaViscosityRatioFvPatchScalarField
     const DimensionedField<scalar, volMesh>& iF
 )
     :
-    fixedValueFvPatchField<scalar>(p, iF),
-    ratio_(p.size(), 1.0)
-{}
+    inletOutletFvPatchScalarField(p, iF),
+    ratio_(1.0)
+{
+    this->refValue() = 0.0;
+    this->refGrad() = 0.0;
+    this->valueFraction() = 0.0;
+}
 
 
 omegaViscosityRatioFvPatchScalarField::omegaViscosityRatioFvPatchScalarField
@@ -57,7 +61,7 @@ omegaViscosityRatioFvPatchScalarField::omegaViscosityRatioFvPatchScalarField
     const fvPatchFieldMapper& mapper
 )
 :
-    fixedValueFvPatchField<scalar>(ptf, p, iF, mapper),
+    inletOutletFvPatchScalarField(ptf, p, iF, mapper),
     ratio_(ptf.ratio_)
 {}
 
@@ -69,20 +73,14 @@ omegaViscosityRatioFvPatchScalarField::omegaViscosityRatioFvPatchScalarField
     const dictionary& dict
 )
 :
-    fixedValueFvPatchField<scalar>(p, iF, dict),
-    ratio_("ratio", dict, p.size())
+    inletOutletFvPatchScalarField(p, iF),
+    ratio_(readScalar(dict.lookup("ratio")))
 {
-    if (dict.found("value"))
-    {
-        fvPatchField<scalar>::operator=
-            (
-                scalarField("value", dict, p.size())
-            );
-    }
-    else
-    {
-        this->operator==(patchInternalField());
-    }
+    fvPatchScalarField::operator=(scalarField("value", dict, p.size()));
+
+    this->refValue() = 0.0;
+    this->refGrad() = 0.0;
+    this->valueFraction() = 0.0;
 }
 
 
@@ -91,7 +89,7 @@ omegaViscosityRatioFvPatchScalarField::omegaViscosityRatioFvPatchScalarField
     const omegaViscosityRatioFvPatchScalarField& owfpsf
 )
 :
-    fixedValueFvPatchField<scalar>(owfpsf),
+    inletOutletFvPatchScalarField(owfpsf),
     ratio_(owfpsf.ratio_)
 {}
 
@@ -102,7 +100,7 @@ omegaViscosityRatioFvPatchScalarField::omegaViscosityRatioFvPatchScalarField
     const DimensionedField<scalar, volMesh>& iF
 )
 :
-    fixedValueFvPatchField<scalar>(owfpsf, iF),
+    inletOutletFvPatchScalarField(owfpsf, iF),
     ratio_(owfpsf.ratio_)
 {}
 
@@ -149,29 +147,6 @@ void omegaViscosityRatioFvPatchScalarField::write(Ostream& os) const
     writeEntry(os, "value", *this);
 }
 
-void omegaViscosityRatioFvPatchScalarField::autoMap
-(
-    const fvPatchFieldMapper& m
-)
-{
-    fixedValueFvPatchField<scalar>::autoMap(m);
-    m(ratio_, ratio_);
-}
-
-
-void omegaViscosityRatioFvPatchScalarField::rmap
-(
-    const fvPatchScalarField& ptf,
-    const labelList& addr
-)
-{
-    fixedValueFvPatchField<scalar>::rmap(ptf, addr);
-
-    const omegaViscosityRatioFvPatchScalarField& tiptf =
-        refCast<const omegaViscosityRatioFvPatchScalarField>(ptf);
-
-    ratio_.rmap(tiptf.ratio_, addr);
-}
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -69,7 +69,7 @@ SourceFiles
 #ifndef omegaViscosityRatioFvPatchScalarField_H
 #define omegaViscosityRatioFvPatchScalarField_H
 
-#include "fixedValueFvPatchField.H"
+#include "inletOutletFvPatchFields.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -84,14 +84,14 @@ class turbulenceModel;
 
 class omegaViscosityRatioFvPatchScalarField
 :
-    public fixedValueFvPatchField<scalar>
+    public inletOutletFvPatchScalarField
 {
 protected:
 
     // Private data
 
-    //- Vuscosity ratio
-    scalarField ratio_;
+    //- Viscosity ratio
+    scalar ratio_;
 
 public:
 
@@ -167,28 +167,12 @@ public:
     // Access
     
     //- Return reference to the viscosity ratio field
-    const scalarField& ratio() const
+    const scalar& ratio() const
         {
             return ratio_;
         }
     
-    // Mapping functions
-      
-    //- Map (and resize as needed) from self given a mapping object
-    virtual void autoMap
-    (
-        const fvPatchFieldMapper&
-    );
-    
-    //- Reverse map the given fvPatchField onto this fvPatchField
-    virtual void rmap
-    (
-        const fvPatchScalarField&,
-        const labelList&
-    );
         
-    
-    
     // Evaluation functions
     
     //- Update the coefficients associated with the patch field
