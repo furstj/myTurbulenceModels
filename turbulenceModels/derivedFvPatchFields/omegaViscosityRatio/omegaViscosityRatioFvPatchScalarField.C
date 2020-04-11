@@ -143,8 +143,8 @@ void omegaViscosityRatioFvPatchScalarField::updateCoeffs()
 void omegaViscosityRatioFvPatchScalarField::write(Ostream& os) const
 {
     fvPatchScalarField::write(os);
-    writeEntry(os, "ratio", ratio_);
-    writeEntry(os, "value", *this);
+    os.writeKeyword("ratio") << ratio_ << token::END_STATEMENT << nl;
+    writeEntry("value", os);
 }
 
 
