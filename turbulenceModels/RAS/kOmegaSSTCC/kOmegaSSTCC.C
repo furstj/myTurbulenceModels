@@ -75,7 +75,6 @@ tmp<volScalarField::Internal> kOmegaSSTCC<BasicTurbulenceModel>::Pk
 ) const
 {
     const volVectorField& U = this->U_;
-    const surfaceScalarField& phi = this->phi_;
     tmp<volTensorField>     tgradU = fvc::grad(U);
     tmp<volSymmTensorField> Sij = symm(tgradU());
     tmp<volTensorField>     Wij = skew(tgradU());
@@ -85,7 +84,8 @@ tmp<volScalarField::Internal> kOmegaSSTCC<BasicTurbulenceModel>::Pk
     dimensionedScalar eps("eps", dimless/dimTime, 1.e-10);
     
     const volScalarField rs = S/max(W,eps);
-    const volSymmTensorField DSijDt = symm(fvc::grad(fvc::ddt(U))) + fvc::div(phi,Sij());
+    tmp<surfaceScalarField> phiv = fvc::flux(U);
+    const volSymmTensorField DSijDt = fvc::DDt(phiv, Sij());
     tmp<volScalarField> D = max(max(S, sqrt(0.09)*this->omega_), eps);
     
     const tmp<volScalarField> rt = - 2*((Wij() & Sij()) && DSijDt)/max(W,eps)/pow(D,3);

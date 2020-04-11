@@ -164,7 +164,7 @@ void ReThetatInletFvPatchScalarField::write
     writeEntryIfDifferent<word>(os, "k", "k", kName_);
     writeEntryIfDifferent<word>(os, "phi", "phi", this->phiName_);
 #endif
-    writeEntry("value", os);
+    writeEntry(os, "value", *this);
 }
 
 
