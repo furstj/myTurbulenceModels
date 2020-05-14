@@ -790,12 +790,15 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
       + alpha*rho*(
             Cw3_*fOmega(lambdaEff_, lambdaT_)*alphaTEff*sqr(fw)*sqrt(kt_)
 		   )().internalField()/pow3(y_.internalField())
+      + fvOptions(alpha, rho, omega_)
     );
 
     omegaEqn.ref().relax();
+    fvOptions.constrain(omegaEqn.ref());
     omegaEqn.ref().boundaryManipulate(omega_.boundaryFieldRef());
 
     solve(omegaEqn);
+    fvOptions.correct(omega_);
     bound(omega_, omegaMin_);
 
 
