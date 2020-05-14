@@ -24,6 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "mykkLOmega.H"
+#include "fvOptions.H"
 #include "bound.H"
 #include "wallDist.H"
 
@@ -688,7 +689,8 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
     volScalarField& omega_ = this->omega_;
     volScalarField& kt_ = this->kt_;
     volScalarField& kl_ = this->kl_;
-    
+    fv::options& fvOptions(fv::options::New(this->mesh_));
+
     eddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
 
     const volScalarField lambdaT_ = lambdaT();
@@ -829,12 +831,15 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
         alpha*rho*Pkt
       + alpha*rho*(Rbp + Rnat)*kl_
       - fvm::Sp(alpha*rho*(omega_ + Dt/(kt_+ kMin_)), kt_)
+      + fvOptions(alpha, rho, kt_)
     );
 
     ktEqn.ref().relax();
+    fvOptions.constrain(ktEqn.ref());
     ktEqn.ref().boundaryManipulate(kt_.boundaryFieldRef());
 
     solve(ktEqn);
+    fvOptions.correct(kt_);
     bound(kt_, kMin_);
 
 
