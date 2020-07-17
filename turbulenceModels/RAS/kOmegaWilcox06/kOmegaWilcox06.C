@@ -211,8 +211,8 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
   const alphaField& alpha = this->alpha_;
   const rhoField& rho = this->rho_;
   const surfaceScalarField& alphaRhoPhi = this->alphaRhoPhi_;
-  const volVectorField& U = this->U_;
-  volScalarField& nut = this->nut_;
+  //const volVectorField& U = this->U_;
+  //volScalarField& nut = this->nut_;
   fv::options& fvOptions(fv::options::New(this->mesh_));
   
   BasicTurbulenceModel::correct();

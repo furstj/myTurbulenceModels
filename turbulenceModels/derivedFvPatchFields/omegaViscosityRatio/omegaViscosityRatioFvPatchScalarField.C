@@ -143,8 +143,14 @@ void omegaViscosityRatioFvPatchScalarField::updateCoeffs()
 void omegaViscosityRatioFvPatchScalarField::write(Ostream& os) const
 {
     fvPatchScalarField::write(os);
+#if (OPENFOAM >= 1912)
+    os.writeEntry("ratio", ratio_);
+    //ratio_.writeEntry("ratio", os);
+    this->writeEntry("value", os);
+#else
     writeEntry(os, "ratio", ratio_);
     writeEntry(os, "value", *this);
+#endif
 }
 
 

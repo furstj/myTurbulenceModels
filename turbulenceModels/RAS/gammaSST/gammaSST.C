@@ -420,7 +420,7 @@ void gammaSST<BasicTurbulenceModel>::correct()
     solve(kEqn);
     bound(k_, this->kMin_);
 
-#if OPENFOAM_PLUS >= 1712
+#if (OPENFOAM_PLUS >= 1712 || OPENFOAM >= 1912)
     this->correctNut(S2);
 #else
     this->correctNut(S2, this->F23());

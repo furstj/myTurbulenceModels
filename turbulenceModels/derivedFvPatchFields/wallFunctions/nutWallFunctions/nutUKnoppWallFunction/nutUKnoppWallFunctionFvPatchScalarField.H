@@ -105,8 +105,11 @@ protected:
     // Protected Member Functions
 
         //- Calculate the turbulence viscosity
-        virtual tmp<scalarField> nut() const;
-
+#if (OPENFOAM >= 1912)
+         virtual tmp<scalarField> calcNut() const;
+#else
+         virtual tmp<scalarField> nut() const;
+#endif
         //- Calculate the friction velocity
         virtual tmp<scalarField> calcUTau(const scalarField& magGradU) const;
 
