@@ -7,10 +7,14 @@ The repository contains several additional models for OpenFOAM.
 
 There is an **Allwmake** script which should compile a dynamic library. 
 
-Please be sure to use correct branch:
+Please be sure to use correct branch, e.g.:
 
 * **OF30** compatible with OpenFOAM 3.0
-* **master** development branch oriented to latest version of OpenFOAM
+* **OF8** compatible with OpenFOAM 8
+* **master** development branch 
+
+For current branches and compatibility with OpenFOAM versions see [wiki pages](https://github.com/furstj/myTurbulenceModels/wiki/User-guide).
+
 
 ### Running
 Put
