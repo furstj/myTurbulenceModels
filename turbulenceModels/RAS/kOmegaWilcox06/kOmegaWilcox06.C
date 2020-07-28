@@ -39,8 +39,8 @@ namespace RASModels
 
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
-template<class BasicTurbulenceModel>
-kOmegaWilcox06<BasicTurbulenceModel>::kOmegaWilcox06
+template<class BasicMomentumTransportModel>
+kOmegaWilcox06<BasicMomentumTransportModel>::kOmegaWilcox06
 (
     const alphaField& alpha,
     const rhoField& rho,
@@ -48,11 +48,10 @@ kOmegaWilcox06<BasicTurbulenceModel>::kOmegaWilcox06
     const surfaceScalarField& alphaRhoPhi,
     const surfaceScalarField& phi,
     const transportModel& transport,
-    const word& propertiesName,
     const word& type
 )
 :
-  eddyViscosity<RASModel<BasicTurbulenceModel> >
+  eddyViscosity<RASModel<BasicMomentumTransportModel> >
   (
    type,
    alpha,
@@ -60,8 +59,7 @@ kOmegaWilcox06<BasicTurbulenceModel>::kOmegaWilcox06
    U,
    alphaRhoPhi,
    phi,
-   transport,
-   propertiesName
+   transport
    ),
   
   alphaOmega_
@@ -168,10 +166,10 @@ kOmegaWilcox06<BasicTurbulenceModel>::kOmegaWilcox06
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
 
-template<class BasicTurbulenceModel>
-bool kOmegaWilcox06<BasicTurbulenceModel>::read()
+template<class BasicMomentumTransportModel>
+bool kOmegaWilcox06<BasicMomentumTransportModel>::read()
 {
-  if (  eddyViscosity<RASModel<BasicTurbulenceModel> >::read())
+  if (  eddyViscosity<RASModel<BasicMomentumTransportModel> >::read())
     {
       alphaOmega_.readIfPresent(this->coeffDict());
       betaStar_.readIfPresent(this->coeffDict());
@@ -189,8 +187,8 @@ bool kOmegaWilcox06<BasicTurbulenceModel>::read()
     }
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kOmegaWilcox06<BasicTurbulenceModel>::omegaBar(const volSymmTensorField& Sbar) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kOmegaWilcox06<BasicMomentumTransportModel>::omegaBar(const volSymmTensorField& Sbar) const
 {
     return  max(
         omega_,
@@ -198,8 +196,8 @@ tmp<volScalarField> kOmegaWilcox06<BasicTurbulenceModel>::omegaBar(const volSymm
     );
 }
 
-template<class BasicTurbulenceModel>
-void kOmegaWilcox06<BasicTurbulenceModel>::correct()
+template<class BasicMomentumTransportModel>
+void kOmegaWilcox06<BasicMomentumTransportModel>::correct()
 {
   
   if (!this->turbulence_)
@@ -215,12 +213,12 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
   //volScalarField& nut = this->nut_;
   fv::options& fvOptions(fv::options::New(this->mesh_));
   
-  BasicTurbulenceModel::correct();
+  BasicMomentumTransportModel::correct();
 
   volTensorField gradU(fvc::grad(this->U_));
   volSymmTensorField Sbar(dev(symm(gradU)));
     
-  eddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
+  eddyViscosity<RASModel<BasicMomentumTransportModel> >::correct();
   
   volScalarField GbyNu = 2*(Sbar && gradU);
   volScalarField G(this->GName(), this->nut_*GbyNu);
@@ -288,18 +286,17 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
     this->correctNut(Sbar);
 }
 
-template<class BasicTurbulenceModel>
-void kOmegaWilcox06<BasicTurbulenceModel>::correctNut(const volSymmTensorField& Sbar)
+template<class BasicMomentumTransportModel>
+void kOmegaWilcox06<BasicMomentumTransportModel>::correctNut(const volSymmTensorField& Sbar)
 {
   // Re-calculate viscosity
   this->nut_ = k_/omegaBar(Sbar);
   this->nut_.correctBoundaryConditions();
-
-  BasicTurbulenceModel::correctNut();
+  fv::options::New(this->mesh_).correct(this->nut_);
 }
 
-template<class BasicTurbulenceModel>
-void kOmegaWilcox06<BasicTurbulenceModel>::correctNut()
+template<class BasicMomentumTransportModel>
+void kOmegaWilcox06<BasicMomentumTransportModel>::correctNut()
 {
   volSymmTensorField Sbar(dev(symm(fvc::grad(this->U_))));
   this->correctNut(Sbar);

@@ -23,55 +23,30 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "IncompressibleTurbulenceModel.H"
-#include "incompressible/transportModel/transportModel.H"
+#include "IncompressibleMomentumTransportModel.H"
+#include "incompressibleMomentumTransportModel.H"
+#include "transportModel.H"
 #include "addToRunTimeSelectionTable.H"
-#include "makeTurbulenceModel.H"
+#include "kinematicMomentumTransportModels.H"
 
 #include "laminarModel.H"
 #include "RASModel.H"
 #include "LESModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-namespace Foam {
-
-  typedef TurbulenceModel<
-    geometricOneField,
-    geometricOneField,
-    incompressibleTurbulenceModel,
-    transportModel
-    > transportModelincompressibleTurbulenceModel;
-  
-  typedef IncompressibleTurbulenceModel<transportModel> 
-  transportModelIncompressibleTurbulenceModel;
-
-  typedef RASModel<transportModelIncompressibleTurbulenceModel> 
-  RAStransportModelIncompressibleTurbulenceModel; 
-
-  typedef LESModel<transportModelIncompressibleTurbulenceModel> 
-  LEStransportModelIncompressibleTurbulenceModel; 
-
-}
-
-#define makeRASModel(Type)                                                     \
-    makeTemplatedTurbulenceModel                                               \
-    (transportModelIncompressibleTurbulenceModel, RAS, Type)
+/*
+#define makeRASModel(Type)                                              \
+    makeTemplatedMomentumTransportModel                                               \
+    (transportModelIncompressibleMomentumTransportModel, RAS, Type)
 
 #define makeLESModel(Type)                                                     \
-    makeTemplatedTurbulenceModel                                               \
-    (transportModelIncompressibleTurbulenceModel, LES, Type)
-
+    makeTemplatedMomentumTransportModel                                               \
+    (transportModelIncompressibleMomentumTransportModel, LES, Type)
+    */
 
 // -------------------------------------------------------------------------- //
 // RAS models
 // -------------------------------------------------------------------------- //
-
-// #include "mykOmegaSST.H"
-// makeRASModel(mykOmegaSST);
-
-#include "EARSM.H"
-makeRASModel(EARSM);
 
 #include "gammaSST.H"
 makeRASModel(gammaSST);
@@ -102,6 +77,9 @@ makeRASModel(mykkLOmegaPh);
 
 #include "kOmegaTrans.H"
 makeRASModel(kOmegaTrans);
+
+#include "EARSM.H"
+makeRASModel(EARSM);
 
 #include "EARSMWallin.H"
 makeRASModel(EARSMWallin);

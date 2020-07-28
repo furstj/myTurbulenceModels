@@ -33,23 +33,23 @@ namespace RASModels
 {
 
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * * //
-template<class BasicTurbulenceModel>
-tmp<volScalarField> gammaSST<BasicTurbulenceModel>::F1(const volScalarField& CDkOmega) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> gammaSST<BasicMomentumTransportModel>::F1(const volScalarField& CDkOmega) const
 {
   return max(
-	     kOmegaSST<BasicTurbulenceModel>::F1(CDkOmega),
+	     kOmegaSST<BasicMomentumTransportModel>::F1(CDkOmega),
 	     exp(-sqr(pow4(this->y_*sqrt(this->k_)/(scalar(120)*this->nu()))))
 	     );
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> gammaSST<BasicTurbulenceModel>::ReThetac() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> gammaSST<BasicMomentumTransportModel>::ReThetac() const
 {
   return CTU1_ + CTU2_*exp(-CTU3_*TuL()*FPG() );
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> gammaSST<BasicTurbulenceModel>::Fonset(const volScalarField& S) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> gammaSST<BasicMomentumTransportModel>::Fonset(const volScalarField& S) const
 {
     return tmp<volScalarField>
 	(
@@ -72,26 +72,26 @@ tmp<volScalarField> gammaSST<BasicTurbulenceModel>::Fonset(const volScalarField&
 	);
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> gammaSST<BasicTurbulenceModel>::Fonset1(const volScalarField& S) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> gammaSST<BasicMomentumTransportModel>::Fonset1(const volScalarField& S) const
 {
     return sqr(this->y_)*S/this->nu() / (2.2*ReThetac());
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> gammaSST<BasicTurbulenceModel>::Fturb() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> gammaSST<BasicMomentumTransportModel>::Fturb() const
 {
     return exp(-pow4(Rt()/2));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> gammaSST<BasicTurbulenceModel>::TuL() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> gammaSST<BasicMomentumTransportModel>::TuL() const
 {
     return min(100 * sqrt(2.0/3.0*this->k_) / (this->omega_ * this->y_), 100.0);
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> gammaSST<BasicTurbulenceModel>::FPG() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> gammaSST<BasicMomentumTransportModel>::FPG() const
 {
     volVectorField n = fvc::grad(this->y_);
     volScalarField lambdaThetaL = 
@@ -115,8 +115,8 @@ tmp<volScalarField> gammaSST<BasicTurbulenceModel>::FPG() const
 }
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
-template<class BasicTurbulenceModel>
-gammaSST<BasicTurbulenceModel>::gammaSST
+template<class BasicMomentumTransportModel>
+gammaSST<BasicMomentumTransportModel>::gammaSST
         (            
             const alphaField& alpha,
             const rhoField& rho,
@@ -124,11 +124,10 @@ gammaSST<BasicTurbulenceModel>::gammaSST
             const surfaceScalarField& alphaRhoPhi,
             const surfaceScalarField& phi,
             const transportModel& transport,
-            const word& propertiesName,
             const word& type
         ):
             
-            kOmegaSST<BasicTurbulenceModel>
+            kOmegaSST<BasicMomentumTransportModel>
             (
                 alpha,
                 rho,
@@ -136,7 +135,6 @@ gammaSST<BasicTurbulenceModel>::gammaSST
                 alphaRhoPhi,
                 phi,
                 transport,
-                propertiesName,
                 type
             ),
 
@@ -298,10 +296,10 @@ gammaSST<BasicTurbulenceModel>::gammaSST
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-bool gammaSST<BasicTurbulenceModel>::read()
+template<class BasicMomentumTransportModel>
+bool gammaSST<BasicMomentumTransportModel>::read()
 {
-    if (kOmegaSST<BasicTurbulenceModel>::read())
+    if (kOmegaSST<BasicMomentumTransportModel>::read())
     {
 	Flength_.readIfPresent(this->coeffDict());
 	ca2_.readIfPresent(this->coeffDict());
@@ -326,8 +324,8 @@ bool gammaSST<BasicTurbulenceModel>::read()
     }
 }
 
-template<class BasicTurbulenceModel>
-void gammaSST<BasicTurbulenceModel>::correct()
+template<class BasicMomentumTransportModel>
+void gammaSST<BasicMomentumTransportModel>::correct()
 {
 
     if (!this->turbulence_)
@@ -344,7 +342,7 @@ void gammaSST<BasicTurbulenceModel>::correct()
     volScalarField& omega_ = this->omega_;
     volScalarField& k_ = this->k_;
 
-    eddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
+    eddyViscosity<RASModel<BasicMomentumTransportModel> >::correct();
 
     volScalarField divU(fvc::div(fvc::absolute(this->phi(), U)));
 

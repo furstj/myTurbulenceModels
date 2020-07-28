@@ -64,15 +64,15 @@ tmp<volScalarField> EARSM<BasicTurbulenceModel>::fMix
 }
 
 
-template<class BasicTurbulenceModel>
-void EARSM<BasicTurbulenceModel>::correctNut()
+template<class BasicMomentumTransportModel>
+void EARSM<BasicMomentumTransportModel>::correctNut()
 {
   correctNonlinearStress(fvc::grad(this->U_));
 }
 
 
-template<class BasicTurbulenceModel>
-volScalarField EARSM<BasicTurbulenceModel>::N
+template<class BasicMomentumTransportModel>
+volScalarField EARSM<BasicMomentumTransportModel>::N
 (
     const volScalarField& A3p,
     const volScalarField& P1,
@@ -123,8 +123,8 @@ volScalarField EARSM<BasicTurbulenceModel>::N
 }
 
 
-template<class BasicTurbulenceModel>
-void EARSM<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& gradU)
+template<class BasicMomentumTransportModel>
+void EARSM<BasicMomentumTransportModel>::correctNonlinearStress(const volTensorField& gradU)
 {
     scalar Ctau = 6.0;
     volScalarField tau(
@@ -196,15 +196,15 @@ void EARSM<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& g
 
     this->nonlinearStress_.correctBoundaryConditions();
 
-    BasicTurbulenceModel::correctNut();
+    //BasicMomentumTransportModel::correctNut();
 
 }
 
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-EARSM<BasicTurbulenceModel>::EARSM
+template<class BasicMomentumTransportModel>
+EARSM<BasicMomentumTransportModel>::EARSM
 (
     const alphaField& alpha,
     const rhoField& rho,
@@ -212,11 +212,10 @@ EARSM<BasicTurbulenceModel>::EARSM
     const surfaceScalarField& alphaRhoPhi,
     const surfaceScalarField& phi,
     const transportModel& transport,
-    const word& propertiesName,
     const word& type
 )
     :
-    nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >
+    nonlinearEddyViscosity<RASModel<BasicMomentumTransportModel> >
     (
         type,
         alpha,
@@ -224,8 +223,7 @@ EARSM<BasicTurbulenceModel>::EARSM
         U,
         alphaRhoPhi,
         phi,
-        transport,
-        propertiesName
+        transport
     ),
     
     betaStar_
@@ -408,10 +406,10 @@ EARSM<BasicTurbulenceModel>::EARSM
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-bool EARSM<BasicTurbulenceModel>::read()
+template<class BasicMomentumTransportModel>
+bool EARSM<BasicMomentumTransportModel>::read()
 {
-    if (nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >::read())
+    if (nonlinearEddyViscosity<RASModel<BasicMomentumTransportModel> >::read())
     {    
         betaStar_.readIfPresent(this->coeffDict());
         gamma1_.readIfPresent(this->coeffDict());
@@ -437,15 +435,15 @@ bool EARSM<BasicTurbulenceModel>::read()
 }
 
 
-template<class BasicTurbulenceModel>
-void EARSM<BasicTurbulenceModel>::validate()
+template<class BasicMomentumTransportModel>
+void EARSM<BasicMomentumTransportModel>::validate()
 {
     this->correctNut();
 }
 
 
-template<class BasicTurbulenceModel>
-void EARSM<BasicTurbulenceModel>::correct()
+template<class BasicMomentumTransportModel>
+void EARSM<BasicMomentumTransportModel>::correct()
 {
 
     if (!this->turbulence_)
@@ -453,7 +451,7 @@ void EARSM<BasicTurbulenceModel>::correct()
         return;
     }
 
-    nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
+    nonlinearEddyViscosity<RASModel<BasicMomentumTransportModel> >::correct();
 
     // Local references
     const alphaField& alpha = this->alpha_;

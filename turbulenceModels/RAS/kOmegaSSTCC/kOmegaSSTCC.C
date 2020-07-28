@@ -34,8 +34,8 @@ namespace RASModels
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-kOmegaSSTCC<BasicTurbulenceModel>::kOmegaSSTCC
+template<class BasicMomentumTransportModel>
+kOmegaSSTCC<BasicMomentumTransportModel>::kOmegaSSTCC
 (
     const alphaField& alpha,
     const rhoField& rho,
@@ -43,13 +43,12 @@ kOmegaSSTCC<BasicTurbulenceModel>::kOmegaSSTCC
     const surfaceScalarField& alphaRhoPhi,
     const surfaceScalarField& phi,
     const transportModel& transport,
-    const word& propertiesName,
     const word& type
 )
 :
     kOmegaSST
     <
-        BasicTurbulenceModel
+        BasicMomentumTransportModel
     >
     (
         alpha,
@@ -58,7 +57,6 @@ kOmegaSSTCC<BasicTurbulenceModel>::kOmegaSSTCC
         alphaRhoPhi,
         phi,
         transport,
-        propertiesName,
         type
     )
 {
@@ -68,8 +66,8 @@ kOmegaSSTCC<BasicTurbulenceModel>::kOmegaSSTCC
     }
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField::Internal> kOmegaSSTCC<BasicTurbulenceModel>::Pk
+template<class BasicMomentumTransportModel>
+tmp<volScalarField::Internal> kOmegaSSTCC<BasicMomentumTransportModel>::Pk
 (
     const volScalarField::Internal& G
 ) const
@@ -98,7 +96,7 @@ tmp<volScalarField::Internal> kOmegaSSTCC<BasicTurbulenceModel>::Pk
     tmp<volScalarField> frt = max(0.0, min(frot, 1.25));
     volScalarField fr  = max(0.0, 1.0 + cScale*(frt - 1.0));
     
-    return kOmegaSST<BasicTurbulenceModel>::Pk(G)*fr;
+    return kOmegaSST<BasicMomentumTransportModel>::Pk(G)*fr;
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

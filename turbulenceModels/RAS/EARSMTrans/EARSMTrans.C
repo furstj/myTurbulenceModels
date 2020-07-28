@@ -44,15 +44,15 @@ namespace RASModels
 
 
 
-template<class BasicTurbulenceModel>
-void EARSMTrans<BasicTurbulenceModel>::correctNut()
+template<class BasicMomentumTransportModel>
+void EARSMTrans<BasicMomentumTransportModel>::correctNut()
 {
   correctNonlinearStress(fvc::grad(this->U_));
 }
 
 
-template<class BasicTurbulenceModel>
-volScalarField EARSMTrans<BasicTurbulenceModel>::N
+template<class BasicMomentumTransportModel>
+volScalarField EARSMTrans<BasicMomentumTransportModel>::N
 (
     const volScalarField& A3p,
     const volScalarField& P1,
@@ -103,8 +103,8 @@ volScalarField EARSMTrans<BasicTurbulenceModel>::N
 }
 
 
-template<class BasicTurbulenceModel>
-void EARSMTrans<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& gradU)
+template<class BasicMomentumTransportModel>
+void EARSMTrans<BasicMomentumTransportModel>::correctNonlinearStress(const volTensorField& gradU)
 {
     volScalarField tau(
         max
@@ -142,8 +142,8 @@ void EARSMTrans<BasicTurbulenceModel>::correctNonlinearStress(const volTensorFie
 
     this->nut_ = Cmu * this->k_ * tau;
     this->nut_.correctBoundaryConditions();
+    fv::options::New(this->mesh_).correct(this->nut_);
 
-    
     this->nonlinearStress_ = this->k_ * symm(
         beta3 * ( (W & W) - (1.0/3.0) * IIW * I )
         + beta4 * ( (S & W) - (W & S) )
@@ -151,15 +151,13 @@ void EARSMTrans<BasicTurbulenceModel>::correctNonlinearStress(const volTensorFie
         + beta9 * ( (W & S & W & W) - (W & W & S & W) )
     );
 
-    BasicTurbulenceModel::correctNut();
-
 }
 
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-EARSMTrans<BasicTurbulenceModel>::EARSMTrans
+template<class BasicMomentumTransportModel>
+EARSMTrans<BasicMomentumTransportModel>::EARSMTrans
 (
     const alphaField& alpha,
     const rhoField& rho,
@@ -167,11 +165,10 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
     const surfaceScalarField& alphaRhoPhi,
     const surfaceScalarField& phi,
     const transportModel& transport,
-    const word& propertiesName,
     const word& type
 )
     :
-    nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >
+    nonlinearEddyViscosity<RASModel<BasicMomentumTransportModel> >
     (
         type,
         alpha,
@@ -179,8 +176,7 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
         U,
         alphaRhoPhi,
         phi,
-        transport,
-        propertiesName
+        transport
     ),
     
     betaStar_
@@ -333,10 +329,10 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-bool EARSMTrans<BasicTurbulenceModel>::read()
+template<class BasicMomentumTransportModel>
+bool EARSMTrans<BasicMomentumTransportModel>::read()
 {
-    if (nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >::read())
+    if (nonlinearEddyViscosity<RASModel<BasicMomentumTransportModel> >::read())
     {    
         betaStar_.readIfPresent(this->coeffDict());
         alphaK_.readIfPresent(this->coeffDict());
@@ -359,15 +355,15 @@ bool EARSMTrans<BasicTurbulenceModel>::read()
 }
 
 
-template<class BasicTurbulenceModel>
-void EARSMTrans<BasicTurbulenceModel>::validate()
+template<class BasicMomentumTransportModel>
+void EARSMTrans<BasicMomentumTransportModel>::validate()
 {
     this->correctNut();
 }
 
 
-template<class BasicTurbulenceModel>
-void EARSMTrans<BasicTurbulenceModel>::correct()
+template<class BasicMomentumTransportModel>
+void EARSMTrans<BasicMomentumTransportModel>::correct()
 {
 
     if (!this->turbulence_)
@@ -375,7 +371,7 @@ void EARSMTrans<BasicTurbulenceModel>::correct()
         return;
     }
 
-    nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
+    nonlinearEddyViscosity<RASModel<BasicMomentumTransportModel> >::correct();
 
     // Local references
     const alphaField& alpha = this->alpha_;
@@ -386,7 +382,7 @@ void EARSMTrans<BasicTurbulenceModel>::correct()
 
     fv::options& fvOptions(fv::options::New(this->mesh_));
 
-    nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
+    nonlinearEddyViscosity<RASModel<BasicMomentumTransportModel> >::correct();
 
     volScalarField divU(fvc::div(fvc::absolute(this->phi(), U)));
 

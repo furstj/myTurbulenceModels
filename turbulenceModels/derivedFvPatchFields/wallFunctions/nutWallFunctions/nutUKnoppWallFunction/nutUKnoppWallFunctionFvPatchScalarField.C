@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "nutUKnoppWallFunctionFvPatchScalarField.H"
-#include "turbulenceModel.H"
+#include "momentumTransportModel.H"
 #include "fvPatchFieldMapper.H"
 #include "volFields.H"
 #include "addToRunTimeSelectionTable.H"
@@ -44,11 +44,11 @@ tmp<scalarField> nutUKnoppWallFunctionFvPatchScalarField::nut() const
 {
     const label patchi = patch().index();
 
-    const turbulenceModel& turbModel = db().lookupObject<turbulenceModel>
+    const momentumTransportModel& turbModel = db().lookupObject<momentumTransportModel>
     (
         IOobject::groupName
         (
-            turbulenceModel::propertiesName,
+            momentumTransportModel::typeName,
             internalField().group()
         )
     );
@@ -72,11 +72,11 @@ tmp<scalarField> nutUKnoppWallFunctionFvPatchScalarField::calcUTau
 {
     const label patchi = patch().index();
 
-    const turbulenceModel& turbModel = db().lookupObject<turbulenceModel>
+    const momentumTransportModel& turbModel = db().lookupObject<momentumTransportModel>
     (
         IOobject::groupName
         (
-            turbulenceModel::propertiesName,
+            momentumTransportModel::typeName,
             internalField().group()
         )
     );
@@ -268,11 +268,11 @@ tmp<scalarField> nutUKnoppWallFunctionFvPatchScalarField::yPlus() const
 {
     const label patchi = patch().index();
 
-    const turbulenceModel& turbModel = db().lookupObject<turbulenceModel>
+    const momentumTransportModel& turbModel = db().lookupObject<momentumTransportModel>
     (
         IOobject::groupName
         (
-            turbulenceModel::propertiesName,
+            momentumTransportModel::typeName,
             internalField().group()
         )
     );

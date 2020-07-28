@@ -37,17 +37,16 @@ namespace RASModels
 
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-void kOmegaTrans<BasicTurbulenceModel>::correctNut(const volScalarField& nus, const volScalarField& nul)
+template<class BasicMomentumTransportModel>
+void kOmegaTrans<BasicMomentumTransportModel>::correctNut(const volScalarField& nus, const volScalarField& nul)
 {
     this->nut_ = nus + nul;
     this->nut_.correctBoundaryConditions();
-
-    BasicTurbulenceModel::correctNut();
+    fv::options::New(this->mesh_).correct(this->nut_);
 }
 
-template<class BasicTurbulenceModel>
-void kOmegaTrans<BasicTurbulenceModel>::correctNut()
+template<class BasicMomentumTransportModel>
+void kOmegaTrans<BasicMomentumTransportModel>::correctNut()
 {
     volTensorField gradU(fvc::grad(this->U_));
     volScalarField S( sqrt(2*magSqr(dev(symm(gradU)))) );
@@ -58,9 +57,9 @@ void kOmegaTrans<BasicTurbulenceModel>::correctNut()
 }
 
 
-template<class BasicTurbulenceModel>
+template<class BasicMomentumTransportModel>
 tmp<volScalarField> 
-kOmegaTrans<BasicTurbulenceModel>::intermittency() const
+kOmegaTrans<BasicMomentumTransportModel>::intermittency() const
 {
     return tmp<volScalarField>
         (
@@ -72,9 +71,9 @@ kOmegaTrans<BasicTurbulenceModel>::intermittency() const
         );
 }
 
-template<class BasicTurbulenceModel>
+template<class BasicMomentumTransportModel>
 tmp<volScalarField> 
-kOmegaTrans<BasicTurbulenceModel>::nus(const volScalarField& S, const volScalarField& fSS) const
+kOmegaTrans<BasicMomentumTransportModel>::nus(const volScalarField& S, const volScalarField& fSS) const
 {
     return tmp<volScalarField>
         (
@@ -86,9 +85,9 @@ kOmegaTrans<BasicTurbulenceModel>::nus(const volScalarField& S, const volScalarF
         );
 }
 
-template<class BasicTurbulenceModel>
+template<class BasicMomentumTransportModel>
 tmp<volScalarField> 
-kOmegaTrans<BasicTurbulenceModel>::nul(const volScalarField& S, const volScalarField& fSS) const
+kOmegaTrans<BasicMomentumTransportModel>::nul(const volScalarField& S, const volScalarField& fSS) const
 {
     return tmp<volScalarField>
         (
@@ -100,9 +99,9 @@ kOmegaTrans<BasicTurbulenceModel>::nul(const volScalarField& S, const volScalarF
         );
 }
 
-template<class BasicTurbulenceModel>
+template<class BasicMomentumTransportModel>
 tmp<volScalarField> 
-kOmegaTrans<BasicTurbulenceModel>::fSS(const volScalarField& S, const volScalarField& W) const
+kOmegaTrans<BasicMomentumTransportModel>::fSS(const volScalarField& S, const volScalarField& W) const
 {
     volScalarField fW( 1 - tanh( k_ / (CW_ * this->nu() * omega_) ) );
     volScalarField psi( tanh( - W * (S - W) / ( Cpsi_ * sqr(Cmu_*omega_) ) ) );
@@ -119,9 +118,9 @@ kOmegaTrans<BasicTurbulenceModel>::fSS(const volScalarField& S, const volScalarF
         );
 }
 
-template<class BasicTurbulenceModel>
+template<class BasicMomentumTransportModel>
 tmp<volScalarField> 
-kOmegaTrans<BasicTurbulenceModel>::beta(const volTensorField& gradU) const
+kOmegaTrans<BasicMomentumTransportModel>::beta(const volTensorField& gradU) const
 {
     volTensorField Omega(skew(gradU));
     volSymmTensorField Shat(symm(gradU) - 0.5*tr(gradU)*I);
@@ -138,9 +137,9 @@ kOmegaTrans<BasicTurbulenceModel>::beta(const volTensorField& gradU) const
 }
 
 
-template<class BasicTurbulenceModel>
+template<class BasicMomentumTransportModel>
 tmp<fvScalarMatrix> 
-kOmegaTrans<BasicTurbulenceModel>::kSource() const
+kOmegaTrans<BasicMomentumTransportModel>::kSource() const
 {
     return tmp<fvScalarMatrix>
         (
@@ -152,9 +151,9 @@ kOmegaTrans<BasicTurbulenceModel>::kSource() const
         );
 }
 
-template<class BasicTurbulenceModel>
+template<class BasicMomentumTransportModel>
 tmp<fvScalarMatrix> 
-kOmegaTrans<BasicTurbulenceModel>::omegaSource() const
+kOmegaTrans<BasicMomentumTransportModel>::omegaSource() const
 {
     return tmp<fvScalarMatrix>
         (
@@ -168,8 +167,8 @@ kOmegaTrans<BasicTurbulenceModel>::omegaSource() const
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-kOmegaTrans<BasicTurbulenceModel>::kOmegaTrans
+template<class BasicMomentumTransportModel>
+kOmegaTrans<BasicMomentumTransportModel>::kOmegaTrans
 (
     const alphaField& alpha,
     const rhoField& rho,
@@ -177,11 +176,10 @@ kOmegaTrans<BasicTurbulenceModel>::kOmegaTrans
     const surfaceScalarField& alphaRhoPhi,
     const surfaceScalarField& phi,
     const transportModel& transport,
-    const word& propertiesName,
     const word& type
 )
 :
-    eddyViscosity<RASModel<BasicTurbulenceModel> >
+    eddyViscosity<RASModel<BasicMomentumTransportModel> >
     (
         type,
         alpha,
@@ -189,8 +187,7 @@ kOmegaTrans<BasicTurbulenceModel>::kOmegaTrans
         U,
         alphaRhoPhi,
         phi,
-        transport,
-        propertiesName
+        transport
     ),
     Cmu_
     (
@@ -368,10 +365,10 @@ kOmegaTrans<BasicTurbulenceModel>::kOmegaTrans
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-bool kOmegaTrans<BasicTurbulenceModel>::read()
+template<class BasicMomentumTransportModel>
+bool kOmegaTrans<BasicMomentumTransportModel>::read()
 {
-    if (eddyViscosity<RASModel<BasicTurbulenceModel> >::read())
+    if (eddyViscosity<RASModel<BasicMomentumTransportModel> >::read())
     {
         Cmu_.readIfPresent(this->coeffDict());
         beta0_.readIfPresent(this->coeffDict());
@@ -397,8 +394,8 @@ bool kOmegaTrans<BasicTurbulenceModel>::read()
 }
 
 
-template<class BasicTurbulenceModel>
-void kOmegaTrans<BasicTurbulenceModel>::correct()
+template<class BasicMomentumTransportModel>
+void kOmegaTrans<BasicMomentumTransportModel>::correct()
 {
     if (!this->turbulence_)
     {
@@ -413,7 +410,7 @@ void kOmegaTrans<BasicTurbulenceModel>::correct()
 
     fv::options& fvOptions(fv::options::New(this->mesh_));
 
-    eddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
+    eddyViscosity<RASModel<BasicMomentumTransportModel> >::correct();
 
     volScalarField divU(fvc::div(fvc::absolute(this->phi(), U)));
 

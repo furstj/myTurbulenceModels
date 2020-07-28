@@ -73,10 +73,10 @@ namespace RASModels
                            Class mykkLOmega Declaration
 \*---------------------------------------------------------------------------*/
 
-template<class BasicTurbulenceModel>
+template<class BasicMomentumTransportModel>
 class mykkLOmegaPh
 :
-    public mykkLOmega<BasicTurbulenceModel>
+    public mykkLOmega<BasicMomentumTransportModel>
 {
     // Private memmber functions
 
@@ -110,9 +110,9 @@ protected:
     
 public:
 
-    typedef typename BasicTurbulenceModel::alphaField alphaField;
-    typedef typename BasicTurbulenceModel::rhoField rhoField;
-    typedef typename BasicTurbulenceModel::transportModel transportModel;
+    typedef typename BasicMomentumTransportModel::alphaField alphaField;
+    typedef typename BasicMomentumTransportModel::rhoField rhoField;
+    typedef typename BasicMomentumTransportModel::transportModel transportModel;
 
 
     //- Runtime type information
@@ -130,7 +130,6 @@ public:
         const surfaceScalarField& alphaRhoPhi,
         const surfaceScalarField& phi,
         const transportModel& transport,
-        const word& propertiesName = turbulenceModel::propertiesName,
         const word& type = typeName
     );
     

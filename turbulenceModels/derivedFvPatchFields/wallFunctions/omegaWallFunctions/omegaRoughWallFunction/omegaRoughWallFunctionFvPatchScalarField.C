@@ -25,7 +25,7 @@ License
 
 #include "omegaRoughWallFunctionFvPatchScalarField.H"
 #include "nutWallFunctionFvPatchScalarField.H"
-#include "turbulenceModel.H"
+#include "momentumTransportModel.H"
 #include "fvPatchFieldMapper.H"
 #include "fvMatrix.H"
 #include "volFields.H"
@@ -175,7 +175,7 @@ omegaRoughWallFunctionFvPatchScalarField::omegaPatch(const label patchi)
 
 void omegaRoughWallFunctionFvPatchScalarField::calculateTurbulenceFields
 (
-    const turbulenceModel& turbModel,
+    const momentumTransportModel& turbModel,
     scalarField& G0,
     scalarField& omega0
 )
@@ -208,7 +208,7 @@ void omegaRoughWallFunctionFvPatchScalarField::calculateTurbulenceFields
 
 void omegaRoughWallFunctionFvPatchScalarField::calculate
 (
-    const turbulenceModel& turbModel,
+    const momentumTransportModel& turbModel,
     const List<scalar>& cornerWeights,
     const fvPatch& patch,
     scalarField& G0,
@@ -467,11 +467,11 @@ void omegaRoughWallFunctionFvPatchScalarField::updateCoeffs()
         return;
     }
 
-    const turbulenceModel& turbModel = db().lookupObject<turbulenceModel>
+    const momentumTransportModel& turbModel = db().lookupObject<momentumTransportModel>
     (
         IOobject::groupName
         (
-            turbulenceModel::propertiesName,
+            momentumTransportModel::typeName,
             internalField().group()
         )
     );
@@ -519,11 +519,11 @@ void omegaRoughWallFunctionFvPatchScalarField::updateWeightedCoeffs
         return;
     }
 
-    const turbulenceModel& turbModel = db().lookupObject<turbulenceModel>
+    const momentumTransportModel& turbModel = db().lookupObject<momentumTransportModel>
     (
         IOobject::groupName
         (
-            turbulenceModel::propertiesName,
+            momentumTransportModel::typeName,
             internalField().group()
         )
     );

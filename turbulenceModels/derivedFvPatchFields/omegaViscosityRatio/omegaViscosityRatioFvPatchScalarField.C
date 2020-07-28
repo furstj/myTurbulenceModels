@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "omegaViscosityRatioFvPatchScalarField.H"
-#include "turbulenceModel.H"
+#include "momentumTransportModel.H"
 #include "fvPatchFieldMapper.H"
 #include "fvMatrix.H"
 #include "volFields.H"
@@ -116,11 +116,11 @@ void omegaViscosityRatioFvPatchScalarField::updateCoeffs()
         return;
     }
 
-    const turbulenceModel& turbModel = db().lookupObject<turbulenceModel>
+    const momentumTransportModel& turbModel = db().lookupObject<momentumTransportModel>
     (
         IOobject::groupName
         (
-            turbulenceModel::propertiesName,
+            momentumTransportModel::typeName,
             internalField().group()
         )
     );

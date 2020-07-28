@@ -36,22 +36,21 @@ namespace Foam
 // * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * * //
 
 
-template<class TurbulenceModel, class BasicTurbulenceModel>
-void kOmega<TurbulenceModel, BasicTurbulenceModel>::correctNut()
+template<class MomentumTransportModel, class BasicMomentumTransportModel>
+void kOmega<MomentumTransportModel, BasicMomentumTransportModel>::correctNut()
 {
   this->nut_ = k_/omega_;
   this->nut_.correctBoundaryConditions();
   fv::options::New(this->mesh_).correct(this->nut_);
-  BasicTurbulenceModel::correctNut();
 }
 
 
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * //
 
 
-template<class TurbulenceModel, class BasicTurbulenceModel>
+template<class MomentumTransportModel, class BasicMomentumTransportModel>
 tmp<volScalarField::Internal>
-kOmega<TurbulenceModel, BasicTurbulenceModel>::Pk
+kOmega<MomentumTransportModel, BasicMomentumTransportModel>::Pk
 (
     const volScalarField::Internal& G
 ) const
@@ -60,17 +59,17 @@ kOmega<TurbulenceModel, BasicTurbulenceModel>::Pk
 }
 
 
-template<class TurbulenceModel, class BasicTurbulenceModel>
+template<class MomentumTransportModel, class BasicMomentumTransportModel>
 tmp<volScalarField::Internal>
-kOmega<TurbulenceModel, BasicTurbulenceModel>::epsilonByk() const
+kOmega<MomentumTransportModel, BasicMomentumTransportModel>::epsilonByk() const
 {
     return betaStar_*omega_();
 }
 
 
-template<class TurbulenceModel, class BasicTurbulenceModel>
+template<class MomentumTransportModel, class BasicMomentumTransportModel>
 tmp<fvScalarMatrix>
-kOmega<TurbulenceModel, BasicTurbulenceModel>::kSource() const
+kOmega<MomentumTransportModel, BasicMomentumTransportModel>::kSource() const
 {
     return tmp<fvScalarMatrix>
     (
@@ -83,9 +82,9 @@ kOmega<TurbulenceModel, BasicTurbulenceModel>::kSource() const
 }
 
 
-template<class TurbulenceModel, class BasicTurbulenceModel>
+template<class MomentumTransportModel, class BasicMomentumTransportModel>
 tmp<fvScalarMatrix>
-kOmega<TurbulenceModel, BasicTurbulenceModel>::omegaSource() const
+kOmega<MomentumTransportModel, BasicMomentumTransportModel>::omegaSource() const
 {
     return tmp<fvScalarMatrix>
     (
@@ -101,8 +100,8 @@ kOmega<TurbulenceModel, BasicTurbulenceModel>::omegaSource() const
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class TurbulenceModel, class BasicTurbulenceModel>
-kOmega<TurbulenceModel, BasicTurbulenceModel>::kOmega
+template<class MomentumTransportModel, class BasicMomentumTransportModel>
+kOmega<MomentumTransportModel, BasicMomentumTransportModel>::kOmega
 (
     const word& type,
     const alphaField& alpha,
@@ -110,11 +109,10 @@ kOmega<TurbulenceModel, BasicTurbulenceModel>::kOmega
     const volVectorField& U,
     const surfaceScalarField& alphaRhoPhi,
     const surfaceScalarField& phi,
-    const transportModel& transport,
-    const word& propertiesName
+    const transportModel& transport
 )
 :
-    TurbulenceModel
+    MomentumTransportModel
     (
         type,
         alpha,
@@ -122,8 +120,7 @@ kOmega<TurbulenceModel, BasicTurbulenceModel>::kOmega
         U,
         alphaRhoPhi,
         phi,
-        transport,
-        propertiesName
+        transport
     ),
 
     alphaK_
@@ -206,10 +203,10 @@ kOmega<TurbulenceModel, BasicTurbulenceModel>::kOmega
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-template<class TurbulenceModel, class BasicTurbulenceModel>
-bool kOmega<TurbulenceModel, BasicTurbulenceModel>::read()
+template<class MomentumTransportModel, class BasicMomentumTransportModel>
+bool kOmega<MomentumTransportModel, BasicMomentumTransportModel>::read()
 {
-    if (TurbulenceModel::read())
+    if (MomentumTransportModel::read())
     {
         alphaK_.readIfPresent(this->coeffDict());
         alphaOmega_.readIfPresent(this->coeffDict());
@@ -226,8 +223,8 @@ bool kOmega<TurbulenceModel, BasicTurbulenceModel>::read()
 }
 
 
-template<class TurbulenceModel, class BasicTurbulenceModel>
-void kOmega<TurbulenceModel, BasicTurbulenceModel>::correct()
+template<class MomentumTransportModel, class BasicMomentumTransportModel>
+void kOmega<MomentumTransportModel, BasicMomentumTransportModel>::correct()
 {
     if (!this->turbulence_)
     {
@@ -242,7 +239,7 @@ void kOmega<TurbulenceModel, BasicTurbulenceModel>::correct()
     volScalarField& nut = this->nut_;
     fv::options& fvOptions(fv::options::New(this->mesh_));
 
-    BasicTurbulenceModel::correct();
+    BasicMomentumTransportModel::correct();
 
     volScalarField::Internal divU
     (

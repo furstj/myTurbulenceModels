@@ -34,8 +34,8 @@ namespace RASModels
 
 // * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::Ue(const volScalarField& p, const volVectorField& U) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaFS<BasicMomentumTransportModel>::Ue(const volScalarField& p, const volVectorField& U) const
 {
 
     if ( p.dimensions() == dimensionSet(0, 2, -2, 0, 0) ) 
@@ -67,8 +67,8 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::Ue(const volScalarField&
     }
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::K() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaFS<BasicMomentumTransportModel>::K() const
 {
     const volScalarField& p = this->mesh_.objectRegistry::lookupObject<volScalarField>("p");
     const volVectorField& U_ = this->U_;
@@ -93,15 +93,15 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::K() const
     ));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::RevByReTheta(const volScalarField& L) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaFS<BasicMomentumTransportModel>::RevByReTheta(const volScalarField& L) const
 {
     volScalarField Lapg = max( min(L, 0.0), -1.5);
     return  2.1884 * ( 1.0 - 0.95419*Lapg - 0.13183*sqr(Lapg) );
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::lambdaTheta(const volScalarField& L) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaFS<BasicMomentumTransportModel>::lambdaTheta(const volScalarField& L) const
 {
     return tmp<volScalarField>(new volScalarField(
         "lambdaTheta",
@@ -109,8 +109,8 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::lambdaTheta(const volSca
     ));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::ReThetac(const volScalarField& lambda) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaFS<BasicMomentumTransportModel>::ReThetac(const volScalarField& lambda) const
 {
     return tmp<volScalarField>(new volScalarField(
         "ReThetac",
@@ -118,8 +118,8 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::ReThetac(const volScalar
     ));   
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::CtsCrit(const volScalarField& L) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaFS<BasicMomentumTransportModel>::CtsCrit(const volScalarField& L) const
 {
     return tmp<volScalarField>(new volScalarField(
         "CtsCrit",
@@ -127,8 +127,8 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::CtsCrit(const volScalarF
     ));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::CnatCrit(const volScalarField& L) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaFS<BasicMomentumTransportModel>::CnatCrit(const volScalarField& L) const
 {
     return tmp<volScalarField>(new volScalarField(
             "CnatCrit",
@@ -137,8 +137,8 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::CnatCrit(const volScalar
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::BetaTS(const volScalarField& ReOmega) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaFS<BasicMomentumTransportModel>::BetaTS(const volScalarField& ReOmega) const
 {
     volScalarField L("L", sqr(ReOmega) * K());
 
@@ -148,8 +148,8 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::BetaTS(const volScalarFi
         ));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::phiNAT
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaFS<BasicMomentumTransportModel>::phiNAT
 (
     const volScalarField& ReOmega,
     const volScalarField& fNatCrit
@@ -174,8 +174,8 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::phiNAT
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-mykkLOmegaFS<BasicTurbulenceModel>::mykkLOmegaFS
+template<class BasicMomentumTransportModel>
+mykkLOmegaFS<BasicMomentumTransportModel>::mykkLOmegaFS
 (
     const alphaField& alpha,
     const rhoField& rho,
@@ -183,11 +183,10 @@ mykkLOmegaFS<BasicTurbulenceModel>::mykkLOmegaFS
     const surfaceScalarField& alphaRhoPhi,
     const surfaceScalarField& phi,
     const transportModel& transport,
-    const word& propertiesName,
     const word& type
 )
 :
-    mykkLOmega<BasicTurbulenceModel>
+    mykkLOmega<BasicMomentumTransportModel>
     (
         alpha,
         rho,
@@ -195,7 +194,6 @@ mykkLOmegaFS<BasicTurbulenceModel>::mykkLOmegaFS
         alphaRhoPhi,
         phi,
         transport,
-        propertiesName,
         type
     )
 {
@@ -219,10 +217,10 @@ mykkLOmegaFS<BasicTurbulenceModel>::mykkLOmegaFS
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-bool mykkLOmegaFS<BasicTurbulenceModel>::read()
+template<class BasicMomentumTransportModel>
+bool mykkLOmegaFS<BasicMomentumTransportModel>::read()
 {
-    if (  mykkLOmega<BasicTurbulenceModel>::read())
+    if (  mykkLOmega<BasicMomentumTransportModel>::read())
     {
         return true;
     }
@@ -233,8 +231,8 @@ bool mykkLOmegaFS<BasicTurbulenceModel>::read()
 }
 
 
-template<class BasicTurbulenceModel>
-void mykkLOmegaFS<BasicTurbulenceModel>::correct()
+template<class BasicMomentumTransportModel>
+void mykkLOmegaFS<BasicMomentumTransportModel>::correct()
 {
 
     if (!this->turbulence_)
@@ -242,7 +240,7 @@ void mykkLOmegaFS<BasicTurbulenceModel>::correct()
         return;
     }
 
-    mykkLOmega<BasicTurbulenceModel>::correct();
+    mykkLOmega<BasicMomentumTransportModel>::correct();
 
     if (debug && this->runTime_.outputTime()) {
       tmp<volTensorField> tgradU(fvc::grad(this->U_));

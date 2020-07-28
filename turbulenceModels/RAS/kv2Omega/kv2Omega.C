@@ -36,8 +36,8 @@ namespace RASModels
 
 // * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::fv(const volScalarField& Ret) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::fv(const volScalarField& Ret) const
 {
     return tmp<volScalarField>(new volScalarField(
         "fv",
@@ -45,8 +45,8 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::fv(const volScalarField& Ret
     ));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::fINT() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::fINT() const
 {
     return tmp<volScalarField>(new volScalarField(
         "fINT",
@@ -61,8 +61,8 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::fINT() const
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::fSS(const volScalarField& W) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::fSS(const volScalarField& W) const
 {
     return tmp<volScalarField>(new volScalarField(
         "fSS",
@@ -71,8 +71,8 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::fSS(const volScalarField& W)
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::Cmu(const volScalarField& S) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::Cmu(const volScalarField& S) const
 {
     return tmp<volScalarField>(new volScalarField(
         "Cmu",
@@ -81,8 +81,8 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::Cmu(const volScalarField& S)
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::betaTS(const volScalarField& ReW) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::betaTS(const volScalarField& ReW) const
 {
     return tmp<volScalarField>(new volScalarField(
             "betaTS",
@@ -91,8 +91,8 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::betaTS(const volScalarField&
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::lambdaT() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::lambdaT() const
 {
   
     return tmp<volScalarField>(new volScalarField(
@@ -101,8 +101,8 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::lambdaT() const
     ));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::lambdaEff(const volScalarField& lambdaT) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::lambdaEff(const volScalarField& lambdaT) const
 {
   
     return tmp<volScalarField>(new volScalarField(
@@ -111,8 +111,8 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::lambdaEff(const volScalarFie
         ));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::fTaul
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::fTaul
 (
     const volScalarField& lambdaEff,
     const volScalarField& v2l,
@@ -134,8 +134,8 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::fTaul
 };
         
         
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::alphaT
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::alphaT
 (
     const volScalarField& lambdaEff,
     const volScalarField& fv,
@@ -151,8 +151,8 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::alphaT
 
 // TODO
 /*
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::fOmega
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::fOmega
 (
     const volScalarField& lambdaEff,
     const volScalarField& lambdaT
@@ -183,8 +183,8 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::fOmega
 
     */
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::phiBP(const volScalarField& W) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::phiBP(const volScalarField& W) const
 {
     const dimensionedScalar wMin("ROOTVSMALL", inv(dimTime), ROOTVSMALL);
 
@@ -203,8 +203,8 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::phiBP(const volScalarField& 
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::phiNAT
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::phiNAT
 (
     const volScalarField& ReW,
     const volScalarField& fNATcrit
@@ -223,14 +223,14 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::phiNAT
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::D(const volScalarField& k) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::D(const volScalarField& k) const
 {
     return 2.0*this->nu()*magSqr(fvc::grad(sqrt(k)));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::F1() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> kv2Omega<BasicMomentumTransportModel>::F1() const
 {
     const volScalarField CDkOmega(
         "CDkOmega",
@@ -261,8 +261,8 @@ tmp<volScalarField> kv2Omega<BasicTurbulenceModel>::F1() const
 
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-void kv2Omega<BasicTurbulenceModel>::correctNut()
+template<class BasicMomentumTransportModel>
+void kv2Omega<BasicMomentumTransportModel>::correctNut()
 {
     // Currently this function is not implemented due to the complexity of
     // evaluating nut.  Better calculate nut at the end of correct()
@@ -271,8 +271,8 @@ void kv2Omega<BasicTurbulenceModel>::correctNut()
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-kv2Omega<BasicTurbulenceModel>::kv2Omega
+template<class BasicMomentumTransportModel>
+kv2Omega<BasicMomentumTransportModel>::kv2Omega
 (
     const alphaField& alpha,
     const rhoField& rho,
@@ -280,11 +280,10 @@ kv2Omega<BasicTurbulenceModel>::kv2Omega
     const surfaceScalarField& alphaRhoPhi,
     const surfaceScalarField& phi,
     const transportModel& transport,
-    const word& propertiesName,
     const word& type
 )
 :
-  eddyViscosity<RASModel<BasicTurbulenceModel> >
+  eddyViscosity<RASModel<BasicMomentumTransportModel> >
     (
         type,
         alpha,
@@ -292,8 +291,7 @@ kv2Omega<BasicTurbulenceModel>::kv2Omega
         U,
         alphaRhoPhi,
         phi,
-        transport,
-        propertiesName
+        transport
     ),
 
     A0_
@@ -596,10 +594,10 @@ kv2Omega<BasicTurbulenceModel>::kv2Omega
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-bool kv2Omega<BasicTurbulenceModel>::read()
+template<class BasicMomentumTransportModel>
+bool kv2Omega<BasicMomentumTransportModel>::read()
 {
-    if (  eddyViscosity<RASModel<BasicTurbulenceModel> >::read())
+    if (  eddyViscosity<RASModel<BasicMomentumTransportModel> >::read())
     {    
         A0_.readIfPresent(this->coeffDict());
         AS_.readIfPresent(this->coeffDict());
@@ -638,14 +636,14 @@ bool kv2Omega<BasicTurbulenceModel>::read()
 }
 
 
-template<class BasicTurbulenceModel>
-void kv2Omega<BasicTurbulenceModel>::validate()
+template<class BasicMomentumTransportModel>
+void kv2Omega<BasicMomentumTransportModel>::validate()
 {}
 
 
 // TODO
-template<class BasicTurbulenceModel>
-void kv2Omega<BasicTurbulenceModel>::correct()
+template<class BasicMomentumTransportModel>
+void kv2Omega<BasicMomentumTransportModel>::correct()
 {
 
     if (!this->turbulence_)
@@ -653,7 +651,7 @@ void kv2Omega<BasicTurbulenceModel>::correct()
         return;
     }
 
-    eddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
+    eddyViscosity<RASModel<BasicMomentumTransportModel> >::correct();
 
     // Local references
     const alphaField& alpha_ = this->alpha_;

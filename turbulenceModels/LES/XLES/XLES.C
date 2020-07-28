@@ -35,21 +35,21 @@ namespace LESModels
 
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField::Internal> XLES<BasicTurbulenceModel>::Lt() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField::Internal> XLES<BasicMomentumTransportModel>::Lt() const
 {
     return sqrt(this->k_())/(this->betaStar_*this->omega_());
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField::Internal> XLES<BasicTurbulenceModel>::FDES() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField::Internal> XLES<BasicMomentumTransportModel>::FDES() const
 {
   return max(Lt()/(CDES_*this->delta()()), scalar(1));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField::Internal> XLES<BasicTurbulenceModel>::Pk
+template<class BasicMomentumTransportModel>
+tmp<volScalarField::Internal> XLES<BasicMomentumTransportModel>::Pk
 (
    const volScalarField::Internal& G
 ) const
@@ -71,15 +71,15 @@ tmp<volScalarField::Internal> XLES<BasicTurbulenceModel>::Pk
 }
   
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField::Internal> XLES<BasicTurbulenceModel>::epsilonByk() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField::Internal> XLES<BasicMomentumTransportModel>::epsilonByk() const
 {
     return FDES() * this->betaStar_ * this->omega_;
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<fvScalarMatrix> XLES<BasicTurbulenceModel>::omegaSource() const
+template<class BasicMomentumTransportModel>
+tmp<fvScalarMatrix> XLES<BasicMomentumTransportModel>::omegaSource() const
 {
     return fvm::Su(
         max(
@@ -90,8 +90,8 @@ tmp<fvScalarMatrix> XLES<BasicTurbulenceModel>::omegaSource() const
     );
 }
 
-template<class BasicTurbulenceModel>
-void XLES<BasicTurbulenceModel>::correctNut()
+template<class BasicMomentumTransportModel>
+void XLES<BasicMomentumTransportModel>::correctNut()
 {
   volScalarField::Internal FDES_ = FDES();
   
@@ -111,14 +111,12 @@ void XLES<BasicTurbulenceModel>::correctNut()
 
   this->nut_.correctBoundaryConditions();
   fv::options::New(this->mesh_).correct(this->nut_);
-  BasicTurbulenceModel::correctNut();
-
 }
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-XLES<BasicTurbulenceModel>::XLES
+template<class BasicMomentumTransportModel>
+XLES<BasicMomentumTransportModel>::XLES
 (
     const alphaField& alpha,
     const rhoField& rho,
@@ -126,13 +124,12 @@ XLES<BasicTurbulenceModel>::XLES
     const surfaceScalarField& alphaRhoPhi,
     const surfaceScalarField& phi,
     const transportModel& transport,
-    const word& propertiesName,
     const word& type
 )
 :
     kOmega<
-        LESeddyViscosity<BasicTurbulenceModel>,
-        BasicTurbulenceModel
+        LESeddyViscosity<BasicMomentumTransportModel>,
+        BasicMomentumTransportModel
     >
     (
         type,
@@ -141,8 +138,7 @@ XLES<BasicTurbulenceModel>::XLES
         U,
         alphaRhoPhi,
         phi,
-        transport,
-        propertiesName
+        transport
     ),
 
     RanGen_(label(0)),
@@ -214,12 +210,12 @@ XLES<BasicTurbulenceModel>::XLES
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-bool XLES<BasicTurbulenceModel>::read()
+template<class BasicMomentumTransportModel>
+bool XLES<BasicMomentumTransportModel>::read()
 {
     if
     (
-        kOmega<LESeddyViscosity<BasicTurbulenceModel>, BasicTurbulenceModel>
+        kOmega<LESeddyViscosity<BasicMomentumTransportModel>, BasicMomentumTransportModel>
         ::read()
     )
     {

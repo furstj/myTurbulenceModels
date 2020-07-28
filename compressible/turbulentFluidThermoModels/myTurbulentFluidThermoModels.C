@@ -23,48 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "CompressibleTurbulenceModel.H"
-#include "compressibleTransportModel.H"
-#include "fluidThermo.H"
-#include "addToRunTimeSelectionTable.H"
-#include "makeTurbulenceModel.H"
-
-#include "ThermalDiffusivity.H"
-#include "EddyDiffusivity.H"
-
-#include "laminarModel.H"
-#include "RASModel.H"
-#include "LESModel.H"
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-namespace Foam {
-  
-  typedef TurbulenceModel<
-    geometricOneField,
-    volScalarField,
-    compressibleTurbulenceModel,
-    fluidThermo
-    > fluidThermocompressibleTurbulenceModel;
-  
-  typedef ThermalDiffusivity< CompressibleTurbulenceModel<fluidThermo> >
-  fluidThermoCompressibleTurbulenceModel;
-
-  typedef RASModel< EddyDiffusivity<fluidThermoCompressibleTurbulenceModel> >
-  RASfluidThermoCompressibleTurbulenceModel;
-
-  typedef LESModel< EddyDiffusivity<fluidThermoCompressibleTurbulenceModel> >
-  LESfluidThermoCompressibleTurbulenceModel;
-
-}
-
-#define makeRASModel(Type)                                                     \
-    makeTemplatedTurbulenceModel                                               \
-    (fluidThermoCompressibleTurbulenceModel, RAS, Type)
-
-#define makeLESModel(Type)                                                     \
-    makeTemplatedTurbulenceModel                                               \
-    (fluidThermoCompressibleTurbulenceModel, LES, Type)
+#include "fluidThermoMomentumTransportModels.H"
 
 
 // -------------------------------------------------------------------------- //
@@ -73,6 +32,7 @@ namespace Foam {
 
 #include "gammaSST.H"
 makeRASModel(gammaSST);
+
 
 #include "kOmegaSSTCC.H"
 makeRASModel(kOmegaSSTCC);
@@ -98,7 +58,7 @@ makeRASModel(EARSMTrans);
 #include "kOmegaTrans.H"
 makeRASModel(kOmegaTrans);
 
-#define HAVE_ALPHAT
+/* the correct thermophysical model is not yet implmented
 
 #include "kv2Omega.H"
 makeRASModel(kv2Omega);
@@ -111,6 +71,7 @@ makeRASModel(mykkLOmegaPh);
 
 #include "mykkLOmegaFS.H"
 makeRASModel(mykkLOmegaFS);
+*/
 
 // -------------------------------------------------------------------------- //
 // LES models
@@ -118,6 +79,5 @@ makeRASModel(mykkLOmegaFS);
 
 #include "XLES.H"
 makeLESModel(XLES);
-
 
 // ************************************************************************* //

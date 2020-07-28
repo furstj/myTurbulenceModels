@@ -34,8 +34,8 @@ namespace RASModels
 
 // * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::Ue(const volScalarField& p, const volVectorField& U) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaPh<BasicMomentumTransportModel>::Ue(const volScalarField& p, const volVectorField& U) const
 {
 
     if ( p.dimensions() == dimensionSet(0, 2, -2, 0, 0) ) 
@@ -67,8 +67,8 @@ tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::Ue(const volScalarField&
     }
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::L(const volScalarField& ReOmega) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaPh<BasicMomentumTransportModel>::L(const volScalarField& ReOmega) const
 {
     const volScalarField& p = this->mesh_.objectRegistry::lookupObject<volScalarField>("p");
     const volVectorField& U_ = this->U_;
@@ -90,8 +90,8 @@ tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::L(const volScalarField& 
     return ( sqr(ReOmega) * K );
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::CtsCrit(const volScalarField& L) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaPh<BasicMomentumTransportModel>::CtsCrit(const volScalarField& L) const
 {
     return tmp<volScalarField>(new volScalarField(
         "CtsCrit",
@@ -99,8 +99,8 @@ tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::CtsCrit(const volScalarF
     ));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::CnatCrit(const volScalarField& L) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaPh<BasicMomentumTransportModel>::CnatCrit(const volScalarField& L) const
 {
     return tmp<volScalarField>(new volScalarField(
             "CnatCrit",
@@ -109,8 +109,8 @@ tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::CnatCrit(const volScalar
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::BetaTS(const volScalarField& ReOmega) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaPh<BasicMomentumTransportModel>::BetaTS(const volScalarField& ReOmega) const
 {
     volScalarField L_ = L(ReOmega);
 
@@ -120,8 +120,8 @@ tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::BetaTS(const volScalarFi
         ));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::phiNAT
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmegaPh<BasicMomentumTransportModel>::phiNAT
 (
     const volScalarField& ReOmega,
     const volScalarField& fNatCrit
@@ -146,8 +146,8 @@ tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::phiNAT
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-mykkLOmegaPh<BasicTurbulenceModel>::mykkLOmegaPh
+template<class BasicMomentumTransportModel>
+mykkLOmegaPh<BasicMomentumTransportModel>::mykkLOmegaPh
 (
     const alphaField& alpha,
     const rhoField& rho,
@@ -155,11 +155,10 @@ mykkLOmegaPh<BasicTurbulenceModel>::mykkLOmegaPh
     const surfaceScalarField& alphaRhoPhi,
     const surfaceScalarField& phi,
     const transportModel& transport,
-    const word& propertiesName,
     const word& type
 )
 :
-    mykkLOmega<BasicTurbulenceModel>
+    mykkLOmega<BasicMomentumTransportModel>
     (
         alpha,
         rho,
@@ -167,7 +166,6 @@ mykkLOmegaPh<BasicTurbulenceModel>::mykkLOmegaPh
         alphaRhoPhi,
         phi,
         transport,
-        propertiesName,
         type
      ),
     CtsCrit0_
@@ -209,10 +207,10 @@ mykkLOmegaPh<BasicTurbulenceModel>::mykkLOmegaPh
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-bool mykkLOmegaPh<BasicTurbulenceModel>::read()
+template<class BasicMomentumTransportModel>
+bool mykkLOmegaPh<BasicMomentumTransportModel>::read()
 {
-    if (  mykkLOmega<BasicTurbulenceModel>::read())
+    if (  mykkLOmega<BasicMomentumTransportModel>::read())
     {
         CtsCrit0_.readIfPresent(this->coeffDict());
         CnatApg_.readIfPresent(this->coeffDict());
@@ -225,8 +223,8 @@ bool mykkLOmegaPh<BasicTurbulenceModel>::read()
 }
 
 
-template<class BasicTurbulenceModel>
-void mykkLOmegaPh<BasicTurbulenceModel>::correct()
+template<class BasicMomentumTransportModel>
+void mykkLOmegaPh<BasicMomentumTransportModel>::correct()
 {
 
     if (!this->turbulence_)
@@ -234,7 +232,7 @@ void mykkLOmegaPh<BasicTurbulenceModel>::correct()
         return;
     }
 
-    mykkLOmega<BasicTurbulenceModel>::correct();
+    mykkLOmega<BasicMomentumTransportModel>::correct();
 
     if (debug && this->runTime_.outputTime()) {
     }

@@ -37,8 +37,8 @@ namespace RASModels
 
 // * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::fv(const volScalarField& Ret) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::fv(const volScalarField& Ret) const
 {
     return tmp<volScalarField>(new volScalarField(
         "fv",
@@ -47,8 +47,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::fv(const volScalarField& R
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::fINT() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::fINT() const
 {
     return tmp<volScalarField>(new volScalarField(
         "fINT",
@@ -63,8 +63,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::fINT() const
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::fSS(const volScalarField& Omega) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::fSS(const volScalarField& Omega) const
 {
     return tmp<volScalarField>(new volScalarField(
         "fSS",
@@ -73,8 +73,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::fSS(const volScalarField& 
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::Cmu(const volScalarField& S) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::Cmu(const volScalarField& S) const
 {
     return tmp<volScalarField>(new volScalarField(
         "Cmu",
@@ -83,8 +83,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::Cmu(const volScalarField& 
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::BetaTS(const volScalarField& ReOmega) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::BetaTS(const volScalarField& ReOmega) const
 {
     return tmp<volScalarField>(new volScalarField(
             "BetaTS",
@@ -93,8 +93,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::BetaTS(const volScalarFiel
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::lambdaT() const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::lambdaT() const
 {
   
     return tmp<volScalarField>(new volScalarField(
@@ -103,8 +103,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::lambdaT() const
         ));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::lambdaEff(const volScalarField& lambdaT) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::lambdaEff(const volScalarField& lambdaT) const
 {
   
     return tmp<volScalarField>(new volScalarField(
@@ -113,8 +113,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::lambdaEff(const volScalarF
         ));
 }
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::fTaul
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::fTaul
 (
     const volScalarField& lambdaEff,
     const volScalarField& ktL,
@@ -145,8 +145,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::fTaul
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::alphaT
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::alphaT
 (
     const volScalarField& lambdaEff,
     const volScalarField& fv,
@@ -160,8 +160,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::alphaT
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::fOmega
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::fOmega
 (
     const volScalarField& lambdaEff,
     const volScalarField& lambdaT
@@ -191,8 +191,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::fOmega
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::phiBP(const volScalarField& Omega) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::phiBP(const volScalarField& Omega) const
 {
     return tmp<volScalarField>(new volScalarField(
         "phiBP",
@@ -219,8 +219,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::phiBP(const volScalarField
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::phiNAT
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::phiNAT
 (
     const volScalarField& ReOmega,
     const volScalarField& fNatCrit
@@ -241,8 +241,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::phiNAT
 }
 
 
-template<class BasicTurbulenceModel>
-tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::D(const volScalarField& k) const
+template<class BasicMomentumTransportModel>
+tmp<volScalarField> mykkLOmega<BasicMomentumTransportModel>::D(const volScalarField& k) const
 {
     return this->nu()*magSqr(fvc::grad(sqrt(k)));
 }
@@ -250,8 +250,8 @@ tmp<volScalarField> mykkLOmega<BasicTurbulenceModel>::D(const volScalarField& k)
 
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-void mykkLOmega<BasicTurbulenceModel>::correctNut()
+template<class BasicMomentumTransportModel>
+void mykkLOmega<BasicMomentumTransportModel>::correctNut()
 {
     // Currently this function is not implemented due to the complexity of
     // evaluating nut.  Better calculate nut at the end of correct()
@@ -260,8 +260,8 @@ void mykkLOmega<BasicTurbulenceModel>::correctNut()
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-mykkLOmega<BasicTurbulenceModel>::mykkLOmega
+template<class BasicMomentumTransportModel>
+mykkLOmega<BasicMomentumTransportModel>::mykkLOmega
 (
     const alphaField& alpha,
     const rhoField& rho,
@@ -269,11 +269,10 @@ mykkLOmega<BasicTurbulenceModel>::mykkLOmega
     const surfaceScalarField& alphaRhoPhi,
     const surfaceScalarField& phi,
     const transportModel& transport,
-    const word& propertiesName,
     const word& type
 )
 :
-  eddyViscosity<RASModel<BasicTurbulenceModel> >
+  eddyViscosity<RASModel<BasicMomentumTransportModel> >
     (
         type,
         alpha,
@@ -281,8 +280,7 @@ mykkLOmega<BasicTurbulenceModel>::mykkLOmega
         U,
         alphaRhoPhi,
         phi,
-        transport,
-        propertiesName
+        transport
     ),
 
     A0_
@@ -619,10 +617,10 @@ mykkLOmega<BasicTurbulenceModel>::mykkLOmega
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-bool mykkLOmega<BasicTurbulenceModel>::read()
+template<class BasicMomentumTransportModel>
+bool mykkLOmega<BasicMomentumTransportModel>::read()
 {
-    if (  eddyViscosity<RASModel<BasicTurbulenceModel> >::read())
+    if (  eddyViscosity<RASModel<BasicMomentumTransportModel> >::read())
     {
         A0_.readIfPresent(this->coeffDict());
         As_.readIfPresent(this->coeffDict());
@@ -663,13 +661,13 @@ bool mykkLOmega<BasicTurbulenceModel>::read()
 }
 
 
-template<class BasicTurbulenceModel>
-void mykkLOmega<BasicTurbulenceModel>::validate()
+template<class BasicMomentumTransportModel>
+void mykkLOmega<BasicMomentumTransportModel>::validate()
 {}
 
 
-template<class BasicTurbulenceModel>
-void mykkLOmega<BasicTurbulenceModel>::correct()
+template<class BasicMomentumTransportModel>
+void mykkLOmega<BasicMomentumTransportModel>::correct()
 {
 
     if (!this->turbulence_)
@@ -691,7 +689,7 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
     volScalarField& kl_ = this->kl_;
     fv::options& fvOptions(fv::options::New(this->mesh_));
 
-    eddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
+    eddyViscosity<RASModel<BasicMomentumTransportModel> >::correct();
 
     const volScalarField lambdaT_ = lambdaT();
   
@@ -854,7 +852,8 @@ void mykkLOmega<BasicTurbulenceModel>::correct()
     // Re-calculate turbulent viscosity
     nut_ = nuts + nutl;
     nut_.correctBoundaryConditions();
-
+    fv::options::New(this->mesh_).correct(this->nut_);
+    
 #ifdef HAVE_ALPHAT
     // Re-calculate thermal diffusivity
     this->alphat_ = alpha * rho * 

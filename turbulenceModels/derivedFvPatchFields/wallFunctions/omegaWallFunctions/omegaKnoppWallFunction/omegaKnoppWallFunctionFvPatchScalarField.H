@@ -96,7 +96,7 @@ Author
 namespace Foam
 {
 
-class turbulenceModel;
+class momentumTransportModel;
 
 /*---------------------------------------------------------------------------*\
              Class omegaKnoppWallFunctionFvPatchScalarField Declaration
@@ -169,7 +169,7 @@ protected:
         //- Main driver to calculate the turbulence fields
         virtual void calculateTurbulenceFields
         (
-            const turbulenceModel& turbulence,
+            const momentumTransportModel& turbulence,
             scalarField& G0,
             scalarField& omega0
         );
@@ -177,7 +177,7 @@ protected:
         //- Calculate the omega and G
         virtual void calculate
         (
-            const turbulenceModel& turbulence,
+            const momentumTransportModel& turbulence,
             const List<scalar>& cornerWeights,
             const fvPatch& patch,
             scalarField& G,

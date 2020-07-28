@@ -36,8 +36,8 @@ namespace RASModels
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-template<class BasicTurbulenceModel>
-kOmegaTNT<BasicTurbulenceModel>::kOmegaTNT
+template<class BasicMomentumTransportModel>
+kOmegaTNT<BasicMomentumTransportModel>::kOmegaTNT
 (
     const alphaField& alpha,
     const rhoField& rho,
@@ -45,11 +45,10 @@ kOmegaTNT<BasicTurbulenceModel>::kOmegaTNT
     const surfaceScalarField& alphaRhoPhi,
     const surfaceScalarField& phi,
     const transportModel& transport,
-    const word& propertiesName,
     const word& type
 ):
             
-    kOmega<BasicTurbulenceModel>
+    kOmega<BasicMomentumTransportModel>
     (
         alpha,
         rho,
@@ -57,7 +56,6 @@ kOmegaTNT<BasicTurbulenceModel>::kOmegaTNT
         alphaRhoPhi,
         phi,
         transport,
-        propertiesName,
         type
     ),
     
@@ -101,10 +99,10 @@ kOmegaTNT<BasicTurbulenceModel>::kOmegaTNT
 
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
-template<class BasicTurbulenceModel>
-bool kOmegaTNT<BasicTurbulenceModel>::read()
+template<class BasicMomentumTransportModel>
+bool kOmegaTNT<BasicMomentumTransportModel>::read()
 {
-    if (kOmega<BasicTurbulenceModel>::read())
+    if (kOmega<BasicMomentumTransportModel>::read())
     {
         alphaD_.readIfPresent(this->coeffDict());
         productionLimiter_.readIfPresent("productionLimiter", this->coeffDict());
@@ -119,8 +117,8 @@ bool kOmegaTNT<BasicTurbulenceModel>::read()
 }
 
 
-template<class BasicTurbulenceModel>
-void kOmegaTNT<BasicTurbulenceModel>::correct()
+template<class BasicMomentumTransportModel>
+void kOmegaTNT<BasicMomentumTransportModel>::correct()
 {
     if (!this->turbulence_)
     {
@@ -138,7 +136,7 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
 
     fv::options& fvOptions(fv::options::New(this->mesh_));
 
-    eddyViscosity<RASModel<BasicTurbulenceModel>>::correct();
+    eddyViscosity<RASModel<BasicMomentumTransportModel>>::correct();
 
     volScalarField divU(fvc::div(fvc::absolute(this->phi(), U)));
 

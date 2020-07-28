@@ -76,10 +76,10 @@ namespace RASModels
                            Class EARSMTrans Declaration
 \*---------------------------------------------------------------------------*/
 
-template<class BasicTurbulenceModel>
+template<class BasicMomentumTransportModel>
 class EARSMTrans
 :
-    public nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >
+    public nonlinearEddyViscosity<RASModel<BasicMomentumTransportModel> >
 {
     // Private memmber functions
     
@@ -142,9 +142,9 @@ protected:
 
 public:
 
-    typedef typename BasicTurbulenceModel::alphaField alphaField;
-    typedef typename BasicTurbulenceModel::rhoField rhoField;
-    typedef typename BasicTurbulenceModel::transportModel transportModel;
+    typedef typename BasicMomentumTransportModel::alphaField alphaField;
+    typedef typename BasicMomentumTransportModel::rhoField rhoField;
+    typedef typename BasicMomentumTransportModel::transportModel transportModel;
 
 
     //- Runtime type information
@@ -162,7 +162,6 @@ public:
             const surfaceScalarField& alphaRhoPhi,
             const surfaceScalarField& phi,
             const transportModel& transport,
-            const word& propertiesName = turbulenceModel::propertiesName,
             const word& type = typeName
         );
 
