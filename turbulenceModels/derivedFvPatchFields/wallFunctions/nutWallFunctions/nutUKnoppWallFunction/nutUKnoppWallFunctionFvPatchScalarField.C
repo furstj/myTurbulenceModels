@@ -36,7 +36,7 @@ namespace Foam
 
 // * * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * //
 
-#if (OPENFOAM >= 1912)
+#if (OPENFOAM >= 1812)
 tmp<scalarField> nutUKnoppWallFunctionFvPatchScalarField::calcNut() const
 #else
 tmp<scalarField> nutUKnoppWallFunctionFvPatchScalarField::nut() const
@@ -289,7 +289,7 @@ void nutUKnoppWallFunctionFvPatchScalarField::write(Ostream& os) const
 {
     fvPatchField<scalar>::write(os);
     writeLocalEntries(os);
-#if (OPENFOAM >= 1912)
+#if (OPENFOAM >= 1812)
     this->writeEntry("value", os);
 #else
     writeEntry(os,"value", *this);

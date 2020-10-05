@@ -105,7 +105,7 @@ protected:
     // Protected Member Functions
 
         //- Calculate the turbulence viscosity
-#if (OPENFOAM >= 1912)
+#if (OPENFOAM >= 1812)
          virtual tmp<scalarField> calcNut() const;
 #else
          virtual tmp<scalarField> nut() const;
