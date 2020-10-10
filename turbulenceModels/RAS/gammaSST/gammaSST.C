@@ -24,6 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "gammaSST.H"
+#include "fvOptions.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -343,6 +344,8 @@ void gammaSST<BasicTurbulenceModel>::correct()
     volScalarField& nut = this->nut_;
     volScalarField& omega_ = this->omega_;
     volScalarField& k_ = this->k_;
+    fv::options& fvOptions(fv::options::New(this->mesh_));
+
 
     eddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
 
@@ -384,13 +387,16 @@ void gammaSST<BasicTurbulenceModel>::correct()
                 alpha*rho*(F1 - scalar(1))*CDkOmega/omega_,
                 omega_
             )
+	  + alpha()*rho()*beta*sqr(this->omegaInf_)
+	  + this->omegaSource()
+          + fvOptions(alpha, rho, omega_)
         );
 
         omegaEqn.ref().relax();
-
+        fvOptions.constrain(omegaEqn.ref());
         omegaEqn.ref().boundaryManipulate(omega_.boundaryFieldRef());
-
         solve(omegaEqn);
+	fvOptions.correct(omega_);
         bound(omega_, this->omegaMin_);
     }
 
@@ -414,10 +420,15 @@ void gammaSST<BasicTurbulenceModel>::correct()
      ==
         alpha*rho*(G*gammaInt() + PkLim)
         - fvm::Sp(max(gammaInt(),scalar(0.1)) * alpha*rho*this->betaStar_*omega_, k_)
+      + alpha()*rho()*this->betaStar_*this->omegaInf_*this->kInf_
+      + this->kSource()
+      + fvOptions(alpha, rho, k_)
     );
 
     kEqn.ref().relax();
+    fvOptions.constrain(kEqn.ref());
     solve(kEqn);
+    fvOptions.correct(k_);
     bound(k_, this->kMin_);
 
 #if (OPENFOAM_PLUS >= 1712 || OPENFOAM >= 1912)
