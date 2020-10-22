@@ -62,7 +62,7 @@ tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::Ue(const volScalarField&
         
         return tmp<volScalarField>(new volScalarField(
             "Ue",
-            sqrt(2/(gamma-1) * (pow( p/pTot, (1-gamma)/gamma ) - 1.0)) * a
+            sqrt(2/(gamma-1) * (pow( min(p/pTot,0.99999999), (1-gamma)/gamma ) - 1.0)) * a
         ));
     }
 }
