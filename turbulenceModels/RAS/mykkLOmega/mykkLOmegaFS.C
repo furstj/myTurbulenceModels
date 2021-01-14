@@ -59,10 +59,10 @@ tmp<volScalarField> mykkLOmegaFS<BasicTurbulenceModel>::Ue(const volScalarField&
 	dimensionedScalar pTot( "pTot", p.dimensions(), gMax( volScalarField(
             p * pow( 1.0 + (gamma-1.0)/2 * magSqr(U)/sqr(a), gamma/(gamma-1) ) 
         )));
-        
+
         return tmp<volScalarField>(new volScalarField(
             "Ue",
-            sqrt(2/(gamma-1) * (pow( p/pTot, (1-gamma)/gamma ) - 1.0)) * a
+            sqrt(2/(gamma-1) * pow( p/pTot, (1-gamma)/gamma ) - 1.0) * a
         ));
     }
 }
