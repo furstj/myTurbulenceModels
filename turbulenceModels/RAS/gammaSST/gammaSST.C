@@ -52,6 +52,19 @@ tmp<volScalarField> gammaSST<BasicTurbulenceModel>::ReThetac() const
 template<class BasicTurbulenceModel>
 tmp<volScalarField> gammaSST<BasicTurbulenceModel>::Fonset(const volScalarField& S) const
 {
+    tmp<volScalarField> Fons(
+        max
+        (
+            min(Fonset1(S), 2.0) - max(1.0-pow3(Rt()/3.5),0.0),
+            0.0
+        )
+    );
+
+    if (this->crossFlow_)
+    {
+        Fons = max(Fons, this->FonsetCF());
+    }
+    
     return tmp<volScalarField>
 	(
 	    new volScalarField
@@ -64,11 +77,7 @@ tmp<volScalarField> gammaSST<BasicTurbulenceModel>::Fonset(const volScalarField&
 	            IOobject::NO_READ,
 	            IOobject::NO_WRITE
 	        ),
-		max
-		(
-                    min(Fonset1(S), 2.0) - max(1.0-pow3(Rt()/3.5),0.0),
-                    0.0
-		)
+                Fons
    	    )
 	);
 }
@@ -78,6 +87,53 @@ tmp<volScalarField> gammaSST<BasicTurbulenceModel>::Fonset1(const volScalarField
 {
     return sqr(this->y_)*S/this->nu() / (2.2*ReThetac());
 }
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField> gammaSST<BasicTurbulenceModel>::FonsetCF() const
+{
+    tmp<volVectorField> w(fvc::curl(this->U_));
+    const dimensionedScalar wMin("VSMALL", inv(dimTime), VSMALL);
+    tmp<volVectorField> ew( w() / max(mag(w()), wMin));
+
+    tmp<volVectorField> n(-fvc::grad(this->y_));
+    tmp<volScalarField> Psi(mag(n() & fvc::grad(ew)));
+
+    tmp<volScalarField> lambda (
+        min( 0.0477, max( 0.0, 
+        -7.57e-3 * ( fvc::grad(this->U_ & n()) & n()) * sqr(this->y_) / this->nu() + 0.0174))
+    );
+    
+    tmp<volScalarField> gLambda (
+        min(2.3, max( 1.0, ((27864.0*lambda()-1962.0)*lambda()+54.3)*lambda() + 1.0))
+    );
+    lambda.clear();
+
+    tmp<volScalarField> Rev(sqr(this->y_) * mag(w) / this->nu());
+    
+    tmp<volScalarField> TC1(this->CRSF_/150.8*0.684/gLambda*Psi*Rev);
+
+    
+    return tmp<volScalarField>
+	(
+	    new volScalarField
+     	    (
+                IOobject
+       	        (
+	            "FonsetCF",
+    	            this->runTime_.timeName(),
+	            this->mesh_,
+	            IOobject::NO_READ,
+	            IOobject::NO_WRITE
+	        ),
+		min
+		(
+                    max(100.0*(TC1 - 1.0), 0.0),
+                    1.0
+		)
+   	    )
+	);
+}
+
 
 template<class BasicTurbulenceModel>
 tmp<volScalarField> gammaSST<BasicTurbulenceModel>::Fturb() const
@@ -276,6 +332,24 @@ gammaSST<BasicTurbulenceModel>::gammaSST
             1.
         )
     ),
+    crossFlow_(
+        Switch::lookupOrAddToDict
+        (
+            "crossFlow",
+            this->coeffDict_,
+            false
+        )
+    ),
+    CRSF_
+    (
+        dimensioned<scalar>::lookupOrAddToDict
+        (
+            "CRSF",
+            this->coeffDict_,
+            1.
+        )
+    ),
+
 
     gammaInt_
     (

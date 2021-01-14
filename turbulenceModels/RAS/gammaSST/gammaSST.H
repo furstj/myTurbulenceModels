@@ -36,6 +36,9 @@ Description
         doi:10.1007/s10494-015-9622-4
     \endverbatim
 
+    Model contains an optional cross-flow transition term (C1 correlation, see
+    CFX theory manual)
+
     The default model coefficients correspond to the following:
     @verbatim
         gammaSSTCoeffs
@@ -54,20 +57,21 @@ Description
             b1          1.0;
             c1          10.0;
             F3          no;
-
-    
-                Flength       100;
-	        ca2             0.06;
-		ce2             50;
-		sigmaGamma      1;
-                CPG1            14.68;
-                CPG1lim          1.5;
-                CPG2            -7.34;
-                CPG3             0;
-                CPG2lim         3.0;
-                CTU1          100.0;
-                CTU2         1000.0;
-                CTU3            1.0;
+   
+            Flength       100;
+            ca2             0.06;
+            ce2             50;
+	    sigmaGamma      1;
+            CPG1            14.68;
+            CPG1lim          1.5;
+            CPG2            -7.34;
+            CPG3             0;
+            CPG2lim         3.0;
+            CTU1          100.0;
+            CTU2         1000.0;
+            CTU3            1.0;
+            crossFlow        no;    // Use C1 correlation for cross-flow transition
+            CRSF            1.0;
         }
     @endverbatim
 
@@ -130,6 +134,9 @@ protected:
     dimensionedScalar Ck_;
     dimensionedScalar CSEP_;
 
+    Switch crossFlow_;
+    dimensionedScalar CRSF_;
+    
     // Fields
     volScalarField gammaInt_;
 
@@ -141,6 +148,7 @@ protected:
     tmp<volScalarField> ReThetac() const;
     tmp<volScalarField> Fonset(const volScalarField& S) const;
     tmp<volScalarField> Fonset1(const volScalarField& S) const;
+    tmp<volScalarField> FonsetCF() const;
     tmp<volScalarField> Fturb() const;
     tmp<volScalarField> TuL() const;
     tmp<volScalarField> FPG() const;
