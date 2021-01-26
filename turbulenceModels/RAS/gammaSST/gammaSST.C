@@ -96,7 +96,7 @@ tmp<volScalarField> gammaSST<BasicTurbulenceModel>::FonsetCF() const
     tmp<volVectorField> ew( w() / max(mag(w()), wMin));
 
     tmp<volVectorField> n(-fvc::grad(this->y_));
-    tmp<volScalarField> Psi(mag(n() & fvc::grad(ew)));
+    tmp<volScalarField> Psi(mag(n() & fvc::grad(ew))*this->y_);
 
     tmp<volScalarField> lambda (
         min( 0.0477, max( 0.0, 
@@ -109,10 +109,9 @@ tmp<volScalarField> gammaSST<BasicTurbulenceModel>::FonsetCF() const
     lambda.clear();
 
     tmp<volScalarField> Rev(sqr(this->y_) * mag(w) / this->nu());
-    
+
     tmp<volScalarField> TC1(this->CRSF_/150.8*0.684/gLambda*Psi*Rev);
 
-    
     return tmp<volScalarField>
 	(
 	    new volScalarField
