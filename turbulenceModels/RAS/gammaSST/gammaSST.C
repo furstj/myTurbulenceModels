@@ -393,6 +393,8 @@ bool gammaSST<BasicTurbulenceModel>::read()
         ReThetacLim_.readIfPresent(this->coeffDict());
         Ck_.readIfPresent(this->coeffDict());
         CSEP_.readIfPresent(this->coeffDict());
+        crossFlow_.readIfPresent("crossFlow", this->coeffDict());
+        CRSF_.readIfPresent(this->coeffDict());
         return true;
     }
     else
