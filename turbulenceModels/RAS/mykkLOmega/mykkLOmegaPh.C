@@ -45,7 +45,7 @@ tmp<volScalarField> mykkLOmegaPh<BasicTurbulenceModel>::Ue(const volScalarField&
         
         return tmp<volScalarField>(new volScalarField(
             "Ue",
-            sqrt( 2.0 * (pTot - p) )
+	    sqrt( 2.0 * max(pTot - p, dimensionedScalar("dpMin", p.dimensions(), 1.e-16)) )
         ));
     } 
     else 
