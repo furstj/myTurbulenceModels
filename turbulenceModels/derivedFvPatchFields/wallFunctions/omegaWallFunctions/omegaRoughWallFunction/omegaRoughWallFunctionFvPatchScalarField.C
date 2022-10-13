@@ -59,12 +59,10 @@ void omegaRoughWallFunctionFvPatchScalarField::checkType()
 
 void omegaRoughWallFunctionFvPatchScalarField::writeLocalEntries(Ostream& os) const
 {
-    os.writeKeyword("Cmu") << Cmu_ << token::END_STATEMENT << nl;
-    os.writeKeyword("kappa") << kappa_ << token::END_STATEMENT << nl;
-    os.writeKeyword("E") << E_ << token::END_STATEMENT << nl;
-    os.writeKeyword("beta1") << beta1_ << token::END_STATEMENT << nl;
-    os.writeKeyword("blended") << blended_ << token::END_STATEMENT << nl;
-    os.writeKeyword("roughnessHeight") << roughnessHeight_ << token::END_STATEMENT << nl;
+    wallFunctionBlenders::writeEntries(os);
+    os.writeEntryIfDifferent<scalar>("beta1", 0.075, beta1_);
+    wallCoeffs_.writeEntries(os);
+    roughnessHeight_.writeEntry("roughnessHeight", os);
 }
 
 
@@ -219,8 +217,6 @@ void omegaRoughWallFunctionFvPatchScalarField::calculate
 
     const scalarField& y = turbModel.y()[patchi];
 
-    const scalar Cmu25 = pow025(Cmu_);
-
     const tmp<volScalarField> tk = turbModel.k();
     const volScalarField& k = tk();
 
@@ -234,6 +230,10 @@ void omegaRoughWallFunctionFvPatchScalarField::calculate
 
     const scalarField magGradUw(mag(Uw.snGrad()));
 
+    const scalar Cmu25 = pow025(wallCoeffs_.Cmu());
+    const scalar kappa = wallCoeffs_.kappa();
+    const scalar yPlusLam = wallCoeffs_.yPlusLam();
+    
     // Set omega and G
     forAll(nutw, facei)
     {
@@ -245,56 +245,94 @@ void omegaRoughWallFunctionFvPatchScalarField::calculate
 
 	const scalar uTau = Cmu25 * sqrt(k[celli]);
 	
-	const scalar ksPlus = roughnessHeight_ * uTau / nuw[facei];
-
-	scalar SR;
+	const scalar ksPlus = roughnessHeight_[facei] * uTau / nuw[facei];
+        
+        scalar omegaVis;
         
 	if (ksPlus > 25.0)
         {
-            SR = 100.0/ksPlus;
+            const scalar SR = 100.0/ksPlus;
+            omegaVis = sqr(uTau)*SR/nuw[facei];
         }
-        else
+        else if (ksPlus > 5.0)
         {
             const scalar ksPlusMin = min(4.3*pow(yPlus,0.85), 8.0);
-            SR = sqr(50/max(ksPlus,ksPlusMin));
-        }
-        
-        const scalar omegaVis = sqr(uTau)*SR/nuw[facei];
-        const scalar omegaLog = sqrt(k[celli])/(Cmu25*kappa_*y[facei]);
-
-        // Switching between the laminar sub-layer and the log-region rather
-        // than blending has been found to provide more accurate results over a
-        // range of near-wall y+.
-        //
-        // For backward-compatibility the blending method is provided as an
-        // option
-
-        if (blended_)
-        {
-            omega0[celli] += w*sqrt(sqr(omegaVis) + sqr(omegaLog));
-        }
-
-        if (yPlus > yPlusLam_)
-        {
-            if (!blended_)
-            {
-                omega0[celli] += w*omegaLog;
-            }
-
-            G0[celli] +=
-                w
-               *(nutw[facei] + nuw[facei])
-               *magGradUw[facei]
-               *Cmu25*sqrt(k[celli])
-               /(kappa_*y[facei]);
+            const scalar SR = sqr(50/max(ksPlus,ksPlusMin));
+            omegaVis = sqr(uTau)*SR/nuw[facei];
         }
         else
         {
-            if (!blended_)
+            omegaVis = 6.0*nuw[facei]/(beta1_*sqr(y[facei]));
+        }
+        
+        const scalar omegaLog = sqrt(k[celli])/(Cmu25*kappa*y[facei]);
+
+        switch (blender_)
+        {
+            case blenderType::STEPWISE:
             {
-                omega0[celli] += w*omegaVis;
+                if (yPlus > yPlusLam)
+                {
+                    omega0[celli] += w*omegaLog;
+                }
+                else
+                {
+                    omega0[celli] += w*omegaVis;
+                }
+                break;
+            }
+
+            case blenderType::BINOMIAL:
+            {
+                omega0[celli] +=
+                    w*pow
+                    (
+                        pow(omegaVis, n_) + pow(omegaLog, n_),
+                        scalar(1)/n_
+                    );
+                break;
+            }
+
+            case blenderType::MAX:
+            {
+                // (PH:Eq. 27)
+                omega0[celli] += max(omegaVis, omegaLog);
+                break;
+            }
+
+            case blenderType::EXPONENTIAL:
+            {
+                // (PH:Eq. 31)
+                const scalar Gamma = 0.01*pow4(yPlus)/(1 + 5*yPlus);
+                const scalar invGamma = scalar(1)/(Gamma + ROOTVSMALL);
+
+                omega0[celli] +=
+                    w*(omegaVis*exp(-Gamma) + omegaLog*exp(-invGamma));
+                break;
+            }
+            case blenderType::TANH:
+            {
+                // (KAS:Eqs. 33-34)
+                const scalar phiTanh = tanh(pow4(0.1*yPlus));
+                const scalar b1 = omegaVis + omegaLog;
+                const scalar b2 =
+                    pow(pow(omegaVis, 1.2) + pow(omegaLog, 1.2), 1.0/1.2);
+
+                omega0[celli] += phiTanh*b1 + (1 - phiTanh)*b2;
+                break;
             }
         }
+
+        if (!(blender_ == blenderType::STEPWISE) || yPlus > yPlusLam)
+        {
+            G0[celli] +=
+                w
+                *(nutw[facei] + nuw[facei])
+                *magGradUw[facei]
+                *Cmu25*sqrt(k[celli])
+                /(kappa*y[facei]);
+        }
+        
     }
 }
 
@@ -308,13 +346,10 @@ omegaRoughWallFunctionFvPatchScalarField::omegaRoughWallFunctionFvPatchScalarFie
 )
 :
     fixedValueFvPatchField<scalar>(p, iF),
-    Cmu_(0.09),
-    kappa_(0.41),
-    E_(9.8),
+    wallFunctionBlenders(),
+    wallCoeffs_(),
     beta1_(0.075),
-    blended_(false),
-    roughnessHeight_(0.0),
-    yPlusLam_(nutWallFunctionFvPatchScalarField::yPlusLam(kappa_, E_)),
+    roughnessHeight_(p.size(), Zero),
     G_(),
     omega_(),
     initialised_(false),
@@ -334,13 +369,10 @@ omegaRoughWallFunctionFvPatchScalarField::omegaRoughWallFunctionFvPatchScalarFie
 )
 :
     fixedValueFvPatchField<scalar>(ptf, p, iF, mapper),
-    Cmu_(ptf.Cmu_),
-    kappa_(ptf.kappa_),
-    E_(ptf.E_),
+    wallFunctionBlenders(ptf),
+    wallCoeffs_(ptf.wallCoeffs_),
     beta1_(ptf.beta1_),
-    blended_(ptf.blended_),
-    roughnessHeight_(ptf.roughnessHeight_),
-    yPlusLam_(ptf.yPlusLam_),
+    roughnessHeight_(ptf.roughnessHeight_, mapper),
     G_(),
     omega_(),
     initialised_(false),
@@ -359,13 +391,10 @@ omegaRoughWallFunctionFvPatchScalarField::omegaRoughWallFunctionFvPatchScalarFie
 )
 :
     fixedValueFvPatchField<scalar>(p, iF, dict),
-    Cmu_(dict.lookupOrDefault<scalar>("Cmu", 0.09)),
-    kappa_(dict.lookupOrDefault<scalar>("kappa", 0.41)),
-    E_(dict.lookupOrDefault<scalar>("E", 9.8)),
+    wallFunctionBlenders(dict, blenderType::BINOMIAL, scalar(2)),
+    wallCoeffs_(dict),
     beta1_(dict.lookupOrDefault<scalar>("beta1", 0.075)),
-    blended_(dict.lookupOrDefault<Switch>("blended", false)),
-    roughnessHeight_(dict.lookupOrDefault<scalar>("roughnessHeight",0.0)),
-    yPlusLam_(nutWallFunctionFvPatchScalarField::yPlusLam(kappa_, E_)),
+    roughnessHeight_("roughnessHeight", dict, p.size()),
     G_(),
     omega_(),
     initialised_(false),
@@ -385,13 +414,10 @@ omegaRoughWallFunctionFvPatchScalarField::omegaRoughWallFunctionFvPatchScalarFie
 )
 :
     fixedValueFvPatchField<scalar>(owfpsf),
-    Cmu_(owfpsf.Cmu_),
-    kappa_(owfpsf.kappa_),
-    E_(owfpsf.E_),
+    wallFunctionBlenders(owfpsf),
+    wallCoeffs_(owfpsf.wallCoeffs_),
     beta1_(owfpsf.beta1_),
-    blended_(owfpsf.blended_),
     roughnessHeight_(owfpsf.roughnessHeight_),
-    yPlusLam_(owfpsf.yPlusLam_),
     G_(),
     omega_(),
     initialised_(false),
@@ -409,13 +435,10 @@ omegaRoughWallFunctionFvPatchScalarField::omegaRoughWallFunctionFvPatchScalarFie
 )
 :
     fixedValueFvPatchField<scalar>(owfpsf, iF),
-    Cmu_(owfpsf.Cmu_),
-    kappa_(owfpsf.kappa_),
-    E_(owfpsf.E_),
+    wallFunctionBlenders(owfpsf),
+    wallCoeffs_(owfpsf.wallCoeffs_),
     beta1_(owfpsf.beta1_),
-    blended_(owfpsf.blended_),
     roughnessHeight_(owfpsf.roughnessHeight_),
-    yPlusLam_(owfpsf.yPlusLam_),
     G_(),
     omega_(),
     initialised_(false),

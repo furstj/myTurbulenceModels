@@ -63,11 +63,7 @@ Description
 Usage
     \table
         Property     | Description             | Required    | Default value
-        Cmu          | Model coefficient       | no          | 0.09
-        kappa        | von Karman constant     | no          | 0.41
-        E            | Model coefficient       | no          | 9.8
         beta1        | Model coefficient       | no          | 0.075
-        blended      | Blending switch         | no          | false
 	roughnessHeight | equivalent roughness | no          | 0.0
     \endtable
 
@@ -92,6 +88,8 @@ SourceFiles
 #define omegaRoughWallFunctionFvPatchScalarField_H
 
 #include "fixedValueFvPatchField.H"
+#include "wallFunctionCoefficients.H"
+#include "wallFunctionBlenders.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -106,7 +104,8 @@ class turbulenceModel;
 
 class omegaRoughWallFunctionFvPatchScalarField
 :
-    public fixedValueFvPatchField<scalar>
+    public fixedValueFvPatchField<scalar>,
+    private wallFunctionBlenders
 {
 protected:
 
@@ -115,23 +114,14 @@ protected:
         //- Tolerance used in weighted calculations
         static scalar tolerance_;
 
-        //- Cmu coefficient
-        scalar Cmu_;
-
-        //- Von Karman constant
-        scalar kappa_;
-
-        //- E coefficient
-        scalar E_;
+        //- Wall-function coefficients
+        wallFunctionCoefficients wallCoeffs_;
 
         //- beta1 coefficient
         scalar beta1_;
 
-        //- beta1 coefficient
-        Switch blended_;
-
         //- Height
-        scalar roughnessHeight_;
+        scalarField roughnessHeight_;
     
         //- y+ at the edge of the laminar sublayer
         scalar yPlusLam_;
@@ -278,7 +268,12 @@ public:
             //- Return non-const access to the master's omega field
             scalarField& omega(bool init = false);
 
-
+            //- Return const access to surface roughness
+            const scalarField& roughnessHeight() const
+            {
+	        return roughnessHeight_;
+	    }
+  
         // Evaluation functions
 
             //- Update the coefficients associated with the patch field
