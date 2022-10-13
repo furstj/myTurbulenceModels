@@ -88,6 +88,10 @@ tmp<scalarField> nutUKnoppWallFunctionFvPatchScalarField::calcUTau
     const tmp<scalarField> tnuw = turbModel.nu(patchi);
     const scalarField& nuw = tnuw();
 
+    const scalar kappa = wallCoeffs_.kappa();
+    const scalar E = wallCoeffs_.E();
+
+
     const scalarField& nutw = *this;
 
     tmp<scalarField> tuTau(new scalarField(patch().size(), 0.0));
@@ -108,11 +112,11 @@ tmp<scalarField> nutUKnoppWallFunctionFvPatchScalarField::calcUTau
             {
                 scalar f =
                     - ut*y[faceI]/nuw[faceI]        // yPlus (LHS)
-                    + (1/kappa_)*log(E_*(ut*y[faceI]/nuw[faceI])); // RHS
+                    + (1/kappa)*log(E*(ut*y[faceI]/nuw[faceI])); // RHS
 
                 scalar df =                         // df/du_ut
                     y[faceI]/nuw[faceI]
-                    + 1/(kappa_*ut);
+                    + 1/(kappa*ut);
 
                 scalar uTauNew = ut + f/df;         // Newton iteration
                 err = mag((ut - uTauNew)/ut);
@@ -133,14 +137,14 @@ tmp<scalarField> nutUKnoppWallFunctionFvPatchScalarField::calcUTau
             {
                 scalar f =
                     - magUp[faceI]/ut               // uPlus (LHS)
-                    + log(1 + 0.4*(ut*y[faceI]/nuw[faceI]))/kappa_
+                    + log(1 + 0.4*(ut*y[faceI]/nuw[faceI]))/kappa
                     + 7.8*(1 - exp(-(ut*y[faceI])/(nuw[faceI]*11.0)) -
                       ((ut*y[faceI])/(nuw[faceI]*11.0))*
                       exp(-ut*y[faceI]/(nuw[faceI]*3.0)));  // RHS
 
                 scalar df =
                     magUp[faceI]/sqr(ut)
-                    + (1/kappa_)*((0.4*y[faceI])/(nuw[faceI] + 0.4*y[faceI]*ut))
+                    + (1/kappa)*((0.4*y[faceI])/(nuw[faceI] + 0.4*y[faceI]*ut))
                     + 7.8*((y[faceI]/(nuw[faceI]*11.0))*exp(-y[faceI]*ut/
                     (nuw[faceI]*11.0)) + (y[faceI]/(nuw[faceI]*11.0))*
                     exp(-y[faceI]*ut/(nuw[faceI]*3.0))*
@@ -168,18 +172,18 @@ tmp<scalarField> nutUKnoppWallFunctionFvPatchScalarField::calcUTau
 
             do
             {
-                scalar kUu = min(kappa_*magUp[faceI]/ut, 50);
+                scalar kUu = min(kappa*magUp[faceI]/ut, 50);
                 scalar fkUu = exp(kUu) - 1 - kUu*(1 + 0.5*kUu);
 
                 scalar f =
                     - ut*y[faceI]/nuw[faceI]
                     + magUp[faceI]/ut
-                    + 1/E_*(fkUu - 1.0/6.0*kUu*sqr(kUu));
+                    + 1/E*(fkUu - 1.0/6.0*kUu*sqr(kUu));
 
                 scalar df =
                     y[faceI]/nuw[faceI]
                     + magUp[faceI]/sqr(ut)
-                    + 1/E_*kUu*fkUu/ut;
+                    + 1/E*kUu*fkUu/ut;
 
                 scalar uTauNew = ut + f/df;
                 err = mag((ut - uTauNew)/ut);
