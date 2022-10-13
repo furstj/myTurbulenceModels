@@ -123,9 +123,6 @@ protected:
         //- Height
         scalarField roughnessHeight_;
     
-        //- y+ at the edge of the laminar sublayer
-        scalar yPlusLam_;
-
         //- Local copy of turbulence G field
         scalarField G_;
 
