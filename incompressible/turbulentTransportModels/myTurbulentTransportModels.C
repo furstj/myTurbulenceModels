@@ -70,6 +70,7 @@ namespace Foam {
 // #include "mykOmegaSST.H"
 // makeRASModel(mykOmegaSST);
 
+/*
 #include "EARSM.H"
 makeRASModel(EARSM);
 
@@ -84,7 +85,12 @@ makeRASModel(kOmegaSSTCCM);
 
 #include "kOmegaTNT.H"
 makeRASModel(kOmegaTNT);
+*/
 
+#include "kOmegaTNTTrans.H"
+makeRASModel(kOmegaTNTTrans);
+
+/*
 #include "kOmegaWilcox06.H"
 makeRASModel(kOmegaWilcox06);
 
@@ -115,5 +121,7 @@ makeRASModel(EARSMTrans);
 
 #include "XLES.H"
 makeLESModel(XLES)
+
+*/
 
 // ************************************************************************* //
