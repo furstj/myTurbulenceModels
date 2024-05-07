@@ -98,7 +98,7 @@ kOmegaTNTTrans<BasicTurbulenceModel>::kOmegaTNTTrans
         (
             "CSS",
             this->coeffDict_,
-            2.75
+            21.0
         )
     ),
 
@@ -108,7 +108,7 @@ kOmegaTNTTrans<BasicTurbulenceModel>::kOmegaTNTTrans
         (
             "A",
             this->coeffDict_,
-            620.3              // Correlation for Tu = 3%
+            12.0              // Correlation for Tu = 3%
         )
     ),
 
@@ -118,7 +118,7 @@ kOmegaTNTTrans<BasicTurbulenceModel>::kOmegaTNTTrans
         (
             "B",
             this->coeffDict_,
-            452.12             // Correlation for Tu = 3%
+            1.0             // Correlation for Tu = 3%
         )
     ),
 
@@ -138,7 +138,7 @@ kOmegaTNTTrans<BasicTurbulenceModel>::kOmegaTNTTrans
         (
             "a2",
             this->coeffDict_,
-            0.6
+            0.45
         )
     ),
 
@@ -215,10 +215,15 @@ void kOmegaTNTTrans<BasicTurbulenceModel>::correct()
     tgradU.clear();
 
     // Transition correlations    
-    volScalarField fSS = exp( -sqr(CSS_*this->nu()*W/max(k_,this->kMin_)) );
-    volScalarField Rev = sqr(y_)*sqrt(S2)/this->nu();
-    volScalarField zetaT = max(Rev - B_, 0.0);
-    volScalarField gammaInt = min(zetaT / A_, 1.0);
+    volScalarField Rev("Rev", sqr(y_)*sqrt(S2)/this->nu());
+    volScalarField Rey("Rey", sqrt(k_)*y_/this->nu());
+    volScalarField zetaT("zetaT", max(Rey/A_ - 1, 0.0));
+    volScalarField gammaInt("gammaInt", min(zetaT / B_, 1.0));
+    volScalarField fSS("fSS", exp( -sqr(CSS_/max(Rey,1.e-10))));
+
+    //volScalarField fSS("fSS", exp( -sqr(CSS_*this->nu()*W/max(k_,this->kMin_)) ));
+    //volScalarField zetaT("zetaT",  max(Rev - B_, 0.0));
+    //volScalarField gammaInt("gammaInt", min(zetaT / A_, 1.0));
 
     volScalarField nus("nus", fSS * k_ / max(omega_, Clim_*S / a1_));
     volScalarField nul("nul", (1 - fSS) * k_ / max(omega_, Clim_*S / a2_));
@@ -294,6 +299,15 @@ void kOmegaTNTTrans<BasicTurbulenceModel>::correct()
     fv::options::New(this->mesh_).correct(nut);
     BasicTurbulenceModel::correctNut();
 
+
+    if (this->runTime_.outputTime()) {
+        Rev.write();
+        fSS.write();
+        nus.write();
+        nul.write();
+        zetaT.write();
+        gammaInt.write();
+    }
 }
 
 
