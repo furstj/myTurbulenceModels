@@ -58,6 +58,7 @@ Description
 
 #include "kOmega.H"
 #include "eddyViscosity.H"
+#include "transitionModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -82,7 +83,6 @@ class kOmegaTNT
     kOmegaTNT(const kOmegaTNT&);
     kOmegaTNT& operator=(const kOmegaTNT&);
 
-    
 protected:
     // Protected data
     
@@ -92,7 +92,10 @@ protected:
     Switch productionLimiter_;
     
     Switch shockLimiter_;
-    
+
+    autoPtr<transitionModel> transitionModel_;
+
+    virtual void correctNut();
 
 public:
 
@@ -128,6 +131,8 @@ public:
     
     //- Solve the turbulence equations and correct the turbulence viscosity
     virtual void correct();
+    
+    //- Calculate the turbulence viscosity for first step
     
     //- Read RASProperties dictionary
     virtual bool read();

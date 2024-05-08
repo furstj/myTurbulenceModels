@@ -4,4 +4,7 @@ derivedFvPatchFields/boundedTurbulentIntensityKineticEnergyInlet/boundedTurbulen
 derivedFvPatchFields/wallFunctions/omegaWallFunctions/omegaRoughWallFunction/omegaRoughWallFunctionFvPatchScalarField.C
 derivedFvPatchFields/wallFunctions/nutWallFunctions/nutUKnoppWallFunction/nutUKnoppWallFunctionFvPatchScalarField.C
 
+transitionModels/transitionModel/transitionModel.C
+transitionModels/transitionDick2016a/transitionDick2016a.C
+
 LIB = $(FOAM_USER_LIBBIN)/libmyTurbulenceModels

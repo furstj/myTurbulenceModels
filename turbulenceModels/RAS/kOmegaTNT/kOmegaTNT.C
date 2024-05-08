@@ -89,6 +89,17 @@ kOmegaTNT<BasicTurbulenceModel>::kOmegaTNT
             this->coeffDict_,
             true
         )
+    ),
+
+    transitionModel_
+    (
+        transitionModel::New
+        (
+            this->coeffDict_,
+            U,
+            this->k_,
+            this->omega_
+        )
     )
 {
     this->alphaK_ = 2.0/3.0;
@@ -120,6 +131,16 @@ bool kOmegaTNT<BasicTurbulenceModel>::read()
 
 
 template<class BasicTurbulenceModel>
+void kOmegaTNT<BasicTurbulenceModel>::correctNut()
+{
+    this->nut_ = transitionModel_->nut();
+    this->nut_.correctBoundaryConditions();
+    fv::options::New(this->mesh_).correct(this->nut_);
+    BasicTurbulenceModel::correctNut();
+}
+
+
+template<class BasicTurbulenceModel>
 void kOmegaTNT<BasicTurbulenceModel>::correct()
 {
     if (!this->turbulence_)
@@ -132,7 +153,6 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
     const rhoField& rho = this->rho_;
     const surfaceScalarField& alphaRhoPhi = this->alphaRhoPhi_;
     const volVectorField& U = this->U_;
-    volScalarField& nut = this->nut_;
     volScalarField& k_ = this->k_;
     volScalarField& omega_ = this->omega_;
 
@@ -143,23 +163,22 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
     volScalarField divU(fvc::div(fvc::absolute(this->phi(), U)));
 
     tmp<volTensorField> tgradU = fvc::grad(U);
-    volScalarField S2 = 2.0 * magSqr(dev(symm(tgradU())));
-    volScalarField O2 = 2.0 * magSqr(skew(tgradU()));
+    volScalarField S = sqrt(2.0 * magSqr(dev(symm(tgradU()))));
+    volScalarField W = sqrt(2.0 * magSqr(skew(tgradU())));
+
     tgradU.clear();
-    
-    volScalarField G
-        (
-            this->GName(),
-            nut*S2
-        );
+
+    transitionModel_->correct(this->nu(), S, W);
+
+    volScalarField Pk(this->GName(),  transitionModel_->Pk(S, W));
  
     // Limiter based on epsilon
     if (shockLimiter_)
-        G = min(G,  20 * this->Cmu_ * k_ * omega_);
+        Pk = min(Pk,  20 * this->Cmu_ * k_ * omega_);
     
     // Limiter according to Wallin (PhD. thesis, paper 6)
     if (shockLimiter_)
-        G = min(G,  k_ * sqrt(S2/2.0));
+        Pk = min(Pk,  k_ * S / sqrt(2.0));
     
 
     // Update omega and G at the wall
@@ -178,7 +197,7 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
       + fvm::div(alphaRhoPhi, omega_)
       - fvm::laplacian(alpha * rho * this->DomegaEff(), omega_)
      ==
-        this->gamma_ * alpha * rho * G * omega_/max(k_,this->kMin())
+        this->gamma_ * alpha * rho * Pk * omega_/max(k_,this->kMin())
       - fvm::SuSp(((2.0/3.0)*this->gamma_)*alpha * rho * divU, omega_)
       - fvm::Sp(this->beta_ * alpha * rho * omega_, omega_)
       + alpha * rho * CDkOmega  
@@ -193,6 +212,8 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
     fvOptions.correct(omega_);
     bound(omega_, this->omegaMin());
 
+    volScalarField gammaInt = transitionModel_->gammaInt();
+
     // Turbulent kinetic energy equation
     tmp<fvScalarMatrix> kEqn
     (
@@ -200,7 +221,7 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
       + fvm::div(alphaRhoPhi, k_)
       - fvm::laplacian(alpha * rho * this->DkEff(), k_)
      ==
-        alpha * rho * G
+        alpha * rho * gammaInt * Pk
       - fvm::SuSp((2.0/3.0) * alpha * rho * divU, k_)
       - fvm::Sp(this->Cmu_ * alpha * rho * omega_, k_)
       + fvOptions(alpha, rho, k_)
