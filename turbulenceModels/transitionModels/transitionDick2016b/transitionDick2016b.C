@@ -199,6 +199,20 @@ transitionDick2016b::transitionDick2016b(
         dimensionedScalar(dimless, 1.0)
     ),
 
+    Psep_
+    (
+        IOobject
+        (
+            IOobject::groupName("Psep", U.group()),
+            this->time_.timeName(),
+            this->mesh_,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        this->mesh_,
+        dimensionedScalar(sqr(dimVelocity)/dimTime, 0.0)
+    ),
+
     y_(wallDist::New(U.mesh()).y())
 
 {
@@ -229,6 +243,10 @@ void transitionDick2016b::correct(
     nul_ = (1 - fSS_) * this->k_ / max(this->omega_, Clim_ * S / a2_);
 
     gammaInt_ = min(max(Rey / Agamma_ - 1.0, 0.0), 1.0); 
+
+    tmp<volScalarField> ReV = sqr(y_) * S / nu;
+    tmp<volScalarField> Fsep = min(max(ReV / (2.2 * Av_) - 1.0, 0.0), 1.0);
+    Psep_ = Csep_ * Fsep * nu * sqr(S);
 }
 
 
@@ -246,6 +264,10 @@ tmp<volScalarField> transitionDick2016b::Pk(
     return nus_ * sqr(S);
 }
 
+tmp<fvScalarMatrix> transitionDick2016b::kSource() const
+{
+    return transitionModel::kSource() + (1.0 - gammaInt_) * Psep_;
+}
 
 } // End namespace Foam
 

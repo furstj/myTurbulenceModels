@@ -34,10 +34,8 @@ SourceFiles
 #ifndef transitionModel_H
 #define transitionModel_H
 
-#include "IOdictionary.H"
-#include "runTimeSelectionTables.H"
-#include "volFields.H"
-#include "Time.H"
+#include "fvCFD.H"
+// #include "runTimeSelectionTables.H"
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -133,7 +131,13 @@ public:
         const volScalarField& W
     ) const = 0;
    
-   virtual tmp<volScalarField> gammaInt() const = 0;
+    virtual tmp<volScalarField> gammaInt() const = 0;
+
+    //- Additional sources in k equation 
+    virtual tmp<fvScalarMatrix> kSource() const;
+    
+    //- Additional sources in k equation 
+    virtual tmp<fvScalarMatrix> omegaSource() const;
 
 };
 

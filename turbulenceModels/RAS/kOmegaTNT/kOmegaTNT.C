@@ -202,6 +202,7 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
         Pomega - fvm::SuSp(((2.0/3.0)*this->gamma_)*alpha * rho * divU, omega_)
       - fvm::Sp(this->beta_ * alpha * rho * omega_, omega_)
       + alpha * rho * CDkOmega  
+      + alpha * rho * transitionModel_->omegaSource()
       + fvOptions(alpha, rho, omega_)
     );
 
@@ -224,6 +225,7 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
      ==
         alpha * rho * gammaInt * Pk - fvm::SuSp((2.0/3.0) * alpha * rho * divU, k_)
       - fvm::Sp(this->Cmu_ * alpha * rho * omega_, k_)
+      + alpha * rho * transitionModel_->kSource()
       + fvOptions(alpha, rho, k_)
     );
 

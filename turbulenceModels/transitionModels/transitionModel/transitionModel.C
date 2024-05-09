@@ -81,7 +81,29 @@ transitionModel::transitionModel(
     omega_(omega)
 {}
 
+tmp<fvScalarMatrix> transitionModel::kSource() const
+{
+    return tmp<fvScalarMatrix>
+    (
+        new fvScalarMatrix
+        (
+            k_,
+            dimVolume*sqr(dimVelocity)/dimTime
+        )
+    );
+}
 
+tmp<fvScalarMatrix> transitionModel::omegaSource() const
+{
+    return tmp<fvScalarMatrix>
+    (
+        new fvScalarMatrix
+        (
+            omega_,
+            dimVolume/sqr(dimTime)
+        )
+    );
+}
 
 }
 // ************************************************************************* //

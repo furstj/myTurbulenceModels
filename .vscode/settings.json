@@ -7,6 +7,10 @@
         "transitionNone.C": "cpp",
         "transitionDick2016a.C": "cpp",
         "kOmegaTNT.C": "cpp",
-        "transitionDick2016b.C": "cpp"
+        "transitionDick2016b.C": "cpp",
+        "kOmegaTNTTrans.C": "cpp",
+        "kOmegaBase.C": "cpp",
+        "transitionModel.C": "cpp",
+        "kOmegaWilcox06.C": "cpp"
     }
 }

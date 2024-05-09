@@ -91,6 +91,8 @@ protected:
 
     volScalarField gammaInt_;
 
+    volScalarField Psep_;
+
     const volScalarField& y_;
 
 public:
@@ -128,6 +130,8 @@ public:
         return gammaInt_;
     }
      
+    virtual tmp<fvScalarMatrix> kSource() const;
+    
 };
 
 
