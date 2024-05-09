@@ -198,15 +198,6 @@ tmp<volScalarField> transitionDick2016a::Pk(
     return nus_ * sqr(S);
 }
 
-tmp<volScalarField> transitionDick2016a::Pomega(
-    const volScalarField& S, 
-    const volScalarField& W
-    ) const
-{
-    const dimensionedScalar kMin("kMin", sqr(dimVelocity), 1.e-10);
-    return nus_ * sqr(S) * omega_ / max(k_, kMin);
-}
-
 
 } // End namespace Foam
 

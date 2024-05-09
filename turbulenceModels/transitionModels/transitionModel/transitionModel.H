@@ -132,11 +132,6 @@ public:
         const volScalarField& S, 
         const volScalarField& W
     ) const = 0;
-
-    virtual tmp<volScalarField> Pomega(
-        const volScalarField& S, 
-        const volScalarField& W
-    ) const = 0;
    
    virtual tmp<volScalarField> gammaInt() const = 0;
 

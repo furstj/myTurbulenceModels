@@ -5,6 +5,7 @@ derivedFvPatchFields/wallFunctions/omegaWallFunctions/omegaRoughWallFunction/ome
 derivedFvPatchFields/wallFunctions/nutWallFunctions/nutUKnoppWallFunction/nutUKnoppWallFunctionFvPatchScalarField.C
 
 transitionModels/transitionModel/transitionModel.C
+transitionModels/transitionNone/transitionNone.C
 transitionModels/transitionDick2016a/transitionDick2016a.C
 
 LIB = $(FOAM_USER_LIBBIN)/libmyTurbulenceModels

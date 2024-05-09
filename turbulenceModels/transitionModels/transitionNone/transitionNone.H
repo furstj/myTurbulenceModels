@@ -22,19 +22,19 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::transitionDick2016a
+    Foam::transitionNone
 
 Description
 
-   Kubacki, Dick: An algebraic model for bypass transition in turbomachinery boundary layer flows
+    Model for fully turbulent case
 
 SourceFiles
     transitionModel.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef transitionDick2016a_H
-#define transitionDick2016a_H
+#ifndef transitionNone_H
+#define transitionNone_H
 
 #include "transitionModel.H"
 
@@ -47,7 +47,7 @@ namespace Foam
                          Class transitionModel Declaration
 \*---------------------------------------------------------------------------*/
 
-class transitionDick2016a
+class transitionNone
 :
     public transitionModel
 {
@@ -55,43 +55,19 @@ private:
     // Private data
 
     //- Disallow default bitwise copy construct
-    transitionDick2016a(const transitionDick2016a&) = delete;
+    transitionNone(const transitionNone&) = delete;
     
     //- Disallow default bitwise assignment
-    void operator=(const transitionDick2016a&) = delete;
-
-protected:
-
-    dimensionedScalar AT_;
-
-    dimensionedScalar CT_;
-
-    dimensionedScalar CSS_;
-
-    dimensionedScalar Clim_;
-
-    dimensionedScalar a1_;
-
-    dimensionedScalar a2_;
-
-    volScalarField fSS_;
-
-    volScalarField nus_;
-
-    volScalarField nul_;
-
-    volScalarField gammaInt_;
-
-    const volScalarField& y_;
+    void operator=(const transitionNone&) = delete;
 
 public:
 
-    TypeName("Dick2016a");
+    TypeName("None");
         
     // Constructors
 
     //- Construct from components
-    transitionDick2016a(
+    transitionNone(
             dictionary& dict,
             const volVectorField& U,
             const volScalarField& k,
@@ -99,7 +75,7 @@ public:
     );
     
     //- Destructor
-    virtual ~transitionDick2016a() {};
+    virtual ~transitionNone() {};
     
 
     // Member Functions
@@ -114,10 +90,7 @@ public:
         const volScalarField& W
     ) const;
 
-    virtual tmp<volScalarField> gammaInt() const
-    {
-        return gammaInt_;
-    }
+    virtual tmp<volScalarField> gammaInt() const;
      
 };
 

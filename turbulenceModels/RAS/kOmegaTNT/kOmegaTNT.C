@@ -190,6 +190,8 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
     );
 
 
+    tmp<volScalarField> Pomega = this->gamma_ * alpha * rho * Pk * omega_ / max(k_, this->kMin());
+
     // Turbulence specific dissipation rate equation
     tmp<fvScalarMatrix> omegaEqn
     (
@@ -197,8 +199,7 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
       + fvm::div(alphaRhoPhi, omega_)
       - fvm::laplacian(alpha * rho * this->DomegaEff(), omega_)
      ==
-        this->gamma_ * alpha * rho * Pk * omega_/max(k_,this->kMin())
-      - fvm::SuSp(((2.0/3.0)*this->gamma_)*alpha * rho * divU, omega_)
+        Pomega - fvm::SuSp(((2.0/3.0)*this->gamma_)*alpha * rho * divU, omega_)
       - fvm::Sp(this->beta_ * alpha * rho * omega_, omega_)
       + alpha * rho * CDkOmega  
       + fvOptions(alpha, rho, omega_)
@@ -221,8 +222,7 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
       + fvm::div(alphaRhoPhi, k_)
       - fvm::laplacian(alpha * rho * this->DkEff(), k_)
      ==
-        alpha * rho * gammaInt * Pk
-      - fvm::SuSp((2.0/3.0) * alpha * rho * divU, k_)
+        alpha * rho * gammaInt * Pk - fvm::SuSp((2.0/3.0) * alpha * rho * divU, k_)
       - fvm::Sp(this->Cmu_ * alpha * rho * omega_, k_)
       + fvOptions(alpha, rho, k_)
     );
