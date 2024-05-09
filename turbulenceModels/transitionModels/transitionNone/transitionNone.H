@@ -62,7 +62,7 @@ private:
 
 public:
 
-    TypeName("None");
+    TypeName("none");
         
     // Constructors
 
