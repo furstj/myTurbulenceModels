@@ -26,9 +26,11 @@ Class
 
 Description
 
-   Kubacki, Dick: An algebraic intermittency model for bypass, separation-induced and
-     wake-induced transition
-
+   Kubacki, S., & Dick, E. (2016). An algebraic intermittency model for bypass, 
+     separation-induced and wake-induced transition. 
+     International Journal of Heat and Fluid Flow, 62, 344–361. 
+     https://doi.org/10.1016/j.ijheatfluidflow.2016.09.013
+     
 SourceFiles
     transitionModel.C
 
@@ -117,7 +119,12 @@ public:
 
     //- Main update/correction routine
     virtual void correct(const volScalarField& nu, const volScalarField& S, const volScalarField& W);
-    
+
+    virtual bool hasShearStressLimiter() const
+    {
+        return true;
+    }   
+
     virtual tmp<volScalarField> nut() const;
 
     virtual tmp<volScalarField> Pk(

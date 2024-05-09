@@ -81,6 +81,11 @@ transitionModel::transitionModel(
     omega_(omega)
 {}
 
+bool transitionModel::hasShearStressLimiter() const
+{
+    return false;
+}
+
 tmp<fvScalarMatrix> transitionModel::kSource() const
 {
     return tmp<fvScalarMatrix>

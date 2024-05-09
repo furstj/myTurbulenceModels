@@ -36,6 +36,7 @@ Description
 
 #include "RASModel.H"
 #include "eddyViscosity.H"
+#include "transitionModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -81,6 +82,10 @@ class kOmegaWilcox06
     kOmegaWilcox06(const kOmegaWilcox06&);
     kOmegaWilcox06& operator=(const kOmegaWilcox06&);
     
+protected:
+    //- Transition model
+    autoPtr<transitionModel> transitionModel_;
+
 public:
 
     typedef typename BasicTurbulenceModel::alphaField alphaField;

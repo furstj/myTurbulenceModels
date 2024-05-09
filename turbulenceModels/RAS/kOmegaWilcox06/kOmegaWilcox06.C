@@ -153,7 +153,19 @@ kOmegaWilcox06<BasicTurbulenceModel>::kOmegaWilcox06
     ),
    this->mesh_
    ),
-   y_(wallDist::New(this->mesh_).y())
+
+   y_(wallDist::New(this->mesh_).y()),
+
+    transitionModel_
+    (
+        transitionModel::New
+        (
+            this->coeffDict_,
+            U,
+            this->k_,
+            this->omega_
+        )
+    )
 {
     bound(k_, this->kMin_);
     bound(omega_, this->omegaMin_);
@@ -222,9 +234,6 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
     
   eddyViscosity<RASModel<BasicTurbulenceModel> >::correct();
   
-  volScalarField GbyNu = 2*(Sbar && gradU);
-  volScalarField G(this->GName(), this->nut_*GbyNu);
-  
   tmp<volTensorField> Omega(skew(gradU));
   tmp<volSymmTensorField> Shat(symm(gradU) - 0.5*tr(gradU)*I);
   
@@ -234,9 +243,19 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
 			      );
   volScalarField fBeta( (1+85*Xomega())/(1+100*Xomega()) );
   
+  volScalarField S = sqrt(2.0)*mag(Sbar);
+  volScalarField W = sqrt(2.0)*mag(Omega());
+
+  transitionModel_->correct(this->nu(), S, W);
+
   Xomega.clear();
   Shat.clear();
   Omega.clear();
+
+
+  //volScalarField GbyNu = 2*(Sbar && gradU);
+  //volScalarField G(this->GName(), this->nut_*GbyNu);
+  volScalarField Pk(this->GName(), transitionModel_->Pk(S,W));
 
   // Update omega and G at the wall
   omega_.boundaryFieldRef().updateCoeffs();
@@ -246,6 +265,8 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
 				dimensionedScalar("0", inv(sqr(dimTime)), 0.0)
 				);
   
+  volScalarField Pomega = Pk * omega_ / max(k_, this->kMin());
+
   // Turbulent frequency equation 
   // source term modified according to NLR-TP-2001-238
   tmp<fvScalarMatrix> omegaEqn
@@ -254,13 +275,14 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
      + fvm::div(alphaRhoPhi, omega_)
      - fvm::laplacian(alpha*rho*DomegaEff(), omega_)
      ==
-     alpha()*rho()*alphaOmega_*GbyNu
+     alpha()*rho()*alphaOmega_*Pomega
      - fvm::Sp(alpha()*rho()*beta_*fBeta*omega_, omega_)
-      + alpha()*rho()*CDkOmega()
-     );
+    + alpha()*rho()*CDkOmega()
+    + alpha()*rho()*transitionModel_->omegaSource()
+    );
   
-    omegaEqn.ref().relax();
-    fvOptions.constrain(omegaEqn.ref());
+  omegaEqn.ref().relax();
+  fvOptions.constrain(omegaEqn.ref());
     omegaEqn.ref().boundaryManipulate(omega_.boundaryFieldRef());
     
     solve(omegaEqn);
@@ -268,15 +290,17 @@ void kOmegaWilcox06<BasicTurbulenceModel>::correct()
     bound(omega_, this->omegaMin_);
        
     // Turbulent kinetic energy equation
-    
+    volScalarField gammaInt = transitionModel_->gammaInt();
+
     tmp<fvScalarMatrix> kEqn
       (
        fvm::ddt(alpha, rho, k_)
        + fvm::div(alphaRhoPhi, k_)
        - fvm::laplacian(alpha*rho*DkEff(), k_)
        ==
-       alpha()*rho()*G 
+       alpha() * rho() * gammaInt * Pk
        - fvm::Sp(alpha()*rho()*betaStar_*omega_, k_)
+       + alpha()*rho()*transitionModel_->kSource()
        );
     
     kEqn.ref().relax();
@@ -292,7 +316,15 @@ template<class BasicTurbulenceModel>
 void kOmegaWilcox06<BasicTurbulenceModel>::correctNut(const volSymmTensorField& Sbar)
 {
   // Re-calculate viscosity
-  this->nut_ = k_/omegaBar(Sbar);
+  if (transitionModel_->hasShearStressLimiter()) 
+  {
+      this->nut_ = transitionModel_->nut();
+  }
+  else
+  {
+      this->nut_ = k_/omegaBar(Sbar);
+  }
+  
   this->nut_.correctBoundaryConditions();
 
   BasicTurbulenceModel::correctNut();

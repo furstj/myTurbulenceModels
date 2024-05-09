@@ -124,6 +124,8 @@ public:
    
     virtual void correct(const volScalarField& nu, const volScalarField& S, const volScalarField& W) = 0;
 
+    virtual bool hasShearStressLimiter() const;
+
     virtual tmp<volScalarField> nut() const = 0;
 
     virtual tmp<volScalarField> Pk(

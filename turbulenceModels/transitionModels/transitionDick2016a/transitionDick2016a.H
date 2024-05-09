@@ -107,6 +107,11 @@ public:
     //- Main update/correction routine
     virtual void correct(const volScalarField& nu, const volScalarField& S, const volScalarField& W);
     
+    virtual bool hasShearStressLimiter() const
+    {
+        return true;
+    }   
+
     virtual tmp<volScalarField> nut() const;
 
     virtual tmp<volScalarField> Pk(
