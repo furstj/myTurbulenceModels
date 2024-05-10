@@ -16,7 +16,8 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 libs (
-  "libmyIncompressibleTurbulenceModels.so"
+  myTurbulenceModels
+  myIncompressibleTurbulenceModels
   );
 
 application     simpleFoam;
@@ -41,7 +42,7 @@ writeFormat     ascii;
 
 writePrecision  6;
 
-writeCompression compressed;
+writeCompression on;
 
 timeFormat      general;
 

@@ -394,7 +394,7 @@ omegaRoughWallFunctionFvPatchScalarField::omegaRoughWallFunctionFvPatchScalarFie
     wallFunctionBlenders(dict, blenderType::BINOMIAL, scalar(2)),
     wallCoeffs_(dict),
     beta1_(dict.lookupOrDefault<scalar>("beta1", 0.075)),
-    roughnessHeight_("roughnessHeight", dict, p.size()),
+    roughnessHeight_(p.size(), Zero),
     G_(),
     omega_(),
     initialised_(false),
@@ -405,6 +405,11 @@ omegaRoughWallFunctionFvPatchScalarField::omegaRoughWallFunctionFvPatchScalarFie
 
     // apply zero-gradient condition on start-up
     this->operator==(patchInternalField());
+
+    if (dict.found("roughnessHeight"))
+    {
+        roughnessHeight_ = scalarField("roughnessHeight", dict, p.size());
+    }
 }
 
 

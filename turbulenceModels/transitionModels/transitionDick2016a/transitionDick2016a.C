@@ -178,9 +178,9 @@ void transitionDick2016a::correct(
     nul_ = (1 - fSS_) * this->k_ / max(this->omega_, Clim_ * S / a2_);
 
     volScalarField Rey = sqrt(this->k_) * y_ / nu;
-    volScalarField zetaT = max(Rey / CT_ - 1, 0.0);
+    volScalarField zetaT = max(Rey - CT_, 0.0);
  
-    gammaInt_ = min(Rey / AT_, 1.0); 
+    gammaInt_ = min(zetaT / AT_, 1.0); 
 }
 
 

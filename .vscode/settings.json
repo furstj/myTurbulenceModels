@@ -11,6 +11,7 @@
         "kOmegaTNTTrans.C": "cpp",
         "kOmegaBase.C": "cpp",
         "transitionModel.C": "cpp",
-        "kOmegaWilcox06.C": "cpp"
+        "kOmegaWilcox06.C": "cpp",
+        "EARSMTrans.C": "cpp"
     }
 }
