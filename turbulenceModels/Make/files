@@ -8,5 +8,6 @@ transitionModels/transitionModel/transitionModel.C
 transitionModels/transitionNone/transitionNone.C
 transitionModels/transitionDick2016a/transitionDick2016a.C
 transitionModels/transitionDick2016b/transitionDick2016b.C
+transitionModels/transitionPrihoda24/transitionPrihoda24.C
 
 LIB = $(FOAM_USER_LIBBIN)/libmyTurbulenceModels
