@@ -1,0 +1,14 @@
+set term png enh
+set output "cf.png"
+
+set xrange [1.510E+04:9.570E+05]
+set ylabel "c_f"
+set xlabel "Re_x"
+
+set logscale x
+set logscale y
+
+set grid
+
+plot "../ercoftac_t3b_cf.dat" ti "Experiment", \
+     "postProcessing/axiswall/5000/line_wallShearStress.xy" us (9.4*$1/1.5e-5):(-2*$2/9.4**2) with linespoint ti "Result"
