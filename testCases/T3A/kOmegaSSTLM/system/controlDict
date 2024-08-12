@@ -15,11 +15,6 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-libs (
-  "libmyTurbulenceModels.so"
-  "libmyIncompressibleTurbulenceModels.so"
-  );
-
 application     simpleFoam;
 
 startFrom       startTime;

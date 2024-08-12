@@ -21,15 +21,19 @@ internalField   uniform 1;
 
 boundaryField
 {
-    lowerWall
+    wall
     {
       type            zeroGradient;
     }
-    lowerSymmetry
+    firstBottomFace
     {
         type            zeroGradient;
     }
-    upperSymmetry
+    firstTopFace
+    {
+        type            zeroGradient;
+    }
+    secondTopFace
     {
         type            zeroGradient;
     }
@@ -42,7 +46,7 @@ boundaryField
     {
         type            zeroGradient;
     }
-    defaultFaces
+    frontAndBack
     {
         type            empty;
     }

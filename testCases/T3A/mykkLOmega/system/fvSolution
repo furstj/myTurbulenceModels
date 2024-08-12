@@ -35,7 +35,7 @@ solvers
         mergeLevels      1;
     }
 
-    "(U|kt|kl||omega)"
+    "(U|kt|kl|omega)"
     {
       solver           PBiCG;
       preconditioner   DILU;

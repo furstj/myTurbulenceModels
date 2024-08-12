@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.1.0                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -10,43 +10,52 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    location    "0";
-    object      kl;
+    object      nut;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -2 0 0 0 0];
+dimensions      [0 2 -1 0 0 0 0];
 
-internalField   uniform 0.1;
+internalField   uniform 0;
 
 boundaryField
 {
-    wall
-    {
-        type            fixedValue;
-        value           uniform 0;
-    }
-    firstBottomFace
-    {
-        type            zeroGradient;
-    }
-    firstTopFace
-    {
-        type            zeroGradient;
-    }
-    secondTopFace
-    {
-        type            zeroGradient;
-    }
     inlet
     {
-        type            fixedValue;
-        value           uniform 0;
+        type            calculated;
+        value           $internalField;
     }
+
     outlet
     {
-        type            zeroGradient;
+        type            calculated;
+        value           $internalField;
     }
+
+    wall
+    {
+        type            nutkWallFunction;
+        value           uniform 0;
+    }
+
+	firstBottomFace
+    {
+        type            calculated;
+        value           $internalField;
+    }
+
+    firstTopFace
+    {
+        type            calculated;
+        value           $internalField;
+    }
+    
+    secondTopFace
+    {
+        type            calculated;
+        value           $internalField;
+    }
+
     frontAndBack
     {
         type            empty;

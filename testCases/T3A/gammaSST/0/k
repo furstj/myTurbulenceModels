@@ -21,32 +21,33 @@ internalField   uniform 0.1;
 
 boundaryField
 {
-    lowerWall
+	wall
     {
-      type            fixedValue;
-      value           uniform 0;
+		type            fixedValue;
+		value           uniform 0;
     }
-    lowerSymmetry
+    firstBottomFace
     {
         type            zeroGradient;
     }
-    upperSymmetry
+    firstTopFace
+    {
+        type            zeroGradient;
+    }
+    secondTopFace
     {
         type            zeroGradient;
     }
     inlet
-    {
-        type            turbulentIntensityKineticEnergyInlet;
-        intensity       0.033;
-        U               U;
-        phi             phi;
-        value           uniform 0.1;
+    {	
+		type            fixedValue;
+		value           uniform 0.2852;
     }
     outlet
     {
         type            zeroGradient;
     }
-    defaultFaces
+    frontAndBack
     {
         type            empty;
     }

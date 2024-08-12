@@ -40,22 +40,26 @@ boundaryField
         type            zeroGradient;
     }
 
-    lowerWall
+    wall
     {
         type            fixedValue;
-	value     uniform (0 0 0);
+		value     uniform (0 0 0);
     }
 
-    lowerSymmetry
+    firstBottomFace
     {
         type            slip;
     }
 
-    upperSymmetry
+    firstTopFace
     {
         type            slip;
     }
-
+   
+    secondTopFace
+    {
+        type            slip;
+    }
 }
 
 

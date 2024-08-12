@@ -29,33 +29,36 @@ internalField   uniform (5.4 0 0);
 
 boundaryField
 {
-    inlet      
+	wall
+    {
+        type            fixedValue;
+		value     uniform (0 0 0);
+    }
+    firstBottomFace
+    {
+        type            slip;
+    }
+    firstTopFace
+    {
+        type            slip;
+    }
+    secondTopFace
+    {
+        type            slip;
+    }
+    inlet
     {
         type            fixedValue;
         value           uniform (5.4 0 0);
     }
-
     outlet
     {
         type            zeroGradient;
     }
-
-    lowerWall
+    frontAndBack
     {
-        type            fixedValue;
-	value     uniform (0 0 0);
-    }
-
-    lowerSymmetry
-    {
-        type            slip;
-    }
-
-    upperSymmetry
-    {
-        type            slip;
-    }
-
+        type            empty;
+    }	
 }
 
 

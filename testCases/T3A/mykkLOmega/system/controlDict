@@ -16,6 +16,7 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 libs (
+  "libmyTurbulenceModels.so"
   "libmyIncompressibleTurbulenceModels.so"
   );
 
@@ -51,9 +52,9 @@ runTimeModifiable yes;
 
 functions
 {
-  #includeFunc wallShearStress
-  
-  #include "surfaces"
+  #includeFunc "wallShearStress"
+  #includeFunc "axiswall"
+  #includeFunc "axis"
 }
 
 // ************************************************************************* //

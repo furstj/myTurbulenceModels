@@ -21,17 +21,22 @@ internalField   uniform 0;
 
 boundaryField
 {
-    lowerWall
+	wall
     {
         type            nutLowReWallFunction;
         value           uniform 0;
     }
-    lowerSymmetry
+    firstBottomFace
     {
         type            calculated;
         value           uniform 0;
     }
-    upperSymmetry
+    firstTopFace
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    secondTopFace
     {
         type            calculated;
         value           uniform 0;
@@ -46,7 +51,7 @@ boundaryField
         type            calculated;
         value           uniform 0;
     }
-    defaultFaces
+    frontAndBack
     {
         type            empty;
     }

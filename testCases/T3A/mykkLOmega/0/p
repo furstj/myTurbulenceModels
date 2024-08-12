@@ -29,14 +29,14 @@ internalField   uniform 8.5e4;
 
 boundaryField
 {
-    lowerWall      
+    wall      
     {
         type            zeroGradient;
     }
 
     outlet
     {
-	type            fixedValue;
+		type            fixedValue;
         value           uniform 8.5e4;
     }
 
@@ -45,14 +45,24 @@ boundaryField
         type    zeroGradient;
     }
 
-    lowerSymmetry      
+    firstBottomFace      
     {
         type            zeroGradient;
     }
 
-    upperSymmetry      
+    firstTopFace      
     {
         type            zeroGradient;
+    }
+    
+    secondTopFace      
+    {
+        type            zeroGradient;
+    }
+        
+    frontAndBack
+    {
+        type            empty;
     }
 }
 
