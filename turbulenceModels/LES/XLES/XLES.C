@@ -82,7 +82,7 @@ template<class BasicTurbulenceModel>
 tmp<fvScalarMatrix> XLES<BasicTurbulenceModel>::omegaSource() const
 {
     return fvm::Su(
-        max(
+        this->rho() * max(
             this->alphaD_/this->omega_ * (fvc::grad(this->k_) & fvc::grad(this->omega_)),
             dimensionedScalar("0",inv(sqr(dimTime)), 0.0)
         ),
