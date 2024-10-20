@@ -145,7 +145,7 @@ XLES<BasicTurbulenceModel>::XLES
         propertiesName
     ),
 
-    RanGen_(label(0)),
+    RanGen_(label(Pstream::myProcNo())),
 
     alphaD_
     (
