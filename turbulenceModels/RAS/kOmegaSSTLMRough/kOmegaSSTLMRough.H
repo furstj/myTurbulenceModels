@@ -156,6 +156,9 @@ protected:
             //- Correlation parameter for Argr 
             dimensionedScalar Ars_;
             
+            //- Correlation parameter for Argr
+            dimensionedScalar Arl_;
+
         // Fields
 
             //- Transition onset momentum-thickness Reynolds number

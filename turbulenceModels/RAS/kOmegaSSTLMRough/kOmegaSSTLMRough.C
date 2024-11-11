@@ -471,6 +471,16 @@ kOmegaSSTLMRough<BasicTurbulenceModel>::kOmegaSSTLMRough
         )
     ),
 
+    Arl_
+    (
+        dimensionedScalar::getOrAddToDict
+        (
+            "Arl",
+            this->coeffDict_,
+            0.24
+        )
+    ),
+
     ReThetat_
     (
         IOobject
@@ -546,6 +556,7 @@ bool kOmegaSSTLMRough<BasicTurbulenceModel>::read()
         this->coeffDict().readIfPresent("maxLambdaIter", maxLambdaIter_);
         sigmaAr_.readIfPresent(this->coeffDict());
         Ars_.readIfPresent(this->coeffDict());
+        Arl_.readIfPresent(this->coeffDict());
         return true;
     }
 
@@ -595,13 +606,14 @@ void kOmegaSSTLMRough<BasicTurbulenceModel>::correctReThetatGammaInt()
 
     {
         const volScalarField::Internal t(500*nu/sqr(Us));
-        const dimensionedScalar Ar9("Ar9", 0.24*Ars_ - 0.000025*pow3(Ars_));
-        volScalarField::Internal Argr(0.24*Ar_ - Ar9);
+        const dimensionedScalar Ar1("Ar1", Arl_/(3*sqr(Ars_)));
+        const dimensionedScalar Ar2("Ar2", Ar1*pow3(Ars_) - Arl_*Ars_);
+        volScalarField::Internal Argr(Arl_*Ar_ - Ar2);
         forAll(Argr, celli)
         {
             if (Ar_[celli] < Ars_.value())
             {
-                Argr[celli] = 0.000025*pow3(Ar_[celli]);
+                Argr[celli] = Ar1.value()*pow3(Ar_[celli]);
             }
         }
         const volScalarField::Internal Pthetat
