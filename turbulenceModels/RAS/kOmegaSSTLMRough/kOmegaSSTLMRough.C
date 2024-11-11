@@ -616,6 +616,7 @@ void kOmegaSSTLMRough<BasicTurbulenceModel>::correctReThetatGammaInt()
                 Argr[celli] = Ar1.value()*pow3(Ar_[celli]);
             }
         }
+        const volScalarField::Internal b(sqr(0.5*sin(M_PI/155*ReThetat_ + 97*M_PI/155) + 0.5));
         const volScalarField::Internal Pthetat
         (
             alpha()*rho()*(cThetat_/t)*(1 - Fthetat)
@@ -629,7 +630,7 @@ void kOmegaSSTLMRough<BasicTurbulenceModel>::correctReThetatGammaInt()
           - fvm::laplacian(alpha*rho*DReThetatEff(), ReThetat_)
          ==
             Pthetat*ReThetat0(Us, dUsds, nu) - fvm::Sp(Pthetat, ReThetat_)
-          - alpha()*rho()*(cThetat_/t)*Argr
+          - alpha()*rho()*(cThetat_/t)*b*Argr
           + fvOptions(alpha, rho, ReThetat_)
         );
 
