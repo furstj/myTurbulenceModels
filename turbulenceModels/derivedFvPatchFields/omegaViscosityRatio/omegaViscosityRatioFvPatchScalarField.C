@@ -130,11 +130,19 @@ void omegaViscosityRatioFvPatchScalarField::updateCoeffs()
     const tmp<volScalarField> tk = turbModel.k();
     const volScalarField& k = tk();
     tmp<scalarField> kp = k.boundaryField()[patchi];
-    
+ 
     const tmp<scalarField> tnu = turbModel.nu(patchi);
     const scalarField& nu = tnu();
+    
+    //operator==(kp/(ratio_*nu));
+    const auto& phip =
+        patch().lookupPatchField<surfaceScalarField>(this->phiName_);
 
-    operator==(kp/(ratio_*nu));
+    this->refValue() = max(kp/(ratio_*nu), SMALL);
+    this->valueFraction() = neg(phip);
+
+    inletOutletFvPatchScalarField::updateCoeffs();
+
 }
 
 
