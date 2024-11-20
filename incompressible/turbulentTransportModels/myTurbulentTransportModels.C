@@ -82,6 +82,9 @@ makeRASModel(kOmegaSSTCC);
 #include "kOmegaSSTCCM.H"
 makeRASModel(kOmegaSSTCCM);
 
+#include "kOmegaSSTLMRough.H"
+makeRASModel(kOmegaSSTLMRough);
+
 #include "kOmegaTNT.H"
 makeRASModel(kOmegaTNT);
 
