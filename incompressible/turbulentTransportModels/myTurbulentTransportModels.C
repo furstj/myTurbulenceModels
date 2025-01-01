@@ -119,5 +119,10 @@ makeRASModel(EARSMTrans);
 #include "XLES.H"
 makeLESModel(XLES)
 
+#include "gammaSSTDES.H"
+makeLESModel(gammaSSTDES);
+
+#include "gammaSSTDDES.H"
+makeLESModel(gammaSSTDDES);
 
 // ************************************************************************* //
