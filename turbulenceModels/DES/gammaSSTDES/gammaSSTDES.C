@@ -167,7 +167,7 @@ template<class BasicTurbulenceModel>
 tmp<volScalarField> gammaSSTDES<BasicTurbulenceModel>::F1(const volScalarField& CDkOmega) const
 {
   return max(
-             this->F1(CDkOmega),
+             kOmegaSSTBase<DESModel<BasicTurbulenceModel>>::F1(CDkOmega),
              exp(-sqr(pow4(this->y_*sqrt(this->k_)/(scalar(120)*this->nu()))))
              );
 }
@@ -695,6 +695,7 @@ void gammaSSTDES<BasicTurbulenceModel>::correct()
     );
 
     const volScalarField F1(this->F1(CDkOmega));
+    //const volScalarField F1_(F1(CDkOmega));
     const volScalarField F23(this->F23());
 
         {
@@ -770,6 +771,7 @@ void gammaSSTDES<BasicTurbulenceModel>::correct()
         bound(this->k_, this->kMin_);
     }
 
+
     {
         // Intermittency equation (2)
         volScalarField Pgamma1 = Flength_ * S * gammaInt_ * Fonset(S);
@@ -789,7 +791,7 @@ void gammaSSTDES<BasicTurbulenceModel>::correct()
 
         bound(gammaInt_,scalar(0));
     }
-    
+
     correctNut(S*W);
 
 }
