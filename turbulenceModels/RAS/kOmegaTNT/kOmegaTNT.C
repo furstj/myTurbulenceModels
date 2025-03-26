@@ -140,32 +140,40 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
 
     eddyViscosity<RASModel<BasicTurbulenceModel>>::correct();
 
-    volScalarField divU(fvc::div(fvc::absolute(this->phi(), U)));
+    const volScalarField::Internal divU
+    (
+        fvc::div(fvc::absolute(this->phi(), U))
+    );
 
     tmp<volTensorField> tgradU = fvc::grad(U);
-    volScalarField S2 = 2.0 * magSqr(dev(symm(tgradU())));
-    volScalarField O2 = 2.0 * magSqr(skew(tgradU()));
-    tgradU.clear();
     
-    volScalarField G
-        (
-            this->GName(),
-            nut*S2
-        );
- 
+    volScalarField::Internal S2 = 2.0 * magSqr(dev(symm(tgradU())));
+    volScalarField::Internal O2 = 2.0 * magSqr(skew(tgradU()));
+    
+    const volScalarField::Internal GbyNu
+    (
+        IOobject::scopedName(this->type(), "GbyNu"),
+        tgradU()  && devTwoSymm(tgradU())
+    );
+    tgradU.clear();
+
+    volScalarField::Internal G(this->GName(), nut()*GbyNu);
+
     // Limiter based on epsilon
-    if (shockLimiter_)
-        G = min(G,  20 * this->Cmu_ * k_ * omega_);
+    if (productionLimiter_)
+        G = min(G,  20 * this->Cmu_ * k_() * omega_());
     
     // Limiter according to Wallin (PhD. thesis, paper 6)
     if (shockLimiter_)
-        G = min(G,  k_ * sqrt(S2/2.0));
+        G = min(G,  k_() * sqrt(S2/2.0));
     
 
     // Update omega and G at the wall
     omega_.boundaryFieldRef().updateCoeffs();
+    // Push any changed cell values to coupled neighbours
+    omega_.boundaryFieldRef().template evaluateCoupled<coupledFvPatch>();
 
-    volScalarField CDkOmega = max(
+    volScalarField::Internal CDkOmega = max(
         this->alphaD_ / max(omega_, this->omegaMin()) * (fvc::grad(k_) & fvc::grad(omega_)),
         dimensionedScalar("0",inv(sqr(dimTime)), 0.0)
     );
@@ -178,10 +186,10 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
       + fvm::div(alphaRhoPhi, omega_)
       - fvm::laplacian(alpha * rho * this->DomegaEff(), omega_)
      ==
-        this->gamma_ * alpha * rho * G * omega_/max(k_,this->kMin())
-      - fvm::SuSp(((2.0/3.0)*this->gamma_)*alpha * rho * divU, omega_)
-      - fvm::Sp(this->beta_ * alpha * rho * omega_, omega_)
-      + alpha * rho * CDkOmega  
+        this->gamma_ * alpha * rho() * GbyNu
+      - fvm::SuSp(((2.0/3.0)*this->gamma_)*alpha() * rho() * divU, omega_)
+      - fvm::Sp(this->beta_ * alpha() * rho() * omega_(), omega_)
+      + alpha * rho * CDkOmega
       + fvOptions(alpha, rho, omega_)
     );
 
@@ -200,9 +208,9 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
       + fvm::div(alphaRhoPhi, k_)
       - fvm::laplacian(alpha * rho * this->DkEff(), k_)
      ==
-        alpha * rho * G
-      - fvm::SuSp((2.0/3.0) * alpha * rho * divU, k_)
-      - fvm::Sp(this->Cmu_ * alpha * rho * omega_, k_)
+        alpha() * rho() * G
+      - fvm::SuSp((2.0/3.0) * alpha() * rho() * divU, k_)
+      - fvm::Sp(this->Cmu_ * alpha() * rho() * omega_(), k_)
       + fvOptions(alpha, rho, k_)
     );
 
