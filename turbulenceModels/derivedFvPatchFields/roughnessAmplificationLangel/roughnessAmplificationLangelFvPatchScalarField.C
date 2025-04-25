@@ -25,7 +25,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "roughnessAmplificationFvPatchScalarField.H"
+#include "roughnessAmplificationLangelFvPatchScalarField.H"
 #include "addToRunTimeSelectionTable.H"
 #include "fvPatchFieldMapper.H"
 #include "volFields.H"
@@ -38,22 +38,24 @@ License
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::roughnessAmplificationFvPatchScalarField::
-roughnessAmplificationFvPatchScalarField
+Foam::roughnessAmplificationLangelFvPatchScalarField::
+roughnessAmplificationLangelFvPatchScalarField
 (
     const fvPatch& p,
     const DimensionedField<scalar, volMesh>& iF
 )
 :
     fixedValueFvPatchScalarField(p, iF),
-    CAr_(8.0),
+    CAr1_(2000.0),
+    CAr2_(1.0),
+    CAr3_(13.5),
     ks_(p.size(), Zero)
 {
 }
 
 
-Foam::roughnessAmplificationFvPatchScalarField::
-roughnessAmplificationFvPatchScalarField
+Foam::roughnessAmplificationLangelFvPatchScalarField::
+roughnessAmplificationLangelFvPatchScalarField
 (
     const fvPatch& p,
     const DimensionedField<scalar, volMesh>& iF,
@@ -61,56 +63,64 @@ roughnessAmplificationFvPatchScalarField
 )
 :
     fixedValueFvPatchScalarField(p, iF),
-    CAr_(dict.getOrDefault<scalar>("CAr", 8.0)),
+    CAr1_(dict.getOrDefault<scalar>("CAr1", 2000.0)),
+    CAr2_(dict.getOrDefault<scalar>("CAr2", 1.0)),
+    CAr3_(dict.getOrDefault<scalar>("CAr3", 13.5)),
     ks_("ks", dict, p.size())
 {
     fixedValueFvPatchScalarField::evaluate();
 }
 
 
-Foam::roughnessAmplificationFvPatchScalarField::
-roughnessAmplificationFvPatchScalarField
+Foam::roughnessAmplificationLangelFvPatchScalarField::
+roughnessAmplificationLangelFvPatchScalarField
 (
-    const roughnessAmplificationFvPatchScalarField& ptf,
+    const roughnessAmplificationLangelFvPatchScalarField& ptf,
     const fvPatch& p,
     const DimensionedField<scalar, volMesh>& iF,
     const fvPatchFieldMapper& mapper
 )
 :
     fixedValueFvPatchScalarField(ptf, p, iF, mapper),
-    CAr_(ptf.CAr_),
+    CAr1_(ptf.CAr1_),
+    CAr2_(ptf.CAr2_),
+    CAr3_(ptf.CAr3_),
     ks_(ptf.ks_, mapper)
 {}
 
 
-Foam::roughnessAmplificationFvPatchScalarField::
-roughnessAmplificationFvPatchScalarField
+Foam::roughnessAmplificationLangelFvPatchScalarField::
+roughnessAmplificationLangelFvPatchScalarField
 (
-    const roughnessAmplificationFvPatchScalarField& ptf
+    const roughnessAmplificationLangelFvPatchScalarField& ptf
 )
 :
     fixedValueFvPatchScalarField(ptf),
-    CAr_(ptf.CAr_),
+    CAr1_(ptf.CAr1_),
+    CAr2_(ptf.CAr2_),
+    CAr3_(ptf.CAr3_),
     ks_(ptf.ks_)
 {}
 
 
-Foam::roughnessAmplificationFvPatchScalarField::
-roughnessAmplificationFvPatchScalarField
+Foam::roughnessAmplificationLangelFvPatchScalarField::
+roughnessAmplificationLangelFvPatchScalarField
 (
-    const roughnessAmplificationFvPatchScalarField& ptf,
+    const roughnessAmplificationLangelFvPatchScalarField& ptf,
     const DimensionedField<scalar, volMesh>& iF
 )
 :
     fixedValueFvPatchScalarField(ptf, iF),
-    CAr_(ptf.CAr_),
+    CAr1_(ptf.CAr1_),
+    CAr2_(ptf.CAr2_),
+    CAr3_(ptf.CAr3_),
     ks_(ptf.ks_)
 {}
 
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-void Foam::roughnessAmplificationFvPatchScalarField::autoMap
+void Foam::roughnessAmplificationLangelFvPatchScalarField::autoMap
 (
     const fvPatchFieldMapper& m
 )
@@ -120,7 +130,7 @@ void Foam::roughnessAmplificationFvPatchScalarField::autoMap
 }
 
 
-void Foam::roughnessAmplificationFvPatchScalarField::rmap
+void Foam::roughnessAmplificationLangelFvPatchScalarField::rmap
 (
     const fvPatchScalarField& ptf,
     const labelList& addr
@@ -128,14 +138,14 @@ void Foam::roughnessAmplificationFvPatchScalarField::rmap
 {
     fixedValueFvPatchScalarField::rmap(ptf, addr);
 
-    const roughnessAmplificationFvPatchScalarField& tiptf =
-        refCast<const roughnessAmplificationFvPatchScalarField>(ptf);
+    const roughnessAmplificationLangelFvPatchScalarField& tiptf =
+        refCast<const roughnessAmplificationLangelFvPatchScalarField>(ptf);
 
     ks_.rmap(tiptf.ks_, addr);
 }
 
 
-void Foam::roughnessAmplificationFvPatchScalarField::updateCoeffs()
+void Foam::roughnessAmplificationLangelFvPatchScalarField::updateCoeffs()
 {
     if (updated())
     {
@@ -163,20 +173,22 @@ void Foam::roughnessAmplificationFvPatchScalarField::updateCoeffs()
 
     fixedValueFvPatchScalarField::operator==
     (
-        CAr_*uTau*ks_/nuw 
+        CAr1_ / (1 + exp(CAr3_ - CAr1_*uTau*ks_/nuw) )
     );
 
     fixedValueFvPatchScalarField::updateCoeffs();
 }
 
 
-void Foam::roughnessAmplificationFvPatchScalarField::write
+void Foam::roughnessAmplificationLangelFvPatchScalarField::write
 (
     Ostream& os
 ) const
 {
     fvPatchScalarField::write(os);
-    os.writeEntry("CAr", CAr_);
+    os.writeEntry("CAr1", CAr1_);
+    os.writeEntry("CAr2", CAr2_);
+    os.writeEntry("CAr3", CAr3_);
     ks_.writeEntry("ks", os);
     fvPatchScalarField::writeValueEntry(os);
 }
@@ -189,7 +201,7 @@ namespace Foam
     makePatchTypeField
     (
         fvPatchScalarField,
-        roughnessAmplificationFvPatchScalarField
+        roughnessAmplificationLangelFvPatchScalarField
     );
 }
 

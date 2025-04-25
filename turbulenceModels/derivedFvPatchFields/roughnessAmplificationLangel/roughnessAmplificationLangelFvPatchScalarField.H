@@ -24,32 +24,37 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::roughnessAmplificationFvPatchScalarField
+    Foam::roughnessAmplificationLangelFvPatchScalarField
 
 Group
     grpGenericBoundaryConditions
 
 Description
-    This boundary condition provides a roughnessAmplification condition,
+    This boundary condition provides a roughnessAmplificationLangel condition,
     calculated as:
 
         \f[
-            Ar = CAr*ksPlus
+            Ar = CAr1 / (1 + exp(-(CAr2*ksPlus - CAr3)) )
         \f]
-    The boundary condition is compatible with Kuzulovic2022 model.
+    The boundary condition is compatible with Langel2017 model.
+
+    Note that the formula (6.67) in Langel's paper probably contains a typo. 
+    There should be minus sign in front of CAr3, see fig. 6.1 in the paper.
 
 Usage
     \table
         Property   | Description                     | Req'd | Default
         ks         | equivalent sand grain roughness | yes   | 0.0
-        CAr        | multiplicative factor           | no    | 8.0          
+        CAr1       | correlation coeff               | no    | 2000.0
+        CAr2       | correlation coeff               | no    | 1.0
+        CAr3       | correlation coeff               | no    | 13.5
     \endtable
 
     Example of the boundary condition specification:
     \verbatim
     <patchName>
     {
-        type       roughnessAmplification;
+        type       roughnessAmplificationLangel;
         CAr        8.0;
         ks         uniform 10e-6;
         value      uniform 0; // optional initial value
@@ -57,12 +62,12 @@ Usage
     \endverbatim
 
 SourceFiles
-    roughnessAmplificationFvPatchScalarField.C
+    roughnessAmplificationLangelFvPatchScalarField.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef roughnessAmplificationFvPatchScalarField_H
-#define roughnessAmplificationFvPatchScalarField_H
+#ifndef roughnessAmplificationLangelFvPatchScalarField_H
+#define roughnessAmplificationLangelFvPatchScalarField_H
 
 #include "fixedValueFvPatchFields.H"
 
@@ -72,18 +77,20 @@ namespace Foam
 {
 
 /*---------------------------------------------------------------------------*\
-     Class roughnessAmplificationFvPatchScalarField Declaration
+     Class roughnessAmplificationLangelFvPatchScalarField Declaration
 \*---------------------------------------------------------------------------*/
 
-class roughnessAmplificationFvPatchScalarField
+class roughnessAmplificationLangelFvPatchScalarField
 :
     public fixedValueFvPatchScalarField
 {
 
     // Private Data
 
-        //- Multiplicative factor for BC
-        scalar CAr_;
+        //- Correlation coeffs
+        scalar CAr1_;
+        scalar CAr2_;
+        scalar CAr3_;
 
         //- Field of equivalent sand grain roughness
         scalarField ks_;
@@ -92,20 +99,20 @@ class roughnessAmplificationFvPatchScalarField
 public:
 
     //- Runtime type information
-    TypeName("roughnessAmplification");
+    TypeName("roughnessAmplificationLangel");
 
 
     // Constructors
 
         //- Construct from patch and internal field
-        roughnessAmplificationFvPatchScalarField
+        roughnessAmplificationLangelFvPatchScalarField
         (
             const fvPatch&,
             const DimensionedField<scalar, volMesh>&
         );
 
         //- Construct from patch, internal field and dictionary
-        roughnessAmplificationFvPatchScalarField
+        roughnessAmplificationLangelFvPatchScalarField
         (
             const fvPatch&,
             const DimensionedField<scalar, volMesh>&,
@@ -113,18 +120,18 @@ public:
         );
 
         //- Construct by mapping onto a new patch
-        roughnessAmplificationFvPatchScalarField
+        roughnessAmplificationLangelFvPatchScalarField
         (
-            const roughnessAmplificationFvPatchScalarField&,
+            const roughnessAmplificationLangelFvPatchScalarField&,
             const fvPatch&,
             const DimensionedField<scalar, volMesh>&,
             const fvPatchFieldMapper&
         );
 
         //- Copy construct
-        roughnessAmplificationFvPatchScalarField
+        roughnessAmplificationLangelFvPatchScalarField
         (
-            const roughnessAmplificationFvPatchScalarField&
+            const roughnessAmplificationLangelFvPatchScalarField&
         );
 
         //- Construct and return a clone
@@ -132,14 +139,14 @@ public:
         {
             return tmp<fvPatchScalarField>
             (
-                new roughnessAmplificationFvPatchScalarField(*this)
+                new roughnessAmplificationLangelFvPatchScalarField(*this)
             );
         }
 
         //- Construct as copy setting internal field reference
-        roughnessAmplificationFvPatchScalarField
+        roughnessAmplificationLangelFvPatchScalarField
         (
-            const roughnessAmplificationFvPatchScalarField&,
+            const roughnessAmplificationLangelFvPatchScalarField&,
             const DimensionedField<scalar, volMesh>&
         );
 
@@ -151,7 +158,7 @@ public:
         {
             return tmp<fvPatchScalarField>
             (
-                new roughnessAmplificationFvPatchScalarField
+                new roughnessAmplificationLangelFvPatchScalarField
                 (
                     *this,
                     iF

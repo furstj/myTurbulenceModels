@@ -31,15 +31,30 @@ Group
     grpLESTurbulence
 
 Description
-    Langtry-Menter 4-equation transitional SST model
-    based on the k-omega-SST RAS model.
+    Langtry-Menter 4-equation transitional SST model based on the k-omega-SST RAS model
+    coupled to the roughness induced transition model.
+    
+    The code supports several variants of the model which can be selected at runtime
+    inside the turbulenceProperties.
+
+    
 
     References:
     \verbatim
-        Kožulovič, D., Juchmann, N. A., Führing, A., & Bode, C. (2022, June). 
-        Transition Model Extension for Roughness Effects. 
-        Proceedings of ASME Turbo Expo 2022. 
-        
+        Langel2017 model (tag:LA17)
+            Langel, C. M., Chow, R., Dam, C. P. van, & Maniaci, D. C. (2017). 
+            RANS Based Methodology for Predicting the Influence of Leading Edge 
+            Erosion on Airfoil Performance (Issue October). 
+            https://doi.org/10.2172/1404827
+
+        Kozulovic2022 model (tag:KO22)
+            Kožulovič, D., Juchmann, N. A., Führing, A., & Bode, C. (2022, June). 
+            Transition Model Extension for Roughness Effects. 
+            Proceedings of ASME Turbo Expo 2022. 
+    \endverbatim
+    
+    Reference to basic transition model:
+    \verbatim
         Langtry, R. B., & Menter, F. R. (2009).
         Correlation-based transition modeling for unstructured parallelized
         computational fluid dynamics codes.
@@ -86,9 +101,9 @@ Description
             maxLambdaIter 10;
 
             // Default roughness coefficients
+            roughnessModel Kozulovic2022;
             sigmaAr     10;
-            Ars         56.5685;
-        }
+         }
     \endverbatim
 
 SourceFiles
@@ -130,6 +145,14 @@ protected:
 
     // Protected data
 
+        enum roughnessModel
+        {
+            KOZULOVIC2022,
+            LANGEL2017    
+        };
+
+        static const Enum<roughnessModel> roughnessModelNames;
+
         // Model constants
 
             dimensionedScalar ca1_;
@@ -150,14 +173,11 @@ protected:
             //- Stabilization for division by the magnitude of the velocity
             const dimensionedScalar deltaU_;
 
+            //- Roughness model selection
+            const roughnessModel roughnessModel_;
+
             //- Diffusion coefficient for Ar
             dimensionedScalar sigmaAr_;
-
-            //- Correlation parameter for Argr 
-            dimensionedScalar Ars_;
-            
-            //- Correlation parameter for Argr
-            dimensionedScalar Arl_;
 
         // Fields
 
@@ -218,13 +238,15 @@ protected:
             const volScalarField::Internal& RT
         ) const;
 
-        //- Return the transition onset momentum-thickness Reynolds number
-        // (based on freestream conditions)
-        tmp<volScalarField::Internal> ReThetat0
+        //- Calculate the transition onset momentum-thickness Reynolds number
+        // (based on freestream conditions) and the F(lambda_theta) function
+        void CalculateReThetat0AndFLambda
         (
             const volScalarField::Internal& Us,
             const volScalarField::Internal& dUsds,
-            const volScalarField::Internal& nu
+            const volScalarField::Internal& nu,
+            volScalarField::Internal& ReThetat0,
+            volScalarField::Internal& FLambdaTheta
         ) const;
 
         //- Solve the turbulence equations and correct the turbulence viscosity

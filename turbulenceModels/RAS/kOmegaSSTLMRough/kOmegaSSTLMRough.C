@@ -29,6 +29,17 @@ License
 #include "kOmegaSSTLMRough.H"
 #include "fvOptions.H"
 #include "bound.H"
+#include "Enum.H"
+
+// * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
+
+template<class BasicTurbulenceModel>
+const Foam::Enum<typename Foam::RASModels::kOmegaSSTLMRough<BasicTurbulenceModel>::roughnessModel>
+Foam::RASModels::kOmegaSSTLMRough<BasicTurbulenceModel>::roughnessModelNames
+({
+    {roughnessModel::KOZULOVIC2022, "Kozulovic2022"},
+    {roughnessModel::LANGEL2017, "Langel2017"},
+});
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -219,28 +230,15 @@ tmp<volScalarField::Internal> kOmegaSSTLMRough<BasicTurbulenceModel>::Flength
 
 
 template<class BasicTurbulenceModel>
-tmp<volScalarField::Internal> kOmegaSSTLMRough<BasicTurbulenceModel>::ReThetat0
+void kOmegaSSTLMRough<BasicTurbulenceModel>::CalculateReThetat0AndFLambda
 (
     const volScalarField::Internal& Us,
     const volScalarField::Internal& dUsds,
-    const volScalarField::Internal& nu
+    const volScalarField::Internal& nu,
+    volScalarField::Internal& ReThetat0,
+    volScalarField::Internal& FLambdaTheta
 ) const
 {
-    tmp<volScalarField::Internal> tReThetat0
-    (
-        new volScalarField::Internal
-        (
-            IOobject
-            (
-                IOobject::groupName("ReThetat0", this->alphaRhoPhi_.group()),
-                this->runTime_.timeName(),
-                this->mesh_
-            ),
-            this->mesh_,
-            dimless
-        )
-    );
-    volScalarField::Internal& ReThetat0 = tReThetat0.ref();
 
     const volScalarField& k = this->k_;
 
@@ -269,7 +267,7 @@ tmp<volScalarField::Internal> kOmegaSSTLMRough<BasicTurbulenceModel>::ReThetat0
 
             if (Tu <= 1.3)
             {
-                const scalar Flambda =
+                FLambdaTheta[celli] =
                     dUsds[celli] <= 0
                   ?
                     1
@@ -285,12 +283,12 @@ tmp<volScalarField::Internal> kOmegaSSTLMRough<BasicTurbulenceModel>::ReThetat0
 
                 thetat =
                     (1173.51 - 589.428*Tu + 0.2196/sqr(Tu))
-                   *Flambda*nu[celli]
+                   *FLambdaTheta[celli]*nu[celli]
                    /Us[celli];
             }
             else
             {
-                const scalar Flambda =
+                FLambdaTheta[celli] =
                     dUsds[celli] <= 0
                   ?
                     1
@@ -306,7 +304,7 @@ tmp<volScalarField::Internal> kOmegaSSTLMRough<BasicTurbulenceModel>::ReThetat0
 
                 thetat =
                     331.50*pow((Tu - 0.5658), -0.671)
-                   *Flambda*nu[celli]/Us[celli];
+                   *FLambdaTheta[celli]*nu[celli]/Us[celli];
             }
 
             lambda = sqr(thetat)/nu[celli]*dUsds[celli];
@@ -328,7 +326,6 @@ tmp<volScalarField::Internal> kOmegaSSTLMRough<BasicTurbulenceModel>::ReThetat0
             << maxLambdaIter_ << ')'<< endl;
     }
 
-    return tReThetat0;
 }
 
 
@@ -451,33 +448,23 @@ kOmegaSSTLMRough<BasicTurbulenceModel>::kOmegaSSTLMRough
     ),
     deltaU_("deltaU", dimVelocity, SMALL),
 
+    roughnessModel_
+    (
+        roughnessModelNames.getOrDefault
+        (
+            "roughnessModel",
+            this->coeffDict_,
+            roughnessModel::KOZULOVIC2022
+        )
+    ),
+
     sigmaAr_
     (
         dimensionedScalar::getOrAddToDict
         (
             "sigmaAr",
             this->coeffDict_,
-            10
-        )
-    ),
-
-    Ars_
-    (
-        dimensionedScalar::getOrAddToDict
-        (
-            "Ars",
-            this->coeffDict_,
-            56.5685
-        )
-    ),
-
-    Arl_
-    (
-        dimensionedScalar::getOrAddToDict
-        (
-            "Arl",
-            this->coeffDict_,
-            0.24
+            (this->roughnessModel_ == roughnessModel::KOZULOVIC2022 ? 10 : 30)
         )
     ),
 
@@ -532,6 +519,7 @@ kOmegaSSTLMRough<BasicTurbulenceModel>::kOmegaSSTLMRough
         this->mesh_
     )
 {
+    this->coeffDict_.add("roughnessModel", roughnessModelNames[roughnessModel_]);
     if (type == typeName)
     {
         this->printCoeffs(type);
@@ -555,8 +543,6 @@ bool kOmegaSSTLMRough<BasicTurbulenceModel>::read()
         this->coeffDict().readIfPresent("lambdaErr", lambdaErr_);
         this->coeffDict().readIfPresent("maxLambdaIter", maxLambdaIter_);
         sigmaAr_.readIfPresent(this->coeffDict());
-        Ars_.readIfPresent(this->coeffDict());
-        Arl_.readIfPresent(this->coeffDict());
         return true;
     }
 
@@ -604,23 +590,103 @@ void kOmegaSSTLMRough<BasicTurbulenceModel>::correctReThetatGammaInt()
         bound(Ar_, 0);
     }
 
+    tmp<volScalarField::Internal> tReThetat0
+    (
+        new volScalarField::Internal
+        (
+            IOobject
+            (
+                IOobject::groupName("ReThetat0", this->alphaRhoPhi_.group()),
+                this->runTime_.timeName(),
+                this->mesh_
+            ),
+            this->mesh_,
+            dimless
+        )
+    );
+    volScalarField::Internal& ReThetat0 = tReThetat0.ref();
+
+    tmp<volScalarField::Internal> tFLambdaTheta
+    (
+        new volScalarField::Internal
+        (
+            IOobject
+            (
+                IOobject::groupName("FLambdaTheta", this->alphaRhoPhi_.group()),
+                this->runTime_.timeName(),
+                this->mesh_
+            ),
+            this->mesh_,
+            dimless
+        )
+    );
+    volScalarField::Internal& FLambdaTheta = tFLambdaTheta.ref();
+
     {
         const volScalarField::Internal t(500*nu/sqr(Us));
-        const dimensionedScalar Ar1("Ar1", Arl_/(3*sqr(Ars_)));
-        const dimensionedScalar Ar2("Ar2", Ar1*pow3(Ars_) - Arl_*Ars_);
-        volScalarField::Internal Argr(Arl_*Ar_ - Ar2);
-        forAll(Argr, celli)
-        {
-            if (Ar_[celli] < Ars_.value())
-            {
-                Argr[celli] = Ar1.value()*pow3(Ar_[celli]);
-            }
-        }
-        const volScalarField::Internal b(sqr(0.5*sin(M_PI/155*ReThetat_ - 97*M_PI/155) + 0.5));
         const volScalarField::Internal Pthetat
         (
             alpha()*rho()*(cThetat_/t)*(1 - Fthetat)
         );
+
+        tmp<volScalarField::Internal> tFAr
+        (
+            new volScalarField::Internal
+            (
+                IOobject
+                (
+                    "FAr",
+                    this->runTime_.timeName(),
+                    this->mesh_
+                ),
+                this->mesh_,
+                dimless
+            )
+        );
+        volScalarField::Internal& FAr = tFAr.ref();
+
+        CalculateReThetat0AndFLambda(Us, dUsds, nu, ReThetat0, FLambdaTheta);
+
+        switch (this->roughnessModel_) 
+        {
+            case KOZULOVIC2022:
+                {
+                    const scalar Ars = 56.5685;   // KO22, page 3
+                    forAll(FAr, celli)
+                    {
+                        FAr[celli] = (Ar_[celli] < Ars   // 
+                            ?
+                            pow3(Ar_[celli])*0.00025
+                            :
+                            0.24*Ar_[celli] - 9.05094
+                        );
+                    }
+                }
+                break;
+
+            case LANGEL2017:
+                {
+                    forAll(FAr, celli)
+                    {
+                        scalar q = (FLambdaTheta[celli] <= 1.0 ? 1.0 : 0.6);
+
+                        // LA17 (6.28)
+                        FAr[celli] = 4.0*pow(Ar_[celli],0.42)*Fthetat[celli] +
+                            4.0*Ar_[celli]*pow(FLambdaTheta[celli],-q)*(1 - Fthetat[celli]);
+                        
+                        // LA17 (6.31)
+                        scalar b = 0.5*sin(M_PI/155*ReThetat_[celli] - 97*M_PI/155) + 0.5;
+                        FAr[celli] *= b;
+                    }
+                }
+                break;
+
+            default:
+                FatalErrorInFunction 
+                    << "Selected roughness model is not yet implemented!"
+                    << exit(FatalError);
+                    
+        }
 
         // Transition onset momentum-thickness Reynolds number equation
         tmp<fvScalarMatrix> ReThetatEqn
@@ -629,8 +695,8 @@ void kOmegaSSTLMRough<BasicTurbulenceModel>::correctReThetatGammaInt()
           + fvm::div(alphaRhoPhi, ReThetat_)
           - fvm::laplacian(alpha*rho*DReThetatEff(), ReThetat_)
          ==
-            Pthetat*ReThetat0(Us, dUsds, nu) - fvm::Sp(Pthetat, ReThetat_)
-          - alpha()*rho()*(cThetat_/t)*b*Argr
+            Pthetat*ReThetat0 - fvm::Sp(Pthetat, ReThetat_)
+          - alpha()*rho()*(cThetat_/t)*FAr
           + fvOptions(alpha, rho, ReThetat_)
         );
 
