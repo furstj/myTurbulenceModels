@@ -9,62 +9,44 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    object      fvSolution;
+    class       volScalarField;
+    location    "0";
+    object      gamma;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-solvers
-{
-    p
-    {
-      solver           GAMG;
-      smoother         GaussSeidel;
-      tolerance        1e-6;
-      relTol           0.01;
-      minIter 1;
-    }
+dimensions      [0 0 0 0 0 0 0];
 
-    "(h|U|k|omega|gammaInt|gamma|ReThetat|Ar)"
+internalField   uniform 1;
+
+boundaryField
+{
+    lowerWall
     {
-      solver           PBiCGStab;
-      preconditioner   DILU;
-      tolerance        1e-8;
-      relTol           0.001;
-      minIter 1;
+      type            zeroGradient;
+    }
+    lowerSymmetry
+    {
+        type            zeroGradient;
+    }
+    upperSymmetry
+    {
+        type            zeroGradient;
+    }
+    inlet
+    {
+        type            fixedValue;
+        value           uniform 1;
+    }
+    outlet
+    {
+        type            zeroGradient;
+    }
+    defaultFaces
+    {
+        type            empty;
     }
 }
 
-SIMPLE
-{
-    consistent  yes;
-    
-    residualControl.DISABLED
-    {
-        p               1e-5;
-        U               1e-6;
-	"(k|omega|gammaInt|ReThetat|Ar)" 1e-4;
-    }
-}
-
-relaxationFactors
-{
-    fields
-    {
-        p               1.; 
-    }
-    equations
-    {
-        U                     0.7; 
-	"(k|omega)"           0.7;
-	"(gammaInt|ReThetat)" 0.7;
-	Ar                    0.7;
-    }
-}
-
-cache
-{
-    grad(U);
-}
 
 // ************************************************************************* //

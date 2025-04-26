@@ -11,21 +11,21 @@ FoamFile
     format      ascii;
     class       volScalarField;
     location    "0";
-    object      gamma;
+    object      omega;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 0 0 0 0 0];
+dimensions      [0 0 -1 0 0 0 0];
 
-internalField   uniform 0;
+internalField   uniform 666.67;
 
 boundaryField
 {
     lowerWall
     {
-        type roughnessAmplification;
-        ks uniform 250.e-6;
-        value uniform 0;
+        type            omegaRoughWallFunction;
+        roughnessHeight    uniform 250.0e-6;
+        value $internalField;
     }
     lowerSymmetry
     {
@@ -37,8 +37,9 @@ boundaryField
     }
     inlet
     {
-        type            fixedValue;
-        value           uniform 0;
+        type            omegaViscosityRatio;
+        ratio           10;
+        value           $internalField;
     }
     outlet
     {

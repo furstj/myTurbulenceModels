@@ -15,8 +15,6 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include "../params.dat"
-
 dimensions      [0 0 -1 0 0 0 0];
 
 internalField   uniform 666.67;
