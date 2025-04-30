@@ -167,7 +167,6 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
     if (shockLimiter_)
         G = min(G,  k_() * sqrt(S2/2.0));
     
-
     // Update omega and G at the wall
     omega_.boundaryFieldRef().updateCoeffs();
     // Push any changed cell values to coupled neighbours

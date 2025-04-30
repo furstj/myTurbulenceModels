@@ -173,7 +173,7 @@ void Foam::roughnessAmplificationLangelFvPatchScalarField::updateCoeffs()
 
     fixedValueFvPatchScalarField::operator==
     (
-        CAr1_ / (1 + exp(CAr3_ - CAr1_*uTau*ks_/nuw) )
+        CAr1_ / (1 + exp(CAr3_ - CAr2_*uTau*ks_/nuw) )
     );
 
     fixedValueFvPatchScalarField::updateCoeffs();
