@@ -68,7 +68,6 @@ roughnessAmplificationLangelFvPatchScalarField
     CAr3_(dict.getOrDefault<scalar>("CAr3", 13.5)),
     ks_("ks", dict, p.size())
 {
-    fixedValueFvPatchScalarField::evaluate();
 }
 
 

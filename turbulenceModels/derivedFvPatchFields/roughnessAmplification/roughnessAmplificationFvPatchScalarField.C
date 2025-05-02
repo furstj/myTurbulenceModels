@@ -64,7 +64,6 @@ roughnessAmplificationFvPatchScalarField
     CAr_(dict.getOrDefault<scalar>("CAr", 8.0)),
     ks_("ks", dict, p.size())
 {
-    fixedValueFvPatchScalarField::evaluate();
 }
 
 
@@ -141,7 +140,8 @@ void Foam::roughnessAmplificationFvPatchScalarField::updateCoeffs()
     {
         return;
     }
-
+    Info << "XXXXXXXXXXXX" << nl;
+    
     const turbulenceModel& turbModel = db().lookupObject<turbulenceModel>
     (
         IOobject::groupName
