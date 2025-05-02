@@ -140,7 +140,6 @@ void Foam::roughnessAmplificationFvPatchScalarField::updateCoeffs()
     {
         return;
     }
-    Info << "XXXXXXXXXXXX" << nl;
     
     const turbulenceModel& turbModel = db().lookupObject<turbulenceModel>
     (
