@@ -519,7 +519,11 @@ kOmegaSSTLMRough<BasicTurbulenceModel>::kOmegaSSTLMRough
         this->mesh_
     )
 {
-    this->coeffDict_.add("roughnessModel", roughnessModelNames[roughnessModel_]);
+    if (!this->coeffDict_.found("roughnessModel"))
+    {
+        this->coeffDict_.add("roughnessModel", roughnessModelNames[roughnessModel_]);
+    }
+    
     if (type == typeName)
     {
         this->printCoeffs(type);
