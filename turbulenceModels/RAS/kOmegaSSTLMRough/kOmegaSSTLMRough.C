@@ -660,7 +660,7 @@ void kOmegaSSTLMRough<BasicTurbulenceModel>::correctReThetatGammaInt()
                     {
                         FAr[celli] = (Ar_[celli] < Ars   // 
                             ?
-                            pow3(Ar_[celli])*0.00025
+                            pow3(Ar_[celli])*0.000025
                             :
                             0.24*Ar_[celli] - 9.05094
                         );
