@@ -39,6 +39,7 @@ Foam::RASModels::kOmegaSSTLMRough<BasicTurbulenceModel>::roughnessModelNames
 ({
     {roughnessModel::KOZULOVIC2022, "Kozulovic2022"},
     {roughnessModel::LANGEL2017, "Langel2017"},
+    {roughnessModel::LANGEL2017a, "Langel2017a"},
 });
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -464,7 +465,7 @@ kOmegaSSTLMRough<BasicTurbulenceModel>::kOmegaSSTLMRough
         (
             "sigmaAr",
             this->coeffDict_,
-            (this->roughnessModel_ == roughnessModel::KOZULOVIC2022 ? 10 : 30)
+            (this->roughnessModel_ == roughnessModel::LANGEL2017 ? 30 : 10)
         )
     ),
 
@@ -680,6 +681,28 @@ void kOmegaSSTLMRough<BasicTurbulenceModel>::correctReThetatGammaInt()
                         
                         // LA17 (6.31)
                         scalar b = 0.5*sin(M_PI/155*ReThetat_[celli] - 97*M_PI/155) + 0.5;
+                        FAr[celli] *= b;
+                    }
+                }
+                break;
+
+            case LANGEL2017a:
+                {
+                    const scalar cr2 = 0.0005;
+                    const scalar cr3 = 2.0;
+                    const scalar CAr = sqrt(cr3/(3*cr2));
+
+                    forAll(FAr, celli)
+                    {
+                        FAr[celli] = (Ar_[celli] < CAr   // LA17a (5.22)
+                            ?
+                            cr2*pow3(Ar_[celli])
+                            :
+                            cr3*(Ar_[celli] - CAr) + cr2*pow3(CAr)
+                        );
+                        
+                        // LA17a (5.24)
+                        scalar b = sqr(0.5*sin(M_PI/155*ReThetat_[celli] - 97*M_PI/155) + 0.5);
                         FAr[celli] *= b;
                     }
                 }

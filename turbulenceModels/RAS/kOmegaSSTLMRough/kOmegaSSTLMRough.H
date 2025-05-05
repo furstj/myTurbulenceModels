@@ -52,7 +52,7 @@ Description
             A Transport Equation Approach to Modeling the Influence o f Surface Roughness 
             on Boundary Layer Transition. 
             https://energy.sandia.gov/wp-content/uploads/2017/10/LEE_Langel1_SAND2017-10670.pdf
-            
+
         Kozulovic2022 model (tag:KO22)
             Kožulovič, D., Juchmann, N. A., Führing, A., & Bode, C. (2022, June). 
             Transition Model Extension for Roughness Effects. 
@@ -154,7 +154,8 @@ protected:
         enum roughnessModel
         {
             KOZULOVIC2022,
-            LANGEL2017    
+            LANGEL2017,    
+            LANGEL2017a
         };
 
         static const Enum<roughnessModel> roughnessModelNames;
