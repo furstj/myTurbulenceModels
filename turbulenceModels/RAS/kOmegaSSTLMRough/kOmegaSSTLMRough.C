@@ -700,7 +700,7 @@ void kOmegaSSTLMRough<BasicTurbulenceModel>::correctReThetatGammaInt()
           - fvm::laplacian(alpha*rho*DReThetatEff(), ReThetat_)
          ==
             Pthetat*ReThetat0 - fvm::Sp(Pthetat, ReThetat_)
-          - alpha()*rho()*(cThetat_/t)*FAr
+          - fvm::Sp(alpha()*rho()*(cThetat_/t)*FAr/ReThetat_, ReThetat_)
           + fvOptions(alpha, rho, ReThetat_)
         );
 
