@@ -60,7 +60,7 @@ roughnessAmplificationFvPatchScalarField
     const dictionary& dict
 )
 :
-    fixedValueFvPatchScalarField(p, iF),
+    fixedValueFvPatchScalarField(p, iF, dict),
     CAr_(dict.getOrDefault<scalar>("CAr", 8.0)),
     ks_("ks", dict, p.size())
 {

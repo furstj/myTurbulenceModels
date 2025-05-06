@@ -679,8 +679,9 @@ void kOmegaSSTLMRough<BasicTurbulenceModel>::correctReThetatGammaInt()
                         FAr[celli] = 4.0*pow(Ar_[celli],0.42)*Fthetat[celli] +
                             4.0*Ar_[celli]*pow(FLambdaTheta[celli],-q)*(1 - Fthetat[celli]);
                         
-                        // LA17 (6.31)
-                        scalar b = 0.5*sin(M_PI/155*ReThetat_[celli] - 97*M_PI/155) + 0.5;
+                        // LA17 (6.31), min term added by Furst 2025
+                        //scalar b = 0.5*sin(M_PI/155*ReThetat_[celli] - 97*M_PI/155) + 0.5;
+                        scalar b = 0.5*sin(M_PI*min((ReThetat_[celli] - 97)/155, 0.5)) + 0.5; 
                         FAr[celli] *= b;
                     }
                 }
@@ -701,9 +702,9 @@ void kOmegaSSTLMRough<BasicTurbulenceModel>::correctReThetatGammaInt()
                             cr3*(Ar_[celli] - CAr) + cr2*pow3(CAr)
                         );
                         
-                        // LA17a (5.24)
-                        scalar b = sqr(0.5*sin(M_PI/155*ReThetat_[celli] - 97*M_PI/155) + 0.5);
-                        FAr[celli] *= b;
+                        // LA17a (5.24), min term added by Furst 2025
+                       scalar b = sqr(0.5*sin(M_PI*min((ReThetat_[celli] - 97)/155, 0.5)) + 0.5);
+                       FAr[celli] *= b;
                     }
                 }
                 break;
