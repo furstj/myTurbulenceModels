@@ -1,0 +1,54 @@
+#!/bin/sh
+
+#########################################
+# Run the given setup
+#
+# Arguments:
+#    $1  - case (one of ZPG1, APG2, APG3, FPG4)
+#    $2  - roughness in microns
+#
+########################################
+
+cd "${0%/*}" || exit
+
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+if [ $# -ne 2 ]; then
+    echo "Run as ./Allrun case roughness"
+    echo "      case - one of ZPG1, APG2, APG3, FPG4"
+    echo "      roughness - equivalent sand grain roughness ks in microns"
+    exit 1;
+fi
+
+SETUP=$1
+KS=$2
+
+case $SETUP in
+    "ZPG1")
+        ITU=0.0114;;
+    "APG2")
+        ITU=0.0120;;
+    "APG3")
+        ITU=0.0130;;
+    "FPG4")
+        ITU=0.0125;;
+    *)
+        echo "unknown case $SETUP"
+        exit 1;
+esac
+
+cat <<EOF > params.in
+UIN   20;
+ITU   ${ITU};
+RET   200;
+KS    ${KS}e-6;
+EOF
+
+restore0Dir
+
+runApplication blockMesh -dict system/blockMeshDict.$SETUP
+
+runApplication simpleFoam
+
+python wall_shear_minimum.py
+

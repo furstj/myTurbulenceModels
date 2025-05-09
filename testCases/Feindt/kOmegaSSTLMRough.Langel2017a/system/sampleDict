@@ -1,0 +1,213 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+    class           dictionary;
+    location        system;
+    object          sampleDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Set output format : choice of
+//      xmgr
+//      jplot
+//      gnuplot
+//      raw
+setFormat raw;
+
+// Surface output format. Choice of
+//      null        : suppress output
+//      foamFile    : separate points, faces and values file
+//      dx          : DX scalar or vector format
+//      vtk         : VTK ascii format
+//      raw         : x y z value format for use with e.g. gnuplot 'splot'.
+//
+// Note:
+// other formats such as obj, stl, etc can also be written (by proxy)
+// but without any values!
+surfaceFormat raw;
+
+// interpolationScheme. choice of
+//	cell          : use cell-centre value only; constant over cells (default)
+//	cellPoint     : use cell-centre and vertex values
+//	cellPointFace : use cell-centre, vertex and face values.
+// 1] vertex values determined from neighbouring cell-centre values
+// 2] face values determined using the current face interpolation scheme
+//    for the field (linear, gamma, etc.)
+interpolationScheme cell;
+
+// Fields to sample.
+fields
+(
+   wallShearStress wallHeatFlux p rho U T nut alphat
+);
+
+
+// Set sampling definition: choice of
+//      uniform             evenly distributed points on line
+//      face                one point per face intersection
+//      midPoint            one point per cell, inbetween two face intersections
+//      midPointAndFace     combination of face and midPoint
+//
+//      curve               specified points, not nessecary on line, uses
+//                          tracking
+//      cloud               specified points, uses findCell
+//
+// axis: how to write point coordinate. Choice of
+// - x/y/z: x/y/z coordinate only
+// - xyz: three columns
+//  (probably does not make sense for anything but raw)
+// - distance: distance from start of sampling line (if uses line) or
+//             distance from first specified sampling point
+//
+// type specific:
+//      uniform, face, midPoint, midPointAndFace : start and end coordinate
+//      uniform: extra number of sampling points
+//      curve, cloud: list of coordinates
+sets
+(
+   sta01
+   {
+     type midPoint;
+     axis y;
+     start (0.18 0.0 1.e-6);
+     end   (0.18 0.1 1.e-6);
+   }
+   sta03
+   {
+     type midPoint;
+     axis y;
+     start (0.33 0.0 1.e-6);
+     end   (0.33 0.1 1.e-6);
+   }
+   sta03
+   {
+     type midPoint;
+     axis y;
+     start (0.48 0.0 1.e-6);
+     end   (0.48 0.1 1.e-6);
+   }
+   sta04
+   {
+     type midPoint;
+     axis y;
+     start (0.63 0.0 1.e-6);
+     end   (0.63 0.1 1.e-6);
+   }
+   sta05
+   {
+     type midPoint;
+     axis y;
+     start (0.78 0.0 1.e-6);
+     end   (0.78 0.1 1.e-6);
+   }
+   sta06
+   {
+     type midPoint;
+     axis y;
+     start (0.93 0.0 1.e-6);
+     end   (0.93 0.1 1.e-6);
+   }
+   sta07
+   {
+     type midPoint;
+     axis y;
+     start (1.08 0.0 1.e-6);
+     end   (1.08 0.1 1.e-6);
+   }
+   sta08
+   {
+     type midPoint;
+     axis y;
+     start (1.23 0.0 1.e-6);
+     end   (1.23 0.1 1.e-6);
+   }
+   sta09
+   {
+     type midPoint;
+     axis y;
+     start (1.38 0.0 1.e-6);
+     end   (1.38 0.1 1.e-6);
+   }
+   sta10
+   {
+     type midPoint;
+     axis y;
+     start (1.53 0.0 1.e-6);
+     end   (1.53 0.1 1.e-6);
+   }
+   sta11
+   {
+     type midPoint;
+     axis y;
+     start (1.68 0.0 1.e-6);
+     end   (1.68 0.1 1.e-6);
+   }
+   sta12
+   {
+     type midPoint;
+     axis y;
+     start (1.83 0.0 1.e-6);
+     end   (1.83 0.1 1.e-6);
+   }
+   sta13
+   {
+     type midPoint;
+     axis y;
+     start (1.98 0.0 1.e-6);
+     end   (1.98 0.1 1.e-6);
+   }
+   sta14
+   {
+     type midPoint;
+     axis y;
+     start (2.13 0.0 1.e-6);
+     end   (2.13 0.1 1.e-6);
+   }
+   y01
+   {
+     type midPoint;
+     axis x;
+     start (-1 0.1 1.e-6);
+     end   (3 0.1 1.e-6);
+   }
+   y005
+   {
+     type midPoint;
+     axis x;
+     start (-1 0.05 1.e-6);
+     end   (3 0.05 1.e-6);
+   }
+   
+);
+
+
+// Surface sampling definition: choice of
+//      plane : values on plane defined by point, normal.
+//      patch : values on patch.
+//
+// 1] patches are not triangulated by default
+// 2] planes are always triangulated
+// 3] iso-surfaces are always triangulated
+surfaces
+(
+   wall
+   {
+       type patch;
+       patches  ("lowerWall");
+       interpolate false;
+   }
+
+);
+
+
+// *********************************************************************** //
