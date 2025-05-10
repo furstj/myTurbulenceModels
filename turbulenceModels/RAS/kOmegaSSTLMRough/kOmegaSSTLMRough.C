@@ -665,6 +665,10 @@ void kOmegaSSTLMRough<BasicTurbulenceModel>::correctReThetatGammaInt()
                             :
                             0.24*Ar_[celli] - 9.05094
                         );
+
+			// Factor 10*b added by Furst, 2025
+			scalar b = sqr(0.5*sin(M_PI*min((ReThetat_[celli] - 97)/155, 0.5)) + 0.5);
+                        FAr[celli] *= 10*b;
                     }
                 }
                 break;
