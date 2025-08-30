@@ -42,16 +42,17 @@ Description
         EARSMCoeffs
         {
             betaStar       0.09
-	    gamma1         0.518
-            gamma2         0.44
-	    beta1          0.0747
-	    beta2          0.0828
-	    alphaK1        1.1
-	    alphaK2        1.1
-	    alphaOmega1    0.53
-	    alphaOmega2    1.0
-	    alphaD1        1.0
-	    alphaD2        0.4
+	        gamma1         0.518     // Cw1 in the original paper
+            gamma2         0.44      // Cw2 in the original paper  
+	        beta1          0.0747    // 
+	        beta2          0.0828
+	        alphaK1        1.1       // sigmaK1 in the original paper
+	        alphaK2        1.1       // sigmaK2 in the original paper
+	        alphaOmega1    0.53      // sigmaW1 in the original paper
+	        alphaOmega2    1.0       // sigmaW2 in the original paper 
+	        alphaD1        1.0       // sigmaD1 in the original paper
+	        alphaD2        0.4       // sigmaD2 in the original paper
+
             kInf           1.e-10
             curvatureCorrection false
             A0             -0.72
@@ -139,6 +140,17 @@ protected:
 
     virtual tmp<volScalarField> fMix(const volScalarField& gradKgradOmegaByOmega) const;
     
+    virtual tmp<volScalarField::Internal> Pk
+    (
+        const volScalarField::Internal& G
+    ) const;
+
+    tmp<volScalarField::Internal> epsilonByk
+    (
+        const volScalarField& F1,
+        const volTensorField& gradU
+    ) const;
+
     tmp<volScalarField> blend
     (
         const volScalarField& fMix,

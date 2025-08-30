@@ -5,4 +5,4 @@
 
 cleanCase
 
-rm -f *.png
+# rm -f *.png

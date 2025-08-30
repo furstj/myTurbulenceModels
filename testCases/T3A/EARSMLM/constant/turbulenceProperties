@@ -1,0 +1,35 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      turbulenceProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+simulationType      RAS;
+
+RAS
+{
+    RASModel        EARSMLM;
+
+    turbulence      on;
+
+    printCoeffs     on;
+
+    ca1      2;
+    ca2      0.06;
+    ce1      1;
+    ce2      50;
+    cThetat  0.03;
+}
+
+
+// ************************************************************************* //

@@ -65,6 +65,25 @@ tmp<volScalarField> EARSM<BasicTurbulenceModel>::fMix
 
 
 template<class BasicTurbulenceModel>
+tmp<volScalarField::Internal> EARSM<BasicTurbulenceModel>::Pk
+(
+    const volScalarField::Internal& G
+) const
+{
+    return G;
+}
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField::Internal> EARSM<BasicTurbulenceModel>::epsilonByk
+(
+    const volScalarField& F1,
+    const volTensorField& gradU
+) const
+{
+    return betaStar_*omega_.internalField();
+}
+
+template<class BasicTurbulenceModel>
 void EARSM<BasicTurbulenceModel>::correctNut()
 {
   correctNonlinearStress(fvc::grad(this->U_));
@@ -520,7 +539,7 @@ void EARSM<BasicTurbulenceModel>::correct()
       + fvm::div(alphaRhoPhi, k_)
       - fvm::laplacian(alpha*rho*DkEff(fMix), k_)
      ==
-        alpha*rho*G
+        alpha*rho*Pk(G)
       - fvm::SuSp((2.0/3.0)*alpha*rho*divU, k_)
         - fvm::Sp(betaStar_*alpha*rho*omega_, k_)
       + fvOptions(alpha, rho, k_)

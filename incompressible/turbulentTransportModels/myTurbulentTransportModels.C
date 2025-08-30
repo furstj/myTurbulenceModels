@@ -112,6 +112,9 @@ makeRASModel(EARSMWallin);
 #include "EARSMTrans.H"
 makeRASModel(EARSMTrans);
 
+#include "EARSMLM.H"
+makeRASModel(EARSMLM);
+
 // -------------------------------------------------------------------------- //
 // LES models
 // -------------------------------------------------------------------------- //
