@@ -145,12 +145,11 @@ volScalarField EARSM<BasicTurbulenceModel>::N
 template<class BasicTurbulenceModel>
 void EARSM<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& gradU)
 {
-    scalar Ctau = 6.0;
     volScalarField tau(
         max
         (
             1.0 / (this->betaStar_ * this->omega_),
-            Ctau * sqrt(this->nu() / (this->betaStar_ * max(this->k_, this->kMin_) * this->omega_))
+            CTau_ * sqrt(this->nu() / (this->betaStar_ * max(this->k_, this->kMin_) * this->omega_))
         ));
     
     volSymmTensorField S("S", tau * dev(symm(gradU)));
@@ -354,6 +353,16 @@ EARSM<BasicTurbulenceModel>::EARSM
             "alphaD2",
             this->coeffDict_,
             0.4
+        )
+    ),
+
+    CTau_
+    (
+        dimensioned<scalar>::lookupOrAddToDict
+        (
+            "CTau_",
+            this->coeffDict_,
+            6.0
         )
     ),
 

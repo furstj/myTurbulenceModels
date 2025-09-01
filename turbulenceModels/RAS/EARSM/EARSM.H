@@ -52,7 +52,7 @@ Description
 	        alphaOmega2    1.0       // sigmaW2 in the original paper 
 	        alphaD1        1.0       // sigmaD1 in the original paper
 	        alphaD2        0.4       // sigmaD2 in the original paper
-
+            CTau           6.0       // 
             kInf           1.e-10
             curvatureCorrection false
             A0             -0.72
@@ -119,6 +119,8 @@ protected:
     dimensionedScalar alphaD1_;
     dimensionedScalar alphaD2_;
 
+    dimensionedScalar CTau_;
+    
     dimensionedScalar kInf_;
 
     Switch curvatureCorrection_;

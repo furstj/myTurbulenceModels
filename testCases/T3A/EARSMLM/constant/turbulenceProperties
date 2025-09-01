@@ -24,11 +24,13 @@ RAS
 
     printCoeffs     on;
 
+    maxLambdaIter   50;
     ca1      2;
     ca2      0.06;
     ce1      1;
     ce2      50;
     cThetat  0.03;
+    CTau     4;
 }
 
 

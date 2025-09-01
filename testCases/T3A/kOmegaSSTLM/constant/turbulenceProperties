@@ -23,6 +23,8 @@ RAS
     turbulence      on;
 
     printCoeffs     on;
+
+    maxLambdaIter 50;
 }
 
 
