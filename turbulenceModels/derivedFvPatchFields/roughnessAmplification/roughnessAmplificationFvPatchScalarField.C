@@ -46,7 +46,7 @@ roughnessAmplificationFvPatchScalarField
 )
 :
     fixedValueFvPatchScalarField(p, iF),
-    CAr_(8.0),
+    cr1_(8.0),
     ks_(p.size(), Zero)
 {
 }
@@ -61,7 +61,7 @@ roughnessAmplificationFvPatchScalarField
 )
 :
     fixedValueFvPatchScalarField(p, iF, dict),
-    CAr_(dict.getOrDefault<scalar>("CAr", 8.0)),
+    cr1_(dict.getOrDefault<scalar>("cr1", 8.0)),
     ks_("ks", dict, p.size())
 {
 }
@@ -77,7 +77,7 @@ roughnessAmplificationFvPatchScalarField
 )
 :
     fixedValueFvPatchScalarField(ptf, p, iF, mapper),
-    CAr_(ptf.CAr_),
+    cr1_(ptf.cr1_),
     ks_(ptf.ks_, mapper)
 {}
 
@@ -89,7 +89,7 @@ roughnessAmplificationFvPatchScalarField
 )
 :
     fixedValueFvPatchScalarField(ptf),
-    CAr_(ptf.CAr_),
+    cr1_(ptf.cr1_),
     ks_(ptf.ks_)
 {}
 
@@ -102,7 +102,7 @@ roughnessAmplificationFvPatchScalarField
 )
 :
     fixedValueFvPatchScalarField(ptf, iF),
-    CAr_(ptf.CAr_),
+    cr1_(ptf.cr1_),
     ks_(ptf.ks_)
 {}
 
@@ -162,7 +162,7 @@ void Foam::roughnessAmplificationFvPatchScalarField::updateCoeffs()
 
     fixedValueFvPatchScalarField::operator==
     (
-        CAr_*uTau*ks_/nuw 
+        cr1_*uTau*ks_/nuw 
     );
 
     fixedValueFvPatchScalarField::updateCoeffs();
@@ -175,7 +175,7 @@ void Foam::roughnessAmplificationFvPatchScalarField::write
 ) const
 {
     fvPatchScalarField::write(os);
-    os.writeEntry("CAr", CAr_);
+    os.writeEntry("cr1", cr1_);
     ks_.writeEntry("ks", os);
     fvPatchScalarField::writeValueEntry(os);
 }

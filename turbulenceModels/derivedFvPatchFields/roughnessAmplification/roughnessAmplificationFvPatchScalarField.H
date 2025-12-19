@@ -34,15 +34,15 @@ Description
     calculated as:
 
         \f[
-            Ar = CAr*ksPlus
+            Ar = cr1*ksPlus
         \f]
-    The boundary condition is compatible with Kuzulovic2022 model.
+    The boundary condition is compatible with Kuzulovic2022 and Langel2017a model.
 
 Usage
     \table
         Property   | Description                     | Req'd | Default
         ks         | equivalent sand grain roughness | yes   | 0.0
-        CAr        | multiplicative factor           | no    | 8.0          
+        cr1        | multiplicative factor           | no    | 8.0          
     \endtable
 
     Example of the boundary condition specification:
@@ -50,7 +50,7 @@ Usage
     <patchName>
     {
         type       roughnessAmplification;
-        CAr        8.0;
+        cr1        8.0;
         ks         uniform 10e-6;
         value      uniform 0; // optional initial value
     }
@@ -83,7 +83,7 @@ class roughnessAmplificationFvPatchScalarField
     // Private Data
 
         //- Multiplicative factor for BC
-        scalar CAr_;
+        scalar cr1_;
 
         //- Field of equivalent sand grain roughness
         scalarField ks_;
