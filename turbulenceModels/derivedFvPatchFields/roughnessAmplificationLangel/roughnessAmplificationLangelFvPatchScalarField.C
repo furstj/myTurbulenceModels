@@ -170,10 +170,19 @@ void Foam::roughnessAmplificationLangelFvPatchScalarField::updateCoeffs()
 
     const scalarField uTau = sqrt(nuw*magUp/y);   // Valid for yPlus < 11 !
 
-    fixedValueFvPatchScalarField::operator==
-    (
-        CAr1_ / (1 + exp(CAr3_ - CAr2_*uTau*ks_/nuw) )
-    );
+    scalarField& Arw = *this;
+
+    forAll(Arw, facei)
+    {
+	if (ks_[facei] > 0) 
+	{
+	    Arw[facei] = CAr1_ / (1 + exp(CAr3_ - CAr2_*uTau[facei]*ks_[facei]/nuw[facei]) );
+	}
+	else
+	{
+	    Arw[facei] = 0;
+	}
+    }
 
     fixedValueFvPatchScalarField::updateCoeffs();
 }
