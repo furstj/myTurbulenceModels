@@ -9,9 +9,10 @@ There is an **Allwmake** script which should compile a dynamic library.
 
 Please be sure to use correct branch, e.g.:
 
-* **OF30** compatible with OpenFOAM 3.0
-* **OF8** compatible with OpenFOAM 8
-* **master** development branch 
+* **main** main development branch (compatible with OpenFOAM v2506)
+* **OF30** compatible with OpenFOAM 3.0 (no longer maintained)
+* **OF8** compatible with OpenFOAM 8 (no longer maintained)
+* other branches are experimental and should not be considered for serious work
 
 For current branches and compatibility with OpenFOAM versions see [wiki pages](https://github.com/furstj/myTurbulenceModels/wiki/User-guide).
 
