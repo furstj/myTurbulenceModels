@@ -3,6 +3,51 @@ title: "myTurbulenceModels"
 author: "Jiří Fürst"
 ---
 
-This is a Quarto website.
+This package provides turbulence models for use in OpenFOAM simulations. It includes implementations of various RANS and LES models, along with utilities for model selection and parameter tuning.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Installation
+
+You can install the package from GitHub using the following command:
+```bash
+git clone https://github.com/furstj/myTurbulenceModels.git
+cd myTurbulenceModels
+./Allwmake
+```
+
+## Features
+
+### RANS Models
+The package contains following RANS turbulence models:
+
+- [`kOmegaTNT`](RANS/kOmegaTNT.qmd) - Two-Equation k-ω Turbulence Model due to J. C. Kok
+- `kOmegaWilcox06` - Two-Equation k-ω Turbulence Model due to Wilcox
+- `EARSM`  - Explicit Algebraic Reynolds Stress Model due to Hellsten
+- `EARSMWallin` - EARSM with Wallin's Modifications
+- `kOmegaSSTCC` - Shear Stress Transport k-ω Model with Curvature Correction
+- `kOmegaSSTCCM` - Shear Stress Transport k-ω Model with Curvature Correction
+
+It also includes the following transitional RANS turbulence models:
+
+- `kOmegaSSTLMRough` - Five-equation Transition and Turbulence Model with Roughness Modifications
+- `gammaSST` - Three-equation transition and turbulence Model
+- `mykkLOmega` - Three-equation transition and turbulence Model due to Walters and Cokljat
+- `kv2Omega` - Three-equation transition and turbulence Model due to Walters and ???
+- `kOmegaTrans` - Two-equation transition and turbulence (experimental)
+- `EARSMTrans` - Explicit Algebraic Reynolds Stress Model with Transition (experimental)
+
+### LES Models
+The package also provides the following LES turbulence models:
+
+- `XLES` - Extra Large Eddy Simulation Model due to J. C. Kok
+
+### Boundary conditions
+The package includes specialized boundary conditions for turbulence quantities, such as:
+
+- `omegaViscosityRatio` - Inlet boundary condition for ω based on $\nu^t/\nu$ viscosity ratio
+- `boundedTurbulentIntensityKineticEnergyInlet` -Inlet boundary condition for k based on turbulent intensity with lower and upper bounds
+- `ReThetatInlet` - Inlet boundary condition for $Re_{\theta,t}$ for Langtry and Menter transitional model
+- `roughnessAmplification` - Wall boundary condition for $A_r$ for roughness modifications in transitional models
+- `roughnessAmplificationLangel` - Wall boundary condition for $A_r$ for roughness modifications in transitional models by Langel
+- `nutUKnoppWallFunction` - Wall function for turbulent viscosity based on Knopp et al.
+- `omegaRoughWallFunction` - Wall function for ω considering surface roughness
+- `omegaWilcoxRoughWallFunction` - Wall function for ω considering surface roughness due to Wilcox

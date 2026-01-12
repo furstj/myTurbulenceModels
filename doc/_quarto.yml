@@ -1,12 +1,17 @@
 project:
   type: website
-
+  
 website:
-  title: "doc"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
+  title: "myTurbulenceModels"
+  sidebar:
+    style: "docked"
+    contents:
+      - text: Introduction
+        href: index.qmd
+      - section: "RANS models"
+        contents:
+          - text: "kOmegaTNT"
+            href: RANS/kOmegaTNT.qmd
 
 format:
   html:
@@ -15,6 +20,7 @@ format:
       - brand
     css: styles.css
     toc: true
+    bibliography: references.bib
 
 
 
