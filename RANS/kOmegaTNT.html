@@ -252,11 +252,16 @@ C_D &amp;= \frac{\sigma_d \rho}{\omega} \max\left[\frac{\partial k}{\partial x_j
 </section>
 <section id="modifications" class="level2">
 <h2 class="anchored" data-anchor-id="modifications">Modifications</h2>
-<p>There are two modifications available for the <code>kOmegaTNT</code> model:</p>
+<p>There are two optional modifications available for the <code>kOmegaTNT</code> model:</p>
 <ul>
-<li>production limiter: Limits the production term <span class="math inline">\(P_k\)</span> to prevent excessive turbulence generation in adverse pressure gradient flows.</li>
-<li>shock limiter: Reduces the turbulent viscosity in the presence of shocks to avoid unphysical results.</li>
+<li><p><strong>production limiter</strong>: Limits the production term <span class="math inline">\(P_k\)</span> to prevent excessive turbulence generation in adverse pressure gradient flows. The limiter is applied to the equation for <span class="math inline">\(k\)</span> where it replaces <span class="math inline">\(P_k\)</span> with: <span class="math display">\[
+\tilde{P}_k = \min\left(P_k, 20 \beta^* \rho k \omega\right).
+\]</span></p></li>
+<li><p><strong>shock limiter</strong>: Reduces the turbulent viscosity in the presence of shocks to avoid nonphysical results. The limiter is applied to the equation for <span class="math inline">\(k\)</span> where it replaces <span class="math inline">\(P_k\)</span> with: <span class="math display">\[
+\tilde{P}_k = \min\left(P_k, k \sqrt{S_{ij} S_{ij}}\right).
+\]</span></p></li>
 </ul>
+<p>The source term in the <span class="math inline">\(\omega\)</span> equation is left unmodified.</p>
 </section>
 <section id="notes-on-openfoam-implementation" class="level2">
 <h2 class="anchored" data-anchor-id="notes-on-openfoam-implementation">Notes on OpenFOAM implementation</h2>
