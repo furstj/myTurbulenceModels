@@ -1,3 +1,7 @@
+#
+doc/.quarto/
+doc/_site/
+
 # Compiled Object files
 *.slo
 *.lo
