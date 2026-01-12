@@ -1,16 +1,87 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "RANS/kOmegaTNT.html",
+    "href": "RANS/kOmegaTNT.html",
+    "title": "kOmegaTNT model",
     "section": "",
-    "text": "About this site"
+    "text": "The kOmegaTNT model is a simple two-equation RANS turbulence model developed by J. C. Kok (Kok 2000). It is a modification of the original Wilcox k-ω model (Wilcox 1994), designed to remove strong dependency on the free-stream value of ω. This is achieved by including a cross-diffusion term in the ω equation, similar to the SST model by Menter (Menter 1994), and by re-calibration of model coefficients.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaTNT"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaTNT.html#model-equations",
+    "href": "RANS/kOmegaTNT.html#model-equations",
+    "title": "kOmegaTNT model",
+    "section": "Model Equations",
+    "text": "Model Equations\nThe transport equations for the kOmegaTNT model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\nP_\\omega &= \\frac{\\alpha_\\omega \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\max\\left[\\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}, 0\\right].\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\rho \\frac{k}{\\omega}.\n\\]",
+    "crumbs": [
+      "RANS models",
+      "kOmegaTNT"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaTNT.html#model-coefficients",
+    "href": "RANS/kOmegaTNT.html#model-coefficients",
+    "title": "kOmegaTNT model",
+    "section": "Model Coefficients",
+    "text": "Model Coefficients\nThe model coefficients are set to the following values:\n\n\\(\\beta^* = 0.09\\)\n\\(\\beta = 0.075\\)\n\\(\\sigma_k = \\frac{2}{3}\\)\n\\(\\sigma_\\omega = 0.5\\)\n\\(\\alpha_\\omega = 5/9\\)\n\\(\\sigma_d = 0.5\\)",
+    "crumbs": [
+      "RANS models",
+      "kOmegaTNT"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaTNT.html#modifications",
+    "href": "RANS/kOmegaTNT.html#modifications",
+    "title": "kOmegaTNT model",
+    "section": "Modifications",
+    "text": "Modifications\nThere are two modifications available for the kOmegaTNT model:\n\nproduction limiter: Limits the production term \\(P_k\\) to prevent excessive turbulence generation in adverse pressure gradient flows.\nshock limiter: Reduces the turbulent viscosity in the presence of shocks to avoid unphysical results.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaTNT"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaTNT.html#notes-on-openfoam-implementation",
+    "href": "RANS/kOmegaTNT.html#notes-on-openfoam-implementation",
+    "title": "kOmegaTNT model",
+    "section": "Notes on OpenFOAM implementation",
+    "text": "Notes on OpenFOAM implementation\nOpenFOAM implementation uses slightly different notation for some coefficients:\n\nCmu is used for \\(\\beta^*\\)\nbeta is used for \\(\\beta\\)\ngamma is used for \\(\\alpha_\\omega\\)\nalphaK is used for \\(\\sigma_k\\)\nalphaOmega is used for \\(\\sigma_\\omega\\)\nalphaD is used for \\(\\sigma_d\\)\n\nMoreover, OpenFOAM works with kinematic turbulent viscosity nut multiplied by density instead of turbulent viscosity mu_t.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaTNT"
+    ]
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "doc",
+    "title": "myTurbulenceModels",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "This package provides turbulence models for use in OpenFOAM simulations. It includes implementations of various RANS and LES models, along with utilities for model selection and parameter tuning.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "myTurbulenceModels",
+    "section": "Installation",
+    "text": "Installation\nYou can install the package from GitHub using the following command:\ngit clone https://github.com/furstj/myTurbulenceModels.git\ncd myTurbulenceModels\n./Allwmake",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#features",
+    "href": "index.html#features",
+    "title": "myTurbulenceModels",
+    "section": "Features",
+    "text": "Features\n\nRANS Models\nThe package contains following RANS turbulence models:\n\nkOmegaTNT - Two-Equation k-ω Turbulence Model due to J. C. Kok\nkOmegaWilcox06 - Two-Equation k-ω Turbulence Model due to Wilcox\nEARSM - Explicit Algebraic Reynolds Stress Model due to Hellsten\nEARSMWallin - EARSM with Wallin’s Modifications\nkOmegaSSTCC - Shear Stress Transport k-ω Model with Curvature Correction\nkOmegaSSTCCM - Shear Stress Transport k-ω Model with Curvature Correction\n\nIt also includes the following transitional RANS turbulence models:\n\nkOmegaSSTLMRough - Five-equation Transition and Turbulence Model with Roughness Modifications\ngammaSST - Three-equation transition and turbulence Model\nmykkLOmega - Three-equation transition and turbulence Model due to Walters and Cokljat\nkv2Omega - Three-equation transition and turbulence Model due to Walters and ???\nkOmegaTrans - Two-equation transition and turbulence (experimental)\nEARSMTrans - Explicit Algebraic Reynolds Stress Model with Transition (experimental)\n\n\n\nLES Models\nThe package also provides the following LES turbulence models:\n\nXLES - Extra Large Eddy Simulation Model due to J. C. Kok\n\n\n\nBoundary conditions\nThe package includes specialized boundary conditions for turbulence quantities, such as:\n\nomegaViscosityRatio - Inlet boundary condition for ω based on \\(\\nu^t/\\nu\\) viscosity ratio\nboundedTurbulentIntensityKineticEnergyInlet -Inlet boundary condition for k based on turbulent intensity with lower and upper bounds\nReThetatInlet - Inlet boundary condition for \\(Re_{\\theta,t}\\) for Langtry and Menter transitional model\nroughnessAmplification - Wall boundary condition for \\(A_r\\) for roughness modifications in transitional models\nroughnessAmplificationLangel - Wall boundary condition for \\(A_r\\) for roughness modifications in transitional models by Langel\nnutUKnoppWallFunction - Wall function for turbulent viscosity based on Knopp et al.\nomegaRoughWallFunction - Wall function for ω considering surface roughness\nomegaWilcoxRoughWallFunction - Wall function for ω considering surface roughness due to Wilcox",
+    "crumbs": [
+      "Introduction"
+    ]
   }
 ]
