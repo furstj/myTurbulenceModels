@@ -22,6 +22,15 @@ website:
             href: RANS/EARSM.qmd
           - text: "EARSMWallin"
             href: RANS/EARSMWallin.qmd
+      - section: "Transitional models"
+        contents:
+          - text: "gammaSST"
+            href: RANS/gammaSST.qmd
+      - section: "LES models"
+        contents:
+          - text: "XLES"
+            href: LES/XLES.qmd
+      - section: "Boundary conditions"
 
 format:
   html:
