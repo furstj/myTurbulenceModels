@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/RANS/EARSMWallin.html</loc>
+    <lastmod>2026-01-13T11:29:30.255Z</lastmod>
+  </url>
+  <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/RANS/kOmegaSSTCCM.html</loc>
+    <lastmod>2026-01-13T11:15:05.936Z</lastmod>
+  </url>
+  <url>
     <loc>https://furstj.github.io/myTurbulenceModels/RANS/kOmegaWilcox06.html</loc>
-    <lastmod>2026-01-13T09:53:02.889Z</lastmod>
+    <lastmod>2026-01-13T09:59:36.417Z</lastmod>
   </url>
   <url>
     <loc>https://furstj.github.io/myTurbulenceModels/index.html</loc>
-    <lastmod>2026-01-13T09:23:52.255Z</lastmod>
+    <lastmod>2026-01-13T10:30:49.534Z</lastmod>
   </url>
   <url>
     <loc>https://furstj.github.io/myTurbulenceModels/RANS/kOmegaTNT.html</loc>
     <lastmod>2026-01-13T09:19:11.767Z</lastmod>
+  </url>
+  <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/RANS/kOmegaSSTCC.html</loc>
+    <lastmod>2026-01-13T11:15:05.936Z</lastmod>
+  </url>
+  <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/RANS/EARSM.html</loc>
+    <lastmod>2026-01-13T11:19:44.132Z</lastmod>
   </url>
 </urlset>

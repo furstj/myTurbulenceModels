@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>kOmegaTNT model – myTurbulenceModels</title>
+<title>kOmegaSSTCCM model – myTurbulenceModels</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -131,7 +131,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../RANS/kOmegaTNT.html">RANS models</a></li><li class="breadcrumb-item"><a href="../RANS/kOmegaTNT.html">kOmegaTNT</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../RANS/kOmegaTNT.html">RANS models</a></li><li class="breadcrumb-item"><a href="../RANS/kOmegaSSTCCM.html">kOmegaSSTCCM</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -172,7 +172,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../RANS/kOmegaTNT.html" class="sidebar-item-text sidebar-link active">
+  <a href="../RANS/kOmegaTNT.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">kOmegaTNT</span></a>
   </div>
 </li>
@@ -190,7 +190,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../RANS/kOmegaSSTCCM.html" class="sidebar-item-text sidebar-link">
+  <a href="../RANS/kOmegaSSTCCM.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">kOmegaSSTCCM</span></a>
   </div>
 </li>
@@ -220,7 +220,6 @@ window.Quarto = {
   <ul>
   <li><a href="#model-equations" id="toc-model-equations" class="nav-link active" data-scroll-target="#model-equations">Model Equations</a></li>
   <li><a href="#model-coefficients" id="toc-model-coefficients" class="nav-link" data-scroll-target="#model-coefficients">Model Coefficients</a></li>
-  <li><a href="#modifications" id="toc-modifications" class="nav-link" data-scroll-target="#modifications">Modifications</a></li>
   <li><a href="#notes-on-openfoam-implementation" id="toc-notes-on-openfoam-implementation" class="nav-link" data-scroll-target="#notes-on-openfoam-implementation">Notes on OpenFOAM implementation</a></li>
   </ul>
 </nav>
@@ -228,9 +227,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../RANS/kOmegaTNT.html">RANS models</a></li><li class="breadcrumb-item"><a href="../RANS/kOmegaTNT.html">kOmegaTNT</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../RANS/kOmegaTNT.html">RANS models</a></li><li class="breadcrumb-item"><a href="../RANS/kOmegaSSTCCM.html">kOmegaSSTCCM</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">kOmegaTNT model</h1>
+<h1 class="title">kOmegaSSTCCM model</h1>
 </div>
 
 
@@ -247,78 +246,62 @@ window.Quarto = {
 </header>
 
 
-<p>The <code>kOmegaTNT</code> model is a simple two-equation RANS turbulence model developed by J. C. Kok <span class="citation" data-cites="Kok2000">(<a href="#ref-Kok2000" role="doc-biblioref">Kok 2000</a>)</span>. It is a modification of the original Wilcox k-ω model <span class="citation" data-cites="Wilcox1994">(<a href="#ref-Wilcox1994" role="doc-biblioref">Wilcox 1994</a>)</span>, designed to remove strong dependency on the free-stream value of ω. This is achieved by including a cross-diffusion term in the ω equation, similar to the SST model by Menter <span class="citation" data-cites="Menter1994">(<a href="#ref-Menter1994" role="doc-biblioref">Menter 1994</a>)</span>, and by re-calibration of model coefficients.</p>
+<p>The <code>kOmegaSSTCC</code> is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter <span class="citation" data-cites="Menter2003">(<a href="#ref-Menter2003" role="doc-biblioref">Menter, Kuntz, and Langtry 2003</a>)</span> as included in standard OpenFOAM distribution. It incorporates a curvature correction (CCM) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Zhang and Yang <span class="citation" data-cites="Zhang2013">(<a href="#ref-Zhang2013" role="doc-biblioref">Zhang and Yang 2013</a>)</span>.</p>
 <section id="model-equations" class="level2">
 <h2 class="anchored" data-anchor-id="model-equations">Model Equations</h2>
-<p>The transport equations for the <code>kOmegaTNT</code> model are given by:</p>
+<p>The transport equations for the <code>kOmegaSSTCCM</code> model are given by:</p>
 <p><span class="math display">\[
 \begin{aligned}
-\frac{\partial (\rho k)}{\partial t} + \frac{\partial (\rho k u_j)}{\partial x_j} &amp;= P_k - \beta^* \rho k \omega + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_k \mu_t) \frac{\partial k}{\partial x_j} \right],
+\frac{\partial (\rho k)}{\partial t} + \frac{\partial (\rho k u_j)}{\partial x_j} &amp;= P_k f_{r1} - \beta^* \rho k \omega + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_k \mu_t) \frac{\partial k}{\partial x_j} \right],
 \\
-\frac{\partial (\rho \omega)}{\partial t} + \frac{\partial (\rho \omega u_j)}{\partial x_j} &amp;= P_\omega - \beta \rho \omega^2 + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_\omega \mu_t) \frac{\partial \omega}{\partial x_j} \right] + C_D,
+\frac{\partial (\rho \omega)}{\partial t} + \frac{\partial (\rho \omega u_j)}{\partial x_j} &amp;= P_\omega f_{r1}- \beta \rho \omega^2 + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_\omega \mu_t) \frac{\partial \omega}{\partial x_j} \right] + C_D,
 \end{aligned}
 \]</span> where: <span class="math display">\[
 \begin{aligned}
 P_k &amp;= \tau_{ij} \frac{\partial u_i}{\partial x_j}, \\
-P_\omega &amp;= \frac{\alpha_\omega \omega}{k} P_k, \\
-C_D &amp;= \frac{\sigma_d \rho}{\omega} \max\left[\frac{\partial k}{\partial x_j} \frac{\partial \omega}{\partial x_j}, 0\right].
+\tau_{ij} &amp;= \mu_t \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right) - \frac{2}{3} \rho k \delta_{ij}, \\
+S_{ij} &amp;= \frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right), \\
+P_\omega &amp;= \frac{\gamma \rho}{\mu_t} P_k, \\
+C_D &amp;= 2(1 - F_1)\frac{\rho \sigma_{\omega 2}}{\omega} \frac{\partial k}{\partial x_j} \frac{\partial \omega}{\partial x_j}.
 \end{aligned}
 \]</span></p>
 <p>Turbulent viscosity is computed as: <span class="math display">\[
-\mu_t = \rho \frac{k}{\omega}.
+\mu_t = \frac{a_1 \rho k}{\max(a_1 \omega, S F_2)}
+\]</span> with <span class="math inline">\(S = \sqrt{2 S_{ij} S_{ij}}\)</span>.</p>
+<p>The curvature correction function <span class="math inline">\(f_{r1}\)</span> is defined as: <span class="math display">\[
+f_{r1} = \max\left[\min\left(f_{r}, 1.25\right), 0\right]
+\]</span> where <span class="math display">\[
+f_{r} = (1 + c_{r1})\frac{2r^*}{1+r^*}\left[1 - c_{r3} \arctan\left( c_{r2} \tilde{r} \right)\right] - c_{r1}
+\]</span> with <span class="math display">\[
+\begin{aligned}
+r^* &amp;= \frac{S}{\Omega}, \\
+\tilde{r} &amp;= \frac{\Omega}{S}\left(\frac{\Omega}{S} - 1\right).
+\end{aligned}
 \]</span></p>
 </section>
 <section id="model-coefficients" class="level2">
 <h2 class="anchored" data-anchor-id="model-coefficients">Model Coefficients</h2>
-<p>The model coefficients are set to the following values:</p>
+<p>For the standars <code>kOmegaSST</code> model coefficients see <span class="citation" data-cites="Menter2003">(<a href="#ref-Menter2003" role="doc-biblioref">Menter, Kuntz, and Langtry 2003</a>)</span> or the OpenFOAM manual. The curvature correction coefficients are set to:</p>
 <ul>
-<li><span class="math inline">\(\beta^* = 0.09\)</span></li>
-<li><span class="math inline">\(\beta = 0.075\)</span></li>
-<li><span class="math inline">\(\sigma_k = \frac{2}{3}\)</span></li>
-<li><span class="math inline">\(\sigma_\omega = 0.5\)</span></li>
-<li><span class="math inline">\(\alpha_\omega = 5/9\)</span></li>
-<li><span class="math inline">\(\sigma_d = 0.5\)</span></li>
+<li><span class="math inline">\(c_{r1} = 1.0\)</span></li>
+<li><span class="math inline">\(c_{r2} = 2.0\)</span></li>
+<li><span class="math inline">\(c_{r3} = 1.0\)</span></li>
 </ul>
-</section>
-<section id="modifications" class="level2">
-<h2 class="anchored" data-anchor-id="modifications">Modifications</h2>
-<p>There are two optional modifications available for the <code>kOmegaTNT</code> model:</p>
-<ul>
-<li><p><strong>production limiter</strong>: Limits the production term <span class="math inline">\(P_k\)</span> to prevent excessive turbulence generation in adverse pressure gradient flows. The limiter is applied to the equation for <span class="math inline">\(k\)</span> where it replaces <span class="math inline">\(P_k\)</span> with: <span class="math display">\[
-\tilde{P}_k = \min\left(P_k, 20 \beta^* \rho k \omega\right).
-\]</span></p></li>
-<li><p><strong>shock limiter</strong>: Reduces the turbulent viscosity in the presence of shocks to avoid nonphysical results. The limiter is applied to the equation for <span class="math inline">\(k\)</span> where it replaces <span class="math inline">\(P_k\)</span> with: <span class="math display">\[
-\tilde{P}_k = \min\left(P_k, k \sqrt{S_{ij} S_{ij}}\right).
-\]</span></p></li>
-</ul>
-<p>The source term in the <span class="math inline">\(\omega\)</span> equation is left unmodified.</p>
 </section>
 <section id="notes-on-openfoam-implementation" class="level2">
 <h2 class="anchored" data-anchor-id="notes-on-openfoam-implementation">Notes on OpenFOAM implementation</h2>
-<p>OpenFOAM implementation uses slightly different notation for some coefficients:</p>
-<ul>
-<li><code>Cmu</code> is used for <span class="math inline">\(\beta^*\)</span></li>
-<li><code>beta</code> is used for <span class="math inline">\(\beta\)</span></li>
-<li><code>gamma</code> is used for <span class="math inline">\(\alpha_\omega\)</span></li>
-<li><code>alphaK</code> is used for <span class="math inline">\(\sigma_k\)</span></li>
-<li><code>alphaOmega</code> is used for <span class="math inline">\(\sigma_\omega\)</span></li>
-<li><code>alphaD</code> is used for <span class="math inline">\(\sigma_d\)</span></li>
-</ul>
-<p>Moreover, OpenFOAM works with kinematic turbulent viscosity <code>nut</code> multiplied by density instead of turbulent viscosity <code>mu_t</code>.</p>
+<p>See the OpenFOAM manual for details on basic <code>kOmegaSST</code> model implementation.</p>
 
 
 
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Kok2000" class="csl-entry" role="listitem">
-Kok, Johan C. 2000. <span>“Resolving the Dependence on Freestream Values for the k-ω Turbulence Model.”</span> <em>AIAA Journal</em> 38: 1292–95. <a href="https://doi.org/10.2514/2.1101">https://doi.org/10.2514/2.1101</a>.
+<div id="ref-Menter2003" class="csl-entry" role="listitem">
+Menter, F. R., M. Kuntz, and R. Langtry. 2003. <span>“Ten Years of Industrial Experience with the SST Turbulence Model.”</span> <em>Turbulence Heat and Mass Transfer 4</em> 4: 625–32. <a href="http://cfd.mace.manchester.ac.uk/flomania/pds_papers/file_pds-1068134610Menter-SST-paper.pdf">http://cfd.mace.manchester.ac.uk/flomania/pds_papers/file_pds-1068134610Menter-SST-paper.pdf</a>.
 </div>
-<div id="ref-Menter1994" class="csl-entry" role="listitem">
-Menter, Florian R. 1994. <span>“Two-Equation Eddy-Viscosity Turbulence Models for Engineering Applications.”</span> <em>AIAA Journal</em> 32 (August): 1598–1605. <a href="https://doi.org/10.2514/3.12149">https://doi.org/10.2514/3.12149</a>.
-</div>
-<div id="ref-Wilcox1994" class="csl-entry" role="listitem">
-Wilcox, David C. 1994. <em>Turbulence Modeling for CFD</em>. DCW Industries.
+<div id="ref-Zhang2013" class="csl-entry" role="listitem">
+Zhang, Qiang, and Yong Yang. 2013. <span>“A New Simpler Rotation/Curvature Correction Method for Spalart–Allmaras Turbulence Model.”</span> <em>Chinese Journal of Aeronautics</em> 26 (April): 326–33. <a href="https://doi.org/10.1016/j.cja.2013.02.009">https://doi.org/10.1016/j.cja.2013.02.009</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

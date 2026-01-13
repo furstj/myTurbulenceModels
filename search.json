@@ -1,5 +1,60 @@
 [
   {
+    "objectID": "RANS/EARSMWallin.html",
+    "href": "RANS/EARSMWallin.html",
+    "title": "EARSMWallin model",
+    "section": "",
+    "text": "The EARSMWallin (Explicit Algebraic Reynolds Stress Model) is a RANS turbulence model developed by Wallin and Johanson (Wallin2007?). It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models.\n\n\n\n\n\n\nWarning\n\n\n\nCurrent implementation contains some highly experimental features! Please don’t use it for serious simulations yet. I suppose to clean up these issues in near future.",
+    "crumbs": [
+      "RANS models",
+      "EARSMWallin"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCCM.html",
+    "href": "RANS/kOmegaSSTCCM.html",
+    "title": "kOmegaSSTCCM model",
+    "section": "",
+    "text": "The kOmegaSSTCC is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter (Menter, Kuntz, and Langtry 2003) as included in standard OpenFOAM distribution. It incorporates a curvature correction (CCM) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Zhang and Yang (Zhang and Yang 2013).",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCCM"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCCM.html#model-equations",
+    "href": "RANS/kOmegaSSTCCM.html#model-equations",
+    "title": "kOmegaSSTCCM model",
+    "section": "Model Equations",
+    "text": "Model Equations\nThe transport equations for the kOmegaSSTCCM model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k f_{r1} - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega f_{r1}- \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\n\\tau_{ij} &= \\mu_t \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right) - \\frac{2}{3} \\rho k \\delta_{ij}, \\\\\nS_{ij} &= \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right), \\\\\nP_\\omega &= \\frac{\\gamma \\rho}{\\mu_t} P_k, \\\\\nC_D &= 2(1 - F_1)\\frac{\\rho \\sigma_{\\omega 2}}{\\omega} \\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}.\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\frac{a_1 \\rho k}{\\max(a_1 \\omega, S F_2)}\n\\] with \\(S = \\sqrt{2 S_{ij} S_{ij}}\\).\nThe curvature correction function \\(f_{r1}\\) is defined as: \\[\nf_{r1} = \\max\\left[\\min\\left(f_{r}, 1.25\\right), 0\\right]\n\\] where \\[\nf_{r} = (1 + c_{r1})\\frac{2r^*}{1+r^*}\\left[1 - c_{r3} \\arctan\\left( c_{r2} \\tilde{r} \\right)\\right] - c_{r1}\n\\] with \\[\n\\begin{aligned}\nr^* &= \\frac{S}{\\Omega}, \\\\\n\\tilde{r} &= \\frac{\\Omega}{S}\\left(\\frac{\\Omega}{S} - 1\\right).\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCCM"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCCM.html#model-coefficients",
+    "href": "RANS/kOmegaSSTCCM.html#model-coefficients",
+    "title": "kOmegaSSTCCM model",
+    "section": "Model Coefficients",
+    "text": "Model Coefficients\nFor the standars kOmegaSST model coefficients see (Menter, Kuntz, and Langtry 2003) or the OpenFOAM manual. The curvature correction coefficients are set to:\n\n\\(c_{r1} = 1.0\\)\n\\(c_{r2} = 2.0\\)\n\\(c_{r3} = 1.0\\)",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCCM"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCCM.html#notes-on-openfoam-implementation",
+    "href": "RANS/kOmegaSSTCCM.html#notes-on-openfoam-implementation",
+    "title": "kOmegaSSTCCM model",
+    "section": "Notes on OpenFOAM implementation",
+    "text": "Notes on OpenFOAM implementation\nSee the OpenFOAM manual for details on basic kOmegaSST model implementation.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCCM"
+    ]
+  },
+  {
     "objectID": "RANS/kOmegaWilcox06.html",
     "href": "RANS/kOmegaWilcox06.html",
     "title": "kOmegaWilcox06 model",
@@ -15,7 +70,7 @@
     "href": "RANS/kOmegaWilcox06.html#model-equations",
     "title": "kOmegaWilcox06 model",
     "section": "Model Equations",
-    "text": "Model Equations\nThe transport equations for the kOmegaWilcox06 model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\frac{\\rho k}{\\omega}) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\frac{\\rho k}{\\omega}) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\n\\tau_{ij} &= \\mu_t \\left(2 S_{ij} - \\frac{2}{3} \\delta_{ij} \\frac{\\partial u_k}{\\partial x_k}\\right) - \\frac{2}{3} \\rho k \\delta_{ij}, \\\\\nS_{ij} &= \\frac{1}{2} \\left(\\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i}\\right), \\\\\n\\overline{S}_{ij} &= S_{ij} - \\frac{1}{3} \\delta_{ij} S_{kk}, \\\\\nP_\\omega &= \\frac{\\gamma \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}.\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\rho \\frac{k}{\\hat{\\omega}},\n\\] with \\[\n\\hat{\\omega} = \\max\\left[\\omega, C_{lim} \\sqrt{\\frac{2 S_{ij} S_{ij}}{\\beta^*}}\\right].\n\\]",
+    "text": "Model Equations\nThe transport equations for the kOmegaWilcox06 model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\frac{\\rho k}{\\omega}) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\frac{\\rho k}{\\omega}) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\n\\tau_{ij} &= \\mu_t \\left(2 S_{ij} - \\frac{2}{3} \\delta_{ij} \\frac{\\partial u_k}{\\partial x_k}\\right) - \\frac{2}{3} \\rho k \\delta_{ij}, \\\\\nS_{ij} &= \\frac{1}{2} \\left(\\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i}\\right), \\\\\n\\overline{S}_{ij} &= S_{ij} - \\frac{1}{3} \\delta_{ij} S_{kk}, \\\\\nP_\\omega &= \\frac{\\gamma \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}.\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\rho \\frac{k}{\\hat{\\omega}},\n\\] with \\[\n\\hat{\\omega} = \\max\\left[\\omega, C_{lim} \\sqrt{\\frac{2 \\overline{S}_{ij}\n\\overline{S}_{ij}}{\\beta^*}}\\right].\n\\]",
     "crumbs": [
       "RANS models",
       "kOmegaWilcox06"
@@ -126,6 +181,61 @@
     "crumbs": [
       "RANS models",
       "kOmegaTNT"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCC.html",
+    "href": "RANS/kOmegaSSTCC.html",
+    "title": "kOmegaSSTCC model",
+    "section": "",
+    "text": "The kOmegaSSTCC is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter (Menter, Kuntz, and Langtry 2003) as included in standard OpenFOAM distribution. It incorporates a curvature correction (CC) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Smirnov and Menter (Smirnov and Menter 2009).",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCC"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCC.html#model-equations",
+    "href": "RANS/kOmegaSSTCC.html#model-equations",
+    "title": "kOmegaSSTCC model",
+    "section": "Model Equations",
+    "text": "Model Equations\nThe transport equations for the kOmegaSSTCC model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k f_{r1} - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega f_{r1}- \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\n\\tau_{ij} &= \\mu_t \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right) - \\frac{2}{3} \\rho k \\delta_{ij}, \\\\\nS_{ij} &= \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right), \\\\\nP_\\omega &= \\frac{\\gamma \\rho}{\\mu_t} P_k, \\\\\nC_D &= 2(1 - F_1)\\frac{\\rho \\sigma_{\\omega 2}}{\\omega} \\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}.\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\frac{a_1 \\rho k}{\\max(a_1 \\omega, S F_2)}\n\\] with \\(S = \\sqrt{2 S_{ij} S_{ij}}\\).\nThe curvature correction function \\(f_{r1}\\) is defined as: \\[\nf_{r1} = \\max\\left[\\min\\left(f_{r}, 1.25\\right), 0\\right]\n\\] where \\[\nf_{r} = (1 + c_{r1})\\frac{2r^*}{1+r^*}\\left[1 - c_{r3} \\arctan\\left( c_{r2} \\tilde{r} \\right)\\right] - c_{r1}\n\\] with \\[\n\\begin{aligned}\nr^* &= \\frac{S}{\\Omega}, \\\\\n\\tilde{r} &= 2 \\Omega_{ik}S_{kj} \\left[\\frac{D S_{ij}}{D t} + (\\epsilon_{imn}S_{jn} + \\epsilon_{jmn}S_{in})\\Omega_m^{rot}\\right]\\frac{1}{\\Omega D^3} \\\\\n\\Omega_{ij} &= \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} - \\frac{\\partial u_j}{\\partial x_i}  - 2 \\epsilon_{mji}\\Omega_m^{rot}\\right), \\\\\n\\Omega &= \\sqrt{2 \\Omega_{ij} \\Omega_{ij}}, \\\\\nD^2 &= \\max(S^2, 0.09 \\omega^2).\n\\end{aligned}\n\\] Here \\(\\Omega_m^{rot}\\) is the system rotation rate.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCC"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCC.html#model-coefficients",
+    "href": "RANS/kOmegaSSTCC.html#model-coefficients",
+    "title": "kOmegaSSTCC model",
+    "section": "Model Coefficients",
+    "text": "Model Coefficients\nFor the standars kOmegaSST model coefficients see (Menter, Kuntz, and Langtry 2003) or the OpenFOAM manual. The curvature correction coefficients are set to:\n\n\\(c_{r1} = 1.0\\)\n\\(c_{r2} = 2.0\\)\n\\(c_{r3} = 1.0\\)",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCC"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCC.html#notes-on-openfoam-implementation",
+    "href": "RANS/kOmegaSSTCC.html#notes-on-openfoam-implementation",
+    "title": "kOmegaSSTCC model",
+    "section": "Notes on OpenFOAM implementation",
+    "text": "Notes on OpenFOAM implementation\n\n\n\n\n\n\nNote\n\n\n\nCurrent implementation does not include the system rotation \\(\\Omega_m^{rot}\\) in the calculation of \\(\\Omega_{ij}\\).\n\n\nSee the OpenFOAM manual for details on basic kOmegaSST model implementation.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCC"
+    ]
+  },
+  {
+    "objectID": "RANS/EARSM.html",
+    "href": "RANS/EARSM.html",
+    "title": "EARSM model",
+    "section": "",
+    "text": "The EARSM (Explicit Algebraic Reynolds Stress Model) is a RANS turbulence model developed by Hellsten (Hellsten 2005). It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models.\n\n\n\n\n\n\nWarning\n\n\n\nThe documentation for EARSM model is not yet complete. Please refer to the original publication (Hellsten 2005) or to (NASA turbulent resources)[https://turbmodels.larc.nasa.gov/] for detailed information on the model formulation.\n\n\n\n\n\n\nReferences\n\nHellsten, Antti K. 2005. “New Advanced k-w Turbulence Model for High-Lift Aerodynamics.” AIAA Journal 43: 1857–69. https://doi.org/10.2514/1.13754.",
+    "crumbs": [
+      "RANS models",
+      "EARSM"
     ]
   }
 ]
