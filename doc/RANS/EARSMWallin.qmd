@@ -1,9 +1,119 @@
 ---
 title: "EARSMWallin model"
 ---
-The `EARSMWallin` (Explicit Algebraic Reynolds Stress Model) is a RANS turbulence model developed by Wallin and Johanson [@Wallin2007]. It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models.
+The `EARSMWallin` (Explicit Algebraic Reynolds Stress Model) is a RANS turbulence model developed by Wallin and Johanson [@Wallin2000]. It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models. The model uses k-omega TNT by Kok [@Kok2000] as the underlying turbulence model. 
 
-:::{.callout-warning}
-Current implementation contains some highly experimental features! Please don't use it for serious simulations yet. I suppose to clean up these issues in near future.
-:::
+## Model Equations
+The transport equations for the `kOmegaTNT` model are given by:
+
+$$
+\begin{aligned}
+\frac{\partial (\rho k)}{\partial t} + \frac{\partial (\rho k u_j)}{\partial x_j} &= P_k - \beta^* \rho k \omega + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_k \mu_t) \frac{\partial k}{\partial x_j} \right], 
+\\
+\frac{\partial (\rho \omega)}{\partial t} + \frac{\partial (\rho \omega u_j)}{\partial x_j} &= P_\omega - \beta \rho \omega^2 + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_\omega \mu_t) \frac{\partial \omega}{\partial x_j} \right] + C_D,
+\end{aligned}
+$$
+where:
+$$
+\begin{aligned}
+P_k &= \tau_{ij} \frac{\partial u_i}{\partial x_j}, \\
+P_\omega &= \frac{\alpha_\omega \omega}{k} P_k, \\
+C_D &= \frac{\sigma_d \rho}{\omega} \max\left[\frac{\partial k}{\partial x_j} \frac{\partial \omega}{\partial x_j}, 0\right].
+\end{aligned}
+$$
+
+Reynolds stress tensor is computed as:
+$$
+\tau_{ij} = 2 \mu_t S_{ij}^* - \frac{2}{3} \rho k \delta_{ij} - \rho k a_{ij}^{ex},
+$$
+where $a_{ij}^{ex}$ is the extra anisotropy tensor and
+$$
+S_{ij}^* = \frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}  - \frac{2}{3} \delta_{ij} \frac{\partial u_k}{\partial x_k} \right)
+$$
+and
+$$
+\Omega_{ij}^* = \frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} - \frac{\partial u_j}{\partial x_i} \right).
+$$
+
+The extra anisotropy tensor $a_{ij}^{ex}$ is given by:
+$$
+\begin{aligned}
+a_{ij}^{ex} =& \beta_3\left(\mathbf{\Omega}^2 - \frac{1}{3} I\!I_\Omega\,\mathbf{I}\right) 
++ \beta_4\left(\mathbf{S\Omega} - \mathbf{\Omega S}\right) + \\
+&+ \beta_6\left(\mathbf{S\Omega^2} \mathbf{\Omega^2S} - I\!I_S\,\mathbf{S} - 
+\frac{2}{3} I\!V\, \mathbf{I}\right) + \\
+&+ \beta_9\left(\mathbf{\Omega S\Omega^2} - \mathbf{\Omega^2 S \Omega}\right).
+\end{aligned}
+$$
+
+Here $\mathbf{S}$ and $\mathbf{\Omega}$ are the second order tensors. The inner products are defined as 
+$\mathbf{\Omega}^2_{ij} = \Omega_{ik} \Omega_{kj}$.
+
+Normalized mean strain-rate and rotation-rate tensors are defined as:
+$$
+\mathbf{S} = \tau S_{ij}^*, \quad \mathbf{\Omega} = \tau \Omega_{ij}^*,
+$$
+where 
+$$\tau = \max\left(\frac{k}{\epsilon}, C_\tau\sqrt{\frac{\mu}{\rho \epsilon}}\right)
+$$ 
+is the turbulence time scale ($\epsilon=\beta^* k \omega$). The invariants of the tensors are given by:
+$$
+I\!I_S = S_{ij} S_{ji}, \quad I\!I_\Omega = \Omega_{ij} \Omega_{ji}, \quad I\!V = S_{ik} \Omega_{kj} \Omega_{ji}.
+$$
+
+The eddy viscosity is computed as:
+$$
+\mu_t = - \frac{1}{2} (\beta_1 + I\!I_\Omega \beta_6) \rho k \tau.
+$$
+
+## Model coefficients
+The model coefficients for TNT model are defined as:
+
+- $\beta^* = 0.09$
+- $\beta = 0.075$
+- $\sigma_k = \frac{2}{3}$
+- $\sigma_\omega = 0.5$
+- $\alpha_\omega = 5/9$
+- $\sigma_d = 0.5$
+
+Additional coefficients for EARSM model are given as:
+
+- $C_\tau = 6$
+- $\beta_1 = - \frac{N(2N^2 - 7 I\!|_\Omega)}{Q}$
+- $\beta_3 = - \frac{12 I\!V}{N Q}$
+- $\beta_4 = \frac{2(N^2 - 2I\!|_\Omega}{Q}$
+- $\beta_6 = - \frac{6N}{Q}$
+- $\beta_9 = \frac{6}{Q}$
+  
+where
+
+$$
+\begin{aligned}
+Q &= \frac{5}{6}(N^2 - 2 I\!I_\Omega)(2N^2 - I\!I_\Omega), \\
+N &= \begin{cases}
+\frac{C_1'}{3} + (P_1 + \sqrt{P_2})^{1/3} + \text{sign}(P_1 - \sqrt{P_2})|P_1 - \sqrt{P_2}|^{1/3} & \text{if } P_2 \geq 0, \\
+\frac{C_1'}{3} + 2 \sqrt{P_1} \cos\left(\frac{1}{3} \arccos\left(\frac{P_1}{\sqrt{P_1^2 - P_2}}\right)\right) & \text{if } P_2 < 0,
+\end{cases} \\
+P_1 &= \left(\frac{C_1'^2}{27} + \frac{9}{20}I\!I_S - \frac{2}{3}I\!I_\Omega\right)C_1', \\
+P_2 &= P_1^2 - \left(\frac{C_1'^2}{9} + \frac{9}{10}I\!I_S + \frac{2}{3}I\!I_\Omega\right)^3, \\
+C_1' &= \frac{9}{4}\left[c_1 - 1 + C_{diff} \max(1 + \beta_1^{eq} I\!I_S,0)\right], \\
+\beta_1^{eq} &= -\frac{6}{5} \frac{N^{eq}}{(N^{eq})^2 - 2I\!I_\Omega}, \\
+N^{eq} &= \frac{9c_1}{4} = \frac{81}{20}.
+\end{aligned} 
+$$
+Here $c_1 = 1.8$ and $C_{diff} = 2.2$.
+
+
+## Notes on OpenFOAM implementation
+
+OpenFOAM implementation uses slightly different notation for some coefficients:
+
+- `Cmu` is used for $\beta^*$ 
+- `beta` is used for $\beta$
+- `gamma` is used for $\alpha_\omega$
+- `alphaK` is used for $\sigma_k$
+- `alphaOmega` is used for $\sigma_\omega$
+- `alphaD` is used for $\sigma_d$
+- `Ctau` is used for $C_\tau$
+
 

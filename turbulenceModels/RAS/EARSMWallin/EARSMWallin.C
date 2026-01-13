@@ -47,7 +47,7 @@ namespace RASModels
 template<class BasicTurbulenceModel>
 void EARSMWallin<BasicTurbulenceModel>::correctNut()
 {
-  correctNonlinearStress(fvc::grad(this->U_));
+    correctNonlinearStress(fvc::grad(this->U_));
 }
 
 
@@ -65,16 +65,16 @@ volScalarField EARSMWallin<BasicTurbulenceModel>::N
     {
         if (P2[i] < 0)
         {
-            N[i] += 2*pow(sqr(P1[i]) - P2[i], 1./6.)
-                * cos( 1./3.*acos( P1[i]/sqrt(sqr(P1[i]) - P2[i]))) ;
+            N[i] += 2 * pow(sqr(P1[i]) - P2[i], 1.0/6.0)
+                * cos(1.0/3.0 * acos(P1[i]/sqrt(sqr(P1[i]) - P2[i])));
         }
         else
         {
             scalar a = max(P1[i] + sqrt(P2[i]), 0.0);
             scalar b = P1[i] - sqrt(P2[i]);
-            N[i] += pow(a, 1./3.) + sign(b) * pow(fabs(b), 1./3.);
+            N[i] += pow(a, 1.0/3.0) + sign(b) * pow(fabs(b), 1.0/3.0);
         }
-    };
+    }
 
     forAll(N.boundaryField(), patchi)
     {
@@ -86,18 +86,17 @@ volScalarField EARSMWallin<BasicTurbulenceModel>::N
         {
             if (pP2[i] < 0)
             {
-                pN[i] += 2*pow(sqr(pP1[i]) - pP2[i], 1./6.)
-                    * cos( 1./3.*acos( pP1[i]/sqrt(sqr(pP1[i]) - pP2[i]))) ;
+                pN[i] += 2 * pow(sqr(pP1[i]) - pP2[i], 1.0/6.0)
+                    * cos(1.0/3.0 * acos(pP1[i]/sqrt(sqr(pP1[i]) - pP2[i])));
             }
             else
             {
                 scalar a = max(pP1[i] + sqrt(pP2[i]), 0.0);
                 scalar b = pP1[i] - sqrt(pP2[i]);
-                pN[i] += pow(a, 1./3.) + sign(b) * pow(fabs(b), 1./3.);
+                pN[i] += pow(a, 1.0/3.0) + sign(b) * pow(fabs(b), 1.0/3.0);
             }
-        };
-        
-    };
+        }
+    }
 
     return N;
 }
@@ -113,44 +112,42 @@ void EARSMWallin<BasicTurbulenceModel>::correctNonlinearStress(const volTensorFi
             1.0 / (this->betaStar_ * this->omega_),
             Ctau * sqrt(this->nu() / (this->betaStar_ * max(this->k_, this->kMin_) * this->omega_))
         ));
-    
-    volSymmTensorField S(tau * dev(symm(gradU)));
-    volTensorField     W(-tau * skew(gradU)); // NOTE Wij = -skew(grad(U))
 
-    volScalarField IIS  = tr(S & S);
-    volScalarField IIW  = tr(W & W);
+    volSymmTensorField S(tau * dev(symm(gradU)));
+    volTensorField W(-tau * skew(gradU)); // NOTE Wij = -skew(grad(U))
+
+    volScalarField IIS = tr(S & S);
+    volScalarField IIW = tr(W & W);
     // volScalarField IIIS = tr(S & S & S);
-    volScalarField IV   = tr(S & W & W);
+    volScalarField IV = tr(S & W & W);
     
     scalar Neq = 81.0 / 20.0;
     scalar CDiff = 2.2;
-    volScalarField beta1eq = - 6.0/5.0 * Neq / (sqr(Neq) - 2*IIW);
-    volScalarField A3p = 9.0/5.0 + 9.0/4.0 * CDiff * max(1 + beta1eq*IIS, 0.0);
-    volScalarField P1 = (sqr(A3p)/27 + (9.0/20.0)*IIS - (2.0/3.0)*IIW) * A3p;
-    volScalarField P2 = sqr(P1) - pow3(sqr(A3p)/9 + 0.9*IIS + (2.0/3.0)*IIW);
+    volScalarField beta1eq = -6.0/5.0 * Neq / (sqr(Neq) - 2 * IIW);
+    volScalarField A3p = 9.0/5.0 + 9.0/4.0 * CDiff * max(1 + beta1eq * IIS, 0.0);
+    volScalarField P1 = (sqr(A3p)/27 + (9.0/20.0) * IIS - (2.0/3.0) * IIW) * A3p;
+    volScalarField P2 = sqr(P1) - pow3(sqr(A3p)/9 + 0.9 * IIS + (2.0/3.0) * IIW);
     
     volScalarField N = this->N(A3p, P1, P2);
 
-    volScalarField Q = 5.0/6.0*(sqr(N) - 2*IIW)*(2*sqr(N)-IIW);
+    volScalarField Q = 5.0/6.0 * (sqr(N) - 2 * IIW) * (2 * sqr(N) - IIW);
 
-    volScalarField beta1 = -N*(2.0*sqr(N) - 7.0*IIW) / Q;
+    volScalarField beta1 = -N * (2.0 * sqr(N) - 7.0 * IIW) / Q;
     volScalarField beta3 = -12.0 * IV / (N * Q);
-    volScalarField beta4 = -2.0 * (sqr(N)  - 2.0*IIW) / Q;
+    volScalarField beta4 = -2.0 * (sqr(N) - 2.0 * IIW) / Q;
     volScalarField beta6 = -6.0 * N / Q;
-    volScalarField beta9 =  6.0 / Q;
+    volScalarField beta9 = 6.0 / Q;
 
-    
-    volScalarField Cmu = - 0.5 * (beta1 + IIW * beta6);
+    volScalarField Cmu = -0.5 * (beta1 + IIW * beta6);
 
     this->nut_ = Cmu * this->k_ * tau;
     this->nut_.correctBoundaryConditions();
 
-    
     this->nonlinearStress_ = this->k_ * symm(
-        beta3 * ( (W & W) - (1.0/3.0) * IIW * I )
-        + beta4 * ( (S & W) - (W & S) )
-        + beta6 * ( (S & W & W) + (W & W & S) - IIW * S - (2.0/3.0) * IV * I)
-        + beta9 * ( (W & S & W & W) - (W & W & S & W) )
+        beta3 * ((W & W) - (1.0/3.0) * IIW * I)
+        + beta4 * ((S & W) - (W & S))
+        + beta6 * ((S & W & W) + (W & W & S) - IIW * S - (2.0/3.0) * IV * I)
+        + beta9 * ((W & S & W & W) - (W & W & S & W))
     );
 
     BasicTurbulenceModel::correctNut();
@@ -299,7 +296,7 @@ template<class BasicTurbulenceModel>
 bool EARSMWallin<BasicTurbulenceModel>::read()
 {
     if (nonlinearEddyViscosity<RASModel<BasicTurbulenceModel> >::read())
-    {    
+    {
         betaStar_.readIfPresent(this->coeffDict());
         alphaK_.readIfPresent(this->coeffDict());
         alphaOmega_.readIfPresent(this->coeffDict());
@@ -327,7 +324,6 @@ void EARSMWallin<BasicTurbulenceModel>::validate()
 template<class BasicTurbulenceModel>
 void EARSMWallin<BasicTurbulenceModel>::correct()
 {
-
     if (!this->turbulence_)
     {
         return;
@@ -355,12 +351,13 @@ void EARSMWallin<BasicTurbulenceModel>::correct()
         this->GName(),
         (nut * dev(twoSymm(tgradU())) - this->nonlinearStress_) && tgradU()
     );
-    
+
     omega_.boundaryFieldRef().updateCoeffs();
 
     volScalarField CDkOmega = max(
-        this->sigmaD_ / max(omega_, this->omegaMin()) * (fvc::grad(k_) & fvc::grad(omega_)),
-        dimensionedScalar("0",inv(sqr(dimTime)), 0.0)
+        this->sigmaD_ / max(omega_, this->omegaMin())
+            * (fvc::grad(k_) & fvc::grad(omega_)),
+        dimensionedScalar("0", inv(sqr(dimTime)), 0.0)
     );
 
     tmp<fvScalarMatrix> omegaEqn
@@ -369,10 +366,10 @@ void EARSMWallin<BasicTurbulenceModel>::correct()
       + fvm::div(alphaRhoPhi, omega_)
       - fvm::laplacian(alpha * rho * this->DomegaEff(), omega_)
      ==
-        this->gamma_ * alpha * rho * G * omega_/max(k_,this->kMin())
-      - fvm::SuSp(((2.0/3.0)*this->alphaOmega_)*alpha * rho * divU, omega_)
+        this->gamma_ * alpha * rho * G * omega_ / max(k_, this->kMin())
+      - fvm::SuSp(((2.0/3.0) * this->alphaOmega_) * alpha * rho * divU, omega_)
       - fvm::Sp(this->beta_ * alpha * rho * omega_, omega_)
-      + alpha * rho * CDkOmega  
+      + alpha * rho * CDkOmega
       + fvOptions(alpha, rho, omega_)
     );
 
@@ -384,18 +381,16 @@ void EARSMWallin<BasicTurbulenceModel>::correct()
     fvOptions.correct(omega_);
     bound(omega_, this->omegaMin());
 
-    
-    
     // Turbulent kinetic energy equation
     tmp<fvScalarMatrix> kEqn
     (
         fvm::ddt(alpha, rho, k_)
       + fvm::div(alphaRhoPhi, k_)
-      - fvm::laplacian(alpha*rho*DkEff(), k_)
+      - fvm::laplacian(alpha * rho * DkEff(), k_)
      ==
-        alpha*rho*G
-      - fvm::SuSp((2.0/3.0)*alpha*rho*divU, k_)
-        - fvm::Sp(this->betaStar_*alpha*rho*omega_, k_)
+        alpha * rho * G
+      - fvm::SuSp((2.0/3.0) * alpha * rho * divU, k_)
+      - fvm::Sp(this->betaStar_ * alpha * rho * omega_, k_)
       + fvOptions(alpha, rho, k_)
     );
 
@@ -406,7 +401,6 @@ void EARSMWallin<BasicTurbulenceModel>::correct()
     bound(k_, this->kMin_);
 
     correctNonlinearStress(tgradU());
-    
 }
 
 
