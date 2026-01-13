@@ -12,6 +12,8 @@ website:
         contents:
           - text: "kOmegaTNT"
             href: RANS/kOmegaTNT.qmd
+          - text: "kOmegaWilcox06"
+            href: RANS/kOmegaWilcox06.qmd
 
 format:
   html:

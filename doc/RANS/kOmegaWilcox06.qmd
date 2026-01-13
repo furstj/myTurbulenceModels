@@ -1,0 +1,66 @@
+---
+title: "kOmegaWilcox06 model"
+---
+The `kOmegaWilcox06` model is a simple two-equation RANS turbulence model by Wilcox [@Wilcox2006]. It is an improved variant of the original Wilcox k-ω model [@Wilcox1994].
+
+## Model Equations
+The transport equations for the `kOmegaWilcox06` model are given by:
+
+$$
+\begin{aligned}
+\frac{\partial (\rho k)}{\partial t} + \frac{\partial (\rho k u_j)}{\partial x_j} &= P_k - \beta^* \rho k \omega + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_k \frac{\rho k}{\omega}) \frac{\partial k}{\partial x_j} \right], 
+\\
+\frac{\partial (\rho \omega)}{\partial t} + \frac{\partial (\rho \omega u_j)}{\partial x_j} &= P_\omega - \beta \rho \omega^2 + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_\omega \frac{\rho k}{\omega}) \frac{\partial \omega}{\partial x_j} \right] + C_D,
+\end{aligned}
+$$
+where:
+$$
+\begin{aligned}
+P_k &= \tau_{ij} \frac{\partial u_i}{\partial x_j}, \\
+\tau_{ij} &= \mu_t \left(2 S_{ij} - \frac{2}{3} \delta_{ij} \frac{\partial u_k}{\partial x_k}\right) - \frac{2}{3} \rho k \delta_{ij}, \\
+S_{ij} &= \frac{1}{2} \left(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}\right), \\
+\overline{S}_{ij} &= S_{ij} - \frac{1}{3} \delta_{ij} S_{kk}, \\
+P_\omega &= \frac{\gamma \omega}{k} P_k, \\
+C_D &= \frac{\sigma_d \rho}{\omega} \frac{\partial k}{\partial x_j} \frac{\partial \omega}{\partial x_j}.
+\end{aligned}
+$$
+
+Turbulent viscosity is computed as:
+$$
+\mu_t = \rho \frac{k}{\hat{\omega}},
+$$
+with
+$$
+\hat{\omega} = \max\left[\omega, C_{lim} \sqrt{\frac{2 S_{ij} S_{ij}}{\beta^*}}\right].
+$$
+
+## Model Coefficients
+The model coefficients are set to the following values:
+
+- $\beta^* = 0.09$
+- $\gamma = 13/25$
+- $C_{lim} = 7/8$
+- $\beta = \beta_0 f_\beta\,$ where $\beta_0 = 0.0708$ 
+- $f_\beta = \frac{1 + 85 \chi_\omega}{1 + 100 \chi_\omega}$
+- $\chi_\omega = \left|\frac{\Omega_{ij} \Omega_{jk} \hat{S}_{ki}}{(\beta^* \omega)^3}\right|$
+- $\Omega_{ij} = \frac{1}{2} \left(\frac{\partial u_i}{\partial x_j} - \frac{\partial u_j}{\partial x_i}\right)$
+- $\hat{S}_{ij} = S_{ij} - \frac{1}{2} \delta_{ij} S_{kk}$
+- $\sigma_k = 0.6$
+- $\sigma_\omega = 0.5$
+- $\sigma_d = \frac{1}{8}$ for $\frac{\partial k}{\partial x_j} \frac{\partial \omega}{\partial x_j} > 0$, else 0.
+
+
+## Notes on OpenFOAM implementation
+
+OpenFOAM implementation uses slightly different notation for some coefficients:
+
+- `betaStar` is used for $\beta^*$
+- `beta` is used for $\beta_0$
+- `gamma` is used for $\alpha_\omega$
+- `sigmaK` is used for $\sigma_k$
+- `sigmaOmega` is used for $\sigma_\omega$
+- `sigmaD` is used for $\sigma_d$
+- `alphaOmega` is used for $\gamma$
+- `Clim` is used for $C_{lim}$
+
+Moreover, OpenFOAM works with kinematic turbulent viscosity `nut` multiplied by density instead of turbulent viscosity `mu_t`. 
