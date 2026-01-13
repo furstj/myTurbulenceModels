@@ -1,0 +1,9 @@
+---
+title: "EARSMWallin model"
+---
+The `EARSMWallin` (Explicit Algebraic Reynolds Stress Model) is a RANS turbulence model developed by Wallin and Johanson [@Wallin2007]. It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models.
+
+:::{.callout-warning}
+Current implementation contains some highly experimental features! Please don't use it for serious simulations yet. I suppose to clean up these issues in near future.
+:::
+

@@ -18,6 +18,10 @@ website:
             href: RANS/kOmegaSSTCC.qmd
           - text: "kOmegaSSTCCM"
             href: RANS/kOmegaSSTCCM.qmd
+          - text: "EARSM"
+            href: RANS/EARSM.qmd
+          - text: "EARSMWallin"
+            href: RANS/EARSMWallin.qmd
 
 format:
   html:
