@@ -1,0 +1,59 @@
+---
+title: "kOmegaSSTCCM model"
+---
+The `kOmegaSSTCC` is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter [@Menter2003] as included in standard OpenFOAM distribution. It incorporates a curvature correction (CCM) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Zhang and Yang [@Zhang2013].
+
+## Model Equations
+The transport equations for the `kOmegaSSTCCM` model are given by:
+
+$$
+\begin{aligned}
+\frac{\partial (\rho k)}{\partial t} + \frac{\partial (\rho k u_j)}{\partial x_j} &= P_k f_{r1} - \beta^* \rho k \omega + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_k \mu_t) \frac{\partial k}{\partial x_j} \right], 
+\\
+\frac{\partial (\rho \omega)}{\partial t} + \frac{\partial (\rho \omega u_j)}{\partial x_j} &= P_\omega f_{r1}- \beta \rho \omega^2 + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_\omega \mu_t) \frac{\partial \omega}{\partial x_j} \right] + C_D,
+\end{aligned}
+$$
+where:
+$$
+\begin{aligned}
+P_k &= \tau_{ij} \frac{\partial u_i}{\partial x_j}, \\
+\tau_{ij} &= \mu_t \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right) - \frac{2}{3} \rho k \delta_{ij}, \\
+S_{ij} &= \frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right), \\
+P_\omega &= \frac{\gamma \rho}{\mu_t} P_k, \\
+C_D &= 2(1 - F_1)\frac{\rho \sigma_{\omega 2}}{\omega} \frac{\partial k}{\partial x_j} \frac{\partial \omega}{\partial x_j}.
+\end{aligned}
+$$
+
+Turbulent viscosity is computed as:
+$$
+\mu_t = \frac{a_1 \rho k}{\max(a_1 \omega, S F_2)}
+$$
+with $S = \sqrt{2 S_{ij} S_{ij}}$.
+
+The curvature correction function $f_{r1}$ is defined as:
+$$
+f_{r1} = \max\left[\min\left(f_{r}, 1.25\right), 0\right]
+$$
+where
+$$
+f_{r} = (1 + c_{r1})\frac{2r^*}{1+r^*}\left[1 - c_{r3} \arctan\left( c_{r2} \tilde{r} \right)\right] - c_{r1}
+$$
+with
+$$
+\begin{aligned}
+r^* &= \frac{S}{\Omega}, \\
+\tilde{r} &= \frac{\Omega}{S}\left(\frac{\Omega}{S} - 1\right).
+\end{aligned}
+$$
+
+## Model Coefficients
+For the standars `kOmegaSST` model coefficients see [@Menter2003] or the OpenFOAM manual. The curvature correction coefficients are set to:
+
+- $c_{r1} = 1.0$
+- $c_{r2} = 2.0$
+- $c_{r3} = 1.0$
+  
+
+## Notes on OpenFOAM implementation
+
+See the OpenFOAM manual for details on basic `kOmegaSST` model implementation.

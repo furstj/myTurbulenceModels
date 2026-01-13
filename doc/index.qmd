@@ -23,7 +23,7 @@ The package contains following RANS turbulence models:
 - [`kOmegaWilcox06`](RANS/kOmegaWilcox06.qmd) - Two-Equation k-ω Turbulence Model due to Wilcox
 - `EARSM`  - Explicit Algebraic Reynolds Stress Model due to Hellsten
 - `EARSMWallin` - EARSM with Wallin's Modifications
-- `kOmegaSSTCC` - Shear Stress Transport k-ω Model with Curvature Correction
+- [`kOmegaSSTCC`](RANS/kOmegaSSTCC.qmd) - Shear Stress Transport k-ω Model with Curvature Correction
 - `kOmegaSSTCCM` - Shear Stress Transport k-ω Model with Curvature Correction
 
 It also includes the following transitional RANS turbulence models:

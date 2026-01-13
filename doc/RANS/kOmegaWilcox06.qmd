@@ -31,7 +31,8 @@ $$
 $$
 with
 $$
-\hat{\omega} = \max\left[\omega, C_{lim} \sqrt{\frac{2 S_{ij} S_{ij}}{\beta^*}}\right].
+\hat{\omega} = \max\left[\omega, C_{lim} \sqrt{\frac{2 \overline{S}_{ij} 
+\overline{S}_{ij}}{\beta^*}}\right].
 $$
 
 ## Model Coefficients

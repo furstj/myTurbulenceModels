@@ -16,5 +16,5 @@ Please be sure to use correct branch, e.g.:
 
 ## Documentation
 
-For current documentation see please [user manual](https://furstj.github.io/myTurbulenceModels/)
+For current documentation see please [user manual](https://furstj.github.io/myTurbulenceModels/).
 
