@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/RANS/kOmegaWilcox06.html</loc>
+    <lastmod>2026-01-13T09:53:02.889Z</lastmod>
+  </url>
+  <url>
     <loc>https://furstj.github.io/myTurbulenceModels/index.html</loc>
-    <lastmod>2026-01-12T18:12:23.532Z</lastmod>
+    <lastmod>2026-01-13T09:23:52.255Z</lastmod>
   </url>
   <url>
     <loc>https://furstj.github.io/myTurbulenceModels/RANS/kOmegaTNT.html</loc>
-    <lastmod>2026-01-12T19:50:40.896Z</lastmod>
+    <lastmod>2026-01-13T09:19:11.767Z</lastmod>
   </url>
 </urlset>

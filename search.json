@@ -1,5 +1,49 @@
 [
   {
+    "objectID": "RANS/kOmegaWilcox06.html",
+    "href": "RANS/kOmegaWilcox06.html",
+    "title": "kOmegaWilcox06 model",
+    "section": "",
+    "text": "The kOmegaWilcox06 model is a simple two-equation RANS turbulence model by Wilcox (Wilcox 2006). It is an improved variant of the original Wilcox k-ω model (Wilcox 1994).",
+    "crumbs": [
+      "RANS models",
+      "kOmegaWilcox06"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaWilcox06.html#model-equations",
+    "href": "RANS/kOmegaWilcox06.html#model-equations",
+    "title": "kOmegaWilcox06 model",
+    "section": "Model Equations",
+    "text": "Model Equations\nThe transport equations for the kOmegaWilcox06 model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\frac{\\rho k}{\\omega}) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\frac{\\rho k}{\\omega}) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\n\\tau_{ij} &= \\mu_t \\left(2 S_{ij} - \\frac{2}{3} \\delta_{ij} \\frac{\\partial u_k}{\\partial x_k}\\right) - \\frac{2}{3} \\rho k \\delta_{ij}, \\\\\nS_{ij} &= \\frac{1}{2} \\left(\\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i}\\right), \\\\\n\\overline{S}_{ij} &= S_{ij} - \\frac{1}{3} \\delta_{ij} S_{kk}, \\\\\nP_\\omega &= \\frac{\\gamma \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}.\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\rho \\frac{k}{\\hat{\\omega}},\n\\] with \\[\n\\hat{\\omega} = \\max\\left[\\omega, C_{lim} \\sqrt{\\frac{2 S_{ij} S_{ij}}{\\beta^*}}\\right].\n\\]",
+    "crumbs": [
+      "RANS models",
+      "kOmegaWilcox06"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaWilcox06.html#model-coefficients",
+    "href": "RANS/kOmegaWilcox06.html#model-coefficients",
+    "title": "kOmegaWilcox06 model",
+    "section": "Model Coefficients",
+    "text": "Model Coefficients\nThe model coefficients are set to the following values:\n\n\\(\\beta^* = 0.09\\)\n\\(\\gamma = 13/25\\)\n\\(C_{lim} = 7/8\\)\n\\(\\beta = \\beta_0 f_\\beta\\,\\) where \\(\\beta_0 = 0.0708\\)\n\\(f_\\beta = \\frac{1 + 85 \\chi_\\omega}{1 + 100 \\chi_\\omega}\\)\n\\(\\chi_\\omega = \\left|\\frac{\\Omega_{ij} \\Omega_{jk} \\hat{S}_{ki}}{(\\beta^* \\omega)^3}\\right|\\)\n\\(\\Omega_{ij} = \\frac{1}{2} \\left(\\frac{\\partial u_i}{\\partial x_j} - \\frac{\\partial u_j}{\\partial x_i}\\right)\\)\n\\(\\hat{S}_{ij} = S_{ij} - \\frac{1}{2} \\delta_{ij} S_{kk}\\)\n\\(\\sigma_k = 0.6\\)\n\\(\\sigma_\\omega = 0.5\\)\n\\(\\sigma_d = \\frac{1}{8}\\) for \\(\\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j} &gt; 0\\), else 0.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaWilcox06"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaWilcox06.html#notes-on-openfoam-implementation",
+    "href": "RANS/kOmegaWilcox06.html#notes-on-openfoam-implementation",
+    "title": "kOmegaWilcox06 model",
+    "section": "Notes on OpenFOAM implementation",
+    "text": "Notes on OpenFOAM implementation\nOpenFOAM implementation uses slightly different notation for some coefficients:\n\nbetaStar is used for \\(\\beta^*\\)\nbeta is used for \\(\\beta_0\\)\ngamma is used for \\(\\alpha_\\omega\\)\nsigmaK is used for \\(\\sigma_k\\)\nsigmaOmega is used for \\(\\sigma_\\omega\\)\nsigmaD is used for \\(\\sigma_d\\)\nalphaOmega is used for \\(\\gamma\\)\nClim is used for \\(C_{lim}\\)\n\nMoreover, OpenFOAM works with kinematic turbulent viscosity nut multiplied by density instead of turbulent viscosity mu_t.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaWilcox06"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "myTurbulenceModels",
