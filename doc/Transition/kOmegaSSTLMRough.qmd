@@ -1,8 +1,340 @@
 ---
 title: "kOmegaSSTLMRough model"
 ---
+# Transition Models on Rough Walls
 
-:::{.callout-warning}
-The documentation for the model is not yet written.
+The transition model on rough walls is based on a combination of the four-equation transition model $\gamma - \tilde{Re}_\theta$ according to Langtry and Menter [@Langtry2009] with an additional equation for the amplification factor $A_r$ according to Dassler et al. [@Dassler2010]. In subsequent publications, this model has been presented in various variants and calibrations, e.g., Langel et al. [@Langel2017] or Kožulović et al. [@Kozulovic2022].
+
+The transition model according to Dassler et al. contains the following three equations:
+$$
+\begin{aligned}
+\frac{\partial (\rho \gamma)}{\partial t} + \frac{\partial (\rho u_j \gamma)}{\partial x_j} &= P_\gamma - E_\gamma + \frac{\partial}{\partial x_j} \left[ \left( \mu + \frac{\mu_t}{\sigma_f} \right) \frac{\partial \gamma}{\partial x_j} \right], 
+\\
+\frac{\partial (\rho \tilde{Re}_\theta)}{\partial t} + \frac{\partial (\rho u_j \tilde{Re}_\theta)}{\partial x_j} &= P_\theta + \frac{\partial}{\partial x_j} \left[ \sigma_\theta \left( \mu + \mu_t \right) \frac{\partial \tilde{Re}_\theta}{\partial x_j} \right], 
+\\
+\frac{\partial (\rho A_r)}{\partial t} + \frac{\partial (\rho u_j A_r)}{\partial x_j} &= P_{A_r} + \frac{\partial}{\partial x_j} \left[ \sigma_{A_r} \left( \mu + \mu_t\right) \frac{\partial A_r}{\partial x_j} \right].
+\end{aligned}
+$$
+
+:::{.callout-note}
+# Note
+The role of $\sigma_f$ and other $\sigma$ coefficients in the formulas is different! However, the value of $\sigma_f$ is 1, so it probably doesn't matter.
 :::
 
+In the original article [@Dassler2010], the source term in the equation for $A_r$ is applied in the first layer of cells near the wall. This does not make sense from a mathematical point of view, and therefore this original model was not tested. In a later article [@Dassler2012], a version is presented where a boundary condition for $A_r$ is prescribed at the wall and the source term is applied throughout the entire computational domain.
+In this model, the value is $\sigma_{A_r} = 10$ and at the wall, the following boundary condition for $A_r$ is considered
+$$
+A_{r,w} = 8 k_s^+, \quad \text{kde } k_s^+ = \frac{u_\tau k_s}{\nu}.
+$$
+
+The original source term in the equation for $\tilde{Re}_\theta$ 
+$$
+P_\theta = c_{\theta t}\frac{\rho}{T}\left(Re_{\theta} - \tilde{Re}_\theta \right) 
+(1 - F_{\theta t})
+$$ {#eq-dassler2010-ptheta}
+
+ was modified to the form
+ $$
+ P_\theta = c_{\theta t}\frac{\rho}{T}\left[\left(Re_{\theta} - \tilde{Re}_\theta \right) 
+ (1 - F_{\theta t}) - Arg_r\right],
+ $$
+ where $Arg_r$ is a function dependent on $A_r$, which shifts the transition onset towards lower values of $\tilde{Re}_\theta$ depending on the wall roughness.
+ 
+ However, the functional form of $Arg_r$ is not published in the article. Therefore, this model was not further tested.
+
+## Model according to Langel et al. (2017) (`Langel2017`)
+The model according to Langel et al. [@Langel2017] uses the same approach as Dassler et al., but with different calibration and provides a specific functional form for $Arg_r$. In this model, the value is $\sigma_{A_r} = 30$ and the boundary condition at the wall is for the case of flat plate flow (see [@Langel2017, p. 109])
+$$
+A_{r,w} = \frac{20000}{1 + e^{13.5 - k_s^+}}.
+$$
+
+```{python}
+#| echo: false
+#| fig-cap: "Dependence of boundary condition $A_{r,w}$ on dimensionless roughness $k_s^+$ according to [@Langel2017]."
+import matplotlib.pyplot as plt
+import numpy as np
+ks_plus = np.linspace(0, 35, 200)
+Ar_w = 20000 / (1 + np.exp(13.5 - ks_plus))
+plt.plot(ks_plus, Ar_w)
+plt.grid(True)
+plt.xlabel(r'$k_s^+$')
+plt.ylabel(r'$A_{r,w}$');
+```
+
+::: {.callout-note}
+# Note
+There is apparently an error in the notation of the boundary condition for $A_{r,w}$ in the original article [@Langel2017], see comparison with the graph on page 103 in [@Langel2017]. The above version corresponds to this graph.
+:::
+
+::: {.callout-note}
+# Note
+For airfoil flow, a different correlation is used for the boundary condition. The value 13.5 in the exponent is replaced by approximately 27, see the graph on page 103 in [@Langel2017].
+:::
+
+The source term in the equation for $\tilde{Re}_\theta$ is modified as
+$$
+P_\theta = c_{\theta t}\frac{\rho}{T}\left[\left(Re_{\theta} - \tilde{Re}_\theta \right) 
+(1 - F_{\theta t}) - b F_{A_r}\right]
+$$
+kde
+$$
+F_{A_r} = \begin{cases}
+4 A_r^{0.42} + 4 A_r \left(\frac{1}{F(\lambda_\theta)}\right)(1 - F_{\theta t}), & \text{for } F(\lambda_\theta) \le 1, \\
+4 A_r^{0.42} + 4 A_r \left(\frac{1}{F(\lambda_\theta)}\right)^{0.6}(1 - F_{\theta t}), & \text{for } F(\lambda_\theta) > 1.
+\end{cases}
+$$
+
+The function $F(\lambda_\theta)$ is defined as in the original model by Langtry and Menter @Langtry2009 as
+$$
+F(\lambda_\theta) = \begin{cases}
+1 + (12.986 \lambda_\theta + 123.66 \lambda_\theta^2 + 405.689 \lambda_\theta^3) e^{-\left(Tu/1.5\right)^{1.5}} , & \text{for } \lambda_\theta \le 0, \\
+1 + 0.275\left(1 - e^{-35\lambda_\theta}\right)e^{-\left(Tu/0.5\right)}, & \text{for } \lambda_\theta > 0,
+\end{cases}
+$$
+
+```{python}
+#| echo: false
+#| fig-cap: "Dependence of function $F(λ_θ)$ according to [@Langel2017] for different values of $Tu$."
+import matplotlib.pyplot as plt
+import numpy as np
+lambda_theta = np.linspace(-0.1, 0.3, 300)
+Tu_values = [0.5, 1.0, 1.5, 2.0]
+for Tu in Tu_values:
+    F_lambda = np.piecewise(lambda_theta,
+                            [lambda_theta <= 0, lambda_theta > 0],
+                            [lambda x: 1 + (12.986 * x + 123.66 * x**2 + 405.689 * x**3) * np.exp(-(Tu / 1.5)**1.5),
+                             lambda x: 1 + 0.275 * (1 - np.exp(-35 * x)) * np.exp(-(Tu / 0.5))])
+    plt.plot(lambda_theta, F_lambda, label=f'Tu={Tu}')
+plt.axhline(1, color='gray', linestyle='--')
+plt.grid(True)
+plt.xlabel(r'$\lambda_\theta$')
+plt.ylabel(r'$F(\lambda_\theta)$')
+plt.legend();
+```
+
+The damping factor $b$ is given by the relation
+$$
+b = 0.5\sin\left(\frac{\pi}{155}\tilde{Re}_\theta - \frac{97\pi}{155}\right) + 0.5.
+$$
+In this function, it is apparently appropriate to limit the value of $\tilde{Re}_\theta$ to the interval $[19.5, 174.5]$, i.e.,
+$$
+b = 0.5\sin\left(\frac{\pi}{155}\max(\min(\tilde{Re}_\theta, 174.5), 19.5) - \frac{97\pi}{155}\right) + 0.5.
+$$ {#eq-langel17-b}
+
+```{python}
+#| echo: false
+#| fig-cap: "Dependence of damping factor $b$ on the value of $Re_θ$ according to [@Langel2017]."
+import matplotlib.pyplot as plt
+import numpy as np
+Re_theta_tilde = np.linspace(0, 200, 300)
+b = 0.5 * np.sin((np.pi / 155) * Re_theta_tilde - (97 * np.pi / 155)) + 0.5
+b1 = 0.5 * np.sin((np.pi / 155) * np.maximum(np.minimum(Re_theta_tilde, 174.5), 19.5) - (97 * np.pi / 155)) + 0.5
+plt.plot(Re_theta_tilde, b, label='original')
+plt.plot(Re_theta_tilde, b1, linestyle='--', label='with limits')
+plt.grid(True)
+plt.xlabel(r'$\tilde{Re}_\theta$')
+plt.ylabel(r'$b$');
+plt.legend(loc='upper left');
+```
+
+Furthermore, a modified boundary condition for $\omega$ at the wall is used according to [@Langel2017] based on the work of [@Wilcox1994]:
+$$
+\omega_w = \frac{u_\tau^2 S_r}{\nu},
+$$
+kde 
+$$
+S_r = \begin{cases}
+\left(\frac{50}{k_s^+}\right)^2 & \text{for } k_s^+ \le 25, \\
+\frac{100}{k_s^+} & \text{for } k_s^+ > 25.
+\end{cases}
+$$  {#eq-wilcox98-sr}
+
+Compared to the model according to [@Langel2017], a modification of the boundary condition for $\omega$ in the case of a smooth wall is used in the implementation
+$$
+\omega_w = \begin{cases}
+10 \frac{6\nu}{\beta_1 y_1^2} & \text{for } k_s^+ \le \sqrt{\frac{2500\beta_1}{60}} y^+_1, \\
+\frac{u_\tau^2 S_r}{\nu} & \text{for } k_s^+ > \sqrt{\frac{2500\beta_1}{60}} y^+_1.
+\end{cases}
+$$  {#eq-wilcox-omega-wall}
+
+In the newer edition of the book [@Wilcox2006], this boundary condition for a smooth wall is given in the form
+$$
+S_r = \begin{cases}
+\left(\frac{200}{k_s^+}\right)^2 & \text{for } k_s^+ \le 5, \\
+\frac{100}{k_s^+} + \left[ \left(\frac{200}{k_s^+}\right)^2 - \frac{100}{k_s^+}\right] 
+e^{5-k_s^+}& \text{for } k_s^+ > 5.
+\end{cases}
+$$  
+However, this form of boundary condition was not used in the calculations. Furthermore, [@Wilcox2006] presents a boundary condition for a rough wall for the low Reynolds version of the model. It differs from the above condition only in the coefficient of the second branch, where 60 is used instead of 100 (in both places). This version was also not used in the calculations.
+
+```{python}
+#| echo: false
+#| fig-cap: "Dependence of factor $S_r$ for omega boundary condition according to [@Langel2017] and [@Wilcox2006]."
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import io
+
+# Load data
+csv_data = """ks_plus,SR_inv_sqrt
+1.3,0.010
+2.2,0.012
+2.8,0.010
+3.5,0.013
+4.2,0.021
+4.8,0.025
+5.2,0.033
+5.8,0.040
+6.3,0.038
+6.8,0.050
+7.2,0.075
+8.0,0.090
+8.5,0.110
+9.5,0.140
+11.5,0.220
+14.0,0.300
+18.0,0.320
+25.0,0.450
+30.0,0.470
+45.0,0.750
+52.0,0.780
+90.0,1.100
+180.0,1.500
+350.0,2.200
+580.0,3.200
+950.0,3.600"""
+
+df = pd.read_csv(io.StringIO(csv_data))
+
+ks_plus = 10**(np.linspace(0, 3, 100))
+Sr_langel = np.piecewise(ks_plus,
+                          [ks_plus <= 25, ks_plus > 25],
+                          [lambda x: (50 / x)**2,
+                           lambda x: 100 / x])
+Sr_wilcox = np.piecewise(ks_plus,
+                          [ks_plus <= 5, ks_plus > 5],
+                          [lambda x: (200 / x)**2,
+                           lambda x: 100 / x + ((200 / x)**2 - 100 / x) * np.exp(5 - x)])
+plt.loglog(ks_plus, 1/np.sqrt(Sr_langel), label='Langel2017')
+plt.loglog(ks_plus, 1/np.sqrt(Sr_wilcox), label='Wilcox2006')
+plt.loglog(df['ks_plus'], df['SR_inv_sqrt'], 'o', label='Nikuradse data')
+plt.grid(True, which='both')
+plt.xlabel(r'$k_s^+$')
+plt.ylabel(r'$\frac{1}{\sqrt{S_r}}$');
+plt.legend();
+```
+
+
+## Model according to Langel et al. (2017a) (`Langel2017a`)
+In another publication [@Langel2017a], a different version of the `Langel2017` model is presented, which uses different calibrations and a boundary condition for $A_r$ at the wall.
+The value of $\sigma_{A_r}$ in this model is set to $\sigma_{A_r} = 10$ and the boundary condition at the wall is
+$$
+A_{r,w} = c_{r1} k_s^+,
+$$
+where $c_{r1} = 8$. The function $F_{A_r}$ in the equation for $\tilde{Re}_\theta$ is 
+$$
+F_{A_r} = \begin{cases}
+c_{r2} Ar^3, & \text{for } Ar < C_{Ar}, \\
+c_{r3} (Ar - C_{Ar}) + c_{r2} C_{Ar}^3, & \text{for } Ar \ge C_{Ar},
+\end{cases}
+$$
+where $c_{r2} = 0.0005$, $c_{r3} = 2$ and $C_{Ar} = \sqrt{c_{r3}/3c_{r2}}$, see [@Langel2017a] [p. 65].
+The coefficient $b$ in this version of the model is given by the relation (compare with @eq-langel17-b)
+$$
+b = \left(\frac{1}{2}\sin\left(\frac{\pi}{155}\widetilde{Re}_\theta - \frac{97\pi}{155}\right) + \frac{1}{2}\right)^2.
+$$ {#eq-langel17a-b}
+As with the `Langel2017` model, it is appropriate to limit the value of $\tilde{Re}_\theta$ to the interval $[19.5, 174.5]$ in this relation.
+```{python}
+#| echo: false
+#| fig-cap: "Dependence of damping factor $b$ on the value of $Re_θ$ according to [@Langel2017a]."
+import matplotlib.pyplot as plt
+import numpy as np
+Re_theta_tilde = np.linspace(0, 200, 300)
+b = (0.5 * np.sin((np.pi / 155) * Re_theta_tilde - (97 * np.pi / 155)) + 0.5)**2
+b1 = (0.5 * np.sin((np.pi / 155) * np.maximum(np.minimum(Re_theta_tilde, 174.5), 19.5) - (97 * np.pi / 155)) + 0.5)**2
+plt.plot(Re_theta_tilde, b, label='original')
+plt.plot(Re_theta_tilde, b1, linestyle='--', label='with min limit')
+plt.grid(True)
+plt.xlabel(r'$\widetilde{Re}_\theta$')
+plt.ylabel(r'$b$');
+plt.legend(loc='upper left');
+```
+
+## Model according to Kožulović et al. (2022) (`Kozulovic2022`)
+In the most recent publication [@Kozulovic2022], another version of the transition model on rough walls is presented with different calibration and a boundary condition for $A_r$ at the wall. The model apparently originates from the publication [@Dassler2012] and supplements some correlations that were not included in the original publication.
+
+The source term in the equation for $\tilde{Re}_\theta$ is defined by  @eq-dassler2010-ptheta with the function $Arg_r$ defined as
+$$
+Arg_r = \begin{cases}
+A_r^3\cdot 0.000025, & \text{for } A_r < A_{r,s}, \\
+0.24 \cdot A_r - 9.05094, & \text{for } A_r \ge A_{r,s},
+\end{cases}
+$$
+where $A_{r,s} = \sqrt{0.24/3/0.000025} \approx 56.5685$.
+
+The boundary condition for $A_r$ at the wall is the same as in the `Langel2017a` model, i.e.,
+$$
+A_{r,w} = 8 k_s^+.
+$$
+
+The value of $\sigma_{A_r}$ is not specified in the article, but apparently the value $\sigma_{A_r} = 10$ is used, as in the model according to [@Dassler2012]. In the original model according to [@Dassler2012], the damping function $b$ is also mentioned in the text. However, its functional form is not given. Therefore, the function according to @eq-langel17a-b was used. Furthermore, for reasonable agreement with experiment, it was necessary to multiply $Arg_r$ by a coefficient of 10, i.e.,
+$$
+P_\theta = c_{\theta t}\frac{\rho}{T}\left[\left(Re_{\theta} - \tilde{Re}_\theta \right) 
+(1 - F_{\theta t}) - 10 b \cdot Arg_r\right].
+$$ {#eq-kozulovic2022-ptheta}
+
+## Model Comparison
+The models differ both in the values of $\sigma_{A_r}$ and the boundary condition for $A_r$ at the wall, as well as in the modification of the source term in the equation for $\tilde{Re}_\theta$. The graph below shows a comparison of the function $F_{A_r}$ or $Arg_r$ for different models (for $b=1$ and $F_\theta=0$).
+```{python}
+#| echo: false
+#| fig-cap: "Comparison of functions $F_{A_r}$ and $Arg_r$ for different transition models on rough walls."
+#| fig-alt: "Comparison of functions F_Ar and Arg_r for different transition models on rough walls."
+import matplotlib.pyplot as plt
+import numpy as np
+
+Ar = np.linspace(0, 100, 300)
+# Langel2017
+F_Ar_langel =4 * Ar**0.42
+# Langel2017a
+Arg_r_langel17a = np.piecewise(Ar,
+                          [Ar < np.sqrt(2 / 3 / 0.0005), Ar >= np.sqrt(2 / 3 / 0.0005)],
+                          [lambda x: 0.0005 * x**3,
+                           lambda x: 2 * (x - np.sqrt(2 / 3 / 0.0005)) + 0.0005 * (np.sqrt(2 / 3 / 0.0005))**3])
+# Kozulovic2022
+Arg_r_kozulovic = np.piecewise(Ar,
+                          [Ar < np.sqrt(0.24 / 3 / 0.000025), Ar >= np.sqrt(0.24 / 3 / 0.000025)],
+                          [lambda x: 0.000025 * x**3,
+                           lambda x: 0.24 * x - 9.05094])
+plt.plot(Ar, F_Ar_langel, label='Langel2017: $F_{A_r}$')
+plt.plot(Ar, Arg_r_langel17a, label='Langel2017a: $Arg_r$')
+plt.plot(Ar, Arg_r_kozulovic, label='Kozulovic2022: $Arg_r$')
+plt.plot(Ar, 10*Arg_r_kozulovic, label='Kozulovic2022: $10*Arg_r$')
+plt.grid(True)
+plt.xlabel(r'$A_r$')
+plt.ylabel(r'$F_{A_r}$ , $Arg_r$');
+plt.legend();
+```
+
+# Notes on OpenFOAM Implementation
+The model is set up in the `turbulenceProperties` dictionary as follows for the `kOmegaSSTLMRough` model:
+
+```C++
+simulationType RAS;
+
+RAS
+{
+    RASModel        kOmegaSSTLMRough;
+    roughnessModel  Kozulovic2022;  // Langel2017, Langel2017a, Kozulovic2022
+
+    turbulence      on;
+    printCoeffs     on;
+    maxLambdaIter  100;
+}
+```
+
+Moreover, the boundary condition for the variable `Ar` at the wall must be set to [`roughnessAmplification`](../BoCos/roughnessAmplification.qmd) for `Kozulovic2022` or `Langel2017` models, or to [`roughnessAmplificationLangel`](../BoCos/roughnessAmplificationLangel.qmd) for the `Langel2017a` model.
+
+# References
+
+::: {#refs}
+:::
