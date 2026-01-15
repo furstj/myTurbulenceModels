@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/LES/XLES.html</loc>
+    <lastmod>2026-01-15T10:01:22.368Z</lastmod>
+  </url>
+  <url>
     <loc>https://furstj.github.io/myTurbulenceModels/RANS/EARSMWallin.html</loc>
     <lastmod>2026-01-13T14:16:17.596Z</lastmod>
   </url>
@@ -27,5 +31,9 @@
   <url>
     <loc>https://furstj.github.io/myTurbulenceModels/RANS/EARSM.html</loc>
     <lastmod>2026-01-13T11:19:44.132Z</lastmod>
+  </url>
+  <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/RANS/gammaSST.html</loc>
+    <lastmod>2026-01-13T14:45:10.115Z</lastmod>
   </url>
 </urlset>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>kOmegaSSTCC model – myTurbulenceModels</title>
+<title>XLES model – myTurbulenceModels</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -131,7 +131,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../RANS/kOmegaTNT.html">RANS models</a></li><li class="breadcrumb-item"><a href="../RANS/kOmegaSSTCC.html">kOmegaSSTCC</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../LES/XLES.html">LES models</a></li><li class="breadcrumb-item"><a href="../LES/XLES.html">XLES</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -184,7 +184,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../RANS/kOmegaSSTCC.html" class="sidebar-item-text sidebar-link active">
+  <a href="../RANS/kOmegaSSTCC.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">kOmegaSSTCC</span></a>
   </div>
 </li>
@@ -236,7 +236,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../LES/XLES.html" class="sidebar-item-text sidebar-link">
+  <a href="../LES/XLES.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">XLES</span></a>
   </div>
 </li>
@@ -265,9 +265,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../RANS/kOmegaTNT.html">RANS models</a></li><li class="breadcrumb-item"><a href="../RANS/kOmegaSSTCC.html">kOmegaSSTCC</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../LES/XLES.html">LES models</a></li><li class="breadcrumb-item"><a href="../LES/XLES.html">XLES</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">kOmegaSSTCC model</h1>
+<h1 class="title">XLES model</h1>
 </div>
 
 
@@ -284,78 +284,62 @@ window.Quarto = {
 </header>
 
 
-<p>The <code>kOmegaSSTCC</code> is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter <span class="citation" data-cites="Menter2003">(<a href="#ref-Menter2003" role="doc-biblioref">Menter, Kuntz, and Langtry 2003</a>)</span> as included in standard OpenFOAM distribution. It incorporates a curvature correction (CC) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Smirnov and Menter <span class="citation" data-cites="Smirnov2009">(<a href="#ref-Smirnov2009" role="doc-biblioref">Smirnov and Menter 2009</a>)</span>.</p>
+<p>The <code>X-LES</code> (eXtra Large Eddy Simulation) model is an advanced LES turbulence model developed by J. C. Kok and H. Ven <span class="citation" data-cites="Kok2010">(<a href="#ref-Kok2010" role="doc-biblioref">Kok and Ven 2010</a>)</span>. It extends the traditional LES approach by incorporating additional subgrid-scale modeling techniques to better capture the effects of unresolved scales on the resolved flow field. The X-LES model is a particular variant of DES (Detached Eddy Simulation) that uses a combination of two-equation k-ω RANS model with k-equation LES model. In order to speed up creation of small scale structures, a stochastic subgrid-scale model is used.</p>
 <section id="model-equations" class="level2">
 <h2 class="anchored" data-anchor-id="model-equations">Model Equations</h2>
-<p>The transport equations for the <code>kOmegaSSTCC</code> model are given by:</p>
-<p><span class="math display">\[
+<p>The RANS part of the X-LES model is based on the TNT model described in the <a href="RANS/kOmegaTNT.qmd"><code>kOmegaTNT</code></a> documentation: <span class="math display">\[
 \begin{aligned}
-\frac{\partial (\rho k)}{\partial t} + \frac{\partial (\rho k u_j)}{\partial x_j} &amp;= P_k f_{r1} - \beta^* \rho k \omega + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_k \mu_t) \frac{\partial k}{\partial x_j} \right],
+\frac{\partial (\rho k)}{\partial t} + \frac{\partial (\rho k u_j)}{\partial x_j} &amp;= P_k - \rho\epsilon + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_k \mu_t) \frac{\partial k}{\partial x_j} \right],
 \\
-\frac{\partial (\rho \omega)}{\partial t} + \frac{\partial (\rho \omega u_j)}{\partial x_j} &amp;= P_\omega f_{r1}- \beta \rho \omega^2 + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_\omega \mu_t) \frac{\partial \omega}{\partial x_j} \right] + C_D,
+\frac{\partial (\rho \omega)}{\partial t} + \frac{\partial (\rho \omega u_j)}{\partial x_j} &amp;= P_\omega - \beta \rho \omega^2 + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_\omega \mu_t) \frac{\partial \omega}{\partial x_j} \right] + C_D,
 \end{aligned}
 \]</span> where: <span class="math display">\[
 \begin{aligned}
 P_k &amp;= \tau_{ij} \frac{\partial u_i}{\partial x_j}, \\
-\tau_{ij} &amp;= \mu_t \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right) - \frac{2}{3} \rho k \delta_{ij}, \\
-S_{ij} &amp;= \frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right), \\
-P_\omega &amp;= \frac{\gamma \rho}{\mu_t} P_k, \\
-C_D &amp;= 2(1 - F_1)\frac{\rho \sigma_{\omega 2}}{\omega} \frac{\partial k}{\partial x_j} \frac{\partial \omega}{\partial x_j}.
+P_\omega &amp;= \frac{\alpha_\omega \omega}{k} P_k, \\
+C_D &amp;= \frac{\sigma_d \rho}{\omega} \max\left[\frac{\partial k}{\partial x_j} \frac{\partial \omega}{\partial x_j}, 0\right], \\
+\epsilon &amp;= \frac{\k^{3/2}}{l_t},
 \end{aligned}
 \]</span></p>
-<p>Turbulent viscosity is computed as: <span class="math display">\[
-\mu_t = \frac{a_1 \rho k}{\max(a_1 \omega, S F_2)}
-\]</span> with <span class="math inline">\(S = \sqrt{2 S_{ij} S_{ij}}\)</span>.</p>
-<p>The curvature correction function <span class="math inline">\(f_{r1}\)</span> is defined as: <span class="math display">\[
-f_{r1} = \max\left[\min\left(f_{r}, 1.25\right), 0\right]
-\]</span> where <span class="math display">\[
-f_{r} = (1 + c_{r1})\frac{2r^*}{1+r^*}\left[1 - c_{r3} \arctan\left( c_{r2} \tilde{r} \right)\right] - c_{r1}
-\]</span> with <span class="math display">\[
-\begin{aligned}
-r^* &amp;= \frac{S}{\Omega}, \\
-\tilde{r} &amp;= 2 \Omega_{ik}S_{kj} \left[\frac{D S_{ij}}{D t} + (\epsilon_{imn}S_{jn} + \epsilon_{jmn}S_{in})\Omega_m^{rot}\right]\frac{1}{\Omega D^3} \\
-\Omega_{ij} &amp;= \frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} - \frac{\partial u_j}{\partial x_i}  - 2 \epsilon_{mji}\Omega_m^{rot}\right), \\
-\Omega &amp;= \sqrt{2 \Omega_{ij} \Omega_{ij}}, \\
-D^2 &amp;= \max(S^2, 0.09 \omega^2).
-\end{aligned}
-\]</span> Here <span class="math inline">\(\Omega_m^{rot}\)</span> is the system rotation rate.</p>
+<p>The X-LES length scale <span class="math inline">\(l_t\)</span> is defined as: <span class="math display">\[
+l_t = \min\left( C_{DES} \Delta, \frac{k^{1/2}}{\beta^* \omega} \right),
+\]</span></p>
+<p>and the turbulent viscosity is computed as: <span class="math display">\[
+\nu_t = \beta^* l_t \sqrt{k}.
+\]</span></p>
+<p>The model contains also an optional stochastic forcing term to enhance the generation of small scale structures in LES mode, as described in <span class="citation" data-cites="Kok2010">Kok and Ven (<a href="#ref-Kok2010" role="doc-biblioref">2010</a>)</span>. In that case, the turbulent viscosity is calculated as: <span class="math display">\[
+\nu_t = \begin{cases}
+\frac{k}{\omega} &amp; \text{if } l_t &lt; C_{DES} \Delta (\text{ i.e. in RANS region} ), \\
+\xi^2 \beta^* l_t \sqrt{k} &amp; \text{if } l_t = C_{DES} \Delta (\text{ i.e. in LES region} ),
+\end{cases}
+\]</span> where <span class="math inline">\(\xi \approx \mathcal{N}(0,1)\)</span> is a random variable with stochastic variable with normal zero-mean normal distribution and unit variance.</p>
 </section>
 <section id="model-coefficients" class="level2">
 <h2 class="anchored" data-anchor-id="model-coefficients">Model Coefficients</h2>
-<p>For the standars <code>kOmegaSST</code> model coefficients see <span class="citation" data-cites="Menter2003">(<a href="#ref-Menter2003" role="doc-biblioref">Menter, Kuntz, and Langtry 2003</a>)</span> or the OpenFOAM manual. The curvature correction coefficients are set to:</p>
+<p>The model coefficients are set to the following values:</p>
 <ul>
-<li><span class="math inline">\(c_{r1} = 1.0\)</span></li>
-<li><span class="math inline">\(c_{r2} = 2.0\)</span></li>
-<li><span class="math inline">\(c_{r3} = 1.0\)</span></li>
+<li><span class="math inline">\(\beta^* = 0.09\)</span></li>
+<li><span class="math inline">\(\beta = 0.075\)</span></li>
+<li><span class="math inline">\(\sigma_k = \frac{2}{3}\)</span></li>
+<li><span class="math inline">\(\sigma_\omega = 0.5\)</span></li>
+<li><span class="math inline">\(\alpha_\omega = 5/9\)</span></li>
+<li><span class="math inline">\(\sigma_d = 0.5\)</span></li>
+<li><span class="math inline">\(C_{DES} = 0.61\)</span></li>
 </ul>
 </section>
 <section id="notes-on-openfoam-implementation" class="level2">
 <h2 class="anchored" data-anchor-id="notes-on-openfoam-implementation">Notes on OpenFOAM implementation</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Current implementation does not include the system rotation <span class="math inline">\(\Omega_m^{rot}\)</span> in the calculation of <span class="math inline">\(\Omega_{ij}\)</span>.</p>
-</div>
-</div>
-<p>See the OpenFOAM manual for details on basic <code>kOmegaSST</code> model implementation.</p>
+<p>The original article uses slightly different notation. The length scale does not include the <span class="math inline">\(\beta^*\)</span> coefficient, i.e.&nbsp;it is defined as: <span class="math display">\[
+l_t = \min\left( C_1 \Delta, \frac{k^{1/2}}{\omega} \right).
+\]</span> with <span class="math inline">\(C_1 = C_{DES} \beta^*\)</span>. Other quantities are changed accordingly. Moreover, the default value of <span class="math inline">\(C_{DES}\)</span> was set to 0.65 in the OpenFOAM implementation.</p>
 
 
 
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Menter2003" class="csl-entry" role="listitem">
-Menter, F. R., M. Kuntz, and R. Langtry. 2003. <span>“Ten Years of Industrial Experience with the SST Turbulence Model.”</span> <em>Turbulence Heat and Mass Transfer 4</em> 4: 625–32. <a href="http://cfd.mace.manchester.ac.uk/flomania/pds_papers/file_pds-1068134610Menter-SST-paper.pdf">http://cfd.mace.manchester.ac.uk/flomania/pds_papers/file_pds-1068134610Menter-SST-paper.pdf</a>.
-</div>
-<div id="ref-Smirnov2009" class="csl-entry" role="listitem">
-Smirnov, Pavel E., and Florian R. Menter. 2009. <span>“Sensitization of the SST Turbulence Model to Rotation and Curvature by Applying the Spalart–Shur Correction Term.”</span> <em>Journal of Turbomachinery</em> 131 (October). <a href="https://doi.org/10.1115/1.3070573">https://doi.org/10.1115/1.3070573</a>.
+<div id="ref-Kok2010" class="csl-entry" role="listitem">
+Kok, J. C., and H. Ven. 2010. <span>“Destabilizing Free Shear Layers in x-LES Using a Stochastic Subgrid-Scale Model.”</span> In, 179–89. <a href="https://doi.org/10.1007/978-3-642-14168-3_15">https://doi.org/10.1007/978-3-642-14168-3_15</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

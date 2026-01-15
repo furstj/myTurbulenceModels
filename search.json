@@ -1,5 +1,49 @@
 [
   {
+    "objectID": "LES/XLES.html",
+    "href": "LES/XLES.html",
+    "title": "XLES model",
+    "section": "",
+    "text": "The X-LES (eXtra Large Eddy Simulation) model is an advanced LES turbulence model developed by J. C. Kok and H. Ven (Kok and Ven 2010). It extends the traditional LES approach by incorporating additional subgrid-scale modeling techniques to better capture the effects of unresolved scales on the resolved flow field. The X-LES model is a particular variant of DES (Detached Eddy Simulation) that uses a combination of two-equation k-ω RANS model with k-equation LES model. In order to speed up creation of small scale structures, a stochastic subgrid-scale model is used.",
+    "crumbs": [
+      "LES models",
+      "XLES"
+    ]
+  },
+  {
+    "objectID": "LES/XLES.html#model-equations",
+    "href": "LES/XLES.html#model-equations",
+    "title": "XLES model",
+    "section": "Model Equations",
+    "text": "Model Equations\nThe RANS part of the X-LES model is based on the TNT model described in the kOmegaTNT documentation: \\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\rho\\epsilon + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\nP_\\omega &= \\frac{\\alpha_\\omega \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\max\\left[\\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}, 0\\right], \\\\\n\\epsilon &= \\frac{\\k^{3/2}}{l_t},\n\\end{aligned}\n\\]\nThe X-LES length scale \\(l_t\\) is defined as: \\[\nl_t = \\min\\left( C_{DES} \\Delta, \\frac{k^{1/2}}{\\beta^* \\omega} \\right),\n\\]\nand the turbulent viscosity is computed as: \\[\n\\nu_t = \\beta^* l_t \\sqrt{k}.\n\\]\nThe model contains also an optional stochastic forcing term to enhance the generation of small scale structures in LES mode, as described in Kok and Ven (2010). In that case, the turbulent viscosity is calculated as: \\[\n\\nu_t = \\begin{cases}\n\\frac{k}{\\omega} & \\text{if } l_t &lt; C_{DES} \\Delta (\\text{ i.e. in RANS region} ), \\\\\n\\xi^2 \\beta^* l_t \\sqrt{k} & \\text{if } l_t = C_{DES} \\Delta (\\text{ i.e. in LES region} ),\n\\end{cases}\n\\] where \\(\\xi \\approx \\mathcal{N}(0,1)\\) is a random variable with stochastic variable with normal zero-mean normal distribution and unit variance.",
+    "crumbs": [
+      "LES models",
+      "XLES"
+    ]
+  },
+  {
+    "objectID": "LES/XLES.html#model-coefficients",
+    "href": "LES/XLES.html#model-coefficients",
+    "title": "XLES model",
+    "section": "Model Coefficients",
+    "text": "Model Coefficients\nThe model coefficients are set to the following values:\n\n\\(\\beta^* = 0.09\\)\n\\(\\beta = 0.075\\)\n\\(\\sigma_k = \\frac{2}{3}\\)\n\\(\\sigma_\\omega = 0.5\\)\n\\(\\alpha_\\omega = 5/9\\)\n\\(\\sigma_d = 0.5\\)\n\\(C_{DES} = 0.61\\)",
+    "crumbs": [
+      "LES models",
+      "XLES"
+    ]
+  },
+  {
+    "objectID": "LES/XLES.html#notes-on-openfoam-implementation",
+    "href": "LES/XLES.html#notes-on-openfoam-implementation",
+    "title": "XLES model",
+    "section": "Notes on OpenFOAM implementation",
+    "text": "Notes on OpenFOAM implementation\nThe original article uses slightly different notation. The length scale does not include the \\(\\beta^*\\) coefficient, i.e. it is defined as: \\[\nl_t = \\min\\left( C_1 \\Delta, \\frac{k^{1/2}}{\\omega} \\right).\n\\] with \\(C_1 = C_{DES} \\beta^*\\). Other quantities are changed accordingly. Moreover, the default value of \\(C_{DES}\\) was set to 0.65 in the OpenFOAM implementation.",
+    "crumbs": [
+      "LES models",
+      "XLES"
+    ]
+  },
+  {
     "objectID": "RANS/EARSMWallin.html",
     "href": "RANS/EARSMWallin.html",
     "title": "EARSMWallin model",
@@ -269,6 +313,17 @@
     "crumbs": [
       "RANS models",
       "EARSM"
+    ]
+  },
+  {
+    "objectID": "RANS/gammaSST.html",
+    "href": "RANS/gammaSST.html",
+    "title": "gammaSST model",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the model is not yet written.",
+    "crumbs": [
+      "Transitional models",
+      "gammaSST"
     ]
   }
 ]
