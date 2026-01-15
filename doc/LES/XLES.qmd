@@ -2,7 +2,60 @@
 title: "XLES model"
 ---
 
-:::{.callout-warning}
-The documentation for the model is not yet written.
-:::
+The `X-LES` (eXtra Large Eddy Simulation) model is an advanced LES turbulence model developed by J. C. Kok and H. Ven [@Kok2010]. It extends the traditional LES approach by incorporating additional subgrid-scale modeling techniques to better capture the effects of unresolved scales on the resolved flow field. The X-LES model is a particular variant of DES (Detached Eddy Simulation) that uses a combination of two-equation k-ω RANS model with k-equation LES model. In order to speed up creation of small scale structures, a stochastic subgrid-scale model is used.
 
+## Model Equations
+The RANS part of the X-LES model is based on the TNT model described in the [`kOmegaTNT`](RANS/kOmegaTNT.qmd) documentation:
+$$
+\begin{aligned}
+\frac{\partial (\rho k)}{\partial t} + \frac{\partial (\rho k u_j)}{\partial x_j} &= P_k - \rho\epsilon + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_k \mu_t) \frac{\partial k}{\partial x_j} \right], 
+\\
+\frac{\partial (\rho \omega)}{\partial t} + \frac{\partial (\rho \omega u_j)}{\partial x_j} &= P_\omega - \beta \rho \omega^2 + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_\omega \mu_t) \frac{\partial \omega}{\partial x_j} \right] + C_D,
+\end{aligned}
+$$
+where:
+$$
+\begin{aligned}
+P_k &= \tau_{ij} \frac{\partial u_i}{\partial x_j}, \\
+P_\omega &= \frac{\alpha_\omega \omega}{k} P_k, \\
+C_D &= \frac{\sigma_d \rho}{\omega} \max\left[\frac{\partial k}{\partial x_j} \frac{\partial \omega}{\partial x_j}, 0\right], \\
+\epsilon &= \frac{k^{3/2}}{l_t},
+\end{aligned}
+$$
+
+The X-LES length scale $l_t$ is defined as:
+$$
+l_t = \min\left( C_{DES} \Delta, \frac{k^{1/2}}{\beta^* \omega} \right),
+$$
+
+and the turbulent viscosity is computed as:
+$$
+\nu_t = \beta^* l_t \sqrt{k}.
+$$
+
+The model contains also an optional stochastic forcing term to enhance the generation of small scale structures in LES mode, as described in @Kok2010. In that case, the turbulent viscosity is calculated as:
+$$
+\nu_t = \begin{cases}
+\frac{k}{\omega} & \text{if } l_t < C_{DES} \Delta (\text{ i.e. in RANS region} ), \\
+\xi^2 \beta^* l_t \sqrt{k} & \text{if } l_t = C_{DES} \Delta (\text{ i.e. in LES region} ),
+\end{cases}
+$$
+where $\xi \approx \mathcal{N}(0,1)$ is a random variable with stochastic variable with normal zero-mean normal distribution and unit variance.
+
+## Model Coefficients
+The model coefficients are set to the following values:
+
+- $\beta^* = 0.09$
+- $\beta = 0.075$
+- $\sigma_k = \frac{2}{3}$
+- $\sigma_\omega = 0.5$
+- $\alpha_\omega = 5/9$
+- $\sigma_d = 0.5$
+- $C_{DES} = 0.61$
+
+## Notes on OpenFOAM implementation
+The original article uses slightly different notation. The length scale does not include the $\beta^*$ coefficient, i.e. it is defined as: 
+$$
+l_t = \min\left( C_1 \Delta, \frac{k^{1/2}}{\omega} \right).
+$$
+with $C_1 = C_{DES} \beta^*$. Other quantities are changed accordingly. Moreover, the default value of $C_{DES}$ was set to 0.65 in the OpenFOAM implementation.
