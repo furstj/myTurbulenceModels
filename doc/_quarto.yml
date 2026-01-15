@@ -25,13 +25,39 @@ website:
       - section: "Transitional models"
         contents:
           - text: "gammaSST"
-            href: RANS/gammaSST.qmd
+            href: Transition/gammaSST.qmd
+          - text: "kOmegaSSTLMRough"
+            href: Transition/kOmegaSSTLMRough.qmd
+          - text: "mykkLOmega"
+            href: Transition/mykkLOmega.qmd
+          - text: "kv2Omega"  
+            href: Transition/kv2Omega.qmd
+          - text: "kOmegaTrans"
+            href: Transition/kOmegaTrans.qmd
+          - text: "EARSMTrans"
+            href: Transition/EARSMTrans.qmd
       - section: "LES models"
         contents:
           - text: "XLES"
             href: LES/XLES.qmd
       - section: "Boundary conditions"
-
+        contents:
+          - text: "omegaViscosityRatio"
+            href: BoCos/omegaViscosityRatio.qmd
+          - text: "boundedTurbulentIntensityKineticEnergyInlet"
+            href: BoCos/boundedTurbulentIntensityKineticEnergyInlet.qmd
+          - text: "ReThetatInlet"
+            href: BoCos/ReThetatInlet.qmd
+          - text: "roughnessAmplification"
+            href: BoCos/roughnessAmplification.qmd
+          - text: "roughnessAmplificationLangel"
+            href: BoCos/roughnessAmplificationLangel.qmd
+          - text: "nutUKnoppWallFunction"
+            href: BoCos/nutUKnoppWallFunction.qmd
+          - text: "omegaRoughWallFunction"
+            href: BoCos/omegaRoughWallFunction.qmd
+          - text: "omegaWilcoxRoughWallFunction"
+            href: BoCos/omegaWilcoxRoughWallFunction.qmd
 format:
   html:
     theme:

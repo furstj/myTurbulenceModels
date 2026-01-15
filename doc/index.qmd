@@ -43,11 +43,11 @@ The package also provides the following LES turbulence models:
 ### Boundary conditions
 The package includes specialized boundary conditions for turbulence quantities, such as:
 
-- `omegaViscosityRatio` - Inlet boundary condition for ω based on $\nu^t/\nu$ viscosity ratio
-- `boundedTurbulentIntensityKineticEnergyInlet` -Inlet boundary condition for k based on turbulent intensity with lower and upper bounds
-- `ReThetatInlet` - Inlet boundary condition for $Re_{\theta,t}$ for Langtry and Menter transitional model
-- `roughnessAmplification` - Wall boundary condition for $A_r$ for roughness modifications in transitional models
-- `roughnessAmplificationLangel` - Wall boundary condition for $A_r$ for roughness modifications in transitional models by Langel
-- `nutUKnoppWallFunction` - Wall function for turbulent viscosity based on Knopp et al.
-- `omegaRoughWallFunction` - Wall function for ω considering surface roughness
-- `omegaWilcoxRoughWallFunction` - Wall function for ω considering surface roughness due to Wilcox
+- [`omegaViscosityRatio`](BoCos/omegaViscosityRatio.qmd) - Inlet boundary condition for ω based on $\nu^t/\nu$ viscosity ratio
+- [`boundedTurbulentIntensityKineticEnergyInlet`](BoCos/boundedTurbulentIntensityKineticEnergyInlet.qmd) -Inlet boundary condition for k based on turbulent intensity with lower and upper bounds
+- [`ReThetatInlet`](BoCos/ReThetatInlet.qmd) - Inlet boundary condition for $Re_{\theta,t}$ for Langtry and Menter transitional model
+- [`roughnessAmplification`](BoCos/roughnessAmplification.qmd) - Wall boundary condition for $A_r$ for roughness modifications in transitional models
+- [`roughnessAmplificationLangel`](BoCos/roughnessAmplificationLangel.qmd) - Wall boundary condition for $A_r$ for roughness modifications in transitional models by Langel
+- [`nutUKnoppWallFunction`](BoCos/nutUKnoppWallFunction.qmd) - Wall function for turbulent viscosity based on Knopp et al.
+- [`omegaRoughWallFunction`](BoCos/omegaRoughWallFunction.qmd) - Wall function for ω considering surface roughness
+- [`omegaWilcoxRoughWallFunction`](BoCos/omegaWilcoxRoughWallFunction.qmd) - Wall function for ω considering surface roughness due to Wilcox

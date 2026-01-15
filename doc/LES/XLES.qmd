@@ -5,7 +5,7 @@ title: "XLES model"
 The `X-LES` (eXtra Large Eddy Simulation) model is an advanced LES turbulence model developed by J. C. Kok and H. Ven [@Kok2010]. It extends the traditional LES approach by incorporating additional subgrid-scale modeling techniques to better capture the effects of unresolved scales on the resolved flow field. The X-LES model is a particular variant of DES (Detached Eddy Simulation) that uses a combination of two-equation k-ω RANS model with k-equation LES model. In order to speed up creation of small scale structures, a stochastic subgrid-scale model is used.
 
 ## Model Equations
-The RANS part of the X-LES model is based on the TNT model described in the [`kOmegaTNT`](RANS/kOmegaTNT.qmd) documentation:
+The RANS part of the X-LES model is based on the TNT model described in the [`kOmegaTNT`](../RANS/kOmegaTNT.qmd) documentation:
 $$
 \begin{aligned}
 \frac{\partial (\rho k)}{\partial t} + \frac{\partial (\rho k u_j)}{\partial x_j} &= P_k - \rho\epsilon + \frac{\partial}{\partial x_j} \left[ (\mu + \sigma_k \mu_t) \frac{\partial k}{\partial x_j} \right], 
