@@ -73,6 +73,9 @@ namespace Foam {
 #include "EARSM.H"
 makeRASModel(EARSM);
 
+#include "EARSMdev.H"
+makeRASModel(EARSMdev);
+
 #include "gammaSST.H"
 makeRASModel(gammaSST);
 
