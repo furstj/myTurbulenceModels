@@ -70,10 +70,9 @@ namespace Foam {
 // #include "mykOmegaSST.H"
 // makeRASModel(mykOmegaSST);
 
-/*
+
 #include "EARSM.H"
 makeRASModel(EARSM);
-*/
 
 #include "EARSMko2005.H"
 makeRASModel(EARSMko2005);

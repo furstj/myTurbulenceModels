@@ -58,6 +58,16 @@ protected:
 
     virtual void correctNut(const volScalarField& S2);
 
+    virtual void correctNut();
+
+    virtual volScalarField N(
+        const volScalarField& A3p,
+        const volScalarField& P1,
+        const volScalarField& P2
+    ) const;
+
+    virtual void correctAnisotropy(const volTensorField& gradU);
+
     virtual bool read(const word& typeName);
 
     dimensionedScalar CTau_;
@@ -65,14 +75,17 @@ protected:
     dimensionedScalar A0_;
     
     Switch nearWallDamping_;
-    
+
     dimensionedScalar B2_;
 
     dimensionedScalar CyA_;
 
     dimensionedScalar CyB_;
 
+    volSymmTensorField aEx_;
+    
 public:
+
     EARSMBase<ScaleModel>
     (
             const alphaField& alpha,
@@ -87,7 +100,37 @@ public:
     
 
     virtual ~EARSMBase<ScaleModel>()
-    {}  
+    {}
+
+    //- Return the Reynolds stress tensor
+    virtual tmp<volSymmTensorField> R() const;
+
+    //- Return the effective stress tensor
+    virtual tmp<volSymmTensorField> devRhoReff() const;
+
+    //- Return the effective stress tensor based on a given velocity field
+    virtual tmp<volSymmTensorField> devRhoReff
+    (
+        const volVectorField& U
+    ) const;
+
+    //- Return the source term for the momentum equation
+    virtual tmp<fvVectorMatrix> divDevRhoReff(volVectorField& U) const;
+
+    //- Return the source term for the momentum equation
+    virtual tmp<fvVectorMatrix> divDevRhoReff
+    (
+        const volScalarField& rho,
+        volVectorField& U
+    ) const;
+
+    //- Validate the turbulence fields after construction
+    //  Update turbulence viscosity and other derived fields as requires
+    virtual void validate();
+
+    //- Solve the turbulence equations and correct the turbulence viscosity
+    virtual void correct();
+
 };
 
 } // End namespace RASModels
