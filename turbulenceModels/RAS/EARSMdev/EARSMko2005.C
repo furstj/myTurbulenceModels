@@ -63,7 +63,21 @@ EARSMko2005<BasicTurbulenceModel>::EARSMko2005
 {    
     if (type == typeName)
     {
+        auto originalCoeffs = this->getOriginalCoeffs();
+
+        if (!originalCoeffs.found("alphaK1")) this->coeffDict_.set("alphaK1", 1.1);
+        if (!originalCoeffs.found("alphaK2")) this->coeffDict_.set("alphaK2", 1.1);
+        if (!originalCoeffs.found("alphaOmega1")) this->coeffDict_.set("alphaOmega1", 0.53);
+        if (!originalCoeffs.found("alphaOmega2")) this->coeffDict_.set("alphaOmega2", 1.0);
+        if (!originalCoeffs.found("beta1")) this->coeffDict_.set("beta1", 0.0747);
+        if (!originalCoeffs.found("beta2")) this->coeffDict_.set("beta2", 0.0828);
+        if (!originalCoeffs.found("gamma1")) this->coeffDict_.set("gamma1", 0.518);
+        if (!originalCoeffs.found("gamma2")) this->coeffDict_.set("gamma2", 0.44);
+        
+        this->read();
         this->printCoeffs(type);
+        Info << "********** alphaK1 = " << this->alphaK1_ << endl;
+        Info << "********** clean = " << originalCoeffs << endl;
     }
 }
 

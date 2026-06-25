@@ -68,9 +68,18 @@ protected:
 
     virtual void correctAnisotropy(const volTensorField& gradU);
 
+    virtual tmp<volScalarField::Internal> Pk
+    (
+        const volScalarField::Internal& G
+    ) const;
+
     virtual bool read(const word& typeName);
 
+    virtual dictionary getOriginalCoeffs() const;
+
     dimensionedScalar CTau_;
+
+    Switch curvatureCorrection_;
 
     dimensionedScalar A0_;
     
@@ -101,6 +110,7 @@ public:
 
     virtual ~EARSMBase<ScaleModel>()
     {}
+
 
     //- Return the Reynolds stress tensor
     virtual tmp<volSymmTensorField> R() const;

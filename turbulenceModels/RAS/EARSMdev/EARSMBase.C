@@ -72,6 +72,16 @@ EARSMBase<ScaleModel>::EARSMBase
         )
     ),
 
+    curvatureCorrection_
+    (
+        Switch::lookupOrAddToDict
+        (
+            "curvatureCorrection",
+            this->coeffDict_,
+            false
+        )
+    ),
+
     A0_
     (
         dimensioned<scalar>::lookupOrAddToDict
@@ -136,6 +146,32 @@ EARSMBase<ScaleModel>::EARSMBase
         dimensionedSymmTensor("zero", dimless, symmTensor(Foam::Zero))
     )
 {
+}
+
+
+// Read again the turbulenceProperties file to be able to change default coefficients for background model
+template<class ScaleModel>
+dictionary EARSMBase<ScaleModel>::getOriginalCoeffs() const
+{
+    const word simType = this->template get<word>("simulationType");
+    
+    dictionary cleanCoeffs;
+
+    if (this->found(simType))
+    {
+        const dictionary& simDict = this->subDict(simType);
+
+        cleanCoeffs = simDict;
+
+        const word modelCoeffsName = this->type() + "Coeffs"; 
+        if (simDict.found(modelCoeffsName))
+        {
+            const dictionary& nestedDict = simDict.subDict(modelCoeffsName);
+            cleanCoeffs.merge(nestedDict);
+        }        
+    }
+
+    return cleanCoeffs;
 }
 
 
@@ -205,7 +241,7 @@ void EARSMBase<ScaleModel>::correctAnisotropy(const volTensorField& gradU)
 
      volScalarField IIS  = tr(S & S);
      
-     /*
+     
      if (this->curvatureCorrection_)
     {
         const volVectorField& U = this->U_;
@@ -224,8 +260,7 @@ void EARSMBase<ScaleModel>::correctAnisotropy(const volTensorField& gradU)
         volTensorField Wr = *(BSDeps);
         W -= (tau/this->A0_)*Wr;
     }
-        */
-
+    
     volScalarField IIW  = tr(W & W);
     volScalarField IV   = tr(S & W & W);
 
@@ -283,6 +318,18 @@ void EARSMBase<ScaleModel>::correctNut(const volScalarField& S2)
     const volVectorField& U = this->U_;
     tmp<volTensorField>   tgradU = fvc::grad(U);
     this->correctAnisotropy(tgradU);
+}
+
+
+template<class ScaleModel>
+tmp<volScalarField::Internal> EARSMBase<ScaleModel>::Pk
+(
+    const volScalarField::Internal& G
+) const
+{
+    Info << "********** EARSMBase: Computing Pk" << endl;
+    volScalarField extraTerm = this->k()*(this->aEx_ && fvc::grad(this->U_));
+    return ScaleModel::Pk(G) - extraTerm.internalField();
 }
 
 
