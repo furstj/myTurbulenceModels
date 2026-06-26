@@ -132,18 +132,18 @@ EARSMBase<ScaleModel>::EARSMBase
         )
     ),
 
-    aEx_
+    nonlinearStress_
     (
         IOobject
         (
-            "aEx",
+            "nonlinearStress",
             this->U_.time().timeName(),
             this->U_.db(),
             IOobject::NO_READ,
             IOobject::NO_WRITE
         ),
         this->U_.mesh(),
-        dimensionedSymmTensor("zero", dimless, symmTensor(Foam::Zero))
+        dimensionedSymmTensor(sqr(dimVelocity), Zero)
     )
 {
 }
@@ -286,18 +286,15 @@ void EARSMBase<ScaleModel>::correctAnisotropy(const volTensorField& gradU)
 
     this->nut_ = Cmu * this->k_ * tau;
     this->nut_.correctBoundaryConditions();
-
+    fv::options::New(this->mesh_).correct(this->nut_);
     
-    this->aEx_ =  symm(
+    this->nonlinearStress_ =  this->k_ * symm(
           beta3 * ( (W & W) - (1.0/3.0) * IIW * I )
         + beta4 * ( (S & W) - (W & S) )
         + beta6 * ( (S & W & W) + (W & W & S) - IIW * S - (2.0/3.0) * IV * I)
         + beta9 * ( (W & S & W & W) - (W & W & S & W) )
     );
-
-    // this->nonlinearStress_.correctBoundaryConditions();
-    // BasicTurbulenceModel::correctNut();
-
+ 
 }
 
 
@@ -320,6 +317,30 @@ void EARSMBase<ScaleModel>::correctNut(const volScalarField& S2)
     this->correctAnisotropy(tgradU);
 }
 
+template<class ScaleModel>
+tmp<volScalarField::Internal> EARSMBase<ScaleModel>::GbyNu0
+(
+    const volTensorField& gradU,
+    const volScalarField& /* S2 not used */
+) const
+{
+    return tmp<volScalarField::Internal>::New
+    (
+        IOobject::scopedName(this->type(), "GbyNu"),
+        gradU() && (devTwoSymm(gradU()) - this->nonlinearStress_()/this->nut_())
+    );
+}
+
+template<class ScaleModel>
+tmp<volScalarField::Internal> EARSMBase<ScaleModel>::GbyNu
+(
+    const volScalarField::Internal& GbyNu0,
+    const volScalarField::Internal& F2,
+    const volScalarField::Internal& S2
+) const
+{
+    return GbyNu0;
+}
 
 template<class ScaleModel>
 tmp<volScalarField::Internal> EARSMBase<ScaleModel>::Pk
@@ -328,8 +349,7 @@ tmp<volScalarField::Internal> EARSMBase<ScaleModel>::Pk
 ) const
 {
     Info << "********** EARSMBase: Computing Pk" << endl;
-    volScalarField extraTerm = this->k()*(this->aEx_ && fvc::grad(this->U_));
-    return ScaleModel::Pk(G) - extraTerm.internalField();
+    return G;
 }
 
 
@@ -337,7 +357,12 @@ template<class ScaleModel>
 tmp<volSymmTensorField> EARSMBase<ScaleModel>::R() const
 {
     Info << "********** EARSMBase: Computing R" << endl;
-    return ScaleModel::R();
+    tmp<volSymmTensorField> tR
+    (
+        ScaleModel::R()
+    );
+    tR.ref() += this->nonlinearStress_;
+    return tR;
 }
 
 
@@ -355,24 +380,14 @@ tmp<volSymmTensorField> EARSMBase<ScaleModel>::devRhoReff
 ) const
 {
     Info << "********** EARSMBase: Computing devRhoReff with U" << endl;
- 
-    return tmp<volSymmTensorField>
-    (
-        new volSymmTensorField
-        (
-            IOobject
-            (
-                IOobject::groupName("devRhoReff", this->alphaRhoPhi_.group()),
-                this->runTime_.timeName(),
-                this->mesh_,
-                IOobject::NO_READ,
-                IOobject::NO_WRITE
-            ),
-            ScaleModel::devRhoReff(U) + this->alpha_*this->rho_*this->k()*this->aEx_
-        )
-    );
 
-    return ScaleModel::devRhoReff(U);
+    tmp<volSymmTensorField> tdevRhoReff
+    (
+        ScaleModel::devRhoReff(U)
+    );
+    tdevRhoReff.ref() += this->rho_*this->nonlinearStress_;
+
+    return tdevRhoReff;
 }
 
 
@@ -380,7 +395,11 @@ template<class ScaleModel>
 tmp<fvVectorMatrix> EARSMBase<ScaleModel>::divDevRhoReff(volVectorField& U) const
 {
     Info << "********** EARSMBase: Computing divDevRhoReff(U)" << endl;
-    return ScaleModel::divDevRhoReff(U) + this->alpha_*this->rho_*this->k()*fvc::div(this->aEx_);
+    return
+    (
+        fvc::div(this->rho_*this->nonlinearStress_)
+      + ScaleModel::divDevRhoReff(U)
+    );
 }
 
 
@@ -392,7 +411,11 @@ tmp<fvVectorMatrix> EARSMBase<ScaleModel>::divDevRhoReff
 ) const
 {
     Info << "********** EARSMBase: Computing divDevRhoReff(rho, U)" << endl;
-    return ScaleModel::divDevRhoReff(rho, U) + this->alpha_*rho*this->k()*fvc::div(this->aEx_);
+    return
+    (
+        fvc::div(rho*this->nonlinearStress_)
+      + ScaleModel::divDevRhoReff(rho, U)
+    );
 }
 
 
@@ -400,8 +423,8 @@ template<class ScaleModel>
 void EARSMBase<ScaleModel>::validate()
 {
     Info << "********** EARSMBase: Validating" << endl; 
-    this->correctNut();
     ScaleModel::validate();
+    this->correctNut();
 }
 
 

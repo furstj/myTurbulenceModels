@@ -73,6 +73,19 @@ protected:
         const volScalarField::Internal& G
     ) const;
 
+    virtual tmp<volScalarField::Internal> GbyNu0
+    (
+        const volTensorField& gradU,
+        const volScalarField& /* S2 not used */
+    ) const;
+
+    virtual tmp<volScalarField::Internal> GbyNu
+    (
+        const volScalarField::Internal& GbyNu0,
+        const volScalarField::Internal& F2,
+        const volScalarField::Internal& S2
+    ) const;
+
     virtual bool read(const word& typeName);
 
     virtual dictionary getOriginalCoeffs() const;
@@ -91,8 +104,8 @@ protected:
 
     dimensionedScalar CyB_;
 
-    volSymmTensorField aEx_;
-    
+    volSymmTensorField nonlinearStress_;
+
 public:
 
     EARSMBase<ScaleModel>

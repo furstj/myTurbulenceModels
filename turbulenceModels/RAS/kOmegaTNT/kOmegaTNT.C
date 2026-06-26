@@ -33,6 +33,33 @@ namespace Foam
 namespace RASModels
 {
 
+// * * * * * * * * * * * Protected Member Functions  * * * * * * * * * * * * //
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField::Internal> kOmegaTNT<BasicTurbulenceModel>::GbyNu0
+(
+    const volTensorField& gradU,
+    const volScalarField& /* S2 not used */
+) const
+{
+    return tmp<volScalarField::Internal>::New
+    (
+        IOobject::scopedName(this->type(), "GbyNu"),
+        gradU() && devTwoSymm(gradU())
+    );
+}
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField::Internal> kOmegaTNT<BasicTurbulenceModel>::GbyNu
+(
+    const volScalarField::Internal& GbyNu0,
+    const volScalarField::Internal& F2,
+    const volScalarField::Internal& S2
+) const
+{
+    return GbyNu0;
+}
+
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
@@ -47,25 +74,96 @@ kOmegaTNT<BasicTurbulenceModel>::kOmegaTNT
     const transportModel& transport,
     const word& propertiesName,
     const word& type
-):
-            
-    kOmega<BasicTurbulenceModel>
+)
+:
+    eddyViscosity<RASModel<BasicTurbulenceModel>>
     (
+        type,
         alpha,
         rho,
         U,
         alphaRhoPhi,
         phi,
         transport,
-        propertiesName,
-        type
+        propertiesName
     ),
-    
-    alphaD_
+
+    betaStar_
     (
-        dimensioned<scalar>::lookupOrAddToDict
+        dimensioned<scalar>::getOrAddToDict
         (
-            "alphaD",
+            "betaStar",
+            this->coeffDict_,
+            0.09
+        )
+    ),
+    alphaK_
+    (
+        dimensioned<scalar>::getOrAddToDict
+        (
+            "alphaK",
+            this->coeffDict_,
+            0.66
+        )
+    ),
+    alphaOmega_
+    (
+        dimensioned<scalar>::getOrAddToDict
+        (
+            "alphaOmega",
+            this->coeffDict_,
+            0.5
+        )
+    ),
+    beta_
+    (
+        dimensioned<scalar>::getOrAddToDict
+        (
+            "beta",
+            this->coeffDict_,
+            0.075
+        )
+    ),
+    gamma_
+    (
+        dimensioned<scalar>::getOrAddToDict
+        (
+            "gamma",
+            this->coeffDict_,
+            0.55
+        )
+    ),
+
+    k_
+    (
+        IOobject
+        (
+            IOobject::groupName("k", alphaRhoPhi.group()),
+            this->runTime_.timeName(),
+            this->mesh_,
+            IOobject::MUST_READ,
+            IOobject::AUTO_WRITE
+        ),
+        this->mesh_
+    ),
+    omega_
+    (
+        IOobject
+        (
+            IOobject::groupName("omega", alphaRhoPhi.group()),
+            this->runTime_.timeName(),
+            this->mesh_,
+            IOobject::MUST_READ,
+            IOobject::AUTO_WRITE
+        ),
+        this->mesh_
+    ),
+
+    sigmaD_
+    (
+        dimensioned<scalar>::getOrAddToDict
+        (
+            "sigmaD",
             this->coeffDict_,
             0.5
         )
@@ -91,7 +189,8 @@ kOmegaTNT<BasicTurbulenceModel>::kOmegaTNT
         )
     )
 {
-    this->alphaK_ = 2.0/3.0;
+    bound(k_, this->kMin_);
+    bound(omega_, this->omegaMin_);
 
     if (type == typeName)
     {
@@ -104,9 +203,14 @@ kOmegaTNT<BasicTurbulenceModel>::kOmegaTNT
 template<class BasicTurbulenceModel>
 bool kOmegaTNT<BasicTurbulenceModel>::read()
 {
-    if (kOmega<BasicTurbulenceModel>::read())
+    if (eddyViscosity<RASModel<BasicTurbulenceModel>>::read())
     {
-        alphaD_.readIfPresent(this->coeffDict());
+        betaStar_.readIfPresent(this->coeffDict());
+        alphaK_.readIfPresent(this->coeffDict());
+        alphaOmega_.readIfPresent(this->coeffDict());
+        beta_.readIfPresent(this->coeffDict());
+        gamma_.readIfPresent(this->coeffDict());
+        sigmaD_.readIfPresent(this->coeffDict());
         productionLimiter_.readIfPresent("productionLimiter", this->coeffDict());
         shockLimiter_.readIfPresent("shockLimiter", this->coeffDict());
 
@@ -116,6 +220,26 @@ bool kOmegaTNT<BasicTurbulenceModel>::read()
     {
         return false;
     }
+}
+
+template<class BasicTurbulenceModel>
+void kOmegaTNT<BasicTurbulenceModel>::correctNut()
+{
+    this->nut_ = k_/omega_;
+    this->nut_.correctBoundaryConditions();
+    fv::options::New(this->mesh_).correct(this->nut_);
+
+    BasicTurbulenceModel::correctNut();
+}
+
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField::Internal> kOmegaTNT<BasicTurbulenceModel>::Pk
+(
+    const volScalarField::Internal& G
+) const
+{
+    return G;
 }
 
 
@@ -133,8 +257,8 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
     const surfaceScalarField& alphaRhoPhi = this->alphaRhoPhi_;
     const volVectorField& U = this->U_;
     volScalarField& nut = this->nut_;
-    volScalarField& k_ = this->k_;
-    volScalarField& omega_ = this->omega_;
+    volScalarField& k = k_;
+    volScalarField& omega = omega_;
 
     fv::options& fvOptions(fv::options::New(this->mesh_));
 
@@ -147,77 +271,75 @@ void kOmegaTNT<BasicTurbulenceModel>::correct()
 
     tmp<volTensorField> tgradU = fvc::grad(U);
     
-    volScalarField::Internal S2 = 2.0 * magSqr(dev(symm(tgradU())));
-    volScalarField::Internal O2 = 2.0 * magSqr(skew(tgradU()));
-    
-    const volScalarField::Internal GbyNu
-    (
-        IOobject::scopedName(this->type(), "GbyNu"),
-        tgradU()  && devTwoSymm(tgradU())
-    );
+    const volScalarField S2(2*magSqr(symm(tgradU())));
+    volScalarField::Internal GbyNu0(this->GbyNu0(tgradU(), S2));
+    volScalarField::Internal G(this->GName(), nut*GbyNu0);
+
     tgradU.clear();
 
-    volScalarField::Internal G(this->GName(), nut()*GbyNu);
 
     // Limiter based on epsilon
     if (productionLimiter_)
-        G = min(G,  20 * this->Cmu_ * k_() * omega_());
-    
+        G = min(G,  20 * betaStar_ * k() * omega());
+
     // Limiter according to Wallin (PhD. thesis, paper 6)
     if (shockLimiter_)
-        G = min(G,  k_() * sqrt(S2/2.0));
-    
+    {
+        volScalarField::Internal S2 = 2.0 * magSqr(dev(symm(tgradU())));
+        G = min(G,  k() * sqrt(S2/2.0));
+    }
     // Update omega and G at the wall
-    omega_.boundaryFieldRef().updateCoeffs();
+    omega.boundaryFieldRef().updateCoeffs();
     // Push any changed cell values to coupled neighbours
-    omega_.boundaryFieldRef().template evaluateCoupled<coupledFvPatch>();
+    omega.boundaryFieldRef().template evaluateCoupled<coupledFvPatch>();
 
     volScalarField::Internal CDkOmega = max(
-        this->alphaD_ / max(omega_, this->omegaMin()) * (fvc::grad(k_) & fvc::grad(omega_)),
-        dimensionedScalar("0",inv(sqr(dimTime)), 0.0)
+        sigmaD_ / max(omega(), this->omegaMin_)() * (fvc::grad(k) & fvc::grad(omega))(),
+        dimensionedScalar("0", inv(sqr(dimTime)), 0.0)
     );
 
-
+    
     // Turbulence specific dissipation rate equation
     tmp<fvScalarMatrix> omegaEqn
     (
-        fvm::ddt(alpha, rho, omega_)
-      + fvm::div(alphaRhoPhi, omega_)
-      - fvm::laplacian(alpha * rho * this->DomegaEff(), omega_)
+        fvm::ddt(alpha, rho, omega)
+      + fvm::div(alphaRhoPhi, omega)
+      - fvm::laplacian(alpha * rho * this->DomegaEff(), omega)
      ==
-        this->gamma_ * alpha * rho() * GbyNu
-      - fvm::SuSp(((2.0/3.0)*this->gamma_)*alpha() * rho() * divU, omega_)
-      - fvm::Sp(this->beta_ * alpha() * rho() * omega_(), omega_)
+        //gamma_ * alpha * rho() * GbyNu0
+        gamma_ * alpha * rho() * G * omega_/k_
+      - fvm::SuSp(((2.0/3.0)*gamma_)*alpha() * rho() * divU, omega)
+      - fvm::Sp(beta_ * alpha() * rho() * omega(), omega)
       + alpha * rho * CDkOmega
-      + fvOptions(alpha, rho, omega_)
+      + fvOptions(alpha, rho, omega)
     );
 
 
     omegaEqn.ref().relax();
     fvOptions.constrain(omegaEqn.ref());
-    omegaEqn.ref().boundaryManipulate(omega_.boundaryFieldRef());
+    omegaEqn.ref().boundaryManipulate(omega.boundaryFieldRef());
     solve(omegaEqn);
-    fvOptions.correct(omega_);
-    bound(omega_, this->omegaMin());
+    fvOptions.correct(omega);
+    bound(omega, this->omegaMin_);
 
     // Turbulent kinetic energy equation
     tmp<fvScalarMatrix> kEqn
     (
-        fvm::ddt(alpha, rho, k_)
-      + fvm::div(alphaRhoPhi, k_)
-      - fvm::laplacian(alpha * rho * this->DkEff(), k_)
+        fvm::ddt(alpha, rho, k)
+      + fvm::div(alphaRhoPhi, k)
+      - fvm::laplacian(alpha * rho * this->DkEff(), k)
      ==
-        alpha() * rho() * G
-      - fvm::SuSp((2.0/3.0) * alpha() * rho() * divU, k_)
-      - fvm::Sp(this->Cmu_ * alpha() * rho() * omega_(), k_)
-      + fvOptions(alpha, rho, k_)
+        alpha() * rho() * Pk(G)
+      - fvm::SuSp((2.0/3.0) * alpha() * rho() * divU, k)
+      - fvm::Sp(betaStar_ * alpha() * rho() * omega(), k)
+      + fvOptions(alpha, rho, k)
     );
 
     kEqn.ref().relax();
     fvOptions.constrain(kEqn.ref());
     solve(kEqn);
-    fvOptions.correct(k_);
-    bound(k_, this->kMin_);
+    fvOptions.correct(k);
+    bound(k, this->kMin_);
 
     this->correctNut();
     

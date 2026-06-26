@@ -22,37 +22,37 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::RASModels::EARSMko2005
+    Foam::RASModels::EARSMtnt
 
 Group
     grpRASTurbulence
 
 Description
-   Implementation of the EARSM turbulence model (Hellsten 2005).
+   Implementation of the EARSM turbulence model with k-omega-TNT scale determination.
 
     This turbulence model combines the EARSM nonlinear stress formulation
-    with the k-omega SST scale-determining equation.
+    with the k-omega-TNT scale-determining equation (Kok 1999).
 
     The model is described in:
     \verbatim
-        Hellsten, Antti K. (2005).
-        "New Advanced K-W Turbulence Model for High-Lift Aerodynamics."
-        AIAA Journal 43 (9): 1857–69. doi:10.2514/1.13754.
+        Kok, J.C. (1999).
+        "Resolving the dependence on free-stream values for the k-omega turbulence model."
+        NLR-TP-99295 report.
     \endverbatim
 
 Author
     Jiri Furst <Jiri.Furst@gmail.com>
 
 SourceFiles
-    EARSMko2005.C
+    EARSMtnt.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef EARSMko2005_H
-#define EARSMko2005_H
+#ifndef EARSMtnt_H
+#define EARSMtnt_H
 
 #include "EARSMBase.H"
-#include "kOmegaSST.H"
+#include "kOmegaTNT.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -61,49 +61,37 @@ namespace Foam
 namespace RASModels
 {
 
+
 /*---------------------------------------------------------------------------*\
-                       Class EARSMko2005 Declaration
+                       Class EARSMtnt Declaration
 \*---------------------------------------------------------------------------*/
 
 
 template<class BasicTurbulenceModel>
-class EARSMko2005
+class EARSMtnt
 :
-    public EARSMBase<kOmegaSST<BasicTurbulenceModel>> 
+    public EARSMBase<kOmegaTNT<BasicTurbulenceModel>>
 {
     // Disallow default bitwise copy construct and assignment
-    EARSMko2005(const EARSMko2005&);
-    EARSMko2005& operator=(const EARSMko2005&);
-
-protected:
-
-   // Protected data
-
-    //- Minimum value of k to avoid division by zero
-    dimensionedScalar kInf_;
-
-
-    // Member Functions
-
-    //- Return the first blending function (EARSM fMix formula)
-    virtual tmp<volScalarField> F1(const volScalarField& CDkOmega) const;
+    EARSMtnt(const EARSMtnt&);
+    EARSMtnt& operator=(const EARSMtnt&);
 
 public:
 
-    using scaleModel = kOmegaSST<BasicTurbulenceModel>;
+    using scaleModel = kOmegaTNT<BasicTurbulenceModel>;
     using alphaField = typename scaleModel::alphaField;
     using rhoField = typename scaleModel::rhoField;
     using transportModel = typename scaleModel::transportModel;
 
 
     //- Runtime type information
-    TypeName("EARSMko2005");
+    TypeName("EARSMtnt");
 
 
     // Constructors
 
         //- Construct from components
-        EARSMko2005
+        EARSMtnt
         (
             const alphaField& alpha,
             const rhoField& rho,
@@ -117,11 +105,10 @@ public:
 
 
     //- Destructor
-    virtual ~EARSMko2005()
+    virtual ~EARSMtnt()
     {}
 
 
- 
     //- Read RASProperties dictionary
     virtual bool read();
 };
@@ -135,7 +122,7 @@ public:
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #ifdef NoRepository
-#   include "EARSMko2005.C"
+#   include "EARSMtnt.C"
 #endif
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -143,3 +130,5 @@ public:
 #endif
 
 // ************************************************************************* //
+
+

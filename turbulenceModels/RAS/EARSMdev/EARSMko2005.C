@@ -26,6 +26,7 @@ License
 
 #include "EARSMko2005.H"
 #include "fvOptions.H"
+#include "wallDist.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -59,8 +60,19 @@ EARSMko2005<BasicTurbulenceModel>::EARSMko2005
         transport,
         propertiesName,
         type
+    ),
+
+    kInf_
+    (
+        dimensioned<scalar>::lookupOrAddToDict
+        (
+            "kInf",
+            this->coeffDict_,
+            sqr(dimVelocity),
+            1.e-10
+        )
     )
-{    
+{
     if (type == typeName)
     {
         auto originalCoeffs = this->getOriginalCoeffs();
@@ -73,16 +85,45 @@ EARSMko2005<BasicTurbulenceModel>::EARSMko2005
         if (!originalCoeffs.found("beta2")) this->coeffDict_.set("beta2", 0.0828);
         if (!originalCoeffs.found("gamma1")) this->coeffDict_.set("gamma1", 0.518);
         if (!originalCoeffs.found("gamma2")) this->coeffDict_.set("gamma2", 0.44);
-        
+
         this->read();
         this->printCoeffs(type);
-        Info << "********** alphaK1 = " << this->alphaK1_ << endl;
-        Info << "********** clean = " << originalCoeffs << endl;
     }
 }
 
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField> EARSMko2005<BasicTurbulenceModel>::F1
+(
+    const volScalarField& CDkOmega
+) const
+{
+    
+    // Compute gradKgradOmegaByOmega from CDkOmega
+    // SST defines CDkOmega = 2*alphaOmega2_ * (gradK & gradOmega) / omega
+    // We need to remove the 2*alphaOmega2_ factor
+    volScalarField gradKgradOmegaByOmega = CDkOmega / (2.0 * this->alphaOmega2_);
+
+    // EARSM fMix blending function (Hellsten 2005)
+    tmp<volScalarField> Gamma = min
+    (
+        min
+        (
+            max
+            (
+                sqrt(this->k_) / (this->betaStar_ * this->omega_ * this->y_),
+                scalar(500) * this->nu() / (this->omega_ * sqr(this->y_))
+            ),
+            scalar(20) * this->k_ / max(sqr(this->y_) * gradKgradOmegaByOmega, scalar(200) * kInf_)
+        ),
+        scalar(10)
+    );
+
+    return tanh(scalar(1.5) * pow4(Gamma));
+}
+
 
 template<class BasicTurbulenceModel>
 bool EARSMko2005<BasicTurbulenceModel>::read()

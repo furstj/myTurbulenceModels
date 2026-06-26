@@ -37,14 +37,14 @@ Description
 
     The default model coefficients are
     \verbatim
-        kOmegaCoeffs
+        kOmegaTNTCoeffs
         {
-            Cmu         0.09;  // Equivalent to betaStar
+            betaStar    0.09;
+            alphaK      0.66;
+            alphaOmega  0.5;
             beta        0.075;
             gamma       0.55;  // alpha in the article
-            alphaK      0.66;  // alphaK in the article
-            alphaOmega  0.5;   // alphaOmega in the article
-            alphaD      0.5;   // sigmaD in the article
+            sigmaD      0.5;
             productionLimiter  true;
             shockLimiter       true;
         }
@@ -56,7 +56,7 @@ Description
 #ifndef kOmegaTNT_H
 #define kOmegaTNT_H
 
-#include "kOmega.H"
+#include "RASModel.H"
 #include "eddyViscosity.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -70,29 +70,57 @@ namespace RASModels
                           Class kOmegaTNT Declaration
 \*---------------------------------------------------------------------------*/
 
-template<class BasicTurbulenceModel>  
+template<class BasicTurbulenceModel>
 class kOmegaTNT
 :
-    public kOmega<BasicTurbulenceModel>
+    public eddyViscosity<RASModel<BasicTurbulenceModel>>
 {
     // Private Member Functions
-    
+
     // Disallow default bitwise copy construct and assignment
-    
+
     kOmegaTNT(const kOmegaTNT&);
     kOmegaTNT& operator=(const kOmegaTNT&);
 
-    
+
 protected:
     // Protected data
-    
+
     // Model coefficients
-    dimensionedScalar alphaD_;
+        dimensionedScalar betaStar_;
+        dimensionedScalar alphaK_;
+        dimensionedScalar alphaOmega_;
+        dimensionedScalar beta_;
+        dimensionedScalar gamma_;
+
+    // Fields
+        volScalarField k_;
+        volScalarField omega_;
+
+    // Additional model coefficients
+    dimensionedScalar sigmaD_;
 
     Switch productionLimiter_;
-    
+
     Switch shockLimiter_;
+
+    virtual void correctNut();
+
+    virtual tmp<volScalarField::Internal> Pk(const volScalarField::Internal& G) const;
     
+    virtual tmp<volScalarField::Internal> GbyNu0
+    (
+        const volTensorField& gradU,
+        const volScalarField& S2
+    ) const;
+
+    //- Return G/nu
+    virtual tmp<volScalarField::Internal> GbyNu
+    (
+        const volScalarField::Internal& GbyNu0,
+        const volScalarField::Internal& F2,
+        const volScalarField::Internal& S2
+    ) const;
 
 public:
 
@@ -125,12 +153,52 @@ public:
     virtual ~kOmegaTNT()
     {}
 
-    
-    //- Solve the turbulence equations and correct the turbulence viscosity
-    virtual void correct();
-    
-    //- Read RASProperties dictionary
-    virtual bool read();
+
+    // Member Functions
+
+        //- Return the effective diffusivity for k
+        tmp<volScalarField> DkEff() const
+        {
+            return tmp<volScalarField>
+            (
+                new volScalarField
+                (
+                    "DkEff",
+                    alphaK_*this->nut_ + this->nu()
+                )
+            );
+        }
+
+        //- Return the effective diffusivity for omega
+        tmp<volScalarField> DomegaEff() const
+        {
+            return tmp<volScalarField>
+            (
+                new volScalarField
+                (
+                    "DomegaEff",
+                    alphaOmega_*this->nut_ + this->nu()
+                )
+            );
+        }
+
+        //- Return the turbulence kinetic energy
+        virtual tmp<volScalarField> k() const
+        {
+            return k_;
+        }
+
+        //- Return the turbulence specific dissipation rate
+        virtual tmp<volScalarField> omega() const
+        {
+            return omega_;
+        }
+
+        //- Solve the turbulence equations and correct the turbulence viscosity
+        virtual void correct();
+
+        //- Read RASProperties dictionary
+        virtual bool read();
     
 };
 
