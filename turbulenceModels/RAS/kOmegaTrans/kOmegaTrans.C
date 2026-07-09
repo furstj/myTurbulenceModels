@@ -479,11 +479,11 @@ void kOmegaTrans<BasicTurbulenceModel>::correct()
         - fvm::laplacian(alpha*rho*DkEff(), k_)
         ==
         gammaInt * alpha*rho*G
-        + (1.0 - gammaInt) * Csep_ * Fsep * this->nu() * sqr(S)
+        + (1.0 - gammaInt) * Csep_ * alpha * rho * Fsep * this->nu() * sqr(S)
         - fvm::SuSp((2.0/3.0)*alpha*rho*divU, k_)
         - fvm::Sp(Cmu_*alpha*rho*omega_, k_)
         + kSource()
-	+ fvOptions(alpha, rho, omega_)
+	+ fvOptions(alpha, rho, k_)
     );
 
     kEqn.ref().relax();

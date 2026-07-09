@@ -1,10 +1,10 @@
 ---
 title: "kOmegaSSTLMRough model"
 ---
-# Transition Models on Rough Walls
 
 The transition model on rough walls is based on a combination of the four-equation transition model $\gamma - \tilde{Re}_\theta$ according to Langtry and Menter [@Langtry2009] with an additional equation for the amplification factor $A_r$ according to Dassler et al. [@Dassler2010]. In subsequent publications, this model has been presented in various variants and calibrations, e.g., Langel et al. [@Langel2017] or Kožulović et al. [@Kozulovic2022].
 
+## Model Equations
 The transition model according to Dassler et al. contains the following three equations:
 $$
 \begin{aligned}
@@ -42,7 +42,7 @@ $$ {#eq-dassler2010-ptheta}
  
  However, the functional form of $Arg_r$ is not published in the article. Therefore, this model was not further tested.
 
-## Model according to Langel et al. (2017) (`Langel2017`)
+### Model according to Langel et al. (2017) (`Langel2017`)
 The model according to Langel et al. [@Langel2017] uses the same approach as Dassler et al., but with different calibration and provides a specific functional form for $Arg_r$. In this model, the value is $\sigma_{A_r} = 30$ and the boundary condition at the wall is for the case of flat plate flow (see [@Langel2017, p. 109])
 $$
 A_{r,w} = \frac{20000}{1 + e^{13.5 - k_s^+}}.
@@ -225,7 +225,7 @@ plt.legend();
 ```
 
 
-## Model according to Langel et al. (2017a) (`Langel2017a`)
+### Model according to Langel et al. (2017a) (`Langel2017a`)
 In another publication [@Langel2017a], a different version of the `Langel2017` model is presented, which uses different calibrations and a boundary condition for $A_r$ at the wall.
 The value of $\sigma_{A_r}$ in this model is set to $\sigma_{A_r} = 10$ and the boundary condition at the wall is
 $$
@@ -260,7 +260,7 @@ plt.ylabel(r'$b$');
 plt.legend(loc='upper left');
 ```
 
-## Model according to Kožulović et al. (2022) (`Kozulovic2022`)
+### Model according to Kožulović et al. (2022) (`Kozulovic2022`)
 In the most recent publication [@Kozulovic2022], another version of the transition model on rough walls is presented with different calibration and a boundary condition for $A_r$ at the wall. The model apparently originates from the publication [@Dassler2012] and supplements some correlations that were not included in the original publication.
 
 The source term in the equation for $\tilde{Re}_\theta$ is defined by  @eq-dassler2010-ptheta with the function $Arg_r$ defined as
@@ -283,7 +283,7 @@ P_\theta = c_{\theta t}\frac{\rho}{T}\left[\left(Re_{\theta} - \tilde{Re}_\theta
 (1 - F_{\theta t}) - 10 b \cdot Arg_r\right].
 $$ {#eq-kozulovic2022-ptheta}
 
-## Model Comparison
+### Model Comparison
 The models differ both in the values of $\sigma_{A_r}$ and the boundary condition for $A_r$ at the wall, as well as in the modification of the source term in the equation for $\tilde{Re}_\theta$. The graph below shows a comparison of the function $F_{A_r}$ or $Arg_r$ for different models (for $b=1$ and $F_\theta=0$).
 ```{python}
 #| echo: false
@@ -332,7 +332,7 @@ RAS
 }
 ```
 
-Moreover, the boundary condition for the variable `Ar` at the wall must be set to [`roughnessAmplification`](../BoCos/roughnessAmplification.qmd) for `Kozulovic2022` or `Langel2017` models, or to [`roughnessAmplificationLangel`](../BoCos/roughnessAmplificationLangel.qmd) for the `Langel2017a` model.
+Moreover, the boundary condition for the variable `Ar` at the wall must be set to [`roughnessAmplification`](../BoCos/roughnessAmplification.qmd) for `Kozulovic2022` or `Langel2017a` models, or to [`roughnessAmplificationLangel`](../BoCos/roughnessAmplificationLangel.qmd) for the `Langel2017` model.
 
 # References
 
