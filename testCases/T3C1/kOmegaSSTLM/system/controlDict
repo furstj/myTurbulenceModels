@@ -15,6 +15,11 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+libs (
+  myTurbulenceModels
+//  myIncompressibleTurbulenceModelsEARSM
+  );
+
 application     simpleFoam;
 
 startFrom       startTime;
@@ -37,7 +42,7 @@ writeFormat     ascii;
 
 writePrecision  6;
 
-writeCompression compressed;
+writeCompression yes;
 
 timeFormat      general;
 
@@ -47,8 +52,11 @@ runTimeModifiable yes;
 
 functions
 {
-  #includeFunc "wallShearStress"
-  #includeFunc "axiswall"
+  #includeFunc wallShearStress
+
+  #include "surfaces"
+
+  #includeFunc "line_z5"
 }
 
 // ************************************************************************* //

@@ -349,7 +349,7 @@ tmp<volScalarField::Internal> EARSMBase<ScaleModel>::Pk
 ) const
 {
     Info << "********** EARSMBase: Computing Pk" << endl;
-    return G;
+    return ScaleModel::Pk(G);
 }
 
 

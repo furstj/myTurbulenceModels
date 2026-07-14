@@ -108,7 +108,7 @@ protected:
 
 public:
 
-    EARSMBase<ScaleModel>
+    EARSMBase
     (
             const alphaField& alpha,
             const rhoField& rho,
@@ -121,8 +121,7 @@ public:
     );
     
 
-    virtual ~EARSMBase<ScaleModel>()
-    {}
+    virtual ~EARSMBase() = default;
 
 
     //- Return the Reynolds stress tensor

@@ -80,6 +80,9 @@ makeRASModel(EARSMko2005);
 #include "EARSMtnt.H"
 makeRASModel(EARSMtnt);
 
+#include "EARSMlm2009.H"
+makeRASModel(EARSMlm2009);
+
 #include "gammaSST.H"
 makeRASModel(gammaSST);
 
@@ -105,6 +108,8 @@ makeRASModel(kOmegaWilcox06);
 #include "kv2Omega.H"
 makeRASModel(kv2Omega);
 
+*/
+
 #include "mykkLOmega.H"
 makeRASModel(mykkLOmega);
 
@@ -113,16 +118,14 @@ makeRASModel(mykkLOmegaFS);
 
 #include "mykkLOmegaPh.H"
 makeRASModel(mykkLOmegaPh);
-
+ 
+/*
 #include "kOmegaTrans.H"
 makeRASModel(kOmegaTrans);
-
-*/
 
 #include "EARSMWallin.H"
 makeRASModel(EARSMWallin);
 
-/*
 #include "EARSMTrans.H"
 makeRASModel(EARSMTrans);
 

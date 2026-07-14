@@ -248,16 +248,6 @@ nutUKnoppWallFunctionFvPatchScalarField
 nutUKnoppWallFunctionFvPatchScalarField::
 nutUKnoppWallFunctionFvPatchScalarField
 (
-    const nutUKnoppWallFunctionFvPatchScalarField& wfpsf
-)
-:
-    nutWallFunctionFvPatchScalarField(wfpsf)
-{}
-
-
-nutUKnoppWallFunctionFvPatchScalarField::
-nutUKnoppWallFunctionFvPatchScalarField
-(
     const nutUKnoppWallFunctionFvPatchScalarField& wfpsf,
     const DimensionedField<scalar, volMesh>& iF
 )

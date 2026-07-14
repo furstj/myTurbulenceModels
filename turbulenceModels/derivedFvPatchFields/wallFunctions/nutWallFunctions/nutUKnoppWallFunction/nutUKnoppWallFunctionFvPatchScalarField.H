@@ -100,6 +100,10 @@ class nutUKnoppWallFunctionFvPatchScalarField
 :
     public nutWallFunctionFvPatchScalarField
 {
+    typedef nutUKnoppWallFunctionFvPatchScalarField this_bctype;
+    typedef nutWallFunctionFvPatchScalarField parent_bctype;
+
+
 protected:
 
     // Protected Member Functions
@@ -148,21 +152,6 @@ public:
             const fvPatchFieldMapper&
         );
 
-        //- Construct as copy
-        nutUKnoppWallFunctionFvPatchScalarField
-        (
-            const nutUKnoppWallFunctionFvPatchScalarField&
-        );
-
-        //- Construct and return a clone
-        virtual tmp<fvPatchScalarField> clone() const
-        {
-            return tmp<fvPatchScalarField>
-            (
-                new nutUKnoppWallFunctionFvPatchScalarField(*this)
-            );
-        }
-
         //- Construct as copy setting internal field reference
         nutUKnoppWallFunctionFvPatchScalarField
         (
@@ -195,6 +184,11 @@ public:
 
             //- Write
             virtual void write(Ostream& os) const;
+
+    // Member Operators
+
+        //- Inherit assignment
+        using parent_bctype::operator=;
 };
 
 

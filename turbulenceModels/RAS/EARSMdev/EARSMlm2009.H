@@ -22,7 +22,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::RASModels::EARSMko2005
+    Foam::RASModels::EARSMlm2009
 
 Group
     grpRASTurbulence
@@ -44,15 +44,15 @@ Author
     Jiri Furst <Jiri.Furst@gmail.com>
 
 SourceFiles
-    EARSMko2005.C
+    EARSMlm2009.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef EARSMko2005_H
-#define EARSMko2005_H
+#ifndef EARSMlm2009_H
+#define EARSMlm2009_H
 
 #include "EARSMBase.H"
-#include "kOmegaSST.H"
+#include "kOmegaSSTLM.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -62,18 +62,18 @@ namespace RASModels
 {
 
 /*---------------------------------------------------------------------------*\
-                       Class EARSMko2005 Declaration
+                       Class EARSMlm2009 Declaration
 \*---------------------------------------------------------------------------*/
 
 
 template<class BasicTurbulenceModel>
-class EARSMko2005
+class EARSMlm2009
 :
-    public EARSMBase<kOmegaSST<BasicTurbulenceModel>> 
+    public EARSMBase<kOmegaSSTLM<BasicTurbulenceModel>> 
 {
     // Disallow default bitwise copy construct and assignment
-    EARSMko2005(const EARSMko2005&);
-    EARSMko2005& operator=(const EARSMko2005&);
+    EARSMlm2009(const EARSMlm2009&);
+    EARSMlm2009& operator=(const EARSMlm2009&);
 
 protected:
 
@@ -90,20 +90,20 @@ protected:
 
 public:
 
-    using scaleModel = kOmegaSST<BasicTurbulenceModel>;
+    using scaleModel = kOmegaSSTLM<BasicTurbulenceModel>;
     using alphaField = typename scaleModel::alphaField;
     using rhoField = typename scaleModel::rhoField;
     using transportModel = typename scaleModel::transportModel;
 
 
     //- Runtime type information
-    TypeName("EARSMko2005");
+    TypeName("EARSMlm2009");
 
 
     // Constructors
 
         //- Construct from components
-        EARSMko2005
+        EARSMlm2009
         (
             const alphaField& alpha,
             const rhoField& rho,
@@ -117,8 +117,7 @@ public:
 
 
     //- Destructor
-    virtual ~EARSMko2005() = default;
-
+    virtual ~EARSMlm2009() = default;
  
     //- Read RASProperties dictionary
     virtual bool read();
@@ -133,7 +132,7 @@ public:
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #ifdef NoRepository
-#   include "EARSMko2005.C"
+#   include "EARSMlm2009.C"
 #endif
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

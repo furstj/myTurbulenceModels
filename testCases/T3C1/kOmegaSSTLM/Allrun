@@ -5,13 +5,13 @@
 
 # Function to modify mesh size
 modifyMeshSize() {
-  # Prompt user for mesh size
-  read -p "What mesh size do you want? (fine, intermediate, coarse): " meshSize
+
+  meshSize=$1
 
   # Check user input
-  if [ "$meshSize" != "fine" ] && [ "$meshSize" != "intermediate" ] && [ "$meshSize" != "coarse" ]; then
-    echo "Invalid mesh size. Please choose from fine, intermediate, or coarse."
-    return 1
+  if [ "$meshSize" != "fine" ] && [ "$meshSize" != "medium" ] && [ "$meshSize" != "coarse" ]; then
+    echo "Invalid mesh size. Please choose from fine, medium, or coarse."
+    exit 1
   fi
 
   # Modify system/blockMeshDict file
@@ -23,7 +23,7 @@ modifyMeshSize() {
       newMeshValues1="100 424 1"  
       newMeshValues2="600 424 1"  
       ;;
-    intermediate)
+    medium)
       newMeshValues1="75 300 1"  
       newMeshValues2="450 300 1"   
       ;;
@@ -33,8 +33,8 @@ modifyMeshSize() {
       ;;
   esac
   # Line to mofify in blockMeshDict
-  firstLine=37
-  secondLine=38
+  firstLine=43
+  secondLine=44
 
   # Replace the values in the specified lines
   sed -i "${firstLine}s/\((\s*[0-9]\+\s*[0-9]\+\s*1\s*)\)/($newMeshValues1)/" $file
@@ -47,14 +47,29 @@ modifyMeshSize() {
 rm -f log*.*
 
 # Ask user to choose mesh size
-modifyMeshSize
+if [ -n "$1" ]; then
+  meshSize=$1
+else
+  read -p "What mesh size do you want? (fine, medium, coarse): " meshSize
+fi
+
+modifyMeshSize $meshSize
+
 
 # Prepare mesh
 foamCleanPolyMesh
 runApplication blockMesh
 
-# Run solver 
-runApplication simpleFoam
+# Decompose mesh
+runApplication decomposePar -force
 
-# Generate plots with gnuplot
-runApplication gnuplot cf.gpl
+# Run solver 
+runParallel simpleFoam
+
+# Reconstruct data
+runApplication reconstructPar
+rm -rf processor*
+
+# Generate plots with matplotlib
+python3 ../create_figures.py
+
