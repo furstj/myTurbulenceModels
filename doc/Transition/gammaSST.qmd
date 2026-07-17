@@ -1,8 +1,0 @@
----
-title: "gammaSST model"
----
-
-:::{.callout-warning}
-The documentation for the model is not yet written.
-:::
-

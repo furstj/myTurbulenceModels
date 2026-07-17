@@ -29,11 +29,16 @@ The package contains following RANS turbulence models:
 It also includes the following transitional RANS turbulence models:
 
 - [`kOmegaSSTLMRough`](Transition/kOmegaSSTLMRough.qmd) - Five-equation Transition and Turbulence Model with Roughness Modifications
-- [`gammaSST`](Transition/gammaSST.qmd) - Three-equation transition and turbulence Model
 - [`mykkLOmega`](Transition/mykkLOmega.qmd) - Three-equation transition and turbulence Model due to Walters and Cokljat
 - [`kv2Omega`](Transition/kv2Omega.qmd) - Three-equation transition and turbulence Model due to Walters and ???
 - [`kOmegaTrans`](Transition/kOmegaTrans.qmd) - Two-equation transition and turbulence (experimental)
-- [`EARSMTrans`](Transition/EARSMTrans.qmd) - Explicit Algebraic Reynolds Stress Model with Transition (experimental)
+- [`EARSMTrans`](Transition/EARSMTrans.qmd) - Explicit Algebraic Reynolds Stress Model with Transition (experimental, no more supported)
+
+
+:::{.callout-note}
+The `gammaSST` transitional model is not included in this package, as it is already available in the [Turbulence Community repository](https://gitlab.com/openfoam/community/tc-turbulence/turbulence-community) or directly from my [github repository](https://github.com/furstj/gammaSST).
+:::
+
 
 ### LES Models
 The package also provides the following LES turbulence models:
