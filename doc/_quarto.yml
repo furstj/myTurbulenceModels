@@ -24,8 +24,6 @@ website:
             href: RANS/EARSMWallin.qmd
       - section: "Transitional models"
         contents:
-          - text: "gammaSST"
-            href: Transition/gammaSST.qmd
           - text: "kOmegaSSTLMRough"
             href: Transition/kOmegaSSTLMRough.qmd
           - text: "mykkLOmega"
