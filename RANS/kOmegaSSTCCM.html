@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>kOmegaSSTCCM model – myTurbulenceModels</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -24,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -52,15 +54,14 @@ div.csl-indent {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c30451789a0a2bcd5e941535c675cd30.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-84365199647afda7ec578bfe13ef3742.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -90,7 +91,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -145,8 +146,9 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
-      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">myTurbulenceModels</a> 
+    </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -217,12 +219,6 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Transition/gammaSST.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">gammaSST</span></a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../Transition/kOmegaSSTLMRough.html" class="sidebar-item-text sidebar-link">
@@ -369,7 +365,7 @@ window.Quarto = {
 </header>
 
 
-<p>The <code>kOmegaSSTCC</code> is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter <span class="citation" data-cites="Menter2003">(<a href="#ref-Menter2003" role="doc-biblioref">Menter, Kuntz, and Langtry 2003</a>)</span> as included in standard OpenFOAM distribution. It incorporates a curvature correction (CCM) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Zhang and Yang <span class="citation" data-cites="Zhang2013">(<a href="#ref-Zhang2013" role="doc-biblioref">Zhang and Yang 2013</a>)</span>.</p>
+<p>The <code>kOmegaSSTCC</code> is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter <span class="citation" data-cites="Menter2003">(<a href="#ref-Menter2003" role="doc-biblioref">Menter et al. 2003</a>)</span> as included in standard OpenFOAM distribution. It incorporates a curvature correction (CCM) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Zhang and Yang <span class="citation" data-cites="Zhang2013">(<a href="#ref-Zhang2013" role="doc-biblioref">Zhang and Yang 2013</a>)</span>.</p>
 <section id="model-equations" class="level2">
 <h2 class="anchored" data-anchor-id="model-equations">Model Equations</h2>
 <p>The transport equations for the <code>kOmegaSSTCCM</code> model are given by:</p>
@@ -404,7 +400,7 @@ r^* &amp;= \frac{S}{\Omega}, \\
 </section>
 <section id="model-coefficients" class="level2">
 <h2 class="anchored" data-anchor-id="model-coefficients">Model Coefficients</h2>
-<p>For the standars <code>kOmegaSST</code> model coefficients see <span class="citation" data-cites="Menter2003">(<a href="#ref-Menter2003" role="doc-biblioref">Menter, Kuntz, and Langtry 2003</a>)</span> or the OpenFOAM manual. The curvature correction coefficients are set to:</p>
+<p>For the standars <code>kOmegaSST</code> model coefficients see <span class="citation" data-cites="Menter2003">(<a href="#ref-Menter2003" role="doc-biblioref">Menter et al. 2003</a>)</span> or the OpenFOAM manual. The curvature correction coefficients are set to:</p>
 <ul>
 <li><span class="math inline">\(c_{r1} = 1.0\)</span></li>
 <li><span class="math inline">\(c_{r2} = 2.0\)</span></li>
@@ -419,7 +415,7 @@ r^* &amp;= \frac{S}{\Omega}, \\
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-Menter2003" class="csl-entry" role="listitem">
 Menter, F. R., M. Kuntz, and R. Langtry. 2003. <span>“Ten Years of Industrial Experience with the SST Turbulence Model.”</span> <em>Turbulence Heat and Mass Transfer 4</em> 4: 625–32. <a href="http://cfd.mace.manchester.ac.uk/flomania/pds_papers/file_pds-1068134610Menter-SST-paper.pdf">http://cfd.mace.manchester.ac.uk/flomania/pds_papers/file_pds-1068134610Menter-SST-paper.pdf</a>.
 </div>
