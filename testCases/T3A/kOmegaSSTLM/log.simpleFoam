@@ -1,0 +1,1257 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2606                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _481094fdf3-20260618 OPENFOAM=2606 version=v2606
+Arch   : "LSB;label=32;scalar=64"
+Exec   : simpleFoam -parallel
+Date   : Jul 22 2026
+Time   : 12:10:51
+Host   : think
+PID    : 15114
+I/O    : uncollated
+Case   : /home/furst/work/EARSM/T3A/kOmegaSSTLM
+nProcs : 2
+Hosts  :
+(
+    (think 2)
+)
+Pstream initialized with:
+    node communication : off [type=host] (2 ranks, 1 nodes)
+    topology controls  : none
+    consensus exchange : 0 (tuning: 0)
+    exchange algorithm : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+memory pool : not available
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+
+--> FOAM Warning : allowSystemOperations : Allowing user-supplied system call operations.
+                   This can be a security risk if running untrusted cases
+                   through e.g. 'coded' on-the-fly-compilation functionality.
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+SIMPLE: no convergence criteria found. Calculations will run for 5000 steps.
+
+Reading field p
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+Selecting incompressible transport model Newtonian
+Selecting turbulence model type RAS
+Selecting RAS turbulence model kOmegaSSTLM
+Selecting patchDistMethod meshWave
+bounding k, min: 0 max: 0.1 average: 0.09999999999999075
+RAS
+{
+    RASModel        kOmegaSSTLM;
+    turbulence      on;
+    printCoeffs     on;
+    alphaK1         0.85;
+    alphaK2         1;
+    alphaOmega1     0.5;
+    alphaOmega2     0.856;
+    gamma1          0.5555555555555556;
+    gamma2          0.44;
+    beta1           0.075;
+    beta2           0.0828;
+    betaStar        0.09;
+    a1              0.31;
+    b1              1;
+    c1              10;
+    F3              false;
+    decayControl    false;
+    kInf            0;
+    omegaInf        0;
+    ca1             2;
+    ca2             0.06;
+    ce1             1;
+    ce2             50;
+    cThetat         0.03;
+    sigmaThetat     2;
+}
+
+No MRF models present
+
+No finite volume options present
+
+Starting time loop
+
+wallShearStress wallShearStress:
+    processing all (1) wall patches
+
+Sampled surface:
+    plate -> raw
+        sampledPatch: plate : patches:(flatPlate)
+
+Sampled set:
+    line -> raw
+
+Time = 1
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.9999999999531315, Final residual = 0.002290094875231136, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.9999999999999999, Final residual = 0.004608421498381704, No Iterations 2
+GAMG:  Solving for p, Initial residual = 1, Final residual = 0.007916454275456548, No Iterations 21
+time step continuity errors : sum local = 1.073675506385779e-05, global = -6.15449998332988e-07, cumulative = -6.15449998332988e-07
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.03945009062508443, Final residual = 2.097908838320504e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 1, Final residual = 0.000165218808253819, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.9999999999999959, Final residual = 0.0002664025163753427, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 1, Final residual = 1.57774379378567e-06, No Iterations 1
+ExecutionTime = 1.1 s  ClockTime = 1 s
+
+Time = 2
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.2205103063351579, Final residual = 0.0003583044280626781, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.02952836253295929, Final residual = 0.0001767079843894309, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.00313957346101584, Final residual = 2.782792861583489e-05, No Iterations 11
+time step continuity errors : sum local = 0.0002316387517143043, global = 2.951834406487138e-05, cumulative = 2.890289406653839e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.007901418303191162, Final residual = 1.90113599370943e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.6789359317046798, Final residual = 0.0001650291080414685, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2544133590501073, Final residual = 7.649469211075391e-05, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.09720449543201561, Final residual = 3.910933459933252e-07, No Iterations 1
+ExecutionTime = 1.26 s  ClockTime = 1 s
+
+Time = 3
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.03354464878810547, Final residual = 3.208481106305079e-05, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.007634414778325048, Final residual = 4.202354309898024e-05, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.01861762421531485, Final residual = 0.0001349966146108894, No Iterations 8
+time step continuity errors : sum local = 9.849705403011381e-05, global = 1.84928173541943e-06, cumulative = 3.075217580195782e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0008327830184847214, Final residual = 1.373903832858204e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.2641754560994937, Final residual = 9.780809832497523e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1165357510780992, Final residual = 4.155944227795392e-05, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.02570862862908006, Final residual = 2.5882234849117e-07, No Iterations 1
+ExecutionTime = 1.39 s  ClockTime = 1 s
+
+Time = 4
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.01597815667359932, Final residual = 1.608476136237876e-05, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.004542772080598724, Final residual = 2.14604198354547e-05, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.03154854302748945, Final residual = 0.0002308483423262022, No Iterations 6
+time step continuity errors : sum local = 9.060781468286318e-05, global = 7.068666666850869e-06, cumulative = 3.782084246880869e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0001218635941262841, Final residual = 1.489319247159094e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.1582838540300802, Final residual = 3.525670583009397e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.07728178840922043, Final residual = 4.130073958292882e-05, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.01153923646634007, Final residual = 1.864021421371108e-07, No Iterations 1
+ExecutionTime = 1.49 s  ClockTime = 1 s
+
+Time = 5
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.0121465637541023, Final residual = 1.235665636829514e-05, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.003992642623038166, Final residual = 1.481348530669786e-05, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.0696218440394217, Final residual = 0.0003814974241148213, No Iterations 6
+time step continuity errors : sum local = 8.38128039822126e-05, global = -2.923085901279104e-07, cumulative = 3.752853387868078e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 9.816103650660445e-05, Final residual = 1.325462303925919e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.1121870921875369, Final residual = 3.570372333611966e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.06322172730313855, Final residual = 3.062566341507161e-05, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.006723881927928505, Final residual = 1.53869420341658e-07, No Iterations 1
+ExecutionTime = 1.59 s  ClockTime = 2 s
+
+Time = 6
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.0114033187247729, Final residual = 9.05302036519592e-06, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.003692253355515504, Final residual = 1.215407129294949e-05, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.08760087856466296, Final residual = 0.000754953566928302, No Iterations 5
+time step continuity errors : sum local = 0.0001879196483039307, global = 5.23004459899619e-06, cumulative = 4.275857847767697e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 8.225037121279497e-05, Final residual = 1.219031673953848e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.08004229895643462, Final residual = 3.675535152284572e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.05807364788024286, Final residual = 2.092561206458199e-05, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.005548120792485866, Final residual = 1.754401611223912e-07, No Iterations 1
+ExecutionTime = 1.71 s  ClockTime = 2 s
+
+Time = 7
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.01280226294715623, Final residual = 1.079974059813161e-05, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.004021795536467704, Final residual = 1.32465097970212e-05, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.1874491856144174, Final residual = 0.001564270335444216, No Iterations 5
+time step continuity errors : sum local = 0.0002685938536722977, global = -4.19349871404918e-06, cumulative = 3.856507976362779e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 7.023538301976741e-05, Final residual = 9.969741907770399e-09, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.06525228181664811, Final residual = 2.841800940162787e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.05472787307808115, Final residual = 2.436076251427574e-05, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.003678817375186252, Final residual = 1.584435363629128e-07, No Iterations 1
+ExecutionTime = 1.81 s  ClockTime = 2 s
+
+Time = 8
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.01546842441296302, Final residual = 0.0001448861840073322, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.00471703351911174, Final residual = 9.940390517413188e-06, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.201685622938014, Final residual = 0.001659149146505608, No Iterations 5
+time step continuity errors : sum local = 0.0004098354767066136, global = 7.333362459667853e-06, cumulative = 4.589844222329565e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 5.998384908765624e-05, Final residual = 1.006269069401696e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.05518775345242102, Final residual = 2.17980049770537e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.05340165764015085, Final residual = 1.660837787551691e-05, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.002607613033370616, Final residual = 1.132112302030814e-07, No Iterations 1
+ExecutionTime = 1.9 s  ClockTime = 2 s
+
+Time = 9
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.02023500223718809, Final residual = 0.0001745628807703391, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.006662623590695617, Final residual = 1.63470328918185e-05, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.4347027218995719, Final residual = 0.003523046567275549, No Iterations 5
+time step continuity errors : sum local = 0.0006388366204434156, global = -1.056843262932106e-05, cumulative = 3.533000959397458e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 5.096414510427001e-05, Final residual = 8.069004305530438e-09, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.04585801204459676, Final residual = 1.422164934106876e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.05150551401627214, Final residual = 1.772831218881463e-05, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.003786603224339394, Final residual = 1.36870234979281e-07, No Iterations 1
+ExecutionTime = 2.02 s  ClockTime = 2 s
+
+Time = 10
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.02820407542367172, Final residual = 0.0001833040552829572, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.008885656177163885, Final residual = 1.472703726400264e-05, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.3605042044423651, Final residual = 0.002902332557468394, No Iterations 5
+time step continuity errors : sum local = 0.001023334114549649, global = 1.626774486178588e-05, cumulative = 5.159775445576046e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 4.531967298489344e-05, Final residual = 1.065657657710779e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.0394026507124722, Final residual = 1.290867243856415e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.04912000550308034, Final residual = 1.282161935898411e-05, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.002324534048537658, Final residual = 1.442029953922548e-07, No Iterations 1
+ExecutionTime = 2.12 s  ClockTime = 2 s
+
+Time = 11
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.03925473046599444, Final residual = 0.0002529284064875711, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.01490226246011414, Final residual = 2.973767791316979e-05, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.7647437925769806, Final residual = 0.006124409508683406, No Iterations 5
+time step continuity errors : sum local = 0.001666746811775264, global = -2.209946614803056e-05, cumulative = 2.94982883077299e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 4.00711448722242e-05, Final residual = 1.17213105373545e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.03439686810872952, Final residual = 1.37724760205142e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.0468091288925687, Final residual = 1.473780584201678e-05, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.001291906073996537, Final residual = 9.551622303098639e-08, No Iterations 1
+ExecutionTime = 2.21 s  ClockTime = 2 s
+
+Time = 12
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.06038799384715886, Final residual = 0.0003319101784632069, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.02221357727514879, Final residual = 4.185932588615961e-05, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.5509646316467753, Final residual = 0.004332308899996284, No Iterations 5
+time step continuity errors : sum local = 0.002763240692713753, global = 2.899516235471044e-05, cumulative = 5.849345066244035e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 3.594658663508965e-05, Final residual = 8.059703058119004e-09, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.03077169338744811, Final residual = 1.258351462176379e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.04520190580424196, Final residual = 7.24979235784404e-06, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.002636058613514483, Final residual = 8.782748893407773e-08, No Iterations 1
+ExecutionTime = 2.33 s  ClockTime = 2 s
+
+Time = 13
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.08384537421532229, Final residual = 0.000514362269904479, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.03862240370244664, Final residual = 7.722919454145932e-05, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.8992589297499763, Final residual = 0.00723604939615959, No Iterations 5
+time step continuity errors : sum local = 0.0047160975629256, global = -4.303125622729843e-05, cumulative = 1.546219443514191e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 3.288986725906308e-05, Final residual = 8.367084544735536e-09, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02743373807468101, Final residual = 1.427491133943467e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.04363785701153743, Final residual = 9.646203153466814e-06, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.001606309359500781, Final residual = 8.188708439530121e-08, No Iterations 1
+ExecutionTime = 2.44 s  ClockTime = 2 s
+
+Time = 14
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.1361291125422794, Final residual = 0.0008225705109117657, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.06075095966755168, Final residual = 0.0001253010610104254, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.7072769088120709, Final residual = 0.005642051973984461, No Iterations 5
+time step continuity errors : sum local = 0.00833004786514484, global = 4.163165557084617e-05, cumulative = 5.709385000598808e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 3.046934503254932e-05, Final residual = 7.434247094644117e-09, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02481108343517386, Final residual = 1.116761591521586e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.05483328067776039, Final residual = 7.305987823353528e-06, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.0009867287216923462, Final residual = 7.278619046076816e-08, No Iterations 1
+ExecutionTime = 2.54 s  ClockTime = 2 s
+
+Time = 15
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.1750352690561181, Final residual = 0.001397854015087597, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1070428321529128, Final residual = 0.0002412014266347866, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.7882342669338179, Final residual = 0.006881542100323481, No Iterations 5
+time step continuity errors : sum local = 0.0150297041409405, global = -8.438712749348916e-05, cumulative = -2.729327748750108e-05
+DILUPBiCGStab:  Solving for omega, Initial residual = 2.941874637321322e-05, Final residual = 6.941922302408583e-09, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02278963383003386, Final residual = 1.17575017001577e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.04863189801928215, Final residual = 7.988501321806098e-06, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.0005973119283390921, Final residual = 5.309243572621168e-08, No Iterations 1
+ExecutionTime = 2.64 s  ClockTime = 3 s
+
+Time = 16
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.2768046080392641, Final residual = 0.0002606150958088, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1522737671068174, Final residual = 0.0003532210585518187, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.7028415423459139, Final residual = 0.005645451593601145, No Iterations 5
+time step continuity errors : sum local = 0.0273940911752911, global = -0.0001816882084847699, cumulative = -0.000208981485972271
+DILUPBiCGStab:  Solving for omega, Initial residual = 3.027498397626518e-05, Final residual = 8.692943918631534e-09, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02130364283336044, Final residual = 7.412611743565853e-06, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1399204688843853, Final residual = 3.229872656601499e-06, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.001402782703504294, Final residual = 3.960705795484088e-08, No Iterations 1
+ExecutionTime = 2.76 s  ClockTime = 3 s
+
+Time = 17
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.296395635172049, Final residual = 0.0001433096430035167, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.2317674202881344, Final residual = 0.0004163145892873048, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.8161621862110168, Final residual = 0.007219670460566686, No Iterations 5
+time step continuity errors : sum local = 0.04495090749859291, global = -0.0002257518621441359, cumulative = -0.0004347333481164069
+DILUPBiCGStab:  Solving for omega, Initial residual = 3.605795323509899e-05, Final residual = 1.529895385383897e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02108425704738376, Final residual = 7.991349664166603e-06, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.09674470885984966, Final residual = 4.076196148794281e-06, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.0008957540291970245, Final residual = 3.253195816052406e-08, No Iterations 1
+ExecutionTime = 2.86 s  ClockTime = 3 s
+
+Time = 18
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4777141720910801, Final residual = 0.001554055966215495, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.2821854512685902, Final residual = 0.0008662413830458349, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.6412523120973826, Final residual = 0.004405737885092092, No Iterations 5
+time step continuity errors : sum local = 0.07289771987641831, global = -0.0006193098808343105, cumulative = -0.001054043228950717
+DILUPBiCGStab:  Solving for omega, Initial residual = 4.169232167164494e-05, Final residual = 1.409977875632238e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02131781075454925, Final residual = 1.293469474117709e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2624047980395294, Final residual = 9.267099065636823e-07, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.0008735720366190667, Final residual = 2.331296973823112e-08, No Iterations 1
+ExecutionTime = 2.96 s  ClockTime = 3 s
+
+Time = 19
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4220049957043199, Final residual = 0.000282730402019346, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3490228089298701, Final residual = 0.0004446634294605308, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.6941393905632948, Final residual = 0.005219081002089445, No Iterations 5
+time step continuity errors : sum local = 0.1025267751855655, global = -0.002033490696244362, cumulative = -0.00308753392519508
+DILUPBiCGStab:  Solving for omega, Initial residual = 4.682631894594411e-05, Final residual = 2.082287272210656e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.0203366323322807, Final residual = 1.089336009489088e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1422021054903216, Final residual = 1.628873453209748e-06, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.0008376498482348403, Final residual = 1.691524412684828e-08, No Iterations 1
+ExecutionTime = 3.08 s  ClockTime = 3 s
+
+Time = 20
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4451840919887014, Final residual = 0.001874352205234135, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3613030067896187, Final residual = 0.001860694927908775, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.5989086148619119, Final residual = 0.003679987107130734, No Iterations 5
+time step continuity errors : sum local = 0.1717067701449815, global = 0.0009532558338064951, cumulative = -0.002134278091388585
+DILUPBiCGStab:  Solving for omega, Initial residual = 7.077269144425352e-05, Final residual = 2.201341885576157e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02255032925627826, Final residual = 1.028091935215124e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2796781406948278, Final residual = 8.390109949210505e-07, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.001598624778335689, Final residual = 1.404873327455598e-08, No Iterations 1
+ExecutionTime = 3.18 s  ClockTime = 3 s
+
+Time = 21
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5169576852119945, Final residual = 0.0004415194442421642, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3638139278410613, Final residual = 0.0005128634236798355, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.523233291762891, Final residual = 0.00412458063664751, No Iterations 5
+time step continuity errors : sum local = 0.2300577232223108, global = -0.004142941333310008, cumulative = -0.006277219424698593
+DILUPBiCGStab:  Solving for omega, Initial residual = 7.226491072901997e-05, Final residual = 2.348590228198364e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02224051419027731, Final residual = 1.364149418667266e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1778361172894709, Final residual = 4.548177862248498e-07, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.001283807529416272, Final residual = 9.441415602510573e-09, No Iterations 1
+ExecutionTime = 3.28 s  ClockTime = 3 s
+
+Time = 22
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.514199477350726, Final residual = 0.0008894331450094948, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3668142397418511, Final residual = 0.001557973658196941, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.472095959783801, Final residual = 0.002826556297145185, No Iterations 5
+time step continuity errors : sum local = 0.4081608809291599, global = -0.00553310779696337, cumulative = -0.01181032722166196
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0001153090497618128, Final residual = 3.117710672341215e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02734749677120853, Final residual = 1.180703354532206e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2688827603814326, Final residual = 2.64138464299073e-07, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.002721007227790594, Final residual = 7.084038274318084e-09, No Iterations 1
+ExecutionTime = 3.4 s  ClockTime = 3 s
+
+Time = 23
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.6457219002273346, Final residual = 0.0001908947417171455, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.4494797111764423, Final residual = 0.001176009626372362, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.2988437653547644, Final residual = 0.002630962689318927, No Iterations 5
+time step continuity errors : sum local = 0.6830164470714316, global = -0.01435876173871691, cumulative = -0.02616908896037887
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0002075253577942531, Final residual = 7.950470458632633e-08, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02997744833188056, Final residual = 1.691351361134402e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.186336206768201, Final residual = 8.033404336512377e-07, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.001232511584889252, Final residual = 5.247821537736715e-09, No Iterations 1
+ExecutionTime = 3.49 s  ClockTime = 3 s
+
+Time = 24
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4552983197954517, Final residual = 0.001465764977449517, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3170350347788248, Final residual = 0.001479726386467721, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.3165509795608242, Final residual = 0.001692246354278561, No Iterations 5
+time step continuity errors : sum local = 0.8402731429603757, global = -0.05094387767561129, cumulative = -0.07711296663599017
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0002897923898380929, Final residual = 2.11746412673377e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.04053465501155071, Final residual = 3.550852198857383e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2314339427436043, Final residual = 5.167241812967998e-07, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.00275123930993415, Final residual = 1.397179530701942e-08, No Iterations 1
+ExecutionTime = 3.61 s  ClockTime = 4 s
+
+Time = 25
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5142526912052304, Final residual = 0.0008995804249754479, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.4193515850193283, Final residual = 0.002376995262832448, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.167768174340323, Final residual = 0.001671910776805124, No Iterations 6
+time step continuity errors : sum local = 1.944774834498669, global = -0.05900383317515689, cumulative = -0.136116799811147
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0003116121756823101, Final residual = 3.194950613922495e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.06151185398398069, Final residual = 0.0001225128752035791, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1961988191608301, Final residual = 1.6527862966563e-06, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.00226313206951972, Final residual = 1.897997942593314e-08, No Iterations 1
+ExecutionTime = 3.71 s  ClockTime = 4 s
+
+Time = 26
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4271041031787206, Final residual = 0.001833648482997271, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3462523810852841, Final residual = 0.0009110287013317173, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.2098970776067676, Final residual = 0.001824987416996246, No Iterations 4
+time step continuity errors : sum local = 3.649593146388817, global = -0.1102088986532794, cumulative = -0.2463256984644264
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0003478638020517456, Final residual = 2.300167183909747e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.04776732902951263, Final residual = 9.39098014934962e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2158129188699152, Final residual = 5.295220658598655e-07, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.002354138429236538, Final residual = 1.601718897667949e-08, No Iterations 1
+ExecutionTime = 3.8 s  ClockTime = 4 s
+
+Time = 27
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4516762895133435, Final residual = 0.0003454977668546756, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3056891495116363, Final residual = 0.001347884995139282, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.3488846356843052, Final residual = 0.00273367091521696, No Iterations 5
+time step continuity errors : sum local = 2.815890974129596, global = -0.09942050702898626, cumulative = -0.3457462054934127
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0004784122483321143, Final residual = 4.112009381454243e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.0308800603897312, Final residual = 6.056856347107867e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1983193233488589, Final residual = 1.579793195272024e-06, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.002859219219418124, Final residual = 2.05873758361273e-08, No Iterations 1
+bounding gammaInt, min: -0.02273223538284826 max: 1.000150466397822 average: 0.881311264627105
+ExecutionTime = 3.92 s  ClockTime = 4 s
+
+Time = 28
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4641186043877001, Final residual = 0.001097274133245571, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3633205528136752, Final residual = 0.00151900471409466, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.3808198440463214, Final residual = 0.003013801056527854, No Iterations 4
+time step continuity errors : sum local = 6.491629241095974, global = 0.07673666774913387, cumulative = -0.2690095377442788
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0006882265015731782, Final residual = 6.698553179321055e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02357941577286751, Final residual = 6.131610776274557e-05, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2155016792534888, Final residual = 1.793699851768081e-07, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.004434413165951649, Final residual = 5.520366906048416e-08, No Iterations 1
+bounding gammaInt, min: -0.03711731120401579 max: 1.000005092056981 average: 0.8832115422406863
+ExecutionTime = 4.03 s  ClockTime = 4 s
+
+Time = 29
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5691573231304216, Final residual = 0.0001654447868845296, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3727302468882627, Final residual = 0.0007239338831970598, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.2158588873619749, Final residual = 0.001982223726977679, No Iterations 6
+time step continuity errors : sum local = 7.011896305694493, global = -0.1021660386925965, cumulative = -0.3711755764368754
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0006313772770745187, Final residual = 4.572299525779784e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.01745430758461502, Final residual = 3.616471471648355e-05, No Iterations 1
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2141508217017473, Final residual = 1.827928415084866e-06, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.004180236715009634, Final residual = 2.171304326155706e-08, No Iterations 1
+bounding gammaInt, min: -0.02303851324360044 max: 1.001315247067261 average: 0.8849102835041142
+ExecutionTime = 4.12 s  ClockTime = 4 s
+
+Time = 30
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5207458134192737, Final residual = 0.002147395081887575, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3551461301734998, Final residual = 0.001619566303512973, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.158916340130529, Final residual = 0.001069261140067222, No Iterations 4
+time step continuity errors : sum local = 15.20342855798277, global = -0.04040218754278425, cumulative = -0.4115777639796596
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.002142715524952054, Final residual = 2.248259669565366e-06, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.01378157868528332, Final residual = 3.556252107427714e-05, No Iterations 1
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2263401805285883, Final residual = 1.659240285386989e-07, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.01250349589003265, Final residual = 1.704108203577952e-07, No Iterations 1
+bounding gammaInt, min: -0.08163773799957262 max: 1.002862024315653 average: 0.890396609460412
+ExecutionTime = 4.23 s  ClockTime = 4 s
+
+Time = 31
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5524085473990891, Final residual = 0.0001900281908698967, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3762474004496422, Final residual = 0.0006466084588049918, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.2488952227533537, Final residual = 0.002452107127690095, No Iterations 4
+time step continuity errors : sum local = 28.18651791197496, global = -0.7073224248858748, cumulative = -1.118900188865534
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.003483470709414254, Final residual = 4.847929541323723e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.00917217402381078, Final residual = 1.46272100341158e-05, No Iterations 1
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2210663146560758, Final residual = 1.670713046852836e-07, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.01191789053287633, Final residual = 1.203894016265107e-07, No Iterations 1
+bounding gammaInt, min: -0.1090696747760459 max: 1.030342091750807 average: 0.8953610908050661
+ExecutionTime = 4.34 s  ClockTime = 4 s
+
+Time = 32
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5439003881898817, Final residual = 0.0003270971899723181, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3289448332343916, Final residual = 0.001032656487647626, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.03137298879728073, Final residual = 0.0002184167586326941, No Iterations 4
+time step continuity errors : sum local = 37.54399933820612, global = 0.3003315696118692, cumulative = -0.8185686192536651
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.002277091124549162, Final residual = 1.019230594313699e-06, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.008587654042633119, Final residual = 1.976148604120589e-05, No Iterations 1
+bounding k, min: -0.00184221698286359 max: 260.3468742939899 average: 1.67081776120667
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2516423695578121, Final residual = 3.9828292598605e-08, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.02503934560207911, Final residual = 2.922758791261438e-07, No Iterations 1
+bounding gammaInt, min: -0.115480796783202 max: 1.01128776276841 average: 0.89971433137958
+ExecutionTime = 4.43 s  ClockTime = 4 s
+
+Time = 33
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.6229899406174478, Final residual = 0.0004369840762928889, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3624558024130278, Final residual = 0.001095516689837389, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.141253349349677, Final residual = 0.0008152797152038583, No Iterations 5
+time step continuity errors : sum local = 30.23145352868452, global = -2.003288156142912, cumulative = -2.821856775396577
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.004246272656539779, Final residual = 1.717113302809827e-06, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.009342651129147252, Final residual = 1.42023225674189e-05, No Iterations 1
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2353287703466405, Final residual = 8.146988176059626e-08, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.03543844209755193, Final residual = 8.446124850860348e-07, No Iterations 1
+bounding gammaInt, min: -0.06536124866593164 max: 1.005669394286218 average: 0.905294846067115
+ExecutionTime = 4.54 s  ClockTime = 4 s
+
+Time = 34
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5080667691105879, Final residual = 0.0004944149683072707, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3838953948040653, Final residual = 0.001631813667514753, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.04461204601678652, Final residual = 0.0004308508842259653, No Iterations 4
+time step continuity errors : sum local = 117.8425982188972, global = -14.58461376083755, cumulative = -17.40647053623413
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.00436357524237579, Final residual = 2.240644212668621e-06, No Iterations 1
+bounding omega, min: -248383.4692416678 max: 34238301.84239677 average: 142623.229375574
+DILUPBiCGStab:  Solving for k, Initial residual = 0.01121966557474949, Final residual = 2.399591111643033e-05, No Iterations 1
+bounding k, min: -0.342140353239363 max: 1701.364341828823 average: 5.131565992071765
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2893167402277979, Final residual = 5.43005814474155e-08, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.04604329067037213, Final residual = 8.15725477676278e-07, No Iterations 1
+bounding gammaInt, min: -0.02918227158598807 max: 1.033104076839662 average: 0.9101003008500721
+ExecutionTime = 4.65 s  ClockTime = 5 s
+
+Time = 35
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4858242479775355, Final residual = 0.0006165248570749807, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.4061415129512939, Final residual = 0.001541097466166094, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.2729362921642499, Final residual = 0.002389897551024151, No Iterations 4
+time step continuity errors : sum local = 101.7979229520356, global = 25.40976110970178, cumulative = 8.003290573467648
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.004789174333772761, Final residual = 8.550693406513844e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.007593841552978336, Final residual = 9.31162680508589e-06, No Iterations 1
+bounding k, min: -35.02978949156261 max: 2005.886487426254 average: 8.314870980628145
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2640310441833369, Final residual = 4.744614091223488e-08, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.04022345331551665, Final residual = 8.376253682971745e-07, No Iterations 1
+bounding gammaInt, min: -0.0145516809638471 max: 1.04014920656407 average: 0.9112020893096833
+ExecutionTime = 4.75 s  ClockTime = 5 s
+
+Time = 36
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4998851767615249, Final residual = 0.0006754829690182311, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3210824799382404, Final residual = 0.001280170526039547, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.09377558614113411, Final residual = 0.0006705338719028393, No Iterations 3
+time step continuity errors : sum local = 136.9768786871056, global = 5.475088464028996, cumulative = 13.47837903749664
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.003686251275009351, Final residual = 5.622143041208112e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.004151822975004361, Final residual = 4.876313330643248e-06, No Iterations 1
+bounding k, min: -6.048779002983814 max: 2094.211639914244 average: 10.2260314127317
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.3288764065194224, Final residual = 1.06243542052941e-08, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.03126715347108852, Final residual = 7.829175957158597e-07, No Iterations 1
+ExecutionTime = 4.86 s  ClockTime = 5 s
+
+Time = 37
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5856230179935658, Final residual = 0.0004122104872956906, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3120509749934477, Final residual = 0.0009416142505744672, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.173551197276188, Final residual = 0.001065826028418851, No Iterations 3
+time step continuity errors : sum local = 167.4040813796632, global = 6.413651223652213, cumulative = 19.89203026114886
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.001468367430251362, Final residual = 3.530611633349992e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.002439661692538293, Final residual = 2.898771476690207e-06, No Iterations 1
+bounding k, min: -1.995783469787378 max: 2166.62274137833 average: 11.25933077664093
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2405961659567953, Final residual = 2.287263237678403e-08, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.02729048856801066, Final residual = 8.298908703091476e-07, No Iterations 1
+ExecutionTime = 4.97 s  ClockTime = 5 s
+
+Time = 38
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.535340002001453, Final residual = 0.001005112122926997, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.4768353627570603, Final residual = 0.004399107343475061, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.02843028727089293, Final residual = 0.0002378799670915942, No Iterations 3
+time step continuity errors : sum local = 170.0442998161446, global = 6.658015566542502, cumulative = 26.55004582769136
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0009708566126263253, Final residual = 3.132995019335891e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.001536102016263899, Final residual = 2.307239665943569e-06, No Iterations 1
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.3295887824548089, Final residual = 1.729827591715166e-08, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.03038728079769922, Final residual = 1.368192933912348e-06, No Iterations 1
+ExecutionTime = 5.06 s  ClockTime = 5 s
+
+Time = 39
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4705267202242609, Final residual = 0.0006808028121562674, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3397166068516368, Final residual = 0.00119492650462944, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.1430033332796878, Final residual = 0.001284648447502219, No Iterations 2
+time step continuity errors : sum local = 345.9499660591659, global = 7.047944783100956, cumulative = 33.59799061079232
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0009710455000967759, Final residual = 2.681972809229853e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.001581364638773556, Final residual = 2.13357494622821e-06, No Iterations 1
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.3363435956066974, Final residual = 6.060690657148267e-09, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.02414945572405116, Final residual = 2.22611901725461e-06, No Iterations 1
+ExecutionTime = 5.14 s  ClockTime = 5 s
+
+Time = 40
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5388222717419225, Final residual = 0.002258795388110632, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3339278038050084, Final residual = 0.002145112841335086, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.03537786552255117, Final residual = 0.0003306913459581441, No Iterations 9
+time step continuity errors : sum local = 754.8230350466058, global = -26.02430183122201, cumulative = 7.573688779570308
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.001896416921449879, Final residual = 1.11767592657931e-06, No Iterations 1
+bounding omega, min: -451819.9947851961 max: 75630342.54751113 average: 289416.380450272
+DILUPBiCGStab:  Solving for k, Initial residual = 0.0025590464831611, Final residual = 2.643587911385045e-06, No Iterations 1
+bounding k, min: -45.48915675458147 max: 2973.768984923622 average: 18.88130129125758
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2130233291253561, Final residual = 2.821778640223128e-09, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.05248676941886766, Final residual = 1.807020533629872e-06, No Iterations 1
+ExecutionTime = 5.29 s  ClockTime = 5 s
+
+Time = 41
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5481609484883171, Final residual = 0.002615192195401554, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.5484921100387837, Final residual = 0.0009028479140246735, No Iterations 3
+GAMG:  Solving for p, Initial residual = 0.333207749213914, Final residual = 0.003321388375237019, No Iterations 6
+time step continuity errors : sum local = 452.9938691103981, global = 302.1247924445624, cumulative = 309.6984812241327
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.005118740538990091, Final residual = 7.07789511345175e-07, No Iterations 1
+bounding omega, min: -12060560.90643359 max: 127097414.926885 average: 333226.3216349817
+DILUPBiCGStab:  Solving for k, Initial residual = 0.002309973665979313, Final residual = 2.284276018500875e-06, No Iterations 1
+bounding k, min: -8.083850456150708 max: 6759.173584520433 average: 28.69582014306357
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2376214230482395, Final residual = 4.516276039868917e-09, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.05467253094286358, Final residual = 2.496797393870741e-06, No Iterations 1
+ExecutionTime = 5.42 s  ClockTime = 5 s
+
+Time = 42
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4500277997876596, Final residual = 0.001298923452361236, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3726096298998584, Final residual = 0.001168958102047295, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.1647040530357936, Final residual = 0.001242002249270295, No Iterations 6
+time step continuity errors : sum local = 1057.970288273637, global = 463.5929333661361, cumulative = 773.2914145902688
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.006784407697194079, Final residual = 3.974908175774652e-06, No Iterations 1
+bounding omega, min: -641061.624274035 max: 604545603.0981752 average: 720705.0408474191
+DILUPBiCGStab:  Solving for k, Initial residual = 0.002113053156967159, Final residual = 1.485501886589379e-06, No Iterations 1
+bounding k, min: -45.65442950055365 max: 12798.95643129826 average: 45.82758190712925
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.6827141191264692, Final residual = 3.512178338210217e-11, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.1391093163921557, Final residual = 1.411229934181398e-06, No Iterations 1
+ExecutionTime = 5.54 s  ClockTime = 5 s
+
+Time = 43
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.7028508987548717, Final residual = 0.006008594694238904, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.5110288511181511, Final residual = 0.0009335974313201873, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.4420486631573827, Final residual = 0.00404044577451222, No Iterations 5
+time step continuity errors : sum local = 1019.924939960544, global = 59.48639968042352, cumulative = 832.7778142706923
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.2055338665973198, Final residual = 5.750982734755935e-06, No Iterations 1
+bounding omega, min: -221751.2239720258 max: 2062164748.319905 average: 1610111.63411519
+DILUPBiCGStab:  Solving for k, Initial residual = 0.003469131245009156, Final residual = 4.309227174128026e-06, No Iterations 1
+bounding k, min: -13.09298886083167 max: 38872.43811828463 average: 74.61096961487358
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2233329254179795, Final residual = 3.475482964318565e-10, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.4561673530651573, Final residual = 2.490969066391282e-07, No Iterations 1
+ExecutionTime = 5.65 s  ClockTime = 6 s
+
+Time = 44
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5100376481161418, Final residual = 0.00159605042346182, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.4221536005130272, Final residual = 0.001233977906398612, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.20097144146073, Final residual = 0.00179780307193278, No Iterations 4
+time step continuity errors : sum local = 1958.667729839799, global = 513.8709266768153, cumulative = 1346.648740947508
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.2177839693226966, Final residual = 8.88503021594253e-07, No Iterations 1
+bounding omega, min: -2820165.186813507 max: 3879094060.975421 average: 2881718.710989824
+DILUPBiCGStab:  Solving for k, Initial residual = 0.00476712524540224, Final residual = 2.574700086716068e-06, No Iterations 1
+bounding k, min: -19.07204701881786 max: 48284.16695856373 average: 139.4108471792369
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1868029163608332, Final residual = 2.14224752370297e-10, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.3846000710982281, Final residual = 7.218186905818628e-07, No Iterations 1
+ExecutionTime = 5.77 s  ClockTime = 6 s
+
+Time = 45
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4888176409152597, Final residual = 0.002883431042589102, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3752104618058837, Final residual = 0.001703072975235206, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.2616711074483745, Final residual = 0.001498269507068862, No Iterations 5
+time step continuity errors : sum local = 928.2968203807022, global = -82.96342066508355, cumulative = 1263.685320282424
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.1997068087463621, Final residual = 3.010949145328082e-07, No Iterations 1
+bounding omega, min: -5446348.326963916 max: 2033746869.35458 average: 2927489.243388437
+DILUPBiCGStab:  Solving for k, Initial residual = 0.005722522661246792, Final residual = 4.738222182462138e-06, No Iterations 1
+bounding k, min: -9.34064114205357 max: 98880.55081321001 average: 274.9501809819949
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1489716223997521, Final residual = 3.398902956558688e-10, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.1768157864824414, Final residual = 1.225742643571429e-06, No Iterations 1
+ExecutionTime = 5.87 s  ClockTime = 6 s
+
+Time = 46
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4541264309516671, Final residual = 0.003790219846442901, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3516713444213687, Final residual = 0.001677057688349564, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.2714800318285359, Final residual = 0.002535941160863951, No Iterations 4
+time step continuity errors : sum local = 2652.456203284916, global = -581.6142048609598, cumulative = 682.0711154214642
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.09140647609923386, Final residual = 7.672892834892699e-07, No Iterations 1
+bounding omega, min: -399263.1172148809 max: 1387865612.419719 average: 3465493.729929227
+DILUPBiCGStab:  Solving for k, Initial residual = 0.01186557330469268, Final residual = 7.474535504114093e-06, No Iterations 1
+bounding k, min: -795.2521343328949 max: 313508.6566646778 average: 605.0600227714461
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2091585467981229, Final residual = 7.630247088372601e-11, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.07969919721393519, Final residual = 1.73919911310522e-06, No Iterations 1
+ExecutionTime = 5.99 s  ClockTime = 6 s
+
+Time = 47
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5796001898247327, Final residual = 0.0006366859668669278, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3492136115363098, Final residual = 0.002741036864203302, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.2365176368634803, Final residual = 0.001686460762400373, No Iterations 5
+time step continuity errors : sum local = 1998.044427191037, global = -499.7647867112648, cumulative = 182.3063287101994
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.04841786932887827, Final residual = 7.850069837686925e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.01451987048387209, Final residual = 5.059454337390222e-06, No Iterations 1
+bounding k, min: -99.91836766075735 max: 739922.8948891062 average: 1191.176454773714
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.084747536935667, Final residual = 8.110942839482531e-11, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.09010308323167313, Final residual = 1.554507471500752e-06, No Iterations 1
+ExecutionTime = 6.09 s  ClockTime = 6 s
+
+Time = 48
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5295542111047462, Final residual = 0.004810933737662494, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.4121924047988284, Final residual = 0.0006981060520222247, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.2221664697414618, Final residual = 0.001633805384016876, No Iterations 4
+time step continuity errors : sum local = 4289.042332259914, global = -422.213882375002, cumulative = -239.9075536648026
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.03948523195341377, Final residual = 3.9381202748391e-07, No Iterations 1
+bounding omega, min: -1214787.69550675 max: 1730513102.931875 average: 4700833.09999183
+DILUPBiCGStab:  Solving for k, Initial residual = 0.01506664810836447, Final residual = 2.38338451203077e-06, No Iterations 1
+bounding k, min: -7021.230541703044 max: 862199.3977320264 average: 1855.202254683372
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2290239448311378, Final residual = 3.603418359501316e-11, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.07134842127002408, Final residual = 2.174676875977248e-06, No Iterations 1
+ExecutionTime = 6.21 s  ClockTime = 6 s
+
+Time = 49
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5374983442312513, Final residual = 0.0003522683434054264, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.4062609646084857, Final residual = 0.0006600757613008954, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.2394254102946054, Final residual = 0.001676180763950462, No Iterations 5
+time step continuity errors : sum local = 3178.085979242378, global = -178.6695150568664, cumulative = -418.577068721669
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.02125335317001152, Final residual = 6.288044293698057e-06, No Iterations 1
+bounding omega, min: -52795513.92034668 max: 1980054405.283244 average: 6149927.439506147
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02883860775022921, Final residual = 8.776013416515666e-06, No Iterations 1
+bounding k, min: -24120.66771615928 max: 2298096.986059438 average: 3922.680463887103
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1292657959745454, Final residual = 4.084115037825522e-11, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.05480642923224936, Final residual = 3.851232365717644e-06, No Iterations 1
+ExecutionTime = 6.32 s  ClockTime = 6 s
+
+Time = 50
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.3985215482660575, Final residual = 0.001896575670644578, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3633821654420735, Final residual = 0.001639597351068266, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.1596031285777234, Final residual = 0.00158708587262395, No Iterations 3
+time step continuity errors : sum local = 14644.11933161745, global = -26.09260508239019, cumulative = -444.6696738040592
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0126199554645705, Final residual = 3.172253985593673e-06, No Iterations 1
+bounding omega, min: -2458826.723786408 max: 4250215916.728924 average: 8473425.778163295
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02313929597698144, Final residual = 6.81683909804854e-06, No Iterations 1
+bounding k, min: -169005.5126868937 max: 4075536.392910536 average: 7932.816034490428
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.07023476259889075, Final residual = 1.676654410251018e-12, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.04582680683614235, Final residual = 1.776746315668711e-06, No Iterations 1
+ExecutionTime = 6.41 s  ClockTime = 6 s
+
+Time = 51
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.6226722928803325, Final residual = 0.0005042696272883024, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.4126622680846859, Final residual = 0.001483781093432426, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.3876158603789081, Final residual = 0.002411282503667797, No Iterations 5
+time step continuity errors : sum local = 8118.533006725521, global = 61.00228622626351, cumulative = -383.6673875777958
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.01083457943471556, Final residual = 4.967716789852668e-06, No Iterations 1
+bounding omega, min: -53794449.78674845 max: 9977176934.354942 average: 11362233.99175318
+DILUPBiCGStab:  Solving for k, Initial residual = 0.0189102609195829, Final residual = 7.430312185375984e-06, No Iterations 1
+bounding k, min: -72295.84010372309 max: 9921796.711167689 average: 15284.54624965581
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.06791341592211145, Final residual = 1.589839911100981e-12, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.04540419682505265, Final residual = 3.827664045167075e-06, No Iterations 1
+ExecutionTime = 6.54 s  ClockTime = 6 s
+
+Time = 52
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5154912891848726, Final residual = 0.0004491996382774686, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.4576508601051588, Final residual = 0.0002479005548218782, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.06701027062854817, Final residual = 0.0004990909469606642, No Iterations 4
+time step continuity errors : sum local = 17120.69520549162, global = 89.76533617076396, cumulative = -293.9020514070318
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0109021415091982, Final residual = 6.831070398988903e-06, No Iterations 1
+bounding omega, min: -224984855.7161171 max: 12281485476.585 average: 16017226.1287952
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02583892114910634, Final residual = 5.198198309631172e-05, No Iterations 1
+bounding k, min: -1967220.00246871 max: 35003431.56928173 average: 35035.31699855016
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1196494761672462, Final residual = 1.673448546618182e-12, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.04108155778957649, Final residual = 3.421444489468819e-06, No Iterations 1
+ExecutionTime = 6.64 s  ClockTime = 7 s
+
+Time = 53
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.3742062323268464, Final residual = 0.0007606850912585765, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.4295582734138093, Final residual = 0.0005113824746644126, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.2553416203384875, Final residual = 0.001484327750689833, No Iterations 4
+time step continuity errors : sum local = 10344.18369788004, global = 37.6343623091786, cumulative = -256.2676890978532
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.01399073409729456, Final residual = 6.073806220848383e-06, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.02909915824536272, Final residual = 4.397486953190672e-05, No Iterations 1
+bounding k, min: -467786.8035830875 max: 71925914.19589803 average: 73615.19914465961
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1058744574322069, Final residual = 3.619396035303539e-12, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.03994458755116573, Final residual = 6.483224641104382e-06, No Iterations 1
+ExecutionTime = 6.73 s  ClockTime = 7 s
+
+Time = 54
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.3533689707571855, Final residual = 0.001005534319277009, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.2904890498060394, Final residual = 0.0007581320710460096, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.03443536718991524, Final residual = 0.0003144290466841821, No Iterations 2
+time step continuity errors : sum local = 30172.4651404005, global = 113.3542429128956, cumulative = -142.9134461849576
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.01145316311855733, Final residual = 1.461222909400775e-06, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.009363011547306638, Final residual = 6.784075171086241e-06, No Iterations 1
+bounding k, min: -1626295.267831726 max: 105030102.6007564 average: 100147.7651108614
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1781721126031802, Final residual = 1.247912695584658e-12, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.03018439124257439, Final residual = 4.809276211178832e-06, No Iterations 1
+ExecutionTime = 6.82 s  ClockTime = 7 s
+
+Time = 55
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4001229705780595, Final residual = 0.0009783926254171721, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.2578632682006574, Final residual = 0.001097163690470448, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.1467504491610405, Final residual = 0.0006933691647956998, No Iterations 3
+time step continuity errors : sum local = 478983.8494389526, global = 2286.128661981877, cumulative = 2143.21521579692
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.002597270794396248, Final residual = 5.987615167070827e-06, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.00524867319182966, Final residual = 1.120451435689242e-05, No Iterations 1
+bounding k, min: -273383.951073244 max: 191290414.17008 average: 196249.6242153004
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.2009096936340754, Final residual = 2.52729892479135e-16, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.061290454811296, Final residual = 1.305393255660229e-05, No Iterations 1
+ExecutionTime = 6.95 s  ClockTime = 7 s
+
+Time = 56
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.692649420753027, Final residual = 0.003662727142959949, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.7093694669539609, Final residual = 0.003488414190901979, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.03798042172002424, Final residual = 0.0003183759136409022, No Iterations 9
+time step continuity errors : sum local = 338100.8131302882, global = 25570.31399705555, cumulative = 27713.52921285247
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.004644480109986489, Final residual = 1.015468796849352e-05, No Iterations 1
+bounding omega, min: -132458213.7839299 max: 28406129459.82658 average: 55102210.69429431
+DILUPBiCGStab:  Solving for k, Initial residual = 0.004995019156157109, Final residual = 1.518212113580079e-05, No Iterations 1
+bounding k, min: -61119.41180194063 max: 210340081.7773866 average: 299444.699611731
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.09534217510604612, Final residual = 3.220198858733722e-16, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.08177213890423382, Final residual = 1.830569376148839e-05, No Iterations 1
+ExecutionTime = 7.08 s  ClockTime = 7 s
+
+Time = 57
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5795806116526278, Final residual = 0.002586030748558426, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3926129993668229, Final residual = 0.002031576173879321, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.0011281311620065, Final residual = 8.315811513118164e-06, No Iterations 7
+time step continuity errors : sum local = 400864.6310808912, global = 12943.21326360709, cumulative = 40656.74247645956
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.002821716131796902, Final residual = 6.776105750804817e-06, No Iterations 1
+bounding omega, min: -2425729.484016573 max: 43145330113.14664 average: 75697243.97569999
+DILUPBiCGStab:  Solving for k, Initial residual = 0.004626016937820159, Final residual = 1.047891386165679e-05, No Iterations 1
+bounding k, min: -619944.5980102541 max: 276387414.8822474 average: 453072.6317963113
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.04902289864606892, Final residual = 1.767665952787747e-16, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.0575775184139384, Final residual = 2.673514174602343e-05, No Iterations 1
+ExecutionTime = 7.2 s  ClockTime = 7 s
+
+Time = 58
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.3537333640497183, Final residual = 0.001579412966791833, No Iterations 3
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.2916267699224593, Final residual = 0.00245348114448997, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.001599986913638095, Final residual = 1.117702132549753e-05, No Iterations 6
+time step continuity errors : sum local = 452736.5781283807, global = 21029.72354195124, cumulative = 61686.46601841079
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.002285317292603538, Final residual = 9.270990189567879e-06, No Iterations 1
+bounding omega, min: -432056.7621164788 max: 60900664487.19463 average: 99769725.74410531
+DILUPBiCGStab:  Solving for k, Initial residual = 0.005202380264871126, Final residual = 1.338738470161116e-05, No Iterations 1
+bounding k, min: -97887.86636512686 max: 659874797.120108 average: 714127.1838052097
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.02688473878200955, Final residual = 8.877788043125364e-17, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.04189591418326047, Final residual = 1.759101001584038e-05, No Iterations 1
+ExecutionTime = 7.32 s  ClockTime = 7 s
+
+Time = 59
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.2334015120022111, Final residual = 0.0004202842179511792, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.2122980361026889, Final residual = 0.001054620923637088, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.00048794191597331, Final residual = 3.762181561904496e-06, No Iterations 7
+time step continuity errors : sum local = 416023.3179025201, global = 40150.0695995466, cumulative = 101836.5356179574
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.002102290869543434, Final residual = 6.839014441615889e-06, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.005859749529847855, Final residual = 8.40987667849038e-06, No Iterations 1
+bounding k, min: -117.1265118013811 max: 1115748334.951238 average: 1153762.062468725
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.01598557765934084, Final residual = 4.360487575803845e-17, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.03494218639516512, Final residual = 1.433138952800616e-05, No Iterations 1
+ExecutionTime = 7.44 s  ClockTime = 7 s
+
+Time = 60
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.178127960803579, Final residual = 1.346963751937348e-05, No Iterations 3
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.189410580066297, Final residual = 0.0002420895592614118, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.0002235685537915679, Final residual = 1.83518144717283e-06, No Iterations 6
+time step continuity errors : sum local = 499440.3621607148, global = 48943.503606629, cumulative = 150780.0392245864
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.002016980393536601, Final residual = 3.274659679847849e-06, No Iterations 1
+bounding omega, min: -17896.41100930865 max: 109108232688.0861 average: 149203702.1102104
+DILUPBiCGStab:  Solving for k, Initial residual = 0.006997992667317298, Final residual = 5.653900592602487e-06, No Iterations 1
+bounding k, min: -1002.235673110449 max: 2279197438.072715 average: 2045016.766838864
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.00900324237665358, Final residual = 1.65044433994062e-17, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.02639460743170052, Final residual = 1.040829776305165e-05, No Iterations 1
+ExecutionTime = 7.55 s  ClockTime = 8 s
+
+Time = 61
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.1481783174801258, Final residual = 0.0004068402655098233, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1783565121949882, Final residual = 0.0002262152702084778, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.0002429661300812569, Final residual = 2.119274685438484e-06, No Iterations 6
+time step continuity errors : sum local = 487957.8820014138, global = 69048.52208947045, cumulative = 219828.5613140569
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.002297534997964893, Final residual = 2.126353907268479e-06, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.009575317986206488, Final residual = 2.574844046276022e-06, No Iterations 1
+bounding k, min: -29348.94132080785 max: 8444361573.765312 average: 4259616.503741144
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.005417869685905977, Final residual = 6.555501989021994e-18, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.02050844259057641, Final residual = 7.977859679826678e-06, No Iterations 1
+ExecutionTime = 7.67 s  ClockTime = 8 s
+
+Time = 62
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.1352664187472914, Final residual = 0.0002233497621687593, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1693469205423936, Final residual = 0.0002539074027947455, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.01112851921786492, Final residual = 8.272165370016511e-05, No Iterations 6
+time step continuity errors : sum local = 447690.4790612597, global = 40021.58137306582, cumulative = 259850.1426871227
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.001691459272956842, Final residual = 1.209073573157764e-06, No Iterations 1
+bounding omega, min: -6251044.353575661 max: 163147013141.8585 average: 222078241.0585552
+DILUPBiCGStab:  Solving for k, Initial residual = 0.005956070038902013, Final residual = 5.435950812444069e-07, No Iterations 1
+bounding k, min: -2739.855122479061 max: 10347560754.28281 average: 7532793.277028462
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.003446396069871946, Final residual = 1.566200840565327e-17, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.01553747918173414, Final residual = 6.383609710290947e-06, No Iterations 1
+ExecutionTime = 7.77 s  ClockTime = 8 s
+
+Time = 63
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.122738696174074, Final residual = 0.001155898611078959, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1471082492360984, Final residual = 0.0001809051761800536, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.0009043172836232302, Final residual = 6.785732521895944e-06, No Iterations 5
+time step continuity errors : sum local = 692486.4756575082, global = 13765.61809662931, cumulative = 273615.760783752
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.00164069452508879, Final residual = 8.064916329859571e-07, No Iterations 1
+bounding omega, min: -256590.1682397894 max: 190416112948.0621 average: 266634407.1921747
+DILUPBiCGStab:  Solving for k, Initial residual = 0.008576821319264379, Final residual = 4.763822729889162e-07, No Iterations 1
+bounding k, min: -757725.8919407206 max: 34380144563.83672 average: 15914236.66512221
+--> FOAM Warning : 
+    From Foam::tmp<Foam::DimensionedField<double, Foam::volMesh> > Foam::RASModels::kOmegaSSTLM<BasicTurbulenceModel>::ReThetat0(const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&, const Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal&) const [with BasicTurbulenceModel = Foam::IncompressibleTurbulenceModel<Foam::transportModel>; Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>::Internal = Foam::DimensionedField<double, Foam::volMesh>]
+    in file ../turbulenceModels/lnInclude/kOmegaSSTLM.C at line 305
+    Number of lambda iterations exceeds maxLambdaIter(10)
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.002249025039650853, Final residual = 3.129055103422394e-18, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.01322535428492275, Final residual = 5.102874353601462e-06, No Iterations 1
+ExecutionTime = 7.87 s  ClockTime = 8 s
+
+Time = 64
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.1120789375743015, Final residual = 0.001118384973537418, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1400253692678745, Final residual = 0.001047480097223272, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.0006769930283903318, Final residual = 6.250299619031681e-06, No Iterations 5
+time step continuity errors : sum local = 980610.0253514221, global = -39189.61573296436, cumulative = 234426.1450507877
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.001368078883877845, Final residual = 5.442133292466554e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.006320274775909525, Final residual = 4.369776903682085e-07, No Iterations 1
+bounding k, min: -544175.003164262 max: 63297879025.21056 average: 32042977.8050846
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.001610941738540195, Final residual = 2.799298737178284e-19, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.009708198357513383, Final residual = 4.071599940983043e-06, No Iterations 1
+ExecutionTime = 7.99 s  ClockTime = 8 s
+
+Time = 65
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.1351938005465503, Final residual = 0.00100247742877687, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1234915795855194, Final residual = 0.001064436045141624, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.001290951902734998, Final residual = 1.013531379701499e-05, No Iterations 3
+time step continuity errors : sum local = 1746366.582154066, global = -17373.10629360839, cumulative = 217053.0387571793
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.001064327162744558, Final residual = 4.559614946238457e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.003858735957489058, Final residual = 5.038292525764442e-07, No Iterations 1
+bounding k, min: -8630479.821355013 max: 83377253749.69031 average: 56788046.27538763
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.00154642968245699, Final residual = 8.208184504965835e-20, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.008409659364967273, Final residual = 3.888419370173138e-06, No Iterations 1
+ExecutionTime = 8.08 s  ClockTime = 8 s
+
+Time = 66
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.1214184825251567, Final residual = 0.001098492904144184, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1132999972103672, Final residual = 0.001015481761100529, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.001857534130908397, Final residual = 1.672988327282115e-05, No Iterations 5
+time step continuity errors : sum local = 1257147.320084194, global = -1389.645725499479, cumulative = 215663.3930316798
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.00109098675342021, Final residual = 6.123198769803087e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.00364297855631219, Final residual = 7.579064728887044e-07, No Iterations 1
+bounding k, min: -117929382.8005581 max: 146538598237.9048 average: 103162339.9058158
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.001022783229441738, Final residual = 7.746689248932796e-20, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.007766742649922219, Final residual = 4.767927804320909e-06, No Iterations 1
+ExecutionTime = 8.17 s  ClockTime = 8 s
+
+Time = 67
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.1214265905014477, Final residual = 0.001094565078170451, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1147432591007534, Final residual = 0.0002396909073751304, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.1403824867462778, Final residual = 0.001160530200538881, No Iterations 3
+time step continuity errors : sum local = 1543860144.368728, global = -666297771.3527583, cumulative = -666082107.9597266
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.000692244225644328, Final residual = 3.970138137001319e-07, No Iterations 1
+bounding omega, min: -3615026454.416968 max: 244532386327.123 average: 492048518.6236051
+DILUPBiCGStab:  Solving for k, Initial residual = 3.60183984817914e-05, Final residual = 1.147035654011423e-08, No Iterations 1
+bounding k, min: -1047442697.670138 max: 240408348670.5419 average: 184165490.0211396
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.3679570189343917, Final residual = 5.821477030870788e-27, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.0005281173105399657, Final residual = 2.571156918100312e-07, No Iterations 1
+ExecutionTime = 8.26 s  ClockTime = 8 s
+
+Time = 68
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.5069341938045293, Final residual = 0.003173058572104667, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.3675482202917736, Final residual = 0.002109399534555531, No Iterations 1
+GAMG:  Solving for p, Initial residual = 0.9973220769215233, Final residual = 0.009468730100975769, No Iterations 9
+time step continuity errors : sum local = 1493057559.896355, global = -55305526.4754886, cumulative = -721387634.4352151
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.006088822860143668, Final residual = 5.285149050828667e-06, No Iterations 1
+bounding omega, min: -189643375.2393198 max: 282382698811.1183 average: 1030564696.032368
+DILUPBiCGStab:  Solving for k, Initial residual = 4.997645095234363e-05, Final residual = 3.372816830814133e-08, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1939717751227773, Final residual = 2.536447414338326e-26, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.008925766554645371, Final residual = 9.711506201944122e-07, No Iterations 1
+ExecutionTime = 8.41 s  ClockTime = 8 s
+
+Time = 69
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.2484123546525874, Final residual = 0.001326778616018475, No Iterations 6
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.2743791626899161, Final residual = 0.001561414892357026, No Iterations 5
+GAMG:  Solving for p, Initial residual = 0.607020784539679, Final residual = 0.005823540421692838, No Iterations 32
+time step continuity errors : sum local = 1330471295628844, global = -3213011339853.618, cumulative = -3213732727488.053
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.001270113151855684, Final residual = 4.497424070334183e-07, No Iterations 1
+bounding omega, min: -117385874.859501 max: 2062040171342.715 average: 2119519904.428789
+DILUPBiCGStab:  Solving for k, Initial residual = 0.0004741751262903054, Final residual = 3.514614539588847e-07, No Iterations 1
+bounding k, min: -254736009.9601691 max: 359443618815.9388 average: 248408527.624134
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.01454554347702567, Final residual = 8.497956561650742e-36, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.0003150526094305427, Final residual = 1.111021995748191e-07, No Iterations 1
+ExecutionTime = 8.74 s  ClockTime = 9 s
+
+Time = 70
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.4707181545396954, Final residual = 0.002894106721543699, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.5929023470279233, Final residual = 0.002264917229183355, No Iterations 3
+GAMG:  Solving for p, Initial residual = 0.999703691459904, Final residual = 0.00899549288528889, No Iterations 23
+time step continuity errors : sum local = 397844972227967.1, global = -355098780923179.4, cumulative = -358312513650667.4
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0004570764214686734, Final residual = 1.673890434747637e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.0004452800640218871, Final residual = 2.068190763117765e-07, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.01176378296282457, Final residual = 1.072559086756662e-35, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.002175815199159248, Final residual = 8.332839310758239e-07, No Iterations 1
+ExecutionTime = 8.99 s  ClockTime = 9 s
+
+Time = 71
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.2541324218365074, Final residual = 0.0006971157774096928, No Iterations 2
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.2907456701000867, Final residual = 0.001682698978362465, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.1603325615010111, Final residual = 0.001509401224965575, No Iterations 8
+time step continuity errors : sum local = 467172918873087.9, global = 237608589995376.4, cumulative = -120703923655291.1
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0004678345415560935, Final residual = 1.751585260180153e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.0006775958983887411, Final residual = 8.124543847989731e-08, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.009935245994326948, Final residual = 1.900240249744865e-34, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.002356820450846678, Final residual = 9.692900533016799e-07, No Iterations 1
+ExecutionTime = 9.130000000000001 s  ClockTime = 9 s
+
+Time = 72
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.2373692328442552, Final residual = 0.001743390556318756, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1937064404876347, Final residual = 0.00120405369986772, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.03097973629373339, Final residual = 0.0002079169469021353, No Iterations 5
+time step continuity errors : sum local = 381701262245900.1, global = 19917070997824.02, cumulative = -100786852657467
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0005047492815169495, Final residual = 3.070650117009596e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.0008614774145519837, Final residual = 7.072953007337379e-08, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.01188170636185172, Final residual = 2.320561920190263e-35, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.002933153026805972, Final residual = 1.392167989534268e-06, No Iterations 1
+ExecutionTime = 9.23 s  ClockTime = 9 s
+
+Time = 73
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.1718400216397637, Final residual = 0.0009713507439207769, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1446456433820901, Final residual = 0.0007606600125835468, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.03642575012138399, Final residual = 0.0003524541532976613, No Iterations 6
+time step continuity errors : sum local = 690500594899910.5, global = 5802205602016.803, cumulative = -94984647055450.25
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.0005453326846696931, Final residual = 4.191123083027063e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.001009790815930241, Final residual = 1.338108193150488e-07, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.01553729688226908, Final residual = 3.314026247378634e-35, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.003346601431069181, Final residual = 1.40413619148704e-06, No Iterations 1
+ExecutionTime = 9.33 s  ClockTime = 9 s
+
+Time = 74
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.1785883052316158, Final residual = 0.0007133524771354223, No Iterations 1
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1322170762376748, Final residual = 0.0009283077624094744, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.02696585733180863, Final residual = 0.0002641475854236524, No Iterations 5
+time step continuity errors : sum local = 663756603894576.8, global = -7830096061599.998, cumulative = -102814743117050.2
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.000584378753751628, Final residual = 5.703984150027052e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 0.001115675602048497, Final residual = 2.821312046006192e-07, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.02136602763348253, Final residual = 7.166218159567829e-35, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.003927905992706746, Final residual = 1.349070896941463e-06, No Iterations 1
+ExecutionTime = 9.449999999999999 s  ClockTime = 9 s
+
+Time = 75
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.1324381890546448, Final residual = 0.0007500354898385945, No Iterations 9
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.1174525987582735, Final residual = 0.0008370340414772331, No Iterations 8
+GAMG:  Solving for p, Initial residual = 0.2928507238130109, Final residual = 117531731076617.3, No Iterations 100
+time step continuity errors : sum local = 1.744028915533169e+40, global = 1.289071889396242e+40, cumulative = 1.289071889396242e+40
+DILUPBiCGStab:  Solving for omega, Initial residual = 0.000184391686505922, Final residual = 1.447607434493003e-07, No Iterations 1
+DILUPBiCGStab:  Solving for k, Initial residual = 2.290776135055294e-06, Final residual = 1.82656014785245e-09, No Iterations 1
+DILUPBiCGStab:  Solving for ReThetat, Initial residual = 0.1053477984752911, Final residual = 1.412301522902499e-34, No Iterations 1
+DILUPBiCGStab:  Solving for gammaInt, Initial residual = 0.02069470096451337, Final residual = 7.64822928151263e-07, No Iterations 1
+ExecutionTime = 10.25 s  ClockTime = 10 s
+
+Time = 76
+
+DILUPBiCGStab:  Solving for Ux, Initial residual = 0.2559709872217208, Final residual = 0.0006313929991787732, No Iterations 23
+DILUPBiCGStab:  Solving for Uy, Initial residual = 0.2746324097322143, Final residual = 0.0008123691377398718, No Iterations 36
+[1] [stack trace]
+=============
+[1] #1  Foam::sigFpe::sigHandler(int) in <platforms>/linux64GccDPInt32Opt/lib/libOpenFOAM.so
+[1] #2  ? in /usr/lib/libc.so.6
+[1] #3  Foam::DICPreconditioner::calcReciprocalD(Foam::Field<double>&, Foam::lduMatrix const&) in <platforms>/linux64GccDPInt32Opt/lib/libOpenFOAM.so
+[1] #4  Foam::DICSmoother::DICSmoother(Foam::word const&, Foam::lduMatrix const&, Foam::FieldField<Foam::Field, double> const&, Foam::FieldField<Foam::Field, double> const&, Foam::UPtrList<Foam::lduInterfaceField const> const&, Foam::dictionary const&) in <platforms>/linux64GccDPInt32Opt/lib/libOpenFOAM.so
+[1] #5  Foam::DICGaussSeidelSmoother::DICGaussSeidelSmoother(Foam::word const&, Foam::lduMatrix const&, Foam::FieldField<Foam::Field, double> const&, Foam::FieldField<Foam::Field, double> const&, Foam::UPtrList<Foam::lduInterfaceField const> const&, Foam::dictionary const&) in <platforms>/linux64GccDPInt32Opt/lib/libOpenFOAM.so
+[1] #6  Foam::lduMatrix::smoother::addsymMatrixConstructorToTable<Foam::DICGaussSeidelSmoother>::New(Foam::word const&, Foam::lduMatrix const&, Foam::FieldField<Foam::Field, double> const&, Foam::FieldField<Foam::Field, double> const&, Foam::UPtrList<Foam::lduInterfaceField const> const&, Foam::dictionary const&) in <platforms>/linux64GccDPInt32Opt/lib/libOpenFOAM.so
+[1] #7  Foam::lduMatrix::smoother::New(Foam::word const&, Foam::lduMatrix const&, Foam::FieldField<Foam::Field, double> const&, Foam::FieldField<Foam::Field, double> const&, Foam::UPtrList<Foam::lduInterfaceField const> const&, Foam::dictionary const&) in <platforms>/linux64GccDPInt32Opt/lib/libOpenFOAM.so
+[1] #8  Foam::GAMGSolver::initVcycle(Foam::PtrList<Foam::Field<double>>&, Foam::PtrList<Foam::Field<double>>&, Foam::PtrList<Foam::lduMatrix::smoother>&, Foam::Field<double>&, Foam::Field<double>&) const in <platforms>/linux64GccDPInt32Opt/lib/libOpenFOAM.so
+[1] #9  Foam::GAMGSolver::solve(Foam::Field<double>&, Foam::Field<double> const&, unsigned char) const in <platforms>/linux64GccDPInt32Opt/lib/libOpenFOAM.so
+[1] #10  Foam::fvMatrix<double>::solveSegregated(Foam::dictionary const&) in <platforms>/linux64GccDPInt32Opt/lib/libfiniteVolume.so
+[1] #11  Foam::fvMatrix<double>::solveSegregatedOrCoupled(Foam::dictionary const&) in <platforms>/linux64GccDPInt32Opt/lib/libfiniteVolume.so
+[1] #12  Foam::fvMesh::solve(Foam::fvMatrix<double>&, Foam::dictionary const&) const in <platforms>/linux64GccDPInt32Opt/lib/libfiniteVolume.so
+[1] #13  Foam::fvMatrix<double>::solve() in <platforms>/linux64GccDPInt32Opt/bin/simpleFoam
+[1] #14  ? in <platforms>/linux64GccDPInt32Opt/bin/simpleFoam
+[1] #15  ? in /usr/lib/libc.so.6
+[1] #16  __libc_start_main in /usr/lib/libc.so.6
+[1] #17  ? in <platforms>/linux64GccDPInt32Opt/bin/simpleFoam
+[1] =============
+[think:15115] *** Process received signal ***
+[think:15115] Signal: Floating point exception (8)
+[think:15115] Signal code:  (-6)
+[think:15115] Failing at address: 0x3e800003b0b
+[think:15115] [ 0] /usr/lib/libc.so.6(+0x448f0) [0x7fd60b2448f0]
+[think:15115] [ 1] /usr/lib/libc.so.6(pthread_kill+0x12b) [0x7fd60b2adcbb]
+[think:15115] [ 2] /usr/lib/libc.so.6(gsignal+0x18) [0x7fd60b2447c8]
+[think:15115] [ 3] /usr/lib/libc.so.6(+0x448f0) [0x7fd60b2448f0]
+[think:15115] [ 4] /opt/OpenFOAM/OpenFOAM-v2606/platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so(_ZN4Foam17DICPreconditioner15calcReciprocalDERNS_5FieldIdEERKNS_9lduMatrixE+0x9c) [0x7fd60be601dc]
+[think:15115] [ 5] /opt/OpenFOAM/OpenFOAM-v2606/platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so(_ZN4Foam11DICSmootherC1ERKNS_4wordERKNS_9lduMatrixERKNS_10FieldFieldINS_5FieldEdEESB_RKNS_8UPtrListIKNS_17lduInterfaceFieldEEERKNS_10dictionaryE+0x68) [0x7fd60be5d508]
+[think:15115] [ 6] /opt/OpenFOAM/OpenFOAM-v2606/platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so(_ZN4Foam22DICGaussSeidelSmootherC1ERKNS_4wordERKNS_9lduMatrixERKNS_10FieldFieldINS_5FieldEdEESB_RKNS_8UPtrListIKNS_17lduInterfaceFieldEEERKNS_10dictionaryE+0x57) [0x7fd60be5e1c7]
+[think:15115] [ 7] /opt/OpenFOAM/OpenFOAM-v2606/platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so(_ZN4Foam9lduMatrix8smoother30addsymMatrixConstructorToTableINS_22DICGaussSeidelSmootherEE3NewERKNS_4wordERKS0_RKNS_10FieldFieldINS_5FieldEdEESE_RKNS_8UPtrListIKNS_17lduInterfaceFieldEEERKNS_10dictionaryE+0x52) [0x7fd60be5e4b2]
+[think:15115] [ 8] /opt/OpenFOAM/OpenFOAM-v2606/platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so(_ZN4Foam9lduMatrix8smoother3NewERKNS_4wordERKS0_RKNS_10FieldFieldINS_5FieldEdEESB_RKNS_8UPtrListIKNS_17lduInterfaceFieldEEERKNS_10dictionaryE+0x1a4) [0x7fd60be45d84]
+[think:15115] [ 9] /opt/OpenFOAM/OpenFOAM-v2606/platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so(_ZNK4Foam10GAMGSolver10initVcycleERNS_7PtrListINS_5FieldIdEEEES5_RNS1_INS_9lduMatrix8smootherEEERS3_SA_+0x2a1) [0x7fd60be7a4f1]
+[think:15115] [10] /opt/OpenFOAM/OpenFOAM-v2606/platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so(_ZNK4Foam10GAMGSolver5solveERNS_5FieldIdEERKS2_h+0x432) [0x7fd60be7dc42]
+[think:15115] [11] /opt/OpenFOAM/OpenFOAM-v2606/platforms/linux64GccDPInt32Opt/lib/libfiniteVolume.so(_ZN4Foam8fvMatrixIdE15solveSegregatedERKNS_10dictionaryE+0x581) [0x7fd61109d281]
+[think:15115] [12] /opt/OpenFOAM/OpenFOAM-v2606/platforms/linux64GccDPInt32Opt/lib/libfiniteVolume.so(_ZN4Foam8fvMatrixIdE24solveSegregatedOrCoupledERKNS_10dictionaryE+0x588) [0x7fd610316298]
+[think:15115] [13] /opt/OpenFOAM/OpenFOAM-v2606/platforms/linux64GccDPInt32Opt/lib/libfiniteVolume.so(_ZNK4Foam6fvMesh5solveERNS_8fvMatrixIdEERKNS_10dictionaryE+0x21) [0x7fd6102b2591]
+[think:15115] [14] simpleFoam(_ZN4Foam8fvMatrixIdE5solveEv+0xba) [0x5590f98a529a]
+[think:15115] [15] simpleFoam(+0x28679) [0x5590f9894679]
+[think:15115] [16] /usr/lib/libc.so.6(+0x27c8e) [0x7fd60b227c8e]
+[think:15115] [17] /usr/lib/libc.so.6(__libc_start_main+0x8b) [0x7fd60b227dcb]
+[think:15115] [18] simpleFoam(+0x29645) [0x5590f9895645]
+[think:15115] *** End of error message ***
+--------------------------------------------------------------------------
+prterun noticed that process rank 1 with PID 15115 on node think exited on
+signal 8 (Floating point exception).
+--------------------------------------------------------------------------
