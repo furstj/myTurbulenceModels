@@ -35,6 +35,13 @@
 - **Turbulence Intensity:** 3%
 - **Link to Case Directory:** [T3C3](T3C3/)
 
+
+#### T3C4
+- **Description:** Flat plate transitional flows with pressure gradient.
+- **Turbulence Intensity:** 3%
+- **Link to Case Directory:** [T3C4](T3C4/)
+
+
 #### T3C5
 - **Description:** Flat plate transitional flows with pressure gradient.
 - **Turbulence Intensity:** 3%

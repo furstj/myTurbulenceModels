@@ -1,0 +1,34 @@
+ROLLS-ROYCE APPLIED SCIENCE LABORATORY
+FLAT PLATE TRANSITIONAL BOUNDARY LAYER FLOW
+HOT WIRE ANEMOMETRY TEST DATA
+
+SUMMARY DATA FOR
+ERCOFTAC T3C2 TEST CASE
+
+KEY : RUN       SINGLE WIRE TEST DATA RUN NUMBER
+      X         AXIAL POSITION (MM)
+      REX       REYNOLDS NUMBER BASED ON X AND UO
+      UO        FREESTREAM VELOCITY (M/S)
+      CF        SKIN FRICTION COEFFICIENT
+      H         SHAPE FACTOR
+      RETHETA   REYNOLDS NUMBER BASED ON MOMENTUM THICKNESS
+      DELTA     99% BOUNDARY LAYER THICKNESS (MM)
+      TUFS      FREESTREAM TURBULENCE INTENSITY (%)
+
+   RUN         X          REX          UO        CF          H      RETHETA    DELTA      TUFS
+ 1W01906      45.0     1.660E+04      5.67    0.006062     2.517      76.4      1.62     2.397
+ 1W01801      95.0     3.850E+04      6.03    0.004127     2.488     115.0      2.29     2.054
+ 1W01802     195.0     8.500E+04      6.50    0.002789     2.467     171.7      3.27     1.687
+ 1W01803     295.0     1.321E+05      6.72    0.002353     2.400     216.7      4.06     1.483
+ 1W01804     395.0     1.826E+05      6.94    0.002134     2.339     251.7      4.65     1.316
+ 1W01805     495.0     2.369E+05      7.20    0.002086     2.260     281.9      5.26     1.181
+ 1W01806     595.0     2.937E+05      7.43    0.001952     2.216     312.8      5.82     1.076
+ 1W01807     695.0     3.525E+05      7.68    0.001904     2.155     340.8      6.35     0.993
+ 1W01808     795.0     4.116E+05      7.84    0.001787     2.127     377.5      6.95     0.931
+ 1W01809     895.0     4.675E+05      7.91    0.001791     2.053     431.0      8.02     0.888
+ 1W01810     995.0     5.159E+05      7.86    0.002013     1.911     520.5      9.67     0.881
+ 1W01901    1095.0     5.619E+05      7.77    0.002838     1.706     649.8     12.18     0.888
+ 1W01902    1195.0     5.957E+05      7.55    0.003542     1.577     794.5     14.79     0.915
+ 1W01903    1295.0     6.274E+05      7.34    0.003874     1.531     957.3     17.84     0.930
+ 1W01904    1395.0     6.494E+05      7.05    0.003566     1.519    1191.5     21.98     0.957
+ 1W01905    1495.0     6.560E+05      6.71    0.003144     1.556    1416.7     25.52     0.980

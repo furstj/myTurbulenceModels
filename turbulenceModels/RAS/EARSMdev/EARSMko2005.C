@@ -106,6 +106,13 @@ tmp<volScalarField> EARSMko2005<BasicTurbulenceModel>::F1
     // We need to remove the 2*alphaOmega2_ factor
     volScalarField gradKgradOmegaByOmega = CDkOmega / (2.0 * this->alphaOmega2_);
 
+    const dimensionedScalar kMin_
+    (
+        "kMin",
+        this->k_.dimensions(),
+        max(this->kInf_.value(), SMALL)
+    );
+
     // EARSM fMix blending function (Hellsten 2005)
     tmp<volScalarField> Gamma = min
     (
@@ -116,7 +123,7 @@ tmp<volScalarField> EARSMko2005<BasicTurbulenceModel>::F1
                 sqrt(this->k_) / (this->betaStar_ * this->omega_ * this->y_),
                 scalar(500) * this->nu() / (this->omega_ * sqr(this->y_))
             ),
-            scalar(20) * this->k_ / max(sqr(this->y_) * gradKgradOmegaByOmega, scalar(200) * kInf_)
+            scalar(20) * this->k_ / max(sqr(this->y_) * gradKgradOmegaByOmega, scalar(200) * kMin_)
         ),
         scalar(10)
     );
