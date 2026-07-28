@@ -23,7 +23,7 @@ boundaryField
 {
     flatPlate
     {
-        type            nutkWallFunction;
+        type            nutLowReWallFunction;
         value           uniform 0;
     }
     lowerSymmetry

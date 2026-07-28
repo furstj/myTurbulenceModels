@@ -23,8 +23,7 @@ boundaryField
 {
     flatPlate
     {
-      //type            kLowReWallFunction;
-      type            fixedValue;
+      type            kLowReWallFunction;
       value           uniform 0;
     }
     lowerSymmetry
