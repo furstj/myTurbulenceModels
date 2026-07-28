@@ -65,6 +65,25 @@ tmp<volScalarField> EARSM<BasicTurbulenceModel>::fMix
 
 
 template<class BasicTurbulenceModel>
+tmp<volScalarField::Internal> EARSM<BasicTurbulenceModel>::Pk
+(
+    const volScalarField::Internal& G
+) const
+{
+    return G;
+}
+
+template<class BasicTurbulenceModel>
+tmp<volScalarField::Internal> EARSM<BasicTurbulenceModel>::epsilonByk
+(
+    const volScalarField& F1,
+    const volTensorField& gradU
+) const
+{
+    return betaStar_*omega_.internalField();
+}
+
+template<class BasicTurbulenceModel>
 void EARSM<BasicTurbulenceModel>::correctNut()
 {
   correctNonlinearStress(fvc::grad(this->U_));
@@ -126,12 +145,11 @@ volScalarField EARSM<BasicTurbulenceModel>::N
 template<class BasicTurbulenceModel>
 void EARSM<BasicTurbulenceModel>::correctNonlinearStress(const volTensorField& gradU)
 {
-    scalar Ctau = 6.0;
     volScalarField tau(
         max
         (
             1.0 / (this->betaStar_ * this->omega_),
-            Ctau * sqrt(this->nu() / (this->betaStar_ * max(this->k_, this->kMin_) * this->omega_))
+            CTau_ * sqrt(this->nu() / (this->betaStar_ * max(this->k_, this->kMin_) * this->omega_))
         ));
     
     volSymmTensorField S("S", tau * dev(symm(gradU)));
@@ -338,6 +356,16 @@ EARSM<BasicTurbulenceModel>::EARSM
         )
     ),
 
+    CTau_
+    (
+        dimensioned<scalar>::lookupOrAddToDict
+        (
+            "CTau_",
+            this->coeffDict_,
+            6.0
+        )
+    ),
+
     kInf_
     (
         dimensioned<scalar>::lookupOrAddToDict
@@ -520,7 +548,7 @@ void EARSM<BasicTurbulenceModel>::correct()
       + fvm::div(alphaRhoPhi, k_)
       - fvm::laplacian(alpha*rho*DkEff(fMix), k_)
      ==
-        alpha*rho*G
+        alpha*rho*Pk(G)
       - fvm::SuSp((2.0/3.0)*alpha*rho*divU, k_)
         - fvm::Sp(betaStar_*alpha*rho*omega_, k_)
       + fvOptions(alpha, rho, k_)

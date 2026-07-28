@@ -1,0 +1,110 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+converToMeters 1.0;
+vertices
+(
+    (-0.2 0 0)
+    (0 0 0)
+    (1.7 0 0)
+    (-0.2 0 0.1)
+    (0 0 0.1)
+    (1.7 0 0.1) 
+    (-0.2 0.22 0)
+    (0 0.22 0)
+    (1.7 0.22 0 )
+    (-0.2 0.22 0.1)
+    (0 0.22 0.1)
+    (1.7 0.22 0.1)
+);
+
+blocks
+(
+    hex (0 1 7 6 3 4 10 9) (53 212 1) simpleGrading (0.1 100 1)
+    hex (1 2 8 7 4 5 11 10) (318 212 1) simpleGrading (30 100 1)
+);
+
+edges
+(
+);
+boundary
+(
+    inlet
+    {
+        type patch;
+        faces
+        (
+            (0 3 9 6)
+        );
+    }
+    firstBottomFace
+    {
+        type patch;
+        faces
+        (
+            (0 1 4 3)
+        );
+    }
+    firstTopFace
+    {
+        type patch;
+        faces
+        (
+            (6 7 10 9)
+        );
+    }
+    secondTopFace
+    {
+        type patch;
+        faces
+        (
+            (7 8 11 10)
+        );
+    }
+    wall
+    {
+        type wall;
+        faces
+        (
+            (1 2 5 4)
+        );
+    }
+    
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (2 5 11 8)
+        );
+    }
+    
+    frontAndBack
+    {
+        type empty;
+        faces
+        (
+            (0 1 7 6)
+            (1 2 8 7)
+            (3 4 10 9)
+            (4 5 11 10)  
+        );
+    }
+);
+
+
+// ************************************************************************* //
