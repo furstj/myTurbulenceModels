@@ -494,6 +494,15 @@ EARSMLM<BasicTurbulenceModel>::EARSMLM
     if (type == typeName)
     {
         this->printCoeffs(type);
+
+        Warning<< nl
+            << "==============================================================" << nl
+            << "= WARNING: The EARSMLM model implementation is obsolete" << nl
+            << "= and has been replaced by the EARSMlm2009 model." << nl
+            << "= Please update your turbulenceProperties accordingly." << nl
+            << "==============================================================" << nl
+            << endl;
+
     }
 }
 

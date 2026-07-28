@@ -286,6 +286,15 @@ EARSMWallin<BasicTurbulenceModel>::EARSMWallin
     if (type == typeName)
     {
         this->printCoeffs(type);
+
+        Warning<< nl
+            << "==============================================================" << nl
+            << "= WARNING: The EARSMWallin model implementation is obsolete" << nl
+            << "= and has been replaced by the EARSMtnt model." << nl
+            << "= Please update your turbulenceProperties accordingly." << nl
+            << "==============================================================" << nl
+            << endl;
+
     }
 }
 

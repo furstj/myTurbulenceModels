@@ -433,7 +433,7 @@ EARSM<BasicTurbulenceModel>::EARSM
 
         Warning<< nl
             << "==============================================================" << nl
-            << "= WARNING: The EARSMHellsten model implementation is obsolete" << nl
+            << "= WARNING: The EARSM model implementation is obsolete" << nl
             << "= and has been replaced by the EARSMko2005 model." << nl
             << "= Please update your turbulenceProperties accordingly." << nl
             << "==============================================================" << nl

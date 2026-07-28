@@ -26,6 +26,7 @@ License
 
 #include "EARSMBase.H"
 #include "bound.H"
+#include "fvOptions.H"
 
 namespace Foam
 {

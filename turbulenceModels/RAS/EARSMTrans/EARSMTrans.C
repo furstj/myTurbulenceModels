@@ -327,6 +327,14 @@ EARSMTrans<BasicTurbulenceModel>::EARSMTrans
     if (type == typeName)
     {
         this->printCoeffs(type);
+
+        Warning<< nl
+            << "==============================================================" << nl
+            << "= WARNING: The EARSMTrans model implementation is obsolete" << nl
+            << "= and is no more maintaned." << nl
+            << "==============================================================" << nl
+            << endl;
+
     }
 }
 
