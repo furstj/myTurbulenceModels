@@ -98,7 +98,7 @@ SourceFiles
 #ifndef EARSMLM_H
 #define EARSMLM_H
 
-#include "EARSM.H"
+#include "EARSMHellsten.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

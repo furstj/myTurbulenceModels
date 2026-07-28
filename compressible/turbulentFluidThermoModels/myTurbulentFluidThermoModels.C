@@ -86,7 +86,7 @@ makeRASModel(kOmegaTNT);
 #include "kOmegaWilcox06.H"
 makeRASModel(kOmegaWilcox06);
 
-#include "EARSM.H"
+#include "EARSMHellsten.H"
 makeRASModel(EARSM);
 
 #include "EARSMWallin.H"

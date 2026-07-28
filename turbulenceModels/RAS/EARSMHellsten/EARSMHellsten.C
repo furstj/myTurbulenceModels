@@ -24,7 +24,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "EARSM.H"
+#include "EARSMHellsten.H"
 #include "fvOptions.H"
 #include "bound.H"
 #include "wallDist.H"
@@ -430,6 +430,15 @@ EARSM<BasicTurbulenceModel>::EARSM
     if (type == typeName)
     {
         this->printCoeffs(type);
+
+        Warning<< nl
+            << "==============================================================" << nl
+            << "= WARNING: The EARSMHellsten model implementation is obsolete" << nl
+            << "= and has been replaced by the EARSMko2005 model." << nl
+            << "= Please update your turbulenceProperties accordingly." << nl
+            << "==============================================================" << nl
+            << endl;
+
     }
 }
 

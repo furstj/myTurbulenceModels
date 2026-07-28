@@ -92,7 +92,7 @@ class EARSM
     // Private memmber functions
     
     // Disallow default bitwise copy construct and assignment
-    EARSM(const EARSM&);
+      EARSM(const EARSM&);
     EARSM& operator=(const EARSM&);
     
     
@@ -302,7 +302,7 @@ public:
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 #ifdef NoRepository
-#   include "EARSM.C"
+#   include "EARSMHellsten.C"
 #endif
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
