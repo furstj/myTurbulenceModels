@@ -7,6 +7,12 @@ EXE_INC = \
     -I$(LIB_SRC)/finiteVolume/lnInclude \
     -I$(LIB_SRC)/meshTools/lnInclude
 
+ifneq ($(strip $(GAMMASST_PATH)),)
+EXE_INC += \
+    -I$(GAMMASST_PATH)/gammaSST \
+    -DHAVE_GAMMASST
+endif
+
 LIB_LIBS = \
     -lfluidThermophysicalModels \
     -lincompressibleTransportModels \

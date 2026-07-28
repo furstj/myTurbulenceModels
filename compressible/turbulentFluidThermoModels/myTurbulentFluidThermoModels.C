@@ -80,6 +80,16 @@ makeRASModel(EARSMtnt);
 #include "EARSMlm2009.H"
 makeRASModel(EARSMlm2009);
 
+#ifdef HAVE_GAMMASST
+
+#include "gammaSST.H"
+makeRASModel(gammaSST);
+
+#include "EARSMgammaSST.H"
+makeRASModel(EARSMgammaSST);
+
+#endif
+
 #include "kOmegaSSTCC.H"
 makeRASModel(kOmegaSSTCC);
 

@@ -1,8 +1,27 @@
 #!/bin/sh
 cd ${0%/*} || exit 1    # Run from this directory
 
+# Auto-detect gammaSST path unless already provided by environment.
+if [ -z "${GAMMASST_PATH+x}" ]; then
+	if [ -d "../gammaSST" ]; then
+		GAMMASST_PATH=$(cd "../gammaSST" && pwd -P)
+	elif [ -d "../tubulence-comunite/gammaSST" ]; then
+		GAMMASST_PATH=$(cd "../tubulence-comunite/gammaSST" && pwd -P)
+	elif [ -d "$WM_PROJECT_DIR/plugins/turbulence-comunity/gammaSST" ]; then
+		GAMMASST_PATH=$(cd "$WM_PROJECT_DIR/plugins/turbulence-comunity/gammaSST" && pwd -P)
+	fi
+fi
+
+if [ -n "${GAMMASST_PATH+x}" ]; then
+	echo "Building with support for gammaSST model from $GAMMASST_PATH."
+else
+	echo "Building without gammaSST support."
+fi
+
+export GAMMASST_PATH
+
 wmake libso turbulenceModels
-wmake libso incompressible
-wmake libso compressible
+wmake libso incompressible 
+wmake libso compressible 
 
 # ----------------------------------------------------------------- end-of-file
