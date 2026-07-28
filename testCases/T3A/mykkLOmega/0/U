@@ -32,7 +32,7 @@ boundaryField
     inlet      
     {
         type            fixedValue;
-        value           uniform (5.4 0 0);
+        value           $internalField;
     }
 
     outlet
@@ -40,26 +40,22 @@ boundaryField
         type            zeroGradient;
     }
 
-    wall
+    flatPlate
     {
         type            fixedValue;
-		value     uniform (0 0 0);
+	value     uniform (0 0 0);
     }
 
-    firstBottomFace
+    lowerSymmetry
     {
         type            slip;
     }
 
-    firstTopFace
+    upperSymmetry
     {
         type            slip;
     }
-   
-    secondTopFace
-    {
-        type            slip;
-    }
+
 }
 
 

@@ -117,9 +117,7 @@ public:
 
 
     //- Destructor
-    virtual ~EARSMko2005()
-    {}
-
+    virtual ~EARSMko2005() = default;
 
  
     //- Read RASProperties dictionary

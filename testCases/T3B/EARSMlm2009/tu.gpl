@@ -1,0 +1,14 @@
+set term png enh
+set output "tu.png"
+
+set yrange [0:4]
+
+set ylabel "Turbulence intensity Tu [%]"
+set xlabel "Re_x [-]"
+
+set grid
+
+set title "ERCOFTAC T3B"
+
+plot "../T3B.dat" using (5.4*$1/1.5e-2):3 ti "Experiment", \
+     "postProcessing/line_z5/5000/line_k_omega_U.xy" using (5.4*$1/1.5e-5):(sqrt(2.0/3.0*$2)/$4*100) ti "kOmegaSSTLM"

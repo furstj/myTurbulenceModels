@@ -25,44 +25,34 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 8.5e4;
+internalField   uniform 0;
 
 boundaryField
 {
-    wall      
+    flatPlate     
     {
         type            zeroGradient;
     }
 
     outlet
     {
-		type            fixedValue;
-        value           uniform 8.5e4;
+	type            fixedValue;
+        value           uniform 0;
     }
 
     inlet
     { 
-        type    zeroGradient;
+        type    fixedFluxPressure;
     }
 
-    firstBottomFace      
+    lowerSymmetry      
     {
         type            zeroGradient;
     }
 
-    firstTopFace      
+    upperSymmetry      
     {
         type            zeroGradient;
-    }
-    
-    secondTopFace      
-    {
-        type            zeroGradient;
-    }
-        
-    frontAndBack
-    {
-        type            empty;
     }
 }
 

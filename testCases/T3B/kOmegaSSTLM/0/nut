@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v2312                                 |
-|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -10,6 +10,7 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
+    location    "0";
     object      nut;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -20,43 +21,32 @@ internalField   uniform 0;
 
 boundaryField
 {
+    flatPlate
+    {
+        type            nutLowReWallFunction;
+        value           uniform 0;
+    }
+    lowerSymmetry
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    upperSymmetry
+    {
+        type            calculated;
+        value           uniform 0;
+    }
     inlet
     {
         type            calculated;
-        value           $internalField;
+        value           uniform 0;
     }
-
     outlet
     {
         type            calculated;
-        value           $internalField;
-    }
-
-    wall
-    {
-        type            nutkWallFunction;
         value           uniform 0;
     }
-
-	firstBottomFace
-    {
-        type            calculated;
-        value           $internalField;
-    }
-
-    firstTopFace
-    {
-        type            calculated;
-        value           $internalField;
-    }
-    
-    secondTopFace
-    {
-        type            calculated;
-        value           $internalField;
-    }
-
-    frontAndBack
+    defaultFaces
     {
         type            empty;
     }

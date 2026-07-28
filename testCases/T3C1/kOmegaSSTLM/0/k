@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v2312                                 |
-|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -10,49 +10,43 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      k;
+    location    "0";
+    object      kt;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 1.14;
+internalField   uniform 0.01;
 
 boundaryField
 {
+    flatPlate
+    {
+      type            kLowReWallFunction;
+      value           uniform 0;
+    }
+    lowerSymmetry
+    {
+        type            zeroGradient;
+    }
+    upperSymmetry
+    {
+        type            zeroGradient;
+    }
     inlet
     {
-        type            fixedValue;
+        type            turbulentIntensityKineticEnergyInlet;
+        intensity       0.0778;
+        U               U;
+        phi             phi;
         value           $internalField;
     }
-
     outlet
     {
         type            zeroGradient;
     }
-
-    wall
-    {
-        type            fixedValue;
-        value           uniform 0;
-    }
-
-    firstBottomFace
-    {
-        type            zeroGradient;
-    }
-
-    firstTopFace
-    {
-        type            zeroGradient;
-    }
-
-    secondTopFace
-    {
-        type            zeroGradient;
-    }
-
-    frontAndBack
+    defaultFaces
     {
         type            empty;
     }

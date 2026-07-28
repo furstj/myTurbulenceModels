@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v2312                                 |
-|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -10,6 +10,7 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
+    location    "0";
     object      nut;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -20,43 +21,32 @@ internalField   uniform 0;
 
 boundaryField
 {
-    inlet
-    {
-        type            calculated;
-        value           $internalField;
-    }
-
-    outlet
-    {
-        type            calculated;
-        value           $internalField;
-    }
-
-    wall
+    flatPlate
     {
         type            nutkWallFunction;
         value           uniform 0;
     }
-
-	firstBottomFace
+    lowerSymmetry
     {
         type            calculated;
-        value           $internalField;
+        value           uniform 0;
     }
-
-    firstTopFace
+    upperSymmetry
     {
         type            calculated;
-        value           $internalField;
+        value           uniform 0;
     }
-    
-    secondTopFace
+    inlet
     {
         type            calculated;
-        value           $internalField;
+        value           uniform 0;
     }
-
-    frontAndBack
+    outlet
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    defaultFaces
     {
         type            empty;
     }

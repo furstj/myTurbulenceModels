@@ -21,22 +21,17 @@ internalField   uniform 0;
 
 boundaryField
 {
-    wall
+    flatPlate
     {
-        type            fixedValue;
+        type            nutLowReWallFunction;
         value           uniform 0;
     }
-    firstBottomFace
-    {
-        type            calculated;
-        value           uniform 0;
-    }
-    firstTopFace
+    lowerSymmetry
     {
         type            calculated;
         value           uniform 0;
     }
-    secondTopFace
+    upperSymmetry
     {
         type            calculated;
         value           uniform 0;
@@ -51,8 +46,11 @@ boundaryField
         type            calculated;
         value           uniform 0;
     }
-    frontAndBack
+    defaultFaces
     {
         type            empty;
     }
 }
+
+
+// ************************************************************************* //

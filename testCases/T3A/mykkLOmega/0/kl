@@ -17,24 +17,20 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 0.1;
+internalField   uniform 1e-3;
 
 boundaryField
 {
-    wall
+    flatPlate
     {
         type            fixedValue;
         value           uniform 0;
     }
-    firstBottomFace
+    lowerSymmetry
     {
         type            zeroGradient;
     }
-    firstTopFace
-    {
-        type            zeroGradient;
-    }
-    secondTopFace
+    upperSymmetry
     {
         type            zeroGradient;
     }
@@ -47,7 +43,7 @@ boundaryField
     {
         type            zeroGradient;
     }
-    frontAndBack
+    defaultFaces
     {
         type            empty;
     }

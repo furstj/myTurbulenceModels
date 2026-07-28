@@ -134,8 +134,7 @@ public:
 
 
     //- Destructor
-    virtual ~kOmega()
-    {}
+    virtual ~kOmega() = default;
 
     
     // Member Functions

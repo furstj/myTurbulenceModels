@@ -17,36 +17,32 @@ FoamFile
 
 dimensions      [0 0 -1 0 0 0 0];
 
-internalField   uniform 500;
+internalField   uniform 23.7;
 
 boundaryField
 {
-    wall
+    flatPlate
     {
         type            zeroGradient;
     }
-    firstBottomFace
+    lowerSymmetry
     {
         type            zeroGradient;
     }
-    firstTopFace
-    {
-        type            zeroGradient;
-    }
-    secondTopFace
+    upperSymmetry
     {
         type            zeroGradient;
     }
     inlet
     {
         type            fixedValue;
-        value           uniform 299.441;
+        value           $internalField;
     }
     outlet
     {
         type            zeroGradient;
     }
-    frontAndBack
+    defaultFaces
     {
         type            empty;
     }

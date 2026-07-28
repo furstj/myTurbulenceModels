@@ -15,14 +15,14 @@ surfaces
     surfaceFormat   raw;
     fields          (wallShearStress);
 
-    interpolationScheme cell;
+    //interpolationScheme xcell;
 
     surfaces
     (
-        wall
+        plate
         {
             type            patch;
-            patches         ("lowerWall");
+            patches         ("flatPlate");
             interpolate     false;
         }
     );

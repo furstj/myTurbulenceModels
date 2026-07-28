@@ -1,0 +1,33 @@
+ROLLS-ROYCE APPLIED SCIENCE LABORATORY
+FLAT PLATE TRANSITIONAL BOUNDARY LAYER FLOW
+HOT WIRE ANEMOMETRY TEST DATA
+
+SUMMARY DATA FOR
+ERCOFTAC T3B TEST CASE
+
+KEY : RUN       SINGLE WIRE TEST DATA RUN NUMBER
+      X         AXIAL POSITION (MM)
+      REX       REYNOLDS NUMBER BASED ON X AND UO
+      UO        FREESTREAM VELOCITY (M/S)
+      CF        SKIN FRICTION COEFFICIENT
+      H         SHAPE FACTOR
+      RETHETA   REYNOLDS NUMBER BASED ON MOMENTUM THICKNESS
+      DELTA     99% BOUNDARY LAYER THICKNESS (MM)
+      TUFS      FREESTREAM TURBULENCE INTENSITY (%)
+
+   RUN         X          REX          UO        CF          H      RETHETA    DELTA      TUFS
+ 1W00907      25.0     1.510E+04      9.21    0.005574     2.503      82.9      1.04     5.952
+ 1W00705      45.0     2.770E+04      9.38    0.004503     2.437     114.1      1.44     5.635
+ 1W00903      70.0     4.310E+04      9.36    0.003573     2.340     146.0      1.96     5.442
+ 1W00706      95.0     5.910E+04      9.47    0.003430     2.207     181.3      2.52     5.244
+ 1W00904     145.0     8.930E+04      9.37    0.004330     1.900     243.4      3.69     5.019
+ 1W00707     195.0     1.245E+05      9.50    0.005732     1.639     337.4      5.38     4.714
+ 1W00708     295.0     1.885E+05      9.51    0.005414     1.506     502.1      8.03     4.334
+ 1W00709     395.0     2.530E+05      9.54    0.004970     1.474     659.4     10.19     4.031
+ 1W00710     495.0     3.181E+05      9.57    0.004625     1.447     848.5     13.65     3.724
+ 1W00801     595.0     3.822E+05      9.60    0.004474     1.427     977.2     15.33     3.484
+ 1W00802     695.0     4.469E+05      9.61    0.004297     1.429    1095.9     16.73     3.276
+ 1W00803     895.0     5.794E+05      9.69    0.004007     1.404    1432.5     21.58     2.965
+ 1W00804    1095.0     7.018E+05      9.60    0.003900     1.395    1623.2     24.02     2.749
+ 1W00805    1295.0     8.310E+05      9.61    0.003746     1.381    1911.9     29.37     2.548
+ 1W00806    1495.0     9.570E+05      9.60    0.003639     1.380    2072.7     30.78     2.400
