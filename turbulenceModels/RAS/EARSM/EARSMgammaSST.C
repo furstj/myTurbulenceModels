@@ -83,6 +83,42 @@ EARSMgammaSST<BasicTurbulenceModel>::EARSMgammaSST
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
+template<class BasicTurbulenceModel>
+tmp<volScalarField> EARSMgammaSST<BasicTurbulenceModel>::F1
+(
+    const volScalarField& CDkOmega
+) const
+{
+    // Compute gradKgradOmegaByOmega from CDkOmega
+    // SST defines CDkOmega = 2*alphaOmega2_ * (gradK & gradOmega) / omega
+    // We need to remove the 2*alphaOmega2_ factor
+    volScalarField gradKgradOmegaByOmega = CDkOmega / (2.0 * this->alphaOmega2_);
+
+    const dimensionedScalar kMin_
+    (
+        "kMin",
+        this->k_.dimensions(),
+        max(this->kInf_.value(), SMALL)
+    );
+
+    // EARSM fMix blending function (Hellsten 2005)
+    tmp<volScalarField> Gamma = min
+    (
+        min
+        (
+            max
+            (
+                sqrt(this->k_) / (this->betaStar_ * this->omega_ * this->y_),
+                scalar(500) * this->nu() / (this->omega_ * sqr(this->y_))
+            ),
+            scalar(20) * this->k_ / max(sqr(this->y_) * gradKgradOmegaByOmega, scalar(200) * kMin_)
+        ),
+        scalar(10)
+    );
+
+    return tanh(scalar(1.5) * pow4(Gamma));
+}
+
 
 template<class BasicTurbulenceModel>
 bool EARSMgammaSST<BasicTurbulenceModel>::read()

@@ -37,7 +37,7 @@ boundaryField
     inlet
     {
         type            omegaViscosityRatio;
-	ratio           14;
+	ratio           12;
         value           $internalField;
     }
     outlet

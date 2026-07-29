@@ -83,6 +83,9 @@ protected:
 
     // Member Functions
 
+    //- Return the first blending function (EARSM fMix formula)
+    virtual tmp<volScalarField> F1(const volScalarField& CDkOmega) const;
+
 public:
 
     using scaleModel = kOmegaSSTLM<BasicTurbulenceModel>;

@@ -20,7 +20,7 @@ solvers
     {
         solver           GAMG;
         tolerance        1e-6;
-        relTol           0.01;
+        relTol           0.1;
         maxIter          100;
         smoother         DICGaussSeidel;
     }
@@ -29,8 +29,8 @@ solvers
     {
         solver           PBiCGStab;
         preconditioner   DILU;
-        tolerance        1.e-6;
-        relTol           0.01;
+        tolerance        1.e-8;
+        relTol           0.1;
     }
 
     "(k|omega|gammaInt|ReThetat)"
@@ -59,11 +59,11 @@ relaxationFactors
     }
     equations
     {
-        U               0.8;
-        k               0.6;
-        omega           0.6;
-        ReThetat        0.6;
-        gammaInt        0.6;
+        U               0.9;
+        k               0.9;
+        omega           0.9;
+        ReThetat        0.9;
+        gammaInt        0.9;
     }
 }
 
