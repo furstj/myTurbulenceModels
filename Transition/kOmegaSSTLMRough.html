@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -93,10 +96,10 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-84365199647afda7ec578bfe13ef3742.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d55203e86ba1a699a1ae3c3642d34712.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -126,7 +129,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -155,10 +158,9 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -233,14 +235,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../RANS/EARSM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">EARSM</span></a>
+  <a href="../RANS/EARSM.html#sec-earsmko2005" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMko2005</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../RANS/EARSMWallin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">EARSMWallin</span></a>
+  <a href="../RANS/EARSM.html#sec-earsmtnt" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMtnt</span></a>
   </div>
 </li>
       </ul>
@@ -268,8 +270,60 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../RANS/EARSM.html#sec-earsmlm2009" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMlm2009</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Transition/gammaSST.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">gammaSST</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Development and experimental models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../Transition/kv2Omega.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">kv2Omega</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../RANS/EARSM.html#sec-earsgammasst" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMgammaSST</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Deprecated models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../RANS/EARSMHellsten.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMHellsten</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../RANS/EARSMWallin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMWallin</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -288,13 +342,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">LES models</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../LES/XLES.html" class="sidebar-item-text sidebar-link">
@@ -305,13 +359,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Boundary conditions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../BoCos/omegaViscosityRatio.html" class="sidebar-item-text sidebar-link">
@@ -362,28 +416,35 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Validation cases</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Validation/flatPlateTransitionalBoundaryLayer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Flat plate transitional boundary layer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Validation/flatPlateTransitionalBoundaryLayerWithSeparation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Flat plate transitional boundary layer with separation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#model-equations" id="toc-model-equations" class="nav-link active" data-scroll-target="#model-equations">Model Equations</a>
-  <ul class="collapse">
-  <li><a href="#model-according-to-langel-et-al.-2017-langel2017" id="toc-model-according-to-langel-et-al.-2017-langel2017" class="nav-link" data-scroll-target="#model-according-to-langel-et-al.-2017-langel2017">Model according to Langel et al.&nbsp;(2017) (<code>Langel2017</code>)</a></li>
-  <li><a href="#model-according-to-langel-et-al.-2017a-langel2017a" id="toc-model-according-to-langel-et-al.-2017a-langel2017a" class="nav-link" data-scroll-target="#model-according-to-langel-et-al.-2017a-langel2017a">Model according to Langel et al.&nbsp;(2017a) (<code>Langel2017a</code>)</a></li>
-  <li><a href="#model-according-to-kožulović-et-al.-2022-kozulovic2022" id="toc-model-according-to-kožulović-et-al.-2022-kozulovic2022" class="nav-link" data-scroll-target="#model-according-to-kožulović-et-al.-2022-kozulovic2022">Model according to Kožulović et al.&nbsp;(2022) (<code>Kozulovic2022</code>)</a></li>
-  <li><a href="#model-comparison" id="toc-model-comparison" class="nav-link" data-scroll-target="#model-comparison">Model Comparison</a></li>
-  </ul></li>
-  <li><a href="#notes-on-openfoam-implementation" id="toc-notes-on-openfoam-implementation" class="nav-link" data-scroll-target="#notes-on-openfoam-implementation">Notes on OpenFOAM Implementation</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -406,7 +467,7 @@ window.Quarto = {
 </header>
 
 
-<p>The transition model on rough walls is based on a combination of the four-equation transition model <span class="math inline">\(\gamma - \tilde{Re}_\theta\)</span> according to Langtry and Menter <span class="citation" data-cites="Langtry2009">(<a href="#ref-Langtry2009" role="doc-biblioref">Langtry and Menter 2009</a>)</span> with an additional equation for the amplification factor <span class="math inline">\(A_r\)</span> according to Dassler et al. <span class="citation" data-cites="Dassler2010">(<a href="#ref-Dassler2010" role="doc-biblioref">Dassler et al. 2010</a>)</span>. In subsequent publications, this model has been presented in various variants and calibrations, e.g., Langel et al. <span class="citation" data-cites="Langel2017">(<a href="#ref-Langel2017" role="doc-biblioref">Langel, Chow, C. P. Van Dam, et al. 2017</a>)</span> or Kožulović et al. <span class="citation" data-cites="Kozulovic2022">(<a href="#ref-Kozulovic2022" role="doc-biblioref">Kožulovič et al. 2022</a>)</span>.</p>
+<p>The transition model on rough walls is based on a combination of the four-equation transition model <span class="math inline">\(\gamma - \tilde{Re}_\theta\)</span> according to Langtry and Menter <span class="citation" data-cites="Langtry2009">[@Langtry2009]</span> with an additional equation for the amplification factor <span class="math inline">\(A_r\)</span> according to Dassler et al. <span class="citation" data-cites="Dassler2010">[@Dassler2010]</span>. In subsequent publications, this model has been presented in various variants and calibrations, e.g., Langel et al. <span class="citation" data-cites="Langel2017">[@Langel2017]</span> or Kožulović et al. <span class="citation" data-cites="Kozulovic2022">[@Kozulovic2022]</span>.</p>
 <section id="model-equations" class="level2">
 <h2 class="anchored" data-anchor-id="model-equations">Model Equations</h2>
 <p>The transition model according to Dassler et al.&nbsp;contains the following three equations: <span class="math display">\[
@@ -431,7 +492,7 @@ window.Quarto = {
 <p>The role of <span class="math inline">\(\sigma_f\)</span> and other <span class="math inline">\(\sigma\)</span> coefficients in the formulas is different! However, the value of <span class="math inline">\(\sigma_f\)</span> is 1, so it probably doesn’t matter.</p>
 </div>
 </div>
-<p>In the original article <span class="citation" data-cites="Dassler2010">(<a href="#ref-Dassler2010" role="doc-biblioref">Dassler et al. 2010</a>)</span>, the source term in the equation for <span class="math inline">\(A_r\)</span> is applied in the first layer of cells near the wall. This does not make sense from a mathematical point of view, and therefore this original model was not tested. In a later article <span class="citation" data-cites="Dassler2012">(<a href="#ref-Dassler2012" role="doc-biblioref">Dassler et al. 2012</a>)</span>, a version is presented where a boundary condition for <span class="math inline">\(A_r\)</span> is prescribed at the wall and the source term is applied throughout the entire computational domain. In this model, the value is <span class="math inline">\(\sigma_{A_r} = 10\)</span> and at the wall, the following boundary condition for <span class="math inline">\(A_r\)</span> is considered <span class="math display">\[
+<p>In the original article <span class="citation" data-cites="Dassler2010">[@Dassler2010]</span>, the source term in the equation for <span class="math inline">\(A_r\)</span> is applied in the first layer of cells near the wall. This does not make sense from a mathematical point of view, and therefore this original model was not tested. In a later article <span class="citation" data-cites="Dassler2012">[@Dassler2012]</span>, a version is presented where a boundary condition for <span class="math inline">\(A_r\)</span> is prescribed at the wall and the source term is applied throughout the entire computational domain. In this model, the value is <span class="math inline">\(\sigma_{A_r} = 10\)</span> and at the wall, the following boundary condition for <span class="math inline">\(A_r\)</span> is considered <span class="math display">\[
 A_{r,w} = 8 k_s^+, \quad \text{kde } k_s^+ = \frac{u_\tau k_s}{\nu}.
 \]</span></p>
 <p>The original source term in the equation for <span class="math inline">\(\tilde{Re}_\theta\)</span> <span id="eq-dassler2010-ptheta"><span class="math display">\[
@@ -445,15 +506,15 @@ P_\theta = c_{\theta t}\frac{\rho}{T}\left[\left(Re_{\theta} - \tilde{Re}_\theta
 <p>However, the functional form of <span class="math inline">\(Arg_r\)</span> is not published in the article. Therefore, this model was not further tested.</p>
 <section id="model-according-to-langel-et-al.-2017-langel2017" class="level3">
 <h3 class="anchored" data-anchor-id="model-according-to-langel-et-al.-2017-langel2017">Model according to Langel et al.&nbsp;(2017) (<code>Langel2017</code>)</h3>
-<p>The model according to Langel et al. <span class="citation" data-cites="Langel2017">(<a href="#ref-Langel2017" role="doc-biblioref">Langel, Chow, C. P. Van Dam, et al. 2017</a>)</span> uses the same approach as Dassler et al., but with different calibration and provides a specific functional form for <span class="math inline">\(Arg_r\)</span>. In this model, the value is <span class="math inline">\(\sigma_{A_r} = 30\)</span> and the boundary condition at the wall is for the case of flat plate flow (see <span class="citation" data-cites="Langel2017">(<a href="#ref-Langel2017" role="doc-biblioref">Langel, Chow, C. P. Van Dam, et al. 2017, 109</a>)</span>) <span class="math display">\[
+<p>The model according to Langel et al. <span class="citation" data-cites="Langel2017">[@Langel2017]</span> uses the same approach as Dassler et al., but with different calibration and provides a specific functional form for <span class="math inline">\(Arg_r\)</span>. In this model, the value is <span class="math inline">\(\sigma_{A_r} = 30\)</span> and the boundary condition at the wall is for the case of flat plate flow (see <span class="citation" data-cites="Langel2017">[@Langel2017, p. 109]</span>) <span class="math display">\[
 A_{r,w} = \frac{20000}{1 + e^{13.5 - k_s^+}}.
 \]</span></p>
-<div id="dc15e049" class="cell" data-execution_count="1">
+<div id="93839958" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="kOmegaSSTLMRough_files/figure-html/cell-2-output-1.png" width="611" height="433" class="figure-img"></p>
-<figcaption>Dependence of boundary condition <span class="math inline">\(A_{r,w}\)</span> on dimensionless roughness <span class="math inline">\(k_s^+\)</span> according to <span class="citation" data-cites="Langel2017">(<a href="#ref-Langel2017" role="doc-biblioref">Langel, Chow, C. P. Van Dam, et al. 2017</a>)</span>.</figcaption>
+<figcaption>Dependence of boundary condition <span class="math inline">\(A_{r,w}\)</span> on dimensionless roughness <span class="math inline">\(k_s^+\)</span> according to <span class="citation" data-cites="Langel2017">[@Langel2017]</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -468,7 +529,7 @@ A_{r,w} = \frac{20000}{1 + e^{13.5 - k_s^+}}.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>There is apparently an error in the notation of the boundary condition for <span class="math inline">\(A_{r,w}\)</span> in the original article <span class="citation" data-cites="Langel2017">(<a href="#ref-Langel2017" role="doc-biblioref">Langel, Chow, C. P. Van Dam, et al. 2017</a>)</span>, see comparison with the graph on page 103 in <span class="citation" data-cites="Langel2017">(<a href="#ref-Langel2017" role="doc-biblioref">Langel, Chow, C. P. Van Dam, et al. 2017</a>)</span>. The above version corresponds to this graph.</p>
+<p>There is apparently an error in the notation of the boundary condition for <span class="math inline">\(A_{r,w}\)</span> in the original article <span class="citation" data-cites="Langel2017">[@Langel2017]</span>, see comparison with the graph on page 103 in <span class="citation" data-cites="Langel2017">[@Langel2017]</span>. The above version corresponds to this graph.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -481,7 +542,7 @@ A_{r,w} = \frac{20000}{1 + e^{13.5 - k_s^+}}.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For airfoil flow, a different correlation is used for the boundary condition. The value 13.5 in the exponent is replaced by approximately 27, see the graph on page 103 in <span class="citation" data-cites="Langel2017">(<a href="#ref-Langel2017" role="doc-biblioref">Langel, Chow, C. P. Van Dam, et al. 2017</a>)</span>.</p>
+<p>For airfoil flow, a different correlation is used for the boundary condition. The value 13.5 in the exponent is replaced by approximately 27, see the graph on page 103 in <span class="citation" data-cites="Langel2017">[@Langel2017]</span>.</p>
 </div>
 </div>
 <p>The source term in the equation for <span class="math inline">\(\tilde{Re}_\theta\)</span> is modified as <span class="math display">\[
@@ -493,18 +554,18 @@ F_{A_r} = \begin{cases}
 4 A_r^{0.42} + 4 A_r \left(\frac{1}{F(\lambda_\theta)}\right)^{0.6}(1 - F_{\theta t}), &amp; \text{for } F(\lambda_\theta) &gt; 1.
 \end{cases}
 \]</span></p>
-<p>The function <span class="math inline">\(F(\lambda_\theta)\)</span> is defined as in the original model by Langtry and Menter <span class="citation" data-cites="Langtry2009">Langtry and Menter (<a href="#ref-Langtry2009" role="doc-biblioref">2009</a>)</span> as <span class="math display">\[
+<p>The function <span class="math inline">\(F(\lambda_\theta)\)</span> is defined as in the original model by Langtry and Menter <span class="citation" data-cites="Langtry2009">@Langtry2009</span> as <span class="math display">\[
 F(\lambda_\theta) = \begin{cases}
 1 + (12.986 \lambda_\theta + 123.66 \lambda_\theta^2 + 405.689 \lambda_\theta^3) e^{-\left(Tu/1.5\right)^{1.5}} , &amp; \text{for } \lambda_\theta \le 0, \\
 1 + 0.275\left(1 - e^{-35\lambda_\theta}\right)e^{-\left(Tu/0.5\right)}, &amp; \text{for } \lambda_\theta &gt; 0,
 \end{cases}
 \]</span></p>
-<div id="dce84d0b" class="cell" data-execution_count="2">
+<div id="0f1637ac" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="kOmegaSSTLMRough_files/figure-html/cell-3-output-1.png" width="590" height="431" class="figure-img"></p>
-<figcaption>Dependence of function <span class="math inline">\(F(λ_θ)\)</span> according to <span class="citation" data-cites="Langel2017">(<a href="#ref-Langel2017" role="doc-biblioref">Langel, Chow, C. P. Van Dam, et al. 2017</a>)</span> for different values of <span class="math inline">\(Tu\)</span>.</figcaption>
+<figcaption>Dependence of function <span class="math inline">\(F(λ_θ)\)</span> according to <span class="citation" data-cites="Langel2017">[@Langel2017]</span> for different values of <span class="math inline">\(Tu\)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -514,17 +575,17 @@ b = 0.5\sin\left(\frac{\pi}{155}\tilde{Re}_\theta - \frac{97\pi}{155}\right) + 0
 \]</span> In this function, it is apparently appropriate to limit the value of <span class="math inline">\(\tilde{Re}_\theta\)</span> to the interval <span class="math inline">\([19.5, 174.5]\)</span>, i.e., <span id="eq-langel17-b"><span class="math display">\[
 b = 0.5\sin\left(\frac{\pi}{155}\max(\min(\tilde{Re}_\theta, 174.5), 19.5) - \frac{97\pi}{155}\right) + 0.5.
 \tag{2}\]</span></span></p>
-<div id="a65d2b31" class="cell" data-execution_count="3">
+<div id="2c23890b" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="kOmegaSSTLMRough_files/figure-html/cell-4-output-1.png" width="590" height="434" class="figure-img"></p>
-<figcaption>Dependence of damping factor <span class="math inline">\(b\)</span> on the value of <span class="math inline">\(Re_θ\)</span> according to <span class="citation" data-cites="Langel2017">(<a href="#ref-Langel2017" role="doc-biblioref">Langel, Chow, C. P. Van Dam, et al. 2017</a>)</span>.</figcaption>
+<figcaption>Dependence of damping factor <span class="math inline">\(b\)</span> on the value of <span class="math inline">\(Re_θ\)</span> according to <span class="citation" data-cites="Langel2017">[@Langel2017]</span>.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Furthermore, a modified boundary condition for <span class="math inline">\(\omega\)</span> at the wall is used according to <span class="citation" data-cites="Langel2017">(<a href="#ref-Langel2017" role="doc-biblioref">Langel, Chow, C. P. Van Dam, et al. 2017</a>)</span> based on the work of <span class="citation" data-cites="Wilcox1994">(<a href="#ref-Wilcox1994" role="doc-biblioref">Wilcox 1994</a>)</span>: <span class="math display">\[
+<p>Furthermore, a modified boundary condition for <span class="math inline">\(\omega\)</span> at the wall is used according to <span class="citation" data-cites="Langel2017">[@Langel2017]</span> based on the work of <span class="citation" data-cites="Wilcox1994">[@Wilcox1994]</span>: <span class="math display">\[
 \omega_w = \frac{u_\tau^2 S_r}{\nu},
 \]</span> kde <span id="eq-wilcox98-sr"><span class="math display">\[
 S_r = \begin{cases}
@@ -532,26 +593,26 @@ S_r = \begin{cases}
 \frac{100}{k_s^+} &amp; \text{for } k_s^+ &gt; 25.
 \end{cases}
 \tag{3}\]</span></span></p>
-<p>Compared to the model according to <span class="citation" data-cites="Langel2017">(<a href="#ref-Langel2017" role="doc-biblioref">Langel, Chow, C. P. Van Dam, et al. 2017</a>)</span>, a modification of the boundary condition for <span class="math inline">\(\omega\)</span> in the case of a smooth wall is used in the implementation <span id="eq-wilcox-omega-wall"><span class="math display">\[
+<p>Compared to the model according to <span class="citation" data-cites="Langel2017">[@Langel2017]</span>, a modification of the boundary condition for <span class="math inline">\(\omega\)</span> in the case of a smooth wall is used in the implementation <span id="eq-wilcox-omega-wall"><span class="math display">\[
 \omega_w = \begin{cases}
 10 \frac{6\nu}{\beta_1 y_1^2} &amp; \text{for } k_s^+ \le \sqrt{\frac{2500\beta_1}{60}} y^+_1, \\
 \frac{u_\tau^2 S_r}{\nu} &amp; \text{for } k_s^+ &gt; \sqrt{\frac{2500\beta_1}{60}} y^+_1.
 \end{cases}
 \tag{4}\]</span></span></p>
-<p>In the newer edition of the book <span class="citation" data-cites="Wilcox2006">(<a href="#ref-Wilcox2006" role="doc-biblioref">Wilcox 2006</a>)</span>, this boundary condition for a smooth wall is given in the form <span class="math display">\[
+<p>In the newer edition of the book <span class="citation" data-cites="Wilcox2006">[@Wilcox2006]</span>, this boundary condition for a smooth wall is given in the form <span class="math display">\[
 S_r = \begin{cases}
 \left(\frac{200}{k_s^+}\right)^2 &amp; \text{for } k_s^+ \le 5, \\
 \frac{100}{k_s^+} + \left[ \left(\frac{200}{k_s^+}\right)^2 - \frac{100}{k_s^+}\right]
 e^{5-k_s^+}&amp; \text{for } k_s^+ &gt; 5.
 \end{cases}
 \]</span><br>
-However, this form of boundary condition was not used in the calculations. Furthermore, <span class="citation" data-cites="Wilcox2006">(<a href="#ref-Wilcox2006" role="doc-biblioref">Wilcox 2006</a>)</span> presents a boundary condition for a rough wall for the low Reynolds version of the model. It differs from the above condition only in the coefficient of the second branch, where 60 is used instead of 100 (in both places). This version was also not used in the calculations.</p>
-<div id="3a866fcb" class="cell" data-execution_count="4">
+However, this form of boundary condition was not used in the calculations. Furthermore, <span class="citation" data-cites="Wilcox2006">[@Wilcox2006]</span> presents a boundary condition for a rough wall for the low Reynolds version of the model. It differs from the above condition only in the coefficient of the second branch, where 60 is used instead of 100 (in both places). This version was also not used in the calculations.</p>
+<div id="47007232" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="kOmegaSSTLMRough_files/figure-html/cell-5-output-1.png" width="608" height="435" class="figure-img"></p>
-<figcaption>Dependence of factor <span class="math inline">\(S_r\)</span> for omega boundary condition according to <span class="citation" data-cites="Langel2017">(<a href="#ref-Langel2017" role="doc-biblioref">Langel, Chow, C. P. Van Dam, et al. 2017</a>)</span> and <span class="citation" data-cites="Wilcox2006">(<a href="#ref-Wilcox2006" role="doc-biblioref">Wilcox 2006</a>)</span>.</figcaption>
+<figcaption>Dependence of factor <span class="math inline">\(S_r\)</span> for omega boundary condition according to <span class="citation" data-cites="Langel2017">[@Langel2017]</span> and <span class="citation" data-cites="Wilcox2006">[@Wilcox2006]</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -559,22 +620,22 @@ However, this form of boundary condition was not used in the calculations. Furth
 </section>
 <section id="model-according-to-langel-et-al.-2017a-langel2017a" class="level3">
 <h3 class="anchored" data-anchor-id="model-according-to-langel-et-al.-2017a-langel2017a">Model according to Langel et al.&nbsp;(2017a) (<code>Langel2017a</code>)</h3>
-<p>In another publication <span class="citation" data-cites="Langel2017a">(<a href="#ref-Langel2017a" role="doc-biblioref">Langel, Chow, Case P. Van Dam, et al. 2017</a>)</span>, a different version of the <code>Langel2017</code> model is presented, which uses different calibrations and a boundary condition for <span class="math inline">\(A_r\)</span> at the wall. The value of <span class="math inline">\(\sigma_{A_r}\)</span> in this model is set to <span class="math inline">\(\sigma_{A_r} = 10\)</span> and the boundary condition at the wall is <span class="math display">\[
+<p>In another publication <span class="citation" data-cites="Langel2017a">[@Langel2017a]</span>, a different version of the <code>Langel2017</code> model is presented, which uses different calibrations and a boundary condition for <span class="math inline">\(A_r\)</span> at the wall. The value of <span class="math inline">\(\sigma_{A_r}\)</span> in this model is set to <span class="math inline">\(\sigma_{A_r} = 10\)</span> and the boundary condition at the wall is <span class="math display">\[
 A_{r,w} = c_{r1} k_s^+,
 \]</span> where <span class="math inline">\(c_{r1} = 8\)</span>. The function <span class="math inline">\(F_{A_r}\)</span> in the equation for <span class="math inline">\(\tilde{Re}_\theta\)</span> is <span class="math display">\[
 F_{A_r} = \begin{cases}
 c_{r2} Ar^3, &amp; \text{for } Ar &lt; C_{Ar}, \\
 c_{r3} (Ar - C_{Ar}) + c_{r2} C_{Ar}^3, &amp; \text{for } Ar \ge C_{Ar},
 \end{cases}
-\]</span> where <span class="math inline">\(c_{r2} = 0.0005\)</span>, <span class="math inline">\(c_{r3} = 2\)</span> and <span class="math inline">\(C_{Ar} = \sqrt{c_{r3}/3c_{r2}}\)</span>, see <span class="citation" data-cites="Langel2017a">(<a href="#ref-Langel2017a" role="doc-biblioref">Langel, Chow, Case P. Van Dam, et al. 2017</a>)</span> [p.&nbsp;65]. The coefficient <span class="math inline">\(b\)</span> in this version of the model is given by the relation (compare with <a href="#eq-langel17-b" class="quarto-xref">Equation&nbsp;2</a>) <span id="eq-langel17a-b"><span class="math display">\[
+\]</span> where <span class="math inline">\(c_{r2} = 0.0005\)</span>, <span class="math inline">\(c_{r3} = 2\)</span> and <span class="math inline">\(C_{Ar} = \sqrt{c_{r3}/3c_{r2}}\)</span>, see <span class="citation" data-cites="Langel2017a">[@Langel2017a]</span> [p.&nbsp;65]. The coefficient <span class="math inline">\(b\)</span> in this version of the model is given by the relation (compare with <a href="#eq-langel17-b" class="quarto-xref">Equation&nbsp;2</a>) <span id="eq-langel17a-b"><span class="math display">\[
 b = \left(\frac{1}{2}\sin\left(\frac{\pi}{155}\widetilde{Re}_\theta - \frac{97\pi}{155}\right) + \frac{1}{2}\right)^2.
 \tag{5}\]</span></span> As with the <code>Langel2017</code> model, it is appropriate to limit the value of <span class="math inline">\(\tilde{Re}_\theta\)</span> to the interval <span class="math inline">\([19.5, 174.5]\)</span> in this relation.</p>
-<div id="4f055e2c" class="cell" data-execution_count="5">
+<div id="dcd0c424" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="kOmegaSSTLMRough_files/figure-html/cell-6-output-1.png" width="590" height="434" class="figure-img"></p>
-<figcaption>Dependence of damping factor <span class="math inline">\(b\)</span> on the value of <span class="math inline">\(Re_θ\)</span> according to <span class="citation" data-cites="Langel2017a">(<a href="#ref-Langel2017a" role="doc-biblioref">Langel, Chow, Case P. Van Dam, et al. 2017</a>)</span>.</figcaption>
+<figcaption>Dependence of damping factor <span class="math inline">\(b\)</span> on the value of <span class="math inline">\(Re_θ\)</span> according to <span class="citation" data-cites="Langel2017a">[@Langel2017a]</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -582,7 +643,7 @@ b = \left(\frac{1}{2}\sin\left(\frac{\pi}{155}\widetilde{Re}_\theta - \frac{97\p
 </section>
 <section id="model-according-to-kožulović-et-al.-2022-kozulovic2022" class="level3">
 <h3 class="anchored" data-anchor-id="model-according-to-kožulović-et-al.-2022-kozulovic2022">Model according to Kožulović et al.&nbsp;(2022) (<code>Kozulovic2022</code>)</h3>
-<p>In the most recent publication <span class="citation" data-cites="Kozulovic2022">(<a href="#ref-Kozulovic2022" role="doc-biblioref">Kožulovič et al. 2022</a>)</span>, another version of the transition model on rough walls is presented with different calibration and a boundary condition for <span class="math inline">\(A_r\)</span> at the wall. The model apparently originates from the publication <span class="citation" data-cites="Dassler2012">(<a href="#ref-Dassler2012" role="doc-biblioref">Dassler et al. 2012</a>)</span> and supplements some correlations that were not included in the original publication.</p>
+<p>In the most recent publication <span class="citation" data-cites="Kozulovic2022">[@Kozulovic2022]</span>, another version of the transition model on rough walls is presented with different calibration and a boundary condition for <span class="math inline">\(A_r\)</span> at the wall. The model apparently originates from the publication <span class="citation" data-cites="Dassler2012">[@Dassler2012]</span> and supplements some correlations that were not included in the original publication.</p>
 <p>The source term in the equation for <span class="math inline">\(\tilde{Re}_\theta\)</span> is defined by <a href="#eq-dassler2010-ptheta" class="quarto-xref">Equation&nbsp;1</a> with the function <span class="math inline">\(Arg_r\)</span> defined as <span class="math display">\[
 Arg_r = \begin{cases}
 A_r^3\cdot 0.000025, &amp; \text{for } A_r &lt; A_{r,s}, \\
@@ -592,7 +653,7 @@ A_r^3\cdot 0.000025, &amp; \text{for } A_r &lt; A_{r,s}, \\
 <p>The boundary condition for <span class="math inline">\(A_r\)</span> at the wall is the same as in the <code>Langel2017a</code> model, i.e., <span class="math display">\[
 A_{r,w} = 8 k_s^+.
 \]</span></p>
-<p>The value of <span class="math inline">\(\sigma_{A_r}\)</span> is not specified in the article, but apparently the value <span class="math inline">\(\sigma_{A_r} = 10\)</span> is used, as in the model according to <span class="citation" data-cites="Dassler2012">(<a href="#ref-Dassler2012" role="doc-biblioref">Dassler et al. 2012</a>)</span>. In the original model according to <span class="citation" data-cites="Dassler2012">(<a href="#ref-Dassler2012" role="doc-biblioref">Dassler et al. 2012</a>)</span>, the damping function <span class="math inline">\(b\)</span> is also mentioned in the text. However, its functional form is not given. Therefore, the function according to <a href="#eq-langel17a-b" class="quarto-xref">Equation&nbsp;5</a> was used. Furthermore, for reasonable agreement with experiment, it was necessary to multiply <span class="math inline">\(Arg_r\)</span> by a coefficient of 10, i.e., <span id="eq-kozulovic2022-ptheta"><span class="math display">\[
+<p>The value of <span class="math inline">\(\sigma_{A_r}\)</span> is not specified in the article, but apparently the value <span class="math inline">\(\sigma_{A_r} = 10\)</span> is used, as in the model according to <span class="citation" data-cites="Dassler2012">[@Dassler2012]</span>. In the original model according to <span class="citation" data-cites="Dassler2012">[@Dassler2012]</span>, the damping function <span class="math inline">\(b\)</span> is also mentioned in the text. However, its functional form is not given. Therefore, the function according to <a href="#eq-langel17a-b" class="quarto-xref">Equation&nbsp;5</a> was used. Furthermore, for reasonable agreement with experiment, it was necessary to multiply <span class="math inline">\(Arg_r\)</span> by a coefficient of 10, i.e., <span id="eq-kozulovic2022-ptheta"><span class="math display">\[
 P_\theta = c_{\theta t}\frac{\rho}{T}\left[\left(Re_{\theta} - \tilde{Re}_\theta \right)
 (1 - F_{\theta t}) - 10 b \cdot Arg_r\right].
 \tag{6}\]</span></span></p>
@@ -600,7 +661,7 @@ P_\theta = c_{\theta t}\frac{\rho}{T}\left[\left(Re_{\theta} - \tilde{Re}_\theta
 <section id="model-comparison" class="level3">
 <h3 class="anchored" data-anchor-id="model-comparison">Model Comparison</h3>
 <p>The models differ both in the values of <span class="math inline">\(\sigma_{A_r}\)</span> and the boundary condition for <span class="math inline">\(A_r\)</span> at the wall, as well as in the modification of the source term in the equation for <span class="math inline">\(\tilde{Re}_\theta\)</span>. The graph below shows a comparison of the function <span class="math inline">\(F_{A_r}\)</span> or <span class="math inline">\(Arg_r\)</span> for different models (for <span class="math inline">\(b=1\)</span> and <span class="math inline">\(F_\theta=0\)</span>).</p>
-<div id="10aaa515" class="cell" data-execution_count="6">
+<div id="1616c903" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -630,31 +691,8 @@ P_\theta = c_{\theta t}\frac{\rho}{T}\left[\left(Re_{\theta} - \tilde{Re}_\theta
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-Dassler2010" class="csl-entry" role="listitem">
-Dassler, P., D. Kožulović, and A. Fiala. 2010. <span>“Modelling of Roughness-Induced Transition Using Local Variables.”</span> <em>V European Conference on Computational Fluid Dynamics ECCOMAS CFD</em>, 1–17. <a href="http://www.aircraft-engines.com/en/technologies/engineering_news/others/Fiala_Modelling_of_roughness-induced_en.pdf">http://www.aircraft-engines.com/en/technologies/engineering_news/others/Fiala_Modelling_of_roughness-induced_en.pdf</a>.
-</div>
-<div id="ref-Dassler2012" class="csl-entry" role="listitem">
-Dassler, P., D. Kožulović, and A. Fiala. 2012. <span>“Extension of the γ-ReΘ Transition Model for Roughness-Induced Transition.”</span> <em>Proceedings of the 50th AIAA Aerospace Sciences Meeting Including the New Horizons Forum and Aerospace Exposition</em>, January. <a href="https://doi.org/10.2514/6.2012-0593">https://doi.org/10.2514/6.2012-0593</a>.
-</div>
-<div id="ref-Kozulovic2022" class="csl-entry" role="listitem">
-Kožulovič, Dragan, Nemo Alexander Juchmann, Alexander Führing, and Christoph Bode. 2022. <span>“Transition Model Extension for Roughness Effects.”</span> <em>Proceedings of ASME Turbo Expo 2022</em>, June. <a href="http://asmedigitalcollection.asme.org/GT/proceedings-pdf/GT2022/86113/V10CT32A042/6937172/v10ct32a042-gt2022-83277.pdf">http://asmedigitalcollection.asme.org/GT/proceedings-pdf/GT2022/86113/V10CT32A042/6937172/v10ct32a042-gt2022-83277.pdf</a>.
-</div>
-<div id="ref-Langel2017" class="csl-entry" role="listitem">
-Langel, Christopher Michael, Raymond Chow, C P Van Dam, and David Charles Maniaci. 2017. <em>RANS Based Methodology for Predicting the Influence of Leading Edge Erosion on Airfoil Performance</em>. Sandia National Laboratories (SNL). <a href="https://doi.org/10.2172/1404827">https://doi.org/10.2172/1404827</a>.
-</div>
-<div id="ref-Langel2017a" class="csl-entry" role="listitem">
-Langel, Christopher Michael, Raymond Chow, Case P. Van Dam, and David Charles Maniaci. 2017. <em>A Transport Equation Approach to Modeling the Influence o f Surface Roughness on Boundary Layer Transition</em>. Sandia. <a href="https://energy.sandia.gov/wp-content/uploads/2017/10/LEE_Langel1_SAND2017-10670.pdf">https://energy.sandia.gov/wp-content/uploads/2017/10/LEE_Langel1_SAND2017-10670.pdf</a>.
-</div>
-<div id="ref-Langtry2009" class="csl-entry" role="listitem">
-Langtry, Robin Blair, and Florian R. Menter. 2009. <span>“Correlation-Based Transition Modeling for Unstructured Parallelized Computational Fluid Dynamics Codes.”</span> <em>AIAA Journal</em> 47: 2894–906. <a href="https://doi.org/10.2514/1.42362">https://doi.org/10.2514/1.42362</a>.
-</div>
-<div id="ref-Wilcox1994" class="csl-entry" role="listitem">
-Wilcox, David C. 1994. <em>Turbulence Modeling for CFD</em>. DCW Industries.
-</div>
-<div id="ref-Wilcox2006" class="csl-entry" role="listitem">
-Wilcox, David C. 2006. <em>Turbulence Modeling for CFD</em>. 3rd edition. DCW Industries.
-</div>
+<div id="refs" role="list">
+
 </div>
 
 

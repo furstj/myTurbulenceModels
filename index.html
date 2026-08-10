@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -75,10 +78,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-84365199647afda7ec578bfe13ef3742.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d55203e86ba1a699a1ae3c3642d34712.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -137,10 +140,9 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -215,14 +217,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./RANS/EARSM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">EARSM</span></a>
+  <a href="./RANS/EARSM.html#sec-earsmko2005" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMko2005</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./RANS/EARSMWallin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">EARSMWallin</span></a>
+  <a href="./RANS/EARSM.html#sec-earsmtnt" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMtnt</span></a>
   </div>
 </li>
       </ul>
@@ -250,8 +252,60 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./RANS/EARSM.html#sec-earsmlm2009" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMlm2009</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Transition/gammaSST.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">gammaSST</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Development and experimental models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Transition/kv2Omega.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">kv2Omega</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RANS/EARSM.html#sec-earsgammasst" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMgammaSST</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Deprecated models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RANS/EARSMHellsten.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMHellsten</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RANS/EARSMWallin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMWallin</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -270,13 +324,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">LES models</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LES/XLES.html" class="sidebar-item-text sidebar-link">
@@ -287,13 +341,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Boundary conditions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./BoCos/omegaViscosityRatio.html" class="sidebar-item-text sidebar-link">
@@ -344,26 +398,35 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Validation cases</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Validation/flatPlateTransitionalBoundaryLayer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Flat plate transitional boundary layer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Validation/flatPlateTransitionalBoundaryLayerWithSeparation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Flat plate transitional boundary layer with separation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a>
-  <ul class="collapse">
-  <li><a href="#rans-models" id="toc-rans-models" class="nav-link" data-scroll-target="#rans-models">RANS Models</a></li>
-  <li><a href="#les-models" id="toc-les-models" class="nav-link" data-scroll-target="#les-models">LES Models</a></li>
-  <li><a href="#boundary-conditions" id="toc-boundary-conditions" class="nav-link" data-scroll-target="#boundary-conditions">Boundary conditions</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -399,41 +462,55 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/furstj/myTurbulenceModels.git</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> myTurbulenceModels</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./Allwmake</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>gammaSST</code> model is no more included directly in this repository as it is now part of <a href="https://gitlab.com/openfoam/community/tc-turbulence/turbulence-community">Turbulence Community Repository</a>. Nevertheless, it can be easily used in conjunction with this package either by installing the Turbulence Community module, or by clonning from my repository.</p>
+<p>In the later case, you should clone the <code>gammaSST</code> model alongside the <code>myTurbulenceModels</code> package <strong>before</strong> running <code>Allwmake</code> in the <code>myTurbulenceModels</code> directory. The recommended way to clone and build the package with <code>gammaSST</code> support is as follows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/furstj/gammaSST.git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/furstj/myTurbulenceModels.git</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> myTurbulenceModels</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">./Allwmake</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="features" class="level2">
 <h2 class="anchored" data-anchor-id="features">Features</h2>
 <section id="rans-models" class="level3">
 <h3 class="anchored" data-anchor-id="rans-models">RANS Models</h3>
-<p>The package contains following RANS turbulence models:</p>
+<section id="turbulence-models" class="level4">
+<h4 class="anchored" data-anchor-id="turbulence-models">Turbulence Models</h4>
 <ul>
 <li><a href="./RANS/kOmegaTNT.html"><code>kOmegaTNT</code></a> - Two-Equation k-ω Turbulence Model due to J. C. Kok</li>
 <li><a href="./RANS/kOmegaWilcox06.html"><code>kOmegaWilcox06</code></a> - Two-Equation k-ω Turbulence Model due to Wilcox</li>
-<li><a href="./RANS/EARSM.html"><code>EARSM</code></a> - Explicit Algebraic Reynolds Stress Model due to Hellsten</li>
-<li><a href="./RANS/EARSMWallin.html"><code>EARSMWallin</code></a> - EARSM with Wallin’s Modifications</li>
 <li><a href="./RANS/kOmegaSSTCC.html"><code>kOmegaSSTCC</code></a> - Shear Stress Transport k-ω Model with Curvature Correction</li>
 <li><a href="./RANS/kOmegaSSTCCM.html"><code>kOmegaSSTCCM</code></a> - Shear Stress Transport k-ω Model with Curvature Correction</li>
+<li><a href="./RANS/EARSM.html#sec-earsmko2005"><code>EARSMko2005</code></a> - Explicit Algebraic Reynolds Stress Model due to Hellsten</li>
+<li><a href="./RANS/EARSM.html#sec-earsmtnt"><code>EARSMtnt</code></a> - Explicit Algebraic Reynolds Stress Model due to Wallin</li>
 </ul>
-<p>It also includes the following transitional RANS turbulence models:</p>
+</section>
+<section id="transition-and-turbulence-models" class="level4">
+<h4 class="anchored" data-anchor-id="transition-and-turbulence-models">Transition and Turbulence models</h4>
 <ul>
 <li><a href="./Transition/kOmegaSSTLMRough.html"><code>kOmegaSSTLMRough</code></a> - Five-equation Transition and Turbulence Model with Roughness Modifications</li>
 <li><a href="./Transition/mykkLOmega.html"><code>mykkLOmega</code></a> - Three-equation transition and turbulence Model due to Walters and Cokljat</li>
-<li><a href="./Transition/kv2Omega.html"><code>kv2Omega</code></a> - Three-equation transition and turbulence Model due to Walters and ???</li>
-<li><a href="./Transition/kOmegaTrans.html"><code>kOmegaTrans</code></a> - Two-equation transition and turbulence (experimental)</li>
-<li><a href="./Transition/EARSMTrans.html"><code>EARSMTrans</code></a> - Explicit Algebraic Reynolds Stress Model with Transition (experimental, no more supported)</li>
+<li><a href="./RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a> - Explicit Algebraic Reynolds Stress Model with Transition due to Langtry and Menter</li>
+<li><a href="./Transition/gammaSST.html"><code>gammaSST</code></a> - Two-equation transition and turbulence Model due to Menter, Smirnov et al.&nbsp;Please note that this model is not included directly in this repository. See Installation</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <code>gammaSST</code> transitional model is not included in this package, as it is already available in the <a href="https://gitlab.com/openfoam/community/tc-turbulence/turbulence-community">Turbulence Community repository</a> or directly from my <a href="https://github.com/furstj/gammaSST">github repository</a>.</p>
-</div>
-</div>
+</section>
+<section id="experimental-and-development-models" class="level4">
+<h4 class="anchored" data-anchor-id="experimental-and-development-models">Experimental and development models</h4>
+<p>These models are not yet validated and require further testing and calibration. They are provided for research purposes and are not suitable for production use.</p>
+<ul>
+<li><a href="./Transition/kv2Omega.html"><code>kv2Omega</code></a> - Two-equation transition and turbulence Model due to Lopez and Walters</li>
+<li><a href="./RANS/EARSM.html#sec-earsgammasst"><code>EARSMgammaSST</code></a> - Explicit Algebraic Reynolds Stress Model with Transition and γ-SST</li>
+</ul>
+</section>
+<section id="deprecated-models" class="level4">
+<h4 class="anchored" data-anchor-id="deprecated-models">Deprecated models</h4>
+<p>There are also some deprecated RANS turbulence models included in the package which have been replaced by newer implementations or are no more maintaned. These are:</p>
+<ul>
+<li><a href="./RANS/EARSMHellsten.html"><code>EARSMHellsten</code></a> - Explicit Algebraic Reynolds Stress Model due to Hellsten (deprecated, use <a href="./RANS/EARSM.html#sec-earsmko2005"><code>EARSMko2005</code></a> instead*)</li>
+<li><a href="./RANS/EARSMWallin.html"><code>EARSMWallin</code></a> - EARSM with Wallin’s Modifications (<em>deprecated, use <a href="./RANS/EARSM.html#sec-earsmtnt"><code>EARSMtnt</code></a> instead</em>)</li>
+<li><a href="./Transition/kOmegaTrans.html"><code>kOmegaTrans</code></a> - Two-equation transition and turbulence (<em>deprecated, model is not maintained anymore</em>)</li>
+<li><a href="./Transition/EARSMTrans.html"><code>EARSMTrans</code></a> - Explicit Algebraic Reynolds Stress Model with Transition (<em>deprecated, model is not maintained anymore</em>)</li>
+</ul>
+</section>
 </section>
 <section id="les-models" class="level3">
 <h3 class="anchored" data-anchor-id="les-models">LES Models</h3>

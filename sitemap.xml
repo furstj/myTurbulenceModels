@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://furstj.github.io/myTurbulenceModels/index.html</loc>
-    <lastmod>2026-07-17T14:27:56.059Z</lastmod>
+    <loc>https://furstj.github.io/myTurbulenceModels/Validation/kOmegaSSTLM.html</loc>
+    <lastmod>2026-08-10T13:10:04.380Z</lastmod>
+  </url>
+  <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/Validation/flatPlateTransitionalBoundaryLayer.html</loc>
+    <lastmod>2026-08-10T12:44:33.125Z</lastmod>
+  </url>
+  <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/Transition/gammaSST.html</loc>
+    <lastmod>2026-08-10T11:39:12.827Z</lastmod>
   </url>
   <url>
     <loc>https://furstj.github.io/myTurbulenceModels/Transition/kv2Omega.html</loc>
@@ -33,6 +41,10 @@
     <lastmod>2026-07-10T16:12:12.078Z</lastmod>
   </url>
   <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/RANS/EARSMHellsten.html</loc>
+    <lastmod>2026-07-10T16:12:12.081Z</lastmod>
+  </url>
+  <url>
     <loc>https://furstj.github.io/myTurbulenceModels/RANS/kOmegaSSTCCM.html</loc>
     <lastmod>2026-07-10T16:12:12.082Z</lastmod>
   </url>
@@ -45,16 +57,16 @@
     <lastmod>2026-01-12T19:50:40.896Z</lastmod>
   </url>
   <url>
-    <loc>https://furstj.github.io/myTurbulenceModels/RANS/EARSM.html</loc>
-    <lastmod>2026-07-10T16:12:12.081Z</lastmod>
-  </url>
-  <url>
     <loc>https://furstj.github.io/myTurbulenceModels/RANS/kOmegaSSTCC.html</loc>
     <lastmod>2026-07-10T16:12:12.081Z</lastmod>
   </url>
   <url>
     <loc>https://furstj.github.io/myTurbulenceModels/RANS/kOmegaWilcox06.html</loc>
     <lastmod>2026-07-10T16:12:12.082Z</lastmod>
+  </url>
+  <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/RANS/EARSM.html</loc>
+    <lastmod>2026-08-10T11:47:29.229Z</lastmod>
   </url>
   <url>
     <loc>https://furstj.github.io/myTurbulenceModels/BoCos/boundedTurbulentIntensityKineticEnergyInlet.html</loc>
@@ -83,5 +95,13 @@
   <url>
     <loc>https://furstj.github.io/myTurbulenceModels/Transition/mykkLOmega.html</loc>
     <lastmod>2026-07-10T16:12:12.083Z</lastmod>
+  </url>
+  <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/index.html</loc>
+    <lastmod>2026-08-10T13:04:37.418Z</lastmod>
+  </url>
+  <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/Validation/flatPlateTransitionalBoundaryLayerWithSeparation.html</loc>
+    <lastmod>2026-08-10T11:51:40.534Z</lastmod>
   </url>
 </urlset>
