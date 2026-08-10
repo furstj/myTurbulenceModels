@@ -322,13 +322,14 @@ template<class ScaleModel>
 tmp<volScalarField::Internal> EARSMBase<ScaleModel>::GbyNu0
 (
     const volTensorField& gradU,
-    const volScalarField& /* S2 not used */
+    const volScalarField& S2
 ) const
 {
     return tmp<volScalarField::Internal>::New
     (
         IOobject::scopedName(this->type(), "GbyNu"),
-        gradU() && (devTwoSymm(gradU()) - this->nonlinearStress_()/this->nut_())
+	ScaleModel::GbyNu0(gradU, S2) - (gradU() && this->nonlinearStress_())/this->nut_()
+        //gradU() && (devTwoSymm(gradU()) - this->nonlinearStress_()/this->nut_())
     );
 }
 

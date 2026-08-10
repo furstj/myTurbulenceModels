@@ -76,7 +76,7 @@ protected:
     virtual tmp<volScalarField::Internal> GbyNu0
     (
         const volTensorField& gradU,
-        const volScalarField& /* S2 not used */
+        const volScalarField& S2
     ) const;
 
     virtual tmp<volScalarField::Internal> GbyNu

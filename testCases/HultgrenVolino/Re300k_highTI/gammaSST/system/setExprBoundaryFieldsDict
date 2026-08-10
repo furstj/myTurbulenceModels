@@ -1,0 +1,45 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2606                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      setExprBoundaryFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Preload any required fields (optional)
+
+pattern
+{
+    field   U;
+
+    expressions
+    (
+        {
+            patch   inlet;
+            target  value;
+            
+            variables
+                (
+                    "cf = 0.0049"
+                    "Ue = 5.0"
+                    "nu = 1.5e-5"
+                    "delta = 3 * nu / (cf * Ue)"
+                    "yrel  = min(pos().y() / delta, 1.0)"
+                    "Ux = Ue * (3 * yrel - pow(yrel, 3)) / 2" 
+                );
+            
+            expression #{ vector(Ux, 0, 0) #};
+        }
+    );
+}
+
+
+// ************************************************************************* //
