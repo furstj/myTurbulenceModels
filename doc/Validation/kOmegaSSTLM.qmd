@@ -2,11 +2,160 @@
 title: "`kOmegaSSTLM` validation"
 ---
 
+The `kOmegaSSTLM` model [@Langtry2009] is from standard OpenFOAM distribution.
+
+
 # T3A case
-see [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3a).
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3a).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/T3A/kOmegaSSTLM/results/cf_plot_T3A_kOmegaSSTLM.png)
 
 ![Turbulence intensity](/testCases/T3A/kOmegaSSTLM/results/tu_plot_T3A_kOmegaSSTLM.png)
 :::
+
+
+# T3A- case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3am).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3AM/kOmegaSSTLM/results/cf_plot_T3AM_kOmegaSSTLM.png)
+
+![Turbulence intensity](/testCases/T3AM/kOmegaSSTLM/results/tu_plot_T3AM_kOmegaSSTLM.png)
+:::
+
+
+# T3B case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3b).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3B/kOmegaSSTLM/results/cf_plot_T3B_kOmegaSSTLM.png)
+
+![Turbulence intensity](/testCases/T3B/kOmegaSSTLM/results/tu_plot_T3B_kOmegaSSTLM.png)
+:::
+
+
+# T3C1 case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3c1).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3C1/kOmegaSSTLM/results/cf_plot_T3C1_kOmegaSSTLM.png)
+
+![Turbulence intensity](/testCases/T3C1/kOmegaSSTLM/results/tu_plot_T3C1_kOmegaSSTLM.png)
+
+![Freestream velocity](/testCases/T3C1/kOmegaSSTLM/results/u_plot_T3C1_kOmegaSSTLM.png)
+:::
+
+
+# T3C2 case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3c2).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3C2/kOmegaSSTLM/results/cf_plot_T3C2_kOmegaSSTLM.png)
+
+![Turbulence intensity](/testCases/T3C2/kOmegaSSTLM/results/tu_plot_T3C2_kOmegaSSTLM.png)
+
+![Freestream velocity](/testCases/T3C2/kOmegaSSTLM/results/u_plot_T3C2_kOmegaSSTLM.png)
+:::
+
+
+# T3C3 case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3c3).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3C3/kOmegaSSTLM/results/cf_plot_T3C3_kOmegaSSTLM.png)
+
+![Turbulence intensity](/testCases/T3C3/kOmegaSSTLM/results/tu_plot_T3C3_kOmegaSSTLM.png)
+
+![Freestream velocity](/testCases/T3C3/kOmegaSSTLM/results/u_plot_T3C3_kOmegaSSTLM.png)
+:::
+
+
+# T3C4 case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3c4).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3C4/kOmegaSSTLM/results/cf_plot_T3C4_kOmegaSSTLM.png)
+
+![Turbulence intensity](/testCases/T3C4/kOmegaSSTLM/results/tu_plot_T3C4_kOmegaSSTLM.png)
+
+![Freestream velocity](/testCases/T3C4/kOmegaSSTLM/results/u_plot_T3C4_kOmegaSSTLM.png)
+:::
+
+
+# T3C5 case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3c5).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3C5/kOmegaSSTLM/results/cf_plot_T3C5_kOmegaSSTLM.png)
+
+![Turbulence intensity](/testCases/T3C5/kOmegaSSTLM/results/tu_plot_T3C5_kOmegaSSTLM.png)
+
+![Freestream velocity](/testCases/T3C5/kOmegaSSTLM/results/u_plot_T3C5_kOmegaSSTLM.png)
+:::
+
+# Hulgren and Volino cases
+
+## Re=300 000, highTI {#sec-validation-hv300h}
+See [`Flat plate transitional boundary layer with separation`](flatPlateTransitionalBoundaryLayerWithSeparation.qmd#sec-validation-hv300h).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re300k_highTI/kOmegaSSTLM/results/cf_plot_Re300k_highTI_kOmegaSSTLM.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re300k_highTI/kOmegaSSTLM/results/Tu_plot_Re300k_highTI_kOmegaSSTLM.png)
+
+![External velocity](/testCases/HultgrenVolino/Re300k_highTI/kOmegaSSTLM/results/Ue_plot_Re300k_highTI_kOmegaSSTLM.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re300k_highTI/kOmegaSSTLM/results/cp_plot_Re300k_highTI_kOmegaSSTLM.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re300k_highTI/kOmegaSSTLM/results/U_Re300k_highTI_kOmegaSSTLM.png)
+
+
+## Re=300 000, lowTI {#sec-validation-hv300l}
+See [`Flat plate transitional boundary layer with separation`](flatPlateTransitionalBoundaryLayerWithSeparation.qmd#sec-validation-hv300l).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re300k_lowTI/kOmegaSSTLM/results/cf_plot_Re300k_lowTI_kOmegaSSTLM.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re300k_lowTI/kOmegaSSTLM/results/Tu_plot_Re300k_lowTI_kOmegaSSTLM.png)
+
+![External velocity](/testCases/HultgrenVolino/Re300k_lowTI/kOmegaSSTLM/results/Ue_plot_Re300k_lowTI_kOmegaSSTLM.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re300k_lowTI/kOmegaSSTLM/results/cp_plot_Re300k_lowTI_kOmegaSSTLM.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re300k_lowTI/kOmegaSSTLM/results/U_Re300k_lowTI_kOmegaSSTLM.png)
+
+
+## Re=50 000, highTI {#sec-validation-hv50h}
+See [`Flat plate transitional boundary layer with separation`](flatPlateTransitionalBoundaryLayerWithSeparation.qmd#sec-validation-hv50h).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re50k_highTI/kOmegaSSTLM/results/cf_plot_Re50k_highTI_kOmegaSSTLM.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re50k_highTI/kOmegaSSTLM/results/Tu_plot_Re50k_highTI_kOmegaSSTLM.png)
+
+![External velocity](/testCases/HultgrenVolino/Re50k_highTI/kOmegaSSTLM/results/Ue_plot_Re50k_highTI_kOmegaSSTLM.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re50k_highTI/kOmegaSSTLM/results/cp_plot_Re50k_highTI_kOmegaSSTLM.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re50k_highTI/kOmegaSSTLM/results/U_Re50k_highTI_kOmegaSSTLM.png)
+
+
+## Re=50 000, lowTI {#sec-validation-hv50l}
+See [`Flat plate transitional boundary layer with separation`](flatPlateTransitionalBoundaryLayerWithSeparation.qmd#sec-validation-hv50l).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re50k_lowTI/kOmegaSSTLM/results/cf_plot_Re50k_lowTI_kOmegaSSTLM.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re50k_lowTI/kOmegaSSTLM/results/Tu_plot_Re50k_lowTI_kOmegaSSTLM.png)
+
+![External velocity](/testCases/HultgrenVolino/Re50k_lowTI/kOmegaSSTLM/results/Ue_plot_Re50k_lowTI_kOmegaSSTLM.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re50k_lowTI/kOmegaSSTLM/results/cp_plot_Re50k_lowTI_kOmegaSSTLM.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re50k_lowTI/kOmegaSSTLM/results/U_Re50k_lowTI_kOmegaSSTLM.png)
+

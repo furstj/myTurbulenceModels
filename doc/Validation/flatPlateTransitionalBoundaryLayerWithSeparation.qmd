@@ -1,3 +1,56 @@
 ---
 title: "Flat plate transitional boundary layer with separation"
 ---
+
+The separated transitional boundary layer was validated against Hulgren and Volino experiments, [@Volino2001]. The shape of the domain is digitized from the paper [@Suzen2003]. Experimental data were digitized either from the paper [@Suzen2003] (velocity profiles, pressure coefficient, freestream velocity) or from [@Menter2015] (friction coefficient).
+
+The domain spans from $x=0.28$m to $1.6$m. The inlet velocity profile is calculated as a cubic approximation to laminar boundary layer with given friction coefficient.
+
+Simulations were performed using a mesh with 312x70 and 312x89 cells for Re = 50 000 and Re = 300 000, respectively. The mesh is refined in the wall-normal direction to resolve the boundary layer. 
+
+The Reynolds number is related to a reference velocity at $x=1$m which is $U_{ref} = 0.75$ m/s for Re=50 000 and $U_{ref} = 4.5$ m/s for Re=300 000. The reference length is $L_{ref} = 1$m.
+
+
+# Re=300 000, highTI {#sec-validation-hv300h}
+
+Inlet boundary conditions at $x=0.28$m are set as follows:
+
+- $U = 5.0$ m/s
+- $Tu = 2.5$ %
+- $\nu_t/\nu = 100$
+
+- `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-hv300h)
+
+
+# Re=300 000, lowTI {#sec-validation-hv300l}
+
+Inlet boundary conditions at $x=0.28$m are set as follows:
+
+- $U = 5.0$ m/s
+- $Tu = 0.2$ %
+- $\nu_t/\nu = 1$
+
+- `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-hv300l)
+
+
+# Re=50 000, highTI {#sec-validation-hv50h}
+
+Inlet boundary conditions at $x=0.28$m are set as follows:
+
+- $U = 0.84$ m/s
+- $Tu = 2.5$ %
+- $\nu_t/\nu = 100$
+
+- `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-hv50h)
+
+
+# Re=50 000, lowTI {#sec-validation-hv50l}
+
+Inlet boundary conditions at $x=0.28$m are set as follows:
+
+- $U = 0.84$ m/s
+- $Tu = 0.2$ %
+- $\nu_t/\nu = 1$
+
+- `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-hv50l)
+

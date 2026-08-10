@@ -4,20 +4,15 @@ title: "Flat plate transitional boundary layer"
 
 The flat plate transitional boundary layer is a classic ERCOFTAC test case for validating transition and turbulence models. The description of the test case can be found in [`ERCOFTAC database`](http://cfd.mace.manchester.ac.uk/ercoftac/doku.php?id=cases:case020). 
 
-# T3A {#sec-validation-t3a}
-The rectangular domain used for computationsspans from $x=-0.15$m to $x=1$m and the height is $h=0.3$m. The wall leading edge is located at $x=0$m. 
+The computational domain is a rectangular box with a flat plate located at the bottom wall for T3A, T3A- and T3B cases. The T3C cases use the shape of the upper slip wall proposed by [@Suluksna2009]. The length of the plate is $L=1.7$m for T3A and T3C cases and $L=2.9$m for T3A- and T3B. The reference height of the domain is $h=0.3m$. 
 
-Inlet boundary conditions at $x=-0.15$m are set as follows:
-
-- $U = 5.4$ m/s
-- $Tu = 3.3$ %
-- $\nu_t/\nu = 12$
+The incompressible flow with constant density and constant viscosity $\nu = 1.5 \cdot 10^{-5} m^2/s$ is considered.
 
 The package provides three meshes:
 
-- `coarse` with 155x125 cells
-- `medium` with 310x250 cells
-- `fine` with 620x500 cells
+- `coarse` with 157x125 cells
+- `medium` with 314x250 cells
+- `fine` with 628x500 cells
 
 The simulation is performed by running
 ```bash
@@ -25,6 +20,98 @@ The simulation is performed by running
 ```
 for the medium mesh. The coarse and fine mesh can be used by replacing `medium` with `coarse` or `fine`. The `Allrun` script should produce plots of the skin friction coefficient $C_f$ and the freestream turbulence intensity $Tu$ along the flat plate together with experimental data from the ERCOFTAC database. 
 
+Results in this reports were obtained with medium mesh.
+
+# T3A {#sec-validation-t3a}
+Inlet boundary conditions at $x=-0.15$m are set as follows:
+
+- $U = 5.4$ m/s
+- $Tu = 3.3$ %
+- $\nu_t/\nu = 12$
+
 Following models are validated against the T3A test case:
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3a)
+
+
+# T3A- {#sec-validation-t3am}
+Inlet boundary conditions at $x=-0.15$m are set as follows:
+
+- $U = 19.8$ m/s
+- $Tu = 0.874$ %
+- $\nu_t/\nu = 8.72$
+
+Following models are validated against the T3A test case:
+
+- `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3am)
+
+
+# T3B {#sec-validation-t3b}
+Inlet boundary conditions at $x=-0.15$m are set as follows:
+
+- $U = 9.4$ m/s
+- $Tu = 6.5$ %
+- $\nu_t/\nu = 100$
+
+
+Following models are validated against the T3B test case:
+
+- `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3b)
+
+
+# T3C1 {#sec-validation-t3c1}
+Inlet boundary conditions at $x=-0.15$m are set as follows:
+
+- $U = 5.9$ m/s
+- $Tu = 7.78$ %
+- $\nu_t/\nu = 44$
+
+Following models are validated against the T3C1 test case:
+
+- `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3c1)
+
+
+# T3C2 {#sec-validation-t3c2}
+Inlet boundary conditions at $x=-0.15$m are set as follows:
+
+- $U = 5.0$ m/s
+- $Tu = 3.1$ %
+- $\nu_t/\nu = 9$
+
+Following models are validated against the T3C2 test case:
+
+- `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3c2)
+
+# T3C3 {#sec-validation-t3c3}
+Inlet boundary conditions at $x=-0.15$m are set as follows:
+
+- $U = 3.7$ m/s
+- $Tu = 3.1$ %
+- $\nu_t/\nu = 6$
+
+Following models are validated against the T3C3 test case:
+
+- `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3c3)
+
+# T3C4 {#sec-validation-t3c4}
+Inlet boundary conditions at $x=-0.15$m are set as follows:
+
+- $U = 1.25$ m/s
+- $Tu = 3.1$ %
+- $\nu_t/\nu = 2.5$
+
+Following models are validated against the T3C4 test case:
+
+- `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3c4)
+
+# T3C5 {#sec-validation-t3c5}
+Inlet boundary conditions at $x=-0.15$m are set as follows:
+
+- $U = 8.5$ m/s
+- $Tu = 3.7$ %
+- $\nu_t/\nu = 15$
+
+Following models are validated against the T3C5 test case:
+
+- `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3c5)
+

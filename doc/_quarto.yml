@@ -78,14 +78,12 @@ website:
           - text: "Flat plate transitional boundary layer with separation"
             href: Validation/flatPlateTransitionalBoundaryLayerWithSeparation.qmd
             
-            
-    html:
-      theme:
-        - cosmo
-        - brand
-      css: styles.css
-      toc: true
-      bibliography: references.bib
-
-
+format:            
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+    bibliography: references.bib
 
