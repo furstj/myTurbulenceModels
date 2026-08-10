@@ -114,6 +114,7 @@ The original k-ω TNT model is modified by using the above mentioned EARSM formu
 # EARSMlm2009 {#sec-earsmlm2009}
 The `EARSMlm2009` is a transition and turbulence model based on the EARSM formulation and the Langtry-Menter γ-Reθt transition model [@Langtry2009]. The model uses the same $F_1$ damping function and coefficient set as the `EARSMko2005` model.
 
+Validation of the model is provided at the [`EARSMlm2009` validation](../Validation/EARSMlm2009.qmd) page.
 
 # EARSMgammaSST {#sec-earsgammasst}
 
