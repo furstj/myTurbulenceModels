@@ -26,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -45,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d55203e86ba1a699a1ae3c3642d34712.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-261e60fdf64a0e003ec2340fd2db30d7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,9 +94,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -363,7 +383,29 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#t3a-case" id="toc-t3a-case" class="nav-link active" data-scroll-target="#t3a-case">T3A case</a></li>
+  <li><a href="#t3a--case" id="toc-t3a--case" class="nav-link" data-scroll-target="#t3a--case">T3A- case</a></li>
+  <li><a href="#t3b-case" id="toc-t3b-case" class="nav-link" data-scroll-target="#t3b-case">T3B case</a></li>
+  <li><a href="#t3c1-case" id="toc-t3c1-case" class="nav-link" data-scroll-target="#t3c1-case">T3C1 case</a></li>
+  <li><a href="#t3c2-case" id="toc-t3c2-case" class="nav-link" data-scroll-target="#t3c2-case">T3C2 case</a></li>
+  <li><a href="#t3c3-case" id="toc-t3c3-case" class="nav-link" data-scroll-target="#t3c3-case">T3C3 case</a></li>
+  <li><a href="#t3c4-case" id="toc-t3c4-case" class="nav-link" data-scroll-target="#t3c4-case">T3C4 case</a></li>
+  <li><a href="#t3c5-case" id="toc-t3c5-case" class="nav-link" data-scroll-target="#t3c5-case">T3C5 case</a></li>
+  <li><a href="#hulgren-and-volino-cases" id="toc-hulgren-and-volino-cases" class="nav-link" data-scroll-target="#hulgren-and-volino-cases">Hulgren and Volino cases</a>
+  <ul class="collapse">
+  <li><a href="#sec-validation-hv300h" id="toc-sec-validation-hv300h" class="nav-link" data-scroll-target="#sec-validation-hv300h">Re=300 000, highTI</a></li>
+  <li><a href="#sec-validation-hv300l" id="toc-sec-validation-hv300l" class="nav-link" data-scroll-target="#sec-validation-hv300l">Re=300 000, lowTI</a></li>
+  <li><a href="#sec-validation-hv50h" id="toc-sec-validation-hv50h" class="nav-link" data-scroll-target="#sec-validation-hv50h">Re=50 000, highTI</a></li>
+  <li><a href="#sec-validation-hv50l" id="toc-sec-validation-hv50l" class="nav-link" data-scroll-target="#sec-validation-hv50l">Re=50 000, lowTI</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -386,9 +428,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>The <code>kOmegaSSTLM</code> model <span class="citation" data-cites="Langtry2009">(<a href="#ref-Langtry2009" role="doc-biblioref">Langtry and Menter 2009</a>)</span> is from standard OpenFOAM distribution.</p>
 <section id="t3a-case" class="level1">
 <h1>T3A case</h1>
-<p>see <a href="../Validation/flatPlateTransitionalBoundaryLayer.html#sec-validation-t3a"><code>Flat plate transitional boundary layer</code></a>.</p>
+<p>See <a href="../Validation/flatPlateTransitionalBoundaryLayer.html#sec-validation-t3a"><code>Flat plate transitional boundary layer</code></a>.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -412,7 +455,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="t3a--case" class="level1">
 <h1>T3A- case</h1>
-<p>see <a href="../Validation/flatPlateTransitionalBoundaryLayer.html#sec-validation-t3am"><code>Flat plate transitional boundary layer</code></a>.</p>
+<p>See <a href="../Validation/flatPlateTransitionalBoundaryLayer.html#sec-validation-t3am"><code>Flat plate transitional boundary layer</code></a>.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -436,7 +479,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="t3b-case" class="level1">
 <h1>T3B case</h1>
-<p>see <a href="../Validation/flatPlateTransitionalBoundaryLayer.html#sec-validation-t3b"><code>Flat plate transitional boundary layer</code></a>.</p>
+<p>See <a href="../Validation/flatPlateTransitionalBoundaryLayer.html#sec-validation-t3b"><code>Flat plate transitional boundary layer</code></a>.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -457,11 +500,381 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="t3c1-case" class="level1">
+<h1>T3C1 case</h1>
+<p>See <a href="../Validation/flatPlateTransitionalBoundaryLayer.html#sec-validation-t3c1"><code>Flat plate transitional boundary layer</code></a>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C1/kOmegaSSTLM/results/cf_plot_T3C1_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Skin friction coefficient</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C1/kOmegaSSTLM/results/tu_plot_T3C1_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Turbulence intensity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C1/kOmegaSSTLM/results/u_plot_T3C1_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Freestream velocity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="t3c2-case" class="level1">
+<h1>T3C2 case</h1>
+<p>See <a href="../Validation/flatPlateTransitionalBoundaryLayer.html#sec-validation-t3c2"><code>Flat plate transitional boundary layer</code></a>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C2/kOmegaSSTLM/results/cf_plot_T3C2_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Skin friction coefficient</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C2/kOmegaSSTLM/results/tu_plot_T3C2_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Turbulence intensity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C2/kOmegaSSTLM/results/u_plot_T3C2_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Freestream velocity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="t3c3-case" class="level1">
+<h1>T3C3 case</h1>
+<p>See <a href="../Validation/flatPlateTransitionalBoundaryLayer.html#sec-validation-t3c3"><code>Flat plate transitional boundary layer</code></a>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C3/kOmegaSSTLM/results/cf_plot_T3C3_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Skin friction coefficient</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C3/kOmegaSSTLM/results/tu_plot_T3C3_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Turbulence intensity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C3/kOmegaSSTLM/results/u_plot_T3C3_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Freestream velocity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="t3c4-case" class="level1">
+<h1>T3C4 case</h1>
+<p>See <a href="../Validation/flatPlateTransitionalBoundaryLayer.html#sec-validation-t3c4"><code>Flat plate transitional boundary layer</code></a>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C4/kOmegaSSTLM/results/cf_plot_T3C4_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Skin friction coefficient</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C4/kOmegaSSTLM/results/tu_plot_T3C4_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Turbulence intensity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C4/kOmegaSSTLM/results/u_plot_T3C4_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Freestream velocity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="t3c5-case" class="level1">
+<h1>T3C5 case</h1>
+<p>See <a href="../Validation/flatPlateTransitionalBoundaryLayer.html#sec-validation-t3c5"><code>Flat plate transitional boundary layer</code></a>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C5/kOmegaSSTLM/results/cf_plot_T3C5_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Skin friction coefficient</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C5/kOmegaSSTLM/results/tu_plot_T3C5_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Turbulence intensity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/T3C5/kOmegaSSTLM/results/u_plot_T3C5_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Freestream velocity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="hulgren-and-volino-cases" class="level1">
+<h1>Hulgren and Volino cases</h1>
+<section id="sec-validation-hv300h" class="level2">
+<h2 class="anchored" data-anchor-id="sec-validation-hv300h">Re=300 000, highTI</h2>
+<p>See <a href="../Validation/flatPlateTransitionalBoundaryLayerWithSeparation.html#sec-validation-hv300h"><code>Flat plate transitional boundary layer with separation</code></a>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re300k_highTI/kOmegaSSTLM/results/cf_plot_Re300k_highTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Skin friction coefficient</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re300k_highTI/kOmegaSSTLM/results/Tu_plot_Re300k_highTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Turbulence intensity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re300k_highTI/kOmegaSSTLM/results/Ue_plot_Re300k_highTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>External velocity</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re300k_highTI/kOmegaSSTLM/results/cp_plot_Re300k_highTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Pressure coefficient</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re300k_highTI/kOmegaSSTLM/results/U_Re300k_highTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Velocity profiles</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-validation-hv300l" class="level2">
+<h2 class="anchored" data-anchor-id="sec-validation-hv300l">Re=300 000, lowTI</h2>
+<p>See <a href="../Validation/flatPlateTransitionalBoundaryLayerWithSeparation.html#sec-validation-hv300l"><code>Flat plate transitional boundary layer with separation</code></a>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re300k_lowTI/kOmegaSSTLM/results/cf_plot_Re300k_lowTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Skin friction coefficient</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re300k_lowTI/kOmegaSSTLM/results/Tu_plot_Re300k_lowTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Turbulence intensity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re300k_lowTI/kOmegaSSTLM/results/Ue_plot_Re300k_lowTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>External velocity</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re300k_lowTI/kOmegaSSTLM/results/cp_plot_Re300k_lowTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Pressure coefficient</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re300k_lowTI/kOmegaSSTLM/results/U_Re300k_lowTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Velocity profiles</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-validation-hv50h" class="level2">
+<h2 class="anchored" data-anchor-id="sec-validation-hv50h">Re=50 000, highTI</h2>
+<p>See <a href="../Validation/flatPlateTransitionalBoundaryLayerWithSeparation.html#sec-validation-hv50h"><code>Flat plate transitional boundary layer with separation</code></a>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re50k_highTI/kOmegaSSTLM/results/cf_plot_Re50k_highTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Skin friction coefficient</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re50k_highTI/kOmegaSSTLM/results/Tu_plot_Re50k_highTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Turbulence intensity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re50k_highTI/kOmegaSSTLM/results/Ue_plot_Re50k_highTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>External velocity</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re50k_highTI/kOmegaSSTLM/results/cp_plot_Re50k_highTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Pressure coefficient</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re50k_highTI/kOmegaSSTLM/results/U_Re50k_highTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Velocity profiles</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-validation-hv50l" class="level2">
+<h2 class="anchored" data-anchor-id="sec-validation-hv50l">Re=50 000, lowTI</h2>
+<p>See <a href="../Validation/flatPlateTransitionalBoundaryLayerWithSeparation.html#sec-validation-hv50l"><code>Flat plate transitional boundary layer with separation</code></a>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re50k_lowTI/kOmegaSSTLM/results/cf_plot_Re50k_lowTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Skin friction coefficient</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re50k_lowTI/kOmegaSSTLM/results/Tu_plot_Re50k_lowTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Turbulence intensity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re50k_lowTI/kOmegaSSTLM/results/Ue_plot_Re50k_lowTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>External velocity</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re50k_lowTI/kOmegaSSTLM/results/cp_plot_Re50k_lowTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Pressure coefficient</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../testCases/HultgrenVolino/Re50k_lowTI/kOmegaSSTLM/results/U_Re50k_lowTI_kOmegaSSTLM.png" class="img-fluid figure-img"></p>
+<figcaption>Velocity profiles</figcaption>
+</figure>
+</div>
+
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Langtry2009" class="csl-entry" role="listitem">
+Langtry, Robin Blair, and Florian R. Menter. 2009. <span>“Correlation-Based Transition Modeling for Unstructured Parallelized Computational Fluid Dynamics Codes.”</span> <em>AIAA Journal</em> 47: 2894–906. <a href="https://doi.org/10.2514/1.42362">https://doi.org/10.2514/1.42362</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

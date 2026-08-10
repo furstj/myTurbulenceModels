@@ -61,7 +61,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -80,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d55203e86ba1a699a1ae3c3642d34712.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-261e60fdf64a0e003ec2340fd2db30d7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -139,9 +158,10 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -425,7 +445,22 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sec-validation-t3a" id="toc-sec-validation-t3a" class="nav-link active" data-scroll-target="#sec-validation-t3a">T3A</a></li>
+  <li><a href="#sec-validation-t3am" id="toc-sec-validation-t3am" class="nav-link" data-scroll-target="#sec-validation-t3am">T3A-</a></li>
+  <li><a href="#sec-validation-t3b" id="toc-sec-validation-t3b" class="nav-link" data-scroll-target="#sec-validation-t3b">T3B</a></li>
+  <li><a href="#sec-validation-t3c1" id="toc-sec-validation-t3c1" class="nav-link" data-scroll-target="#sec-validation-t3c1">T3C1</a></li>
+  <li><a href="#sec-validation-t3c2" id="toc-sec-validation-t3c2" class="nav-link" data-scroll-target="#sec-validation-t3c2">T3C2</a></li>
+  <li><a href="#sec-validation-t3c3" id="toc-sec-validation-t3c3" class="nav-link" data-scroll-target="#sec-validation-t3c3">T3C3</a></li>
+  <li><a href="#sec-validation-t3c4" id="toc-sec-validation-t3c4" class="nav-link" data-scroll-target="#sec-validation-t3c4">T3C4</a></li>
+  <li><a href="#sec-validation-t3c5" id="toc-sec-validation-t3c5" class="nav-link" data-scroll-target="#sec-validation-t3c5">T3C5</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -449,33 +484,139 @@ window.Quarto = {
 
 
 <p>The flat plate transitional boundary layer is a classic ERCOFTAC test case for validating transition and turbulence models. The description of the test case can be found in <a href="http://cfd.mace.manchester.ac.uk/ercoftac/doku.php?id=cases:case020"><code>ERCOFTAC database</code></a>.</p>
+<p>The computational domain is a rectangular box with a flat plate located at the bottom wall for T3A, T3A- and T3B cases. The T3C cases use the shape of the upper slip wall proposed by <span class="citation" data-cites="Suluksna2009">(<a href="#ref-Suluksna2009" role="doc-biblioref">Suluksna et al. 2009</a>)</span>. The length of the plate is <span class="math inline">\(L=1.7\)</span>m for T3A and T3C cases and <span class="math inline">\(L=2.9\)</span>m for T3A- and T3B. The reference height of the domain is <span class="math inline">\(h=0.3m\)</span>.</p>
+<p>The incompressible flow with constant density and constant viscosity <span class="math inline">\(\nu = 1.5 \cdot 10^{-5} m^2/s\)</span> is considered.</p>
+<p>The package provides three meshes:</p>
+<ul>
+<li><code>coarse</code> with 157x125 cells</li>
+<li><code>medium</code> with 314x250 cells</li>
+<li><code>fine</code> with 628x500 cells</li>
+</ul>
+<p>The simulation is performed by running</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./Allrun</span> medium</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>for the medium mesh. The coarse and fine mesh can be used by replacing <code>medium</code> with <code>coarse</code> or <code>fine</code>. The <code>Allrun</code> script should produce plots of the skin friction coefficient <span class="math inline">\(C_f\)</span> and the freestream turbulence intensity <span class="math inline">\(Tu\)</span> along the flat plate together with experimental data from the ERCOFTAC database.</p>
+<p>Results in this reports were obtained with medium mesh.</p>
 <section id="sec-validation-t3a" class="level1">
 <h1>T3A</h1>
-<p>The rectangular domain used for computationsspans from <span class="math inline">\(x=-0.15\)</span>m to <span class="math inline">\(x=1\)</span>m and the height is <span class="math inline">\(h=0.3\)</span>m. The wall leading edge is located at <span class="math inline">\(x=0\)</span>m.</p>
 <p>Inlet boundary conditions at <span class="math inline">\(x=-0.15\)</span>m are set as follows:</p>
 <ul>
 <li><span class="math inline">\(U = 5.4\)</span> m/s</li>
 <li><span class="math inline">\(Tu = 3.3\)</span> %</li>
 <li><span class="math inline">\(\nu_t/\nu = 12\)</span></li>
 </ul>
-<p>The package provides three meshes:</p>
-<ul>
-<li><code>coarse</code> with 155x125 cells</li>
-<li><code>medium</code> with 310x250 cells</li>
-<li><code>fine</code> with 620x500 cells</li>
-</ul>
-<p>The simulation is performed by running</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./Allrun</span> medium</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>for the medium mesh. The coarse and fine mesh can be used by replacing <code>medium</code> with <code>coarse</code> or <code>fine</code>. The <code>Allrun</code> script should produce plots of the skin friction coefficient <span class="math inline">\(C_f\)</span> and the freestream turbulence intensity <span class="math inline">\(Tu\)</span> along the flat plate together with experimental data from the ERCOFTAC database.</p>
 <p>Following models are validated against the T3A test case:</p>
 <ul>
 <li><code>kOmegaSSTLM</code>, results can be found in <a href="../Validation/kOmegaSSTLM.html#sec-validation-t3a"><code>kOmegaSSTLM</code> validation</a></li>
+<li><a href="../RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a>, results can be found in <a href="../Validation/EARSMlm2009.html#sec-validation-t3a"><code>EARSMlm2009</code> validation</a></li>
 </ul>
+</section>
+<section id="sec-validation-t3am" class="level1">
+<h1>T3A-</h1>
+<p>Inlet boundary conditions at <span class="math inline">\(x=-0.15\)</span>m are set as follows:</p>
+<ul>
+<li><span class="math inline">\(U = 19.8\)</span> m/s</li>
+<li><span class="math inline">\(Tu = 0.874\)</span> %</li>
+<li><span class="math inline">\(\nu_t/\nu = 8.72\)</span></li>
+</ul>
+<p>Following models are validated against the T3A test case:</p>
+<ul>
+<li><code>kOmegaSSTLM</code>, results can be found in <a href="../Validation/kOmegaSSTLM.html#sec-validation-t3am"><code>kOmegaSSTLM</code> validation</a></li>
+<li><a href="../RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a>, results can be found in <a href="../Validation/EARSMlm2009.html#sec-validation-t3a"><code>EARSMlm2009</code> validation</a></li>
+</ul>
+</section>
+<section id="sec-validation-t3b" class="level1">
+<h1>T3B</h1>
+<p>Inlet boundary conditions at <span class="math inline">\(x=-0.15\)</span>m are set as follows:</p>
+<ul>
+<li><span class="math inline">\(U = 9.4\)</span> m/s</li>
+<li><span class="math inline">\(Tu = 6.5\)</span> %</li>
+<li><span class="math inline">\(\nu_t/\nu = 100\)</span></li>
+</ul>
+<p>Following models are validated against the T3B test case:</p>
+<ul>
+<li><code>kOmegaSSTLM</code>, results can be found in <a href="../Validation/kOmegaSSTLM.html#sec-validation-t3b"><code>kOmegaSSTLM</code> validation</a></li>
+<li><a href="../RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a>, results can be found in <a href="../Validation/EARSMlm2009.html#sec-validation-t3a"><code>EARSMlm2009</code> validation</a></li>
+</ul>
+</section>
+<section id="sec-validation-t3c1" class="level1">
+<h1>T3C1</h1>
+<p>Inlet boundary conditions at <span class="math inline">\(x=-0.15\)</span>m are set as follows:</p>
+<ul>
+<li><span class="math inline">\(U = 5.9\)</span> m/s</li>
+<li><span class="math inline">\(Tu = 7.78\)</span> %</li>
+<li><span class="math inline">\(\nu_t/\nu = 44\)</span></li>
+</ul>
+<p>Following models are validated against the T3C1 test case:</p>
+<ul>
+<li><code>kOmegaSSTLM</code>, results can be found in <a href="../Validation/kOmegaSSTLM.html#sec-validation-t3c1"><code>kOmegaSSTLM</code> validation</a></li>
+<li><a href="../RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a>, results can be found in <a href="../Validation/EARSMlm2009.html#sec-validation-t3a"><code>EARSMlm2009</code> validation</a></li>
+</ul>
+</section>
+<section id="sec-validation-t3c2" class="level1">
+<h1>T3C2</h1>
+<p>Inlet boundary conditions at <span class="math inline">\(x=-0.15\)</span>m are set as follows:</p>
+<ul>
+<li><span class="math inline">\(U = 5.0\)</span> m/s</li>
+<li><span class="math inline">\(Tu = 3.1\)</span> %</li>
+<li><span class="math inline">\(\nu_t/\nu = 9\)</span></li>
+</ul>
+<p>Following models are validated against the T3C2 test case:</p>
+<ul>
+<li><code>kOmegaSSTLM</code>, results can be found in <a href="../Validation/kOmegaSSTLM.html#sec-validation-t3c2"><code>kOmegaSSTLM</code> validation</a></li>
+<li><a href="../RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a>, results can be found in <a href="../Validation/EARSMlm2009.html#sec-validation-t3a"><code>EARSMlm2009</code> validation</a></li>
+</ul>
+</section>
+<section id="sec-validation-t3c3" class="level1">
+<h1>T3C3</h1>
+<p>Inlet boundary conditions at <span class="math inline">\(x=-0.15\)</span>m are set as follows:</p>
+<ul>
+<li><span class="math inline">\(U = 3.7\)</span> m/s</li>
+<li><span class="math inline">\(Tu = 3.1\)</span> %</li>
+<li><span class="math inline">\(\nu_t/\nu = 6\)</span></li>
+</ul>
+<p>Following models are validated against the T3C3 test case:</p>
+<ul>
+<li><code>kOmegaSSTLM</code>, results can be found in <a href="../Validation/kOmegaSSTLM.html#sec-validation-t3c3"><code>kOmegaSSTLM</code> validation</a></li>
+<li><a href="../RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a>, results can be found in <a href="../Validation/EARSMlm2009.html#sec-validation-t3a"><code>EARSMlm2009</code> validation</a></li>
+</ul>
+</section>
+<section id="sec-validation-t3c4" class="level1">
+<h1>T3C4</h1>
+<p>Inlet boundary conditions at <span class="math inline">\(x=-0.15\)</span>m are set as follows:</p>
+<ul>
+<li><span class="math inline">\(U = 1.25\)</span> m/s</li>
+<li><span class="math inline">\(Tu = 3.1\)</span> %</li>
+<li><span class="math inline">\(\nu_t/\nu = 2.5\)</span></li>
+</ul>
+<p>Following models are validated against the T3C4 test case:</p>
+<ul>
+<li><code>kOmegaSSTLM</code>, results can be found in <a href="../Validation/kOmegaSSTLM.html#sec-validation-t3c4"><code>kOmegaSSTLM</code> validation</a></li>
+<li><a href="../RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a>, results can be found in <a href="../Validation/EARSMlm2009.html#sec-validation-t3a"><code>EARSMlm2009</code> validation</a></li>
+</ul>
+</section>
+<section id="sec-validation-t3c5" class="level1">
+<h1>T3C5</h1>
+<p>Inlet boundary conditions at <span class="math inline">\(x=-0.15\)</span>m are set as follows:</p>
+<ul>
+<li><span class="math inline">\(U = 8.5\)</span> m/s</li>
+<li><span class="math inline">\(Tu = 3.7\)</span> %</li>
+<li><span class="math inline">\(\nu_t/\nu = 15\)</span></li>
+</ul>
+<p>Following models are validated against the T3C5 test case:</p>
+<ul>
+<li><code>kOmegaSSTLM</code>, results can be found in <a href="../Validation/kOmegaSSTLM.html#sec-validation-t3c5"><code>kOmegaSSTLM</code> validation</a></li>
+<li><a href="../RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a>, results can be found in <a href="../Validation/EARSMlm2009.html#sec-validation-t3a"><code>EARSMlm2009</code> validation</a></li>
+</ul>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Suluksna2009" class="csl-entry" role="listitem">
+Suluksna, Keerati, Pramote Dechaumphai, and Ekachai Juntasaro. 2009. <span>“Correlations for Modeling Transitional Boundary Layers Under Influences of Freestream Turbulence and Pressure Gradient.”</span> <em>International Journal of Heat and Fluid Flow</em> 30 (February): 66–75. <a href="https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004">https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

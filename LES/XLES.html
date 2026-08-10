@@ -26,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -45,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d55203e86ba1a699a1ae3c3642d34712.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-261e60fdf64a0e003ec2340fd2db30d7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,9 +123,10 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -390,7 +410,17 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#model-equations" id="toc-model-equations" class="nav-link active" data-scroll-target="#model-equations">Model Equations</a></li>
+  <li><a href="#model-coefficients" id="toc-model-coefficients" class="nav-link" data-scroll-target="#model-coefficients">Model Coefficients</a></li>
+  <li><a href="#notes-on-openfoam-implementation" id="toc-notes-on-openfoam-implementation" class="nav-link" data-scroll-target="#notes-on-openfoam-implementation">Notes on OpenFOAM implementation</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -413,7 +443,7 @@ window.Quarto = {
 </header>
 
 
-<p>The <code>X-LES</code> (eXtra Large Eddy Simulation) model is an advanced LES turbulence model developed by J. C. Kok and H. Ven <span class="citation" data-cites="Kok2010">[@Kok2010]</span>. It extends the traditional LES approach by incorporating additional subgrid-scale modeling techniques to better capture the effects of unresolved scales on the resolved flow field. The X-LES model is a particular variant of DES (Detached Eddy Simulation) that uses a combination of two-equation k-ω RANS model with k-equation LES model. In order to speed up creation of small scale structures, a stochastic subgrid-scale model is used.</p>
+<p>The <code>X-LES</code> (eXtra Large Eddy Simulation) model is an advanced LES turbulence model developed by J. C. Kok and H. Ven <span class="citation" data-cites="Kok2010">(<a href="#ref-Kok2010" role="doc-biblioref">Kok and Ven 2010</a>)</span>. It extends the traditional LES approach by incorporating additional subgrid-scale modeling techniques to better capture the effects of unresolved scales on the resolved flow field. The X-LES model is a particular variant of DES (Detached Eddy Simulation) that uses a combination of two-equation k-ω RANS model with k-equation LES model. In order to speed up creation of small scale structures, a stochastic subgrid-scale model is used.</p>
 <section id="model-equations" class="level2">
 <h2 class="anchored" data-anchor-id="model-equations">Model Equations</h2>
 <p>The RANS part of the X-LES model is based on the TNT model described in the <a href="../RANS/kOmegaTNT.html"><code>kOmegaTNT</code></a> documentation: <span class="math display">\[
@@ -436,7 +466,7 @@ l_t = \min\left( C_{DES} \Delta, \frac{k^{1/2}}{\beta^* \omega} \right),
 <p>and the turbulent viscosity is computed as: <span class="math display">\[
 \nu_t = \beta^* l_t \sqrt{k}.
 \]</span></p>
-<p>The model contains also an optional stochastic forcing term to enhance the generation of small scale structures in LES mode, as described in <span class="citation" data-cites="Kok2010">@Kok2010</span>. In that case, the turbulent viscosity is calculated as: <span class="math display">\[
+<p>The model contains also an optional stochastic forcing term to enhance the generation of small scale structures in LES mode, as described in <span class="citation" data-cites="Kok2010">Kok and Ven (<a href="#ref-Kok2010" role="doc-biblioref">2010</a>)</span>. In that case, the turbulent viscosity is calculated as: <span class="math display">\[
 \nu_t = \begin{cases}
 \frac{k}{\omega} &amp; \text{if } l_t &lt; C_{DES} \Delta (\text{ i.e. in RANS region} ), \\
 \xi^2 \beta^* l_t \sqrt{k} &amp; \text{if } l_t = C_{DES} \Delta (\text{ i.e. in LES region} ),
@@ -463,9 +493,14 @@ l_t = \min\left( C_1 \Delta, \frac{k^{1/2}}{\omega} \right).
 \]</span> with <span class="math inline">\(C_1 = C_{DES} \beta^*\)</span>. Other quantities are changed accordingly. Moreover, the default value of <span class="math inline">\(C_{DES}\)</span> was set to 0.65 in the OpenFOAM implementation.</p>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Kok2010" class="csl-entry" role="listitem">
+Kok, J. C., and H. Ven. 2010. <em>Destabilizing Free Shear Layers in x-LES Using a Stochastic Subgrid-Scale Model</em>. <a href="https://doi.org/10.1007/978-3-642-14168-3_15">https://doi.org/10.1007/978-3-642-14168-3_15</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

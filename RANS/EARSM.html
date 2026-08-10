@@ -26,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -45,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d55203e86ba1a699a1ae3c3642d34712.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-261e60fdf64a0e003ec2340fd2db30d7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,9 +123,10 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -392,7 +412,22 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#common-constitutive-relations-for-earsm-models" id="toc-common-constitutive-relations-for-earsm-models" class="nav-link active" data-scroll-target="#common-constitutive-relations-for-earsm-models">Common constitutive relations for EARSM models</a>
+  <ul class="collapse">
+  <li><a href="#model-coefficients" id="toc-model-coefficients" class="nav-link" data-scroll-target="#model-coefficients">Model coefficients</a></li>
+  </ul></li>
+  <li><a href="#sec-earsmko2005" id="toc-sec-earsmko2005" class="nav-link" data-scroll-target="#sec-earsmko2005">EARSMko2005</a></li>
+  <li><a href="#sec-earsmtnt" id="toc-sec-earsmtnt" class="nav-link" data-scroll-target="#sec-earsmtnt">EARSMtnt</a></li>
+  <li><a href="#sec-earsmlm2009" id="toc-sec-earsmlm2009" class="nav-link" data-scroll-target="#sec-earsmlm2009">EARSMlm2009</a></li>
+  <li><a href="#sec-earsgammasst" id="toc-sec-earsgammasst" class="nav-link" data-scroll-target="#sec-earsgammasst">EARSMgammaSST</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -415,7 +450,7 @@ window.Quarto = {
 </header>
 
 
-<p>The <code>EARSM</code> (Explicit Algebraic Reynolds Stress) models is a class of RANS turbulence models developed by Wallin and Johanson <span class="citation" data-cites="Wallin2000">[@Wallin2000]</span>. It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models.</p>
+<p>The <code>EARSM</code> (Explicit Algebraic Reynolds Stress) models is a class of RANS turbulence models developed by Wallin and Johanson <span class="citation" data-cites="Wallin2000">(<a href="#ref-Wallin2000" role="doc-biblioref">Wallin and Johanson 2000</a>)</span>. It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models.</p>
 <p>The EARSM formulation consists of non-linear formulation of the Reynolds stress tensor, which is expressed in terms of the mean strain-rate and rotation-rate tensors. The model is closed by an two-equation k-ω turbulence model.The model is particularly suitable for flows with strong streamline curvature, rotation, and separation, where traditional linear eddy-viscosity models may fail to provide accurate predictions.</p>
 <section id="common-constitutive-relations-for-earsm-models" class="level1">
 <h1>Common constitutive relations for EARSM models</h1>
@@ -478,7 +513,7 @@ N^{eq} &amp;= \frac{9c_1}{4} = \frac{81}{20}.
 </section>
 <section id="sec-earsmko2005" class="level1">
 <h1>EARSMko2005</h1>
-<p>The <code>EARSMko2005</code> proposed by Hellsten <span class="citation" data-cites="Hellsten2005">[@Hellsten2005]</span> uses a modified version of k-ω SST turbulence model <span class="citation" data-cites="Menter2003">[@Menter2003]</span> as the base model. The current implementation uses the <code>kOmegaSST</code> model from the OpenFOAM library with the following modificatiions:</p>
+<p>The <code>EARSMko2005</code> proposed by Hellsten <span class="citation" data-cites="Hellsten2005">(<a href="#ref-Hellsten2005" role="doc-biblioref">Hellsten 2005</a>)</span> uses a modified version of k-ω SST turbulence model <span class="citation" data-cites="Menter2003">(<a href="#ref-Menter2003" role="doc-biblioref">Menter et al. 2003</a>)</span> as the base model. The current implementation uses the <code>kOmegaSST</code> model from the OpenFOAM library with the following modificatiions:</p>
 <ul>
 <li>the Reynolds stress tensor is computed using the EARSM formulation described above,</li>
 <li>the turbulent viscosity is computed using the EARSM formulation described above,</li>
@@ -501,11 +536,12 @@ N^{eq} &amp;= \frac{9c_1}{4} = \frac{81}{20}.
 </section>
 <section id="sec-earsmtnt" class="level1">
 <h1>EARSMtnt</h1>
-<p>The <code>EARSMtnt</code> model proposed by Wallin <span class="citation" data-cites="Wallin2000thesis">[@Wallin2000thesis]</span> uses a Kok’s k-ω TNT turbulence model <span class="citation" data-cites="Kok2000">[@Kok2000]</span> as the base model. The scale model equations are described in <a href="../RANS/kOmegaTNT.html"><code>kOmegaTNT</code></a> section. The original k-ω TNT model is modified by using the above mentioned EARSM formula for the Reynolds stress tensor and the eddy viscosity.</p>
+<p>The <code>EARSMtnt</code> model proposed by Wallin <span class="citation" data-cites="Wallin2000thesis">(<a href="#ref-Wallin2000thesis" role="doc-biblioref">Wallin 2000</a>)</span> uses a Kok’s k-ω TNT turbulence model <span class="citation" data-cites="Kok2000">(<a href="#ref-Kok2000" role="doc-biblioref">Kok 2000</a>)</span> as the base model. The scale model equations are described in <a href="../RANS/kOmegaTNT.html"><code>kOmegaTNT</code></a> section. The original k-ω TNT model is modified by using the above mentioned EARSM formula for the Reynolds stress tensor and the eddy viscosity.</p>
 </section>
 <section id="sec-earsmlm2009" class="level1">
 <h1>EARSMlm2009</h1>
-<p>The <code>EARSMlm2009</code> is a transition and turbulence model based on the EARSM formulation and the Langtry-Menter γ-Reθt transition model <span class="citation" data-cites="Langtry2009">[@Langtry2009]</span>. The model uses the same <span class="math inline">\(F_1\)</span> damping function and coefficient set as the <code>EARSMko2005</code> model.</p>
+<p>The <code>EARSMlm2009</code> is a transition and turbulence model based on the EARSM formulation and the Langtry-Menter γ-Reθt transition model <span class="citation" data-cites="Langtry2009">(<a href="#ref-Langtry2009" role="doc-biblioref">Langtry and Menter 2009</a>)</span>. The model uses the same <span class="math inline">\(F_1\)</span> damping function and coefficient set as the <code>EARSMko2005</code> model.</p>
+<p>Validation of the model is provided at the <a href="../Validation/EARSMlm2009.html"><code>EARSMlm2009</code> validation</a> page.</p>
 </section>
 <section id="sec-earsgammasst" class="level1">
 <h1>EARSMgammaSST</h1>
@@ -522,12 +558,35 @@ Warning
 <p>The <code>EARSMgammaSST</code> model still requires some testing and calibration. Current form is provided for research purposes and is not suitable for production use.</p>
 </div>
 </div>
-<p>The <code>EARSMgammaSST</code> is an attempt to combine the EARSM formulation with the three-equation gamma model by Menter, Smirnov et al. <span class="citation" data-cites="Menter2015">[@Menter2015]</span>.</p>
+<p>The <code>EARSMgammaSST</code> is an attempt to combine the EARSM formulation with the three-equation gamma model by Menter, Smirnov et al. <span class="citation" data-cites="Menter2015">(<a href="#ref-Menter2015" role="doc-biblioref">Menter et al. 2015</a>)</span>.</p>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Hellsten2005" class="csl-entry" role="listitem">
+Hellsten, Antti K. 2005. <span>“New Advanced k-w Turbulence Model for High-Lift Aerodynamics.”</span> <em>AIAA Journal</em> 43: 1857–69. <a href="https://doi.org/10.2514/1.13754">https://doi.org/10.2514/1.13754</a>.
+</div>
+<div id="ref-Kok2000" class="csl-entry" role="listitem">
+Kok, Johan C. 2000. <span>“Resolving the Dependence on Freestream Values for the k-ω Turbulence Model.”</span> <em>AIAA Journal</em> 38: 1292–95. <a href="https://doi.org/10.2514/2.1101">https://doi.org/10.2514/2.1101</a>.
+</div>
+<div id="ref-Langtry2009" class="csl-entry" role="listitem">
+Langtry, Robin Blair, and Florian R. Menter. 2009. <span>“Correlation-Based Transition Modeling for Unstructured Parallelized Computational Fluid Dynamics Codes.”</span> <em>AIAA Journal</em> 47: 2894–906. <a href="https://doi.org/10.2514/1.42362">https://doi.org/10.2514/1.42362</a>.
+</div>
+<div id="ref-Menter2003" class="csl-entry" role="listitem">
+Menter, F. R., M. Kuntz, and R. Langtry. 2003. <span>“Ten Years of Industrial Experience with the SST Turbulence Model.”</span> <em>Turbulence Heat and Mass Transfer 4</em> 4: 625–32. <a href="http://cfd.mace.manchester.ac.uk/flomania/pds_papers/file_pds-1068134610Menter-SST-paper.pdf">http://cfd.mace.manchester.ac.uk/flomania/pds_papers/file_pds-1068134610Menter-SST-paper.pdf</a>.
+</div>
+<div id="ref-Menter2015" class="csl-entry" role="listitem">
+Menter, Florian R., Pavel E. Smirnov, Tao Liu, and Ravikanth Avancha. 2015. <span>“A One-Equation Local Correlation-Based Transition Model.”</span> <em>Flow, Turbulence and Combustion</em> 95 (December): 583–619. <a href="https://doi.org/10.1007/s10494-015-9622-4">https://doi.org/10.1007/s10494-015-9622-4</a>.
+</div>
+<div id="ref-Wallin2000thesis" class="csl-entry" role="listitem">
+Wallin, Stefan. 2000. <span>“Engineering Turbulence Modelling for CFD with a Focuson Explicit Algebraic Reynolds Stress Models.”</span> PhD thesis, Royal Institute of Technology.
+</div>
+<div id="ref-Wallin2000" class="csl-entry" role="listitem">
+Wallin, Stefan, and Arne V. Johanson. 2000. <span>“An Explicit Algebraic Reynolds Stress Model for Incompressible and Compressible Turbulent Flows.”</span> <em>Journal of Fluid Mechanics</em> 403 (January): 89–132. <a href="https://doi.org/10.1017/S0022112099007004">https://doi.org/10.1017/S0022112099007004</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

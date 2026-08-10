@@ -26,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -45,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d55203e86ba1a699a1ae3c3642d34712.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-261e60fdf64a0e003ec2340fd2db30d7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,9 +123,10 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -390,7 +410,18 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#model-equations" id="toc-model-equations" class="nav-link active" data-scroll-target="#model-equations">Model Equations</a></li>
+  <li><a href="#model-coefficients" id="toc-model-coefficients" class="nav-link" data-scroll-target="#model-coefficients">Model Coefficients</a></li>
+  <li><a href="#modifications" id="toc-modifications" class="nav-link" data-scroll-target="#modifications">Modifications</a></li>
+  <li><a href="#notes-on-openfoam-implementation" id="toc-notes-on-openfoam-implementation" class="nav-link" data-scroll-target="#notes-on-openfoam-implementation">Notes on OpenFOAM implementation</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -413,7 +444,7 @@ window.Quarto = {
 </header>
 
 
-<p>The <code>kOmegaTNT</code> model is a simple two-equation RANS turbulence model developed by J. C. Kok <span class="citation" data-cites="Kok2000">[@Kok2000]</span>. It is a modification of the original Wilcox k-ω model <span class="citation" data-cites="Wilcox1994">[@Wilcox1994]</span>, designed to remove strong dependency on the free-stream value of ω. This is achieved by including a cross-diffusion term in the ω equation, similar to the SST model by Menter <span class="citation" data-cites="Menter1994">[@Menter1994]</span>, and by re-calibration of model coefficients.</p>
+<p>The <code>kOmegaTNT</code> model is a simple two-equation RANS turbulence model developed by J. C. Kok <span class="citation" data-cites="Kok2000">(<a href="#ref-Kok2000" role="doc-biblioref">Kok 2000</a>)</span>. It is a modification of the original Wilcox k-ω model <span class="citation" data-cites="Wilcox1994">(<a href="#ref-Wilcox1994" role="doc-biblioref">Wilcox 1994</a>)</span>, designed to remove strong dependency on the free-stream value of ω. This is achieved by including a cross-diffusion term in the ω equation, similar to the SST model by Menter <span class="citation" data-cites="Menter1994">(<a href="#ref-Menter1994" role="doc-biblioref">Menter 1994</a>)</span>, and by re-calibration of model coefficients.</p>
 <section id="model-equations" class="level2">
 <h2 class="anchored" data-anchor-id="model-equations">Model Equations</h2>
 <p>The transport equations for the <code>kOmegaTNT</code> model are given by:</p>
@@ -473,9 +504,20 @@ C_D &amp;= \frac{\sigma_d \rho}{\omega} \max\left[\frac{\partial k}{\partial x_j
 <p>Moreover, OpenFOAM works with kinematic turbulent viscosity <code>nut</code> multiplied by density instead of turbulent viscosity <code>mu_t</code>.</p>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Kok2000" class="csl-entry" role="listitem">
+Kok, Johan C. 2000. <span>“Resolving the Dependence on Freestream Values for the k-ω Turbulence Model.”</span> <em>AIAA Journal</em> 38: 1292–95. <a href="https://doi.org/10.2514/2.1101">https://doi.org/10.2514/2.1101</a>.
+</div>
+<div id="ref-Menter1994" class="csl-entry" role="listitem">
+Menter, Florian R. 1994. <span>“Two-Equation Eddy-Viscosity Turbulence Models for Engineering Applications.”</span> <em>AIAA Journal</em> 32 (August): 1598–605. <a href="https://doi.org/10.2514/3.12149">https://doi.org/10.2514/3.12149</a>.
+</div>
+<div id="ref-Wilcox1994" class="csl-entry" role="listitem">
+Wilcox, David C. 1994. <em>Turbulence Modeling for CFD</em>. DCW Industries.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

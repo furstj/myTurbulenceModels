@@ -26,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -45,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d55203e86ba1a699a1ae3c3642d34712.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-261e60fdf64a0e003ec2340fd2db30d7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -74,10 +93,40 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -361,7 +410,18 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sec-validation-hv300h" id="toc-sec-validation-hv300h" class="nav-link active" data-scroll-target="#sec-validation-hv300h">Re=300 000, highTI</a></li>
+  <li><a href="#sec-validation-hv300l" id="toc-sec-validation-hv300l" class="nav-link" data-scroll-target="#sec-validation-hv300l">Re=300 000, lowTI</a></li>
+  <li><a href="#sec-validation-hv50h" id="toc-sec-validation-hv50h" class="nav-link" data-scroll-target="#sec-validation-hv50h">Re=50 000, highTI</a></li>
+  <li><a href="#sec-validation-hv50l" id="toc-sec-validation-hv50l" class="nav-link" data-scroll-target="#sec-validation-hv50l">Re=50 000, lowTI</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -384,10 +444,69 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>The separated transitional boundary layer was validated against Hulgren and Volino experiments, <span class="citation" data-cites="Volino2001">(<a href="#ref-Volino2001" role="doc-biblioref">Volino and Hultgren 2001</a>)</span>. The shape of the domain is digitized from the paper <span class="citation" data-cites="Suzen2003">(<a href="#ref-Suzen2003" role="doc-biblioref">Suzen et al. 2003</a>)</span>. Experimental data were digitized either from the paper <span class="citation" data-cites="Suzen2003">(<a href="#ref-Suzen2003" role="doc-biblioref">Suzen et al. 2003</a>)</span> (velocity profiles, pressure coefficient, freestream velocity) or from <span class="citation" data-cites="Menter2015">(<a href="#ref-Menter2015" role="doc-biblioref">Menter et al. 2015</a>)</span> (friction coefficient).</p>
+<p>The domain spans from <span class="math inline">\(x=0.28\)</span>m to <span class="math inline">\(1.6\)</span>m. The inlet velocity profile is calculated as a cubic approximation to laminar boundary layer with given friction coefficient.</p>
+<p>Simulations were performed using a mesh with 312x70 and 312x89 cells for Re = 50 000 and Re = 300 000, respectively. The mesh is refined in the wall-normal direction to resolve the boundary layer.</p>
+<p>The Reynolds number is related to a reference velocity at <span class="math inline">\(x=1\)</span>m which is <span class="math inline">\(U_{ref} = 0.75\)</span> m/s for Re=50 000 and <span class="math inline">\(U_{ref} = 4.5\)</span> m/s for Re=300 000. The reference length is <span class="math inline">\(L_{ref} = 1\)</span>m.</p>
+<section id="sec-validation-hv300h" class="level1">
+<h1>Re=300 000, highTI</h1>
+<p>Inlet boundary conditions at <span class="math inline">\(x=0.28\)</span>m are set as follows:</p>
+<ul>
+<li><p><span class="math inline">\(U = 5.0\)</span> m/s</p></li>
+<li><p><span class="math inline">\(Tu = 2.5\)</span> %</p></li>
+<li><p><span class="math inline">\(\nu_t/\nu = 100\)</span></p></li>
+<li><p><code>kOmegaSSTLM</code>, results can be found in <a href="../Validation/kOmegaSSTLM.html#sec-validation-hv300h"><code>kOmegaSSTLM</code> validation</a></p></li>
+<li><p><a href="../RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a>, results can be found in <a href="../Validation/EARSMlm2009.html#sec-validation-t3a"><code>EARSMlm2009</code> validation</a></p></li>
+</ul>
+</section>
+<section id="sec-validation-hv300l" class="level1">
+<h1>Re=300 000, lowTI</h1>
+<p>Inlet boundary conditions at <span class="math inline">\(x=0.28\)</span>m are set as follows:</p>
+<ul>
+<li><p><span class="math inline">\(U = 5.0\)</span> m/s</p></li>
+<li><p><span class="math inline">\(Tu = 0.2\)</span> %</p></li>
+<li><p><span class="math inline">\(\nu_t/\nu = 1\)</span></p></li>
+<li><p><code>kOmegaSSTLM</code>, results can be found in <a href="../Validation/kOmegaSSTLM.html#sec-validation-hv300l"><code>kOmegaSSTLM</code> validation</a></p></li>
+<li><p><a href="../RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a>, results can be found in <a href="../Validation/EARSMlm2009.html#sec-validation-t3a"><code>EARSMlm2009</code> validation</a></p></li>
+</ul>
+</section>
+<section id="sec-validation-hv50h" class="level1">
+<h1>Re=50 000, highTI</h1>
+<p>Inlet boundary conditions at <span class="math inline">\(x=0.28\)</span>m are set as follows:</p>
+<ul>
+<li><p><span class="math inline">\(U = 0.84\)</span> m/s</p></li>
+<li><p><span class="math inline">\(Tu = 2.5\)</span> %</p></li>
+<li><p><span class="math inline">\(\nu_t/\nu = 100\)</span></p></li>
+<li><p><code>kOmegaSSTLM</code>, results can be found in <a href="../Validation/kOmegaSSTLM.html#sec-validation-hv50h"><code>kOmegaSSTLM</code> validation</a></p></li>
+<li><p><a href="../RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a>, results can be found in <a href="../Validation/EARSMlm2009.html#sec-validation-t3a"><code>EARSMlm2009</code> validation</a></p></li>
+</ul>
+</section>
+<section id="sec-validation-hv50l" class="level1">
+<h1>Re=50 000, lowTI</h1>
+<p>Inlet boundary conditions at <span class="math inline">\(x=0.28\)</span>m are set as follows:</p>
+<ul>
+<li><p><span class="math inline">\(U = 0.84\)</span> m/s</p></li>
+<li><p><span class="math inline">\(Tu = 0.2\)</span> %</p></li>
+<li><p><span class="math inline">\(\nu_t/\nu = 1\)</span></p></li>
+<li><p><code>kOmegaSSTLM</code>, results can be found in <a href="../Validation/kOmegaSSTLM.html#sec-validation-hv50l"><code>kOmegaSSTLM</code> validation</a></p></li>
+<li><p><a href="../RANS/EARSM.html#sec-earsmlm2009"><code>EARSMlm2009</code></a>, results can be found in <a href="../Validation/EARSMlm2009.html#sec-validation-t3a"><code>EARSMlm2009</code> validation</a></p></li>
+</ul>
 
 
 
-</main> <!-- /main -->
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Menter2015" class="csl-entry" role="listitem">
+Menter, Florian R., Pavel E. Smirnov, Tao Liu, and Ravikanth Avancha. 2015. <span>“A One-Equation Local Correlation-Based Transition Model.”</span> <em>Flow, Turbulence and Combustion</em> 95 (December): 583–619. <a href="https://doi.org/10.1007/s10494-015-9622-4">https://doi.org/10.1007/s10494-015-9622-4</a>.
+</div>
+<div id="ref-Suzen2003" class="csl-entry" role="listitem">
+Suzen, Y. B., P. G. Huang, Lennart S. Hultgren, and David E. Ashpis. 2003. <span>“Predictions of Separated and Transitional Boundary Layers Under Low-Pressure Turbine Airfoil Conditions Using an Intermittency Transport Equation.”</span> <em>Journal of Turbomachinery</em> 125 (July): 455–64. <a href="https://doi.org/10.1115/1.1580159">https://doi.org/10.1115/1.1580159</a>.
+</div>
+<div id="ref-Volino2001" class="csl-entry" role="listitem">
+Volino, Ralph J., and Lennart S. Hultgren. 2001. <span>“Measurements in Separated and Transitional Boundary Layers Under Low-Pressure Turbine Airfoil Conditions.”</span> <em>Journal of Turbomachinery</em> 123 (April): 189–97. <a href="https://doi.org/10.1115/1.1350408">https://doi.org/10.1115/1.1350408</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

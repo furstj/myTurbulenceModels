@@ -26,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -45,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d55203e86ba1a699a1ae3c3642d34712.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-261e60fdf64a0e003ec2340fd2db30d7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,9 +123,10 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -390,7 +410,17 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#model-equations" id="toc-model-equations" class="nav-link active" data-scroll-target="#model-equations">Model Equations</a></li>
+  <li><a href="#model-coefficients" id="toc-model-coefficients" class="nav-link" data-scroll-target="#model-coefficients">Model Coefficients</a></li>
+  <li><a href="#notes-on-openfoam-implementation" id="toc-notes-on-openfoam-implementation" class="nav-link" data-scroll-target="#notes-on-openfoam-implementation">Notes on OpenFOAM implementation</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -413,7 +443,7 @@ window.Quarto = {
 </header>
 
 
-<p>The <code>kOmegaSSTCC</code> is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter <span class="citation" data-cites="Menter2003">[@Menter2003]</span> as included in standard OpenFOAM distribution. It incorporates a curvature correction (CC) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Smirnov and Menter <span class="citation" data-cites="Smirnov2009">[@Smirnov2009]</span>.</p>
+<p>The <code>kOmegaSSTCC</code> is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter <span class="citation" data-cites="Menter2003">(<a href="#ref-Menter2003" role="doc-biblioref">Menter et al. 2003</a>)</span> as included in standard OpenFOAM distribution. It incorporates a curvature correction (CC) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Smirnov and Menter <span class="citation" data-cites="Smirnov2009">(<a href="#ref-Smirnov2009" role="doc-biblioref">Smirnov and Menter 2009</a>)</span>.</p>
 <section id="model-equations" class="level2">
 <h2 class="anchored" data-anchor-id="model-equations">Model Equations</h2>
 <p>The transport equations for the <code>kOmegaSSTCC</code> model are given by:</p>
@@ -451,7 +481,7 @@ D^2 &amp;= \max(S^2, 0.09 \omega^2).
 </section>
 <section id="model-coefficients" class="level2">
 <h2 class="anchored" data-anchor-id="model-coefficients">Model Coefficients</h2>
-<p>For the standars <code>kOmegaSST</code> model coefficients see <span class="citation" data-cites="Menter2003">[@Menter2003]</span> or the OpenFOAM manual. The curvature correction coefficients are set to:</p>
+<p>For the standars <code>kOmegaSST</code> model coefficients see <span class="citation" data-cites="Menter2003">(<a href="#ref-Menter2003" role="doc-biblioref">Menter et al. 2003</a>)</span> or the OpenFOAM manual. The curvature correction coefficients are set to:</p>
 <ul>
 <li><span class="math inline">\(c_{r1} = 1.0\)</span></li>
 <li><span class="math inline">\(c_{r2} = 2.0\)</span></li>
@@ -476,9 +506,17 @@ Note
 <p>See the OpenFOAM manual for details on basic <code>kOmegaSST</code> model implementation.</p>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Menter2003" class="csl-entry" role="listitem">
+Menter, F. R., M. Kuntz, and R. Langtry. 2003. <span>“Ten Years of Industrial Experience with the SST Turbulence Model.”</span> <em>Turbulence Heat and Mass Transfer 4</em> 4: 625–32. <a href="http://cfd.mace.manchester.ac.uk/flomania/pds_papers/file_pds-1068134610Menter-SST-paper.pdf">http://cfd.mace.manchester.ac.uk/flomania/pds_papers/file_pds-1068134610Menter-SST-paper.pdf</a>.
+</div>
+<div id="ref-Smirnov2009" class="csl-entry" role="listitem">
+Smirnov, Pavel E., and Florian R. Menter. 2009. <span>“Sensitization of the SST Turbulence Model to Rotation and Curvature by Applying the Spalart–Shur Correction Term.”</span> <em>Journal of Turbomachinery</em> 131 (October). <a href="https://doi.org/10.1115/1.3070573">https://doi.org/10.1115/1.3070573</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
