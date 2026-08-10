@@ -1,9 +1,127 @@
 ---
-title: "EARSM model"
+title: "EARSM models"
 ---
-The `EARSM` (Explicit Algebraic Reynolds Stress Model) is a RANS turbulence model developed by Hellsten [@Hellsten2005]. It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models.
+
+The `EARSM` (Explicit Algebraic Reynolds Stress) models is a class of RANS turbulence models developed by Wallin and Johanson [@Wallin2000]. It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models. 
+
+The EARSM formulation consists of non-linear formulation of the Reynolds stress tensor, which is expressed in terms of the mean strain-rate and rotation-rate tensors. The model is closed by an two-equation k-ω turbulence model.The model is particularly suitable for flows with strong streamline curvature, rotation, and separation, where traditional linear eddy-viscosity models may fail to provide accurate predictions.
+
+# Common constitutive relations for EARSM models
+The general form of the constitutive relation for the Reynolds stress tensor in EARSM models is given by:
+
+Reynolds stress tensor is computed as:
+$$
+\tau_{ij} = 2 \mu_t S_{ij}^* - \frac{2}{3} \rho k \delta_{ij} - \rho k a_{ij}^{ex},
+$$
+where $a_{ij}^{ex}$ is the extra anisotropy tensor and
+$$
+S_{ij}^* = \frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}  - \frac{2}{3} \delta_{ij} \frac{\partial u_k}{\partial x_k} \right)
+$$
+and
+$$
+\Omega_{ij}^* = \frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} - \frac{\partial u_j}{\partial x_i} \right).
+$$
+
+The extra anisotropy tensor $a_{ij}^{ex}$ is given by:
+$$
+\begin{aligned}
+a_{ij}^{ex} =& \beta_3\left(\mathbf{\Omega}^2 - \frac{1}{3} I\!I_\Omega\,\mathbf{I}\right) 
++ \beta_4\left(\mathbf{S\Omega} - \mathbf{\Omega S}\right) + \\
+&+ \beta_6\left(\mathbf{S\Omega^2} \mathbf{\Omega^2S} - I\!I_S\,\mathbf{S} - 
+\frac{2}{3} I\!V\, \mathbf{I}\right) + \\
+&+ \beta_9\left(\mathbf{\Omega S\Omega^2} - \mathbf{\Omega^2 S \Omega}\right).
+\end{aligned}
+$$
+
+Here $\mathbf{S}$ and $\mathbf{\Omega}$ are the second order tensors. The inner products are defined as 
+$\mathbf{\Omega}^2_{ij} = \Omega_{ik} \Omega_{kj}$.
+
+Normalized mean strain-rate and rotation-rate tensors are defined as:
+$$
+\mathbf{S} = \tau S_{ij}^*, \quad \mathbf{\Omega} = \tau \Omega_{ij}^*,
+$$
+where 
+$$\tau = \max\left(\frac{k}{\epsilon}, C_\tau\sqrt{\frac{\mu}{\rho \epsilon}}\right)
+$$ 
+is the turbulence time scale ($\epsilon=\beta^* k \omega$). The invariants of the tensors are given by:
+$$
+I\!I_S = S_{ij} S_{ji}, \quad I\!I_\Omega = \Omega_{ij} \Omega_{ji}, \quad I\!V = S_{ik} \Omega_{kj} \Omega_{ji}.
+$$
+
+The eddy viscosity is computed as:
+$$
+\mu_t = - \frac{1}{2} (\beta_1 + I\!I_\Omega \beta_6) \rho k \tau.
+$$
+
+where
+
+$$
+\begin{aligned}
+Q &= \frac{5}{6}(N^2 - 2 I\!I_\Omega)(2N^2 - I\!I_\Omega), \\
+N &= \begin{cases}
+\frac{C_1'}{3} + (P_1 + \sqrt{P_2})^{1/3} + \text{sign}(P_1 - \sqrt{P_2})|P_1 - \sqrt{P_2}|^{1/3} & \text{if } P_2 \geq 0, \\
+\frac{C_1'}{3} + 2 \sqrt{P_1} \cos\left(\frac{1}{3} \arccos\left(\frac{P_1}{\sqrt{P_1^2 - P_2}}\right)\right) & \text{if } P_2 < 0,
+\end{cases} \\
+P_1 &= \left(\frac{C_1'^2}{27} + \frac{9}{20}I\!I_S - \frac{2}{3}I\!I_\Omega\right)C_1', \\
+P_2 &= P_1^2 - \left(\frac{C_1'^2}{9} + \frac{9}{10}I\!I_S + \frac{2}{3}I\!I_\Omega\right)^3, \\
+C_1' &= \frac{9}{4}\left[c_1 - 1 + C_{diff} \max(1 + \beta_1^{eq} I\!I_S,0)\right], \\
+\beta_1^{eq} &= -\frac{6}{5} \frac{N^{eq}}{(N^{eq})^2 - 2I\!I_\Omega}, \\
+N^{eq} &= \frac{9c_1}{4} = \frac{81}{20}.
+\end{aligned} 
+$$
+
+## Model coefficients
+Model coefficients for EARSM model are given as:
+
+- $C_\tau = 6$
+- $c_1 = 1.8$
+- $C_{diff} = 2.2$
+- $\beta_1 = - \frac{N(2N^2 - 7 I\!|_\Omega)}{Q}$
+- $\beta_3 = - \frac{12 I\!V}{N Q}$
+- $\beta_4 = \frac{2(N^2 - 2I\!|_\Omega}{Q}$
+- $\beta_6 = - \frac{6N}{Q}$
+- $\beta_9 = \frac{6}{Q}$
+  
+
+# EARSMko2005 {#sec-earsmko2005}
+The `EARSMko2005` proposed by Hellsten [@Hellsten2005] uses a modified version of k-ω SST turbulence model [@Menter2003] as the base model. The current implementation uses the `kOmegaSST` model from the OpenFOAM library with the following modificatiions:
+
+- the Reynolds stress tensor is computed using the EARSM formulation described above,
+- the turbulent viscosity is computed using the EARSM formulation described above,
+- the damping function $F_1$ is given as
+$$
+    F_1 = \tanh\left(\min\left[\max\left(\frac{\sqrt{k}}{\beta^* \omega y}, \frac{500 \nu}{y^2 \omega}\right), \frac{20 k}{\max\left(\frac{y^2}{\omega}
+    \frac{\partial k}{\partial x_j}\frac{\partial \omega}{\partial x_j}, 200k_\infty\right)}\right]^4\right),
+$$
+
+Moreover, some coeeficients of the base k-ω SST model are modified as follows:
+
+- `alphaK1` = 1.1
+- `alphaK2` = 1.1
+- `alphaOmega1` = 0.53
+- `alphaOmega2` = 1.0
+- `beta1` = 0.0747
+- `beta2` = 0.0828
+- `gamma1` = 0.518
+- `gamma2` = 0.44
+
+
+# EARSMtnt {#sec-earsmtnt}
+The `EARSMtnt` model proposed by Wallin [@Wallin2000thesis] uses a Kok's k-ω TNT turbulence model [@Kok2000] as the base model. The scale model equations are described in [`kOmegaTNT`](kOmegaTNT.qmd) section. 
+The original k-ω TNT model is modified by using the above mentioned EARSM formula for the Reynolds stress tensor and the eddy viscosity. 
+
+
+# EARSMlm2009 {#sec-earsmlm2009}
+The `EARSMlm2009` is a transition and turbulence model based on the EARSM formulation and the Langtry-Menter γ-Reθt transition model [@Langtry2009]. The model uses the same $F_1$ damping function and coefficient set as the `EARSMko2005` model.
+
+
+# EARSMgammaSST {#sec-earsgammasst}
 
 :::{.callout-warning}
-The documentation for EARSM model is not yet complete. Please refer to the original publication [@Hellsten2005] or to (NASA turbulent resources)[https://turbmodels.larc.nasa.gov/] for detailed information on the model formulation.
+The `EARSMgammaSST` model still requires some testing and calibration. Current form is provided for research purposes and is not suitable for production use.
 :::
+
+The `EARSMgammaSST` is an attempt to combine the EARSM formulation with the three-equation gamma model by Menter, Smirnov et al. [@Menter2015].
+
+
 

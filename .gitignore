@@ -33,3 +33,6 @@ doc/_site/
 
 # Emacs backup files
 *~
+
+/.quarto/
+**/*.quarto_ipynb

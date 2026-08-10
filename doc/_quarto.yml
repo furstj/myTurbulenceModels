@@ -1,6 +1,7 @@
 project:
   type: website
-  
+
+
 website:
   title: "myTurbulenceModels"
   sidebar:
@@ -18,18 +19,32 @@ website:
             href: RANS/kOmegaSSTCC.qmd
           - text: "kOmegaSSTCCM"
             href: RANS/kOmegaSSTCCM.qmd
-          - text: "EARSM"
-            href: RANS/EARSM.qmd
-          - text: "EARSMWallin"
-            href: RANS/EARSMWallin.qmd
+          - text: "EARSMko2005"
+            href: RANS/EARSM.qmd#sec-earsmko2005
+          - text: "EARSMtnt"
+            href: RANS/EARSM.qmd#sec-earsmtnt
       - section: "Transitional models"
         contents:
           - text: "kOmegaSSTLMRough"
             href: Transition/kOmegaSSTLMRough.qmd
           - text: "mykkLOmega"
             href: Transition/mykkLOmega.qmd
+          - text: "EARSMlm2009"
+            href: RANS/EARSM.qmd#sec-earsmlm2009
+          - text: "gammaSST"
+            href: Transition/gammaSST.qmd
+      - section: "Development and experimental models"
+        contents:
           - text: "kv2Omega"  
             href: Transition/kv2Omega.qmd
+          - text: "EARSMgammaSST"
+            href: RANS/EARSM.qmd#sec-earsgammasst
+      - section: "Deprecated models"
+        contents:
+          - text: "EARSMHellsten"
+            href: RANS/EARSMHellsten.qmd
+          - text: "EARSMWallin"
+            href: RANS/EARSMWallin.qmd
           - text: "kOmegaTrans"
             href: Transition/kOmegaTrans.qmd
           - text: "EARSMTrans"
@@ -56,14 +71,21 @@ website:
             href: BoCos/omegaRoughWallFunction.qmd
           - text: "omegaWilcoxRoughWallFunction"
             href: BoCos/omegaWilcoxRoughWallFunction.qmd
-format:
-  html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
-    toc: true
-    bibliography: references.bib
+      - section: "Validation cases"
+        contents:
+          - text: "Flat plate transitional boundary layer"
+            href: Validation/flatPlateTransitionalBoundaryLayer.qmd
+          - text: "Flat plate transitional boundary layer with separation"
+            href: Validation/flatPlateTransitionalBoundaryLayerWithSeparation.qmd
+            
+            
+    html:
+      theme:
+        - cosmo
+        - brand
+      css: styles.css
+      toc: true
+      bibliography: references.bib
 
 
 

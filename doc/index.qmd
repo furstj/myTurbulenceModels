@@ -14,30 +14,54 @@ cd myTurbulenceModels
 ./Allwmake
 ```
 
+The `gammaSST` model is no more included directly in this repository as it is now part of [Turbulence Community Repository](https://gitlab.com/openfoam/community/tc-turbulence/turbulence-community). Nevertheless, it can be easily used in conjunction with this package either by installing the Turbulence Community module, or by clonning from my repository.
+
+In the later case, you should clone the `gammaSST` model alongside the `myTurbulenceModels` package **before** running `Allwmake` in the `myTurbulenceModels` directory. The recommended way to clone and build the package with `gammaSST` support is as follows:
+```bash
+git clone https://github.com/furstj/gammaSST.git
+git clone https://github.com/furstj/myTurbulenceModels.git
+cd myTurbulenceModels
+./Allwmake
+```
+
 ## Features
 
 ### RANS Models
-The package contains following RANS turbulence models:
+
+#### Turbulence Models
 
 - [`kOmegaTNT`](RANS/kOmegaTNT.qmd) - Two-Equation k-ω Turbulence Model due to J. C. Kok
 - [`kOmegaWilcox06`](RANS/kOmegaWilcox06.qmd) - Two-Equation k-ω Turbulence Model due to Wilcox
-- [`EARSM`](RANS/EARSM.qmd)  - Explicit Algebraic Reynolds Stress Model due to Hellsten
-- [`EARSMWallin`](RANS/EARSMWallin.qmd) - EARSM with Wallin's Modifications
 - [`kOmegaSSTCC`](RANS/kOmegaSSTCC.qmd) - Shear Stress Transport k-ω Model with Curvature Correction
 - [`kOmegaSSTCCM`](RANS/kOmegaSSTCCM.qmd) - Shear Stress Transport k-ω Model with Curvature Correction
+- [`EARSMko2005`](RANS/EARSM.qmd#sec-earsmko2005) - Explicit Algebraic Reynolds Stress Model due to Hellsten
+- [`EARSMtnt`](RANS/EARSM.qmd#sec-earsmtnt) - Explicit Algebraic Reynolds Stress Model due to Wallin
 
-It also includes the following transitional RANS turbulence models:
 
+#### Transition and Turbulence models
 - [`kOmegaSSTLMRough`](Transition/kOmegaSSTLMRough.qmd) - Five-equation Transition and Turbulence Model with Roughness Modifications
 - [`mykkLOmega`](Transition/mykkLOmega.qmd) - Three-equation transition and turbulence Model due to Walters and Cokljat
-- [`kv2Omega`](Transition/kv2Omega.qmd) - Three-equation transition and turbulence Model due to Walters and ???
-- [`kOmegaTrans`](Transition/kOmegaTrans.qmd) - Two-equation transition and turbulence (experimental)
-- [`EARSMTrans`](Transition/EARSMTrans.qmd) - Explicit Algebraic Reynolds Stress Model with Transition (experimental, no more supported)
+- [`EARSMlm2009`](RANS/EARSM.qmd#sec-earsmlm2009) - Explicit Algebraic Reynolds Stress Model with Transition due to Langtry and Menter
+- [`gammaSST`](Transition/gammaSST.qmd) - Two-equation transition and turbulence Model due to Menter, Smirnov et al. Please note that this model is not included directly in this repository. See Installation
 
 
-:::{.callout-note}
-The `gammaSST` transitional model is not included in this package, as it is already available in the [Turbulence Community repository](https://gitlab.com/openfoam/community/tc-turbulence/turbulence-community) or directly from my [github repository](https://github.com/furstj/gammaSST).
-:::
+#### Experimental and development models
+These models are not yet validated and require further testing and calibration. They are provided for research purposes and are not suitable for production use.
+
+- [`kv2Omega`](Transition/kv2Omega.qmd) - Two-equation transition and turbulence Model due to Lopez and Walters
+- [`EARSMgammaSST`](RANS/EARSM.qmd#sec-earsgammasst) - Explicit Algebraic Reynolds Stress Model with Transition and γ-SST 
+
+
+#### Deprecated models
+
+There are also some deprecated RANS turbulence models included in the package which have been replaced by newer implementations or are no more maintaned. These are:
+
+- [`EARSMHellsten`](RANS/EARSMHellsten.qmd)  - Explicit Algebraic Reynolds Stress Model due to Hellsten (deprecated, use [`EARSMko2005`](RANS/EARSM.qmd#sec-earsmko2005) instead*)
+- [`EARSMWallin`](RANS/EARSMWallin.qmd) - EARSM with Wallin's Modifications (*deprecated, use [`EARSMtnt`](RANS/EARSM.qmd#sec-earsmtnt) instead*)
+- [`kOmegaTrans`](Transition/kOmegaTrans.qmd) - Two-equation transition and turbulence (*deprecated, model is not maintained anymore*)
+- [`EARSMTrans`](Transition/EARSMTrans.qmd) - Explicit Algebraic Reynolds Stress Model with Transition (*deprecated, model is not maintained anymore*)
+
+
 
 
 ### LES Models

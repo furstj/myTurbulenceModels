@@ -1,0 +1,30 @@
+---
+title: "Flat plate transitional boundary layer"
+---
+
+The flat plate transitional boundary layer is a classic ERCOFTAC test case for validating transition and turbulence models. The description of the test case can be found in [`ERCOFTAC database`](http://cfd.mace.manchester.ac.uk/ercoftac/doku.php?id=cases:case020). 
+
+# T3A {#sec-validation-t3a}
+The rectangular domain used for computationsspans from $x=-0.15$m to $x=1$m and the height is $h=0.3$m. The wall leading edge is located at $x=0$m. 
+
+Inlet boundary conditions at $x=-0.15$m are set as follows:
+
+- $U = 5.4$ m/s
+- $Tu = 3.3$ %
+- $\nu_t/\nu = 12$
+
+The package provides three meshes:
+
+- `coarse` with 155x125 cells
+- `medium` with 310x250 cells
+- `fine` with 620x500 cells
+
+The simulation is performed by running
+```bash
+./Allrun medium
+```
+for the medium mesh. The coarse and fine mesh can be used by replacing `medium` with `coarse` or `fine`. The `Allrun` script should produce plots of the skin friction coefficient $C_f$ and the freestream turbulence intensity $Tu$ along the flat plate together with experimental data from the ERCOFTAC database. 
+
+Following models are validated against the T3A test case:
+
+- `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3a)

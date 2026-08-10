@@ -1,0 +1,12 @@
+---
+title: "`kOmegaSSTLM` validation"
+---
+
+# T3A case
+see [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3a).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3A/kOmegaSSTLM/results/cf_plot_T3A_kOmegaSSTLM.png)
+
+![Turbulence intensity](/testCases/T3A/kOmegaSSTLM/results/tu_plot_T3A_kOmegaSSTLM.png)
+:::

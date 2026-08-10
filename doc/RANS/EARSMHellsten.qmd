@@ -1,0 +1,9 @@
+---
+title: "EARSM model"
+---
+The `EARSM` (Explicit Algebraic Reynolds Stress Model) is a RANS turbulence model developed by Hellsten [@Hellsten2005]. It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models.
+
+:::{.callout-warning}
+The documentation for EARSM model is not yet complete. Please refer to the original publication [@Hellsten2005] or to (NASA turbulent resources)[https://turbmodels.larc.nasa.gov/] for detailed information on the model formulation.
+:::
+
