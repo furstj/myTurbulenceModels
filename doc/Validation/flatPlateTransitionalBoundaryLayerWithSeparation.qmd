@@ -20,6 +20,7 @@ Inlet boundary conditions at $x=0.28$m are set as follows:
 - $\nu_t/\nu = 100$
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-hv300h)
+- [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009), results can be found in [`EARSMlm2009` validation ](EARSMlm2009.qmd#sec-validation-t3a)
 
 
 # Re=300 000, lowTI {#sec-validation-hv300l}
@@ -31,6 +32,7 @@ Inlet boundary conditions at $x=0.28$m are set as follows:
 - $\nu_t/\nu = 1$
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-hv300l)
+- [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009), results can be found in [`EARSMlm2009` validation ](EARSMlm2009.qmd#sec-validation-t3a)
 
 
 # Re=50 000, highTI {#sec-validation-hv50h}
@@ -42,6 +44,7 @@ Inlet boundary conditions at $x=0.28$m are set as follows:
 - $\nu_t/\nu = 100$
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-hv50h)
+- [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009), results can be found in [`EARSMlm2009` validation ](EARSMlm2009.qmd#sec-validation-t3a)
 
 
 # Re=50 000, lowTI {#sec-validation-hv50l}
@@ -53,4 +56,5 @@ Inlet boundary conditions at $x=0.28$m are set as follows:
 - $\nu_t/\nu = 1$
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-hv50l)
+- [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009), results can be found in [`EARSMlm2009` validation ](EARSMlm2009.qmd#sec-validation-t3a)
 

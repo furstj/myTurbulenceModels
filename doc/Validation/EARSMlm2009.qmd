@@ -1,0 +1,161 @@
+---
+title: "`EARSMlm2009` validation"
+---
+
+The model is described in [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009).
+
+
+# T3A case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3a).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3A/EARSMlm2009/results/cf_plot_T3A_EARSMlm2009.png)
+
+![Turbulence intensity](/testCases/T3A/EARSMlm2009/results/tu_plot_T3A_EARSMlm2009.png)
+:::
+
+
+# T3A- case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3am).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3AM/EARSMlm2009/results/cf_plot_T3AM_EARSMlm2009.png)
+
+![Turbulence intensity](/testCases/T3AM/EARSMlm2009/results/tu_plot_T3AM_EARSMlm2009.png)
+:::
+
+
+# T3B case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3b).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3B/EARSMlm2009/results/cf_plot_T3B_EARSMlm2009.png)
+
+![Turbulence intensity](/testCases/T3B/EARSMlm2009/results/tu_plot_T3B_EARSMlm2009.png)
+:::
+
+
+# T3C1 case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3c1).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3C1/EARSMlm2009/results/cf_plot_T3C1_EARSMlm2009.png)
+
+![Turbulence intensity](/testCases/T3C1/EARSMlm2009/results/tu_plot_T3C1_EARSMlm2009.png)
+
+![Freestream velocity](/testCases/T3C1/EARSMlm2009/results/u_plot_T3C1_EARSMlm2009.png)
+:::
+
+
+# T3C2 case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3c2).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3C2/EARSMlm2009/results/cf_plot_T3C2_EARSMlm2009.png)
+
+![Turbulence intensity](/testCases/T3C2/EARSMlm2009/results/tu_plot_T3C2_EARSMlm2009.png)
+
+![Freestream velocity](/testCases/T3C2/EARSMlm2009/results/u_plot_T3C2_EARSMlm2009.png)
+:::
+
+
+# T3C3 case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3c3).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3C3/EARSMlm2009/results/cf_plot_T3C3_EARSMlm2009.png)
+
+![Turbulence intensity](/testCases/T3C3/EARSMlm2009/results/tu_plot_T3C3_EARSMlm2009.png)
+
+![Freestream velocity](/testCases/T3C3/EARSMlm2009/results/u_plot_T3C3_EARSMlm2009.png)
+:::
+
+
+# T3C4 case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3c4).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3C4/EARSMlm2009/results/cf_plot_T3C4_EARSMlm2009.png)
+
+![Turbulence intensity](/testCases/T3C4/EARSMlm2009/results/tu_plot_T3C4_EARSMlm2009.png)
+
+![Freestream velocity](/testCases/T3C4/EARSMlm2009/results/u_plot_T3C4_EARSMlm2009.png)
+:::
+
+
+# T3C5 case
+See [`Flat plate transitional boundary layer`](flatPlateTransitionalBoundaryLayer.qmd#sec-validation-t3c5).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/T3C5/EARSMlm2009/results/cf_plot_T3C5_EARSMlm2009.png)
+
+![Turbulence intensity](/testCases/T3C5/EARSMlm2009/results/tu_plot_T3C5_EARSMlm2009.png)
+
+![Freestream velocity](/testCases/T3C5/EARSMlm2009/results/u_plot_T3C5_EARSMlm2009.png)
+:::
+
+# Hulgren and Volino cases
+
+## Re=300 000, highTI {#sec-validation-hv300h}
+See [`Flat plate transitional boundary layer with separation`](flatPlateTransitionalBoundaryLayerWithSeparation.qmd#sec-validation-hv300h).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re300k_highTI/EARSMlm2009/results/cf_plot_Re300k_highTI_EARSMlm2009.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re300k_highTI/EARSMlm2009/results/Tu_plot_Re300k_highTI_EARSMlm2009.png)
+
+![External velocity](/testCases/HultgrenVolino/Re300k_highTI/EARSMlm2009/results/Ue_plot_Re300k_highTI_EARSMlm2009.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re300k_highTI/EARSMlm2009/results/cp_plot_Re300k_highTI_EARSMlm2009.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re300k_highTI/EARSMlm2009/results/U_Re300k_highTI_EARSMlm2009.png)
+
+
+## Re=300 000, lowTI {#sec-validation-hv300l}
+See [`Flat plate transitional boundary layer with separation`](flatPlateTransitionalBoundaryLayerWithSeparation.qmd#sec-validation-hv300l).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re300k_lowTI/EARSMlm2009/results/cf_plot_Re300k_lowTI_EARSMlm2009.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re300k_lowTI/EARSMlm2009/results/Tu_plot_Re300k_lowTI_EARSMlm2009.png)
+
+![External velocity](/testCases/HultgrenVolino/Re300k_lowTI/EARSMlm2009/results/Ue_plot_Re300k_lowTI_EARSMlm2009.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re300k_lowTI/EARSMlm2009/results/cp_plot_Re300k_lowTI_EARSMlm2009.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re300k_lowTI/EARSMlm2009/results/U_Re300k_lowTI_EARSMlm2009.png)
+
+
+## Re=50 000, highTI {#sec-validation-hv50h}
+See [`Flat plate transitional boundary layer with separation`](flatPlateTransitionalBoundaryLayerWithSeparation.qmd#sec-validation-hv50h).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re50k_highTI/EARSMlm2009/results/cf_plot_Re50k_highTI_EARSMlm2009.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re50k_highTI/EARSMlm2009/results/Tu_plot_Re50k_highTI_EARSMlm2009.png)
+
+![External velocity](/testCases/HultgrenVolino/Re50k_highTI/EARSMlm2009/results/Ue_plot_Re50k_highTI_EARSMlm2009.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re50k_highTI/EARSMlm2009/results/cp_plot_Re50k_highTI_EARSMlm2009.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re50k_highTI/EARSMlm2009/results/U_Re50k_highTI_EARSMlm2009.png)
+
+
+## Re=50 000, lowTI {#sec-validation-hv50l}
+See [`Flat plate transitional boundary layer with separation`](flatPlateTransitionalBoundaryLayerWithSeparation.qmd#sec-validation-hv50l).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re50k_lowTI/EARSMlm2009/results/cf_plot_Re50k_lowTI_EARSMlm2009.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re50k_lowTI/EARSMlm2009/results/Tu_plot_Re50k_lowTI_EARSMlm2009.png)
+
+![External velocity](/testCases/HultgrenVolino/Re50k_lowTI/EARSMlm2009/results/Ue_plot_Re50k_lowTI_EARSMlm2009.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re50k_lowTI/EARSMlm2009/results/cp_plot_Re50k_lowTI_EARSMlm2009.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re50k_lowTI/EARSMlm2009/results/U_Re50k_lowTI_EARSMlm2009.png)
+

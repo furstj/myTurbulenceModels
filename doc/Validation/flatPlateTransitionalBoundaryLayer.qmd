@@ -32,7 +32,7 @@ Inlet boundary conditions at $x=-0.15$m are set as follows:
 Following models are validated against the T3A test case:
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3a)
-
+- [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009), results can be found in [`EARSMlm2009` validation ](EARSMlm2009.qmd#sec-validation-t3a)
 
 # T3A- {#sec-validation-t3am}
 Inlet boundary conditions at $x=-0.15$m are set as follows:
@@ -44,6 +44,7 @@ Inlet boundary conditions at $x=-0.15$m are set as follows:
 Following models are validated against the T3A test case:
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3am)
+- [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009), results can be found in [`EARSMlm2009` validation ](EARSMlm2009.qmd#sec-validation-t3a)
 
 
 # T3B {#sec-validation-t3b}
@@ -57,6 +58,7 @@ Inlet boundary conditions at $x=-0.15$m are set as follows:
 Following models are validated against the T3B test case:
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3b)
+- [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009), results can be found in [`EARSMlm2009` validation ](EARSMlm2009.qmd#sec-validation-t3a)
 
 
 # T3C1 {#sec-validation-t3c1}
@@ -69,6 +71,7 @@ Inlet boundary conditions at $x=-0.15$m are set as follows:
 Following models are validated against the T3C1 test case:
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3c1)
+- [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009), results can be found in [`EARSMlm2009` validation ](EARSMlm2009.qmd#sec-validation-t3a)
 
 
 # T3C2 {#sec-validation-t3c2}
@@ -81,6 +84,7 @@ Inlet boundary conditions at $x=-0.15$m are set as follows:
 Following models are validated against the T3C2 test case:
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3c2)
+- [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009), results can be found in [`EARSMlm2009` validation ](EARSMlm2009.qmd#sec-validation-t3a)
 
 # T3C3 {#sec-validation-t3c3}
 Inlet boundary conditions at $x=-0.15$m are set as follows:
@@ -92,6 +96,7 @@ Inlet boundary conditions at $x=-0.15$m are set as follows:
 Following models are validated against the T3C3 test case:
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3c3)
+- [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009), results can be found in [`EARSMlm2009` validation ](EARSMlm2009.qmd#sec-validation-t3a)
 
 # T3C4 {#sec-validation-t3c4}
 Inlet boundary conditions at $x=-0.15$m are set as follows:
@@ -103,6 +108,7 @@ Inlet boundary conditions at $x=-0.15$m are set as follows:
 Following models are validated against the T3C4 test case:
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3c4)
+- [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009), results can be found in [`EARSMlm2009` validation ](EARSMlm2009.qmd#sec-validation-t3a)
 
 # T3C5 {#sec-validation-t3c5}
 Inlet boundary conditions at $x=-0.15$m are set as follows:
@@ -114,4 +120,5 @@ Inlet boundary conditions at $x=-0.15$m are set as follows:
 Following models are validated against the T3C5 test case:
 
 - `kOmegaSSTLM`, results can be found in [`kOmegaSSTLM` validation ](kOmegaSSTLM.qmd#sec-validation-t3c5)
+- [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009), results can be found in [`EARSMlm2009` validation ](EARSMlm2009.qmd#sec-validation-t3a)
 
