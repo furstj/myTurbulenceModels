@@ -73,10 +73,12 @@ website:
             href: BoCos/omegaWilcoxRoughWallFunction.qmd
       - section: "Validation cases"
         contents:
-          - text: "Flat plate transitional boundary layer"
-            href: Validation/flatPlateTransitionalBoundaryLayer.qmd
-          - text: "Flat plate transitional boundary layer with separation"
-            href: Validation/flatPlateTransitionalBoundaryLayerWithSeparation.qmd
+          - text: "README"
+            href: testCases/README.md
+          - text: "kOmegaSSTLM results"
+            href: Validation/kOmegaSSTLM.qmd
+          - text: "EARSMlm2009 results"
+            href: Validation/EARSMlm2009.qmd
             
 format:            
   html:
