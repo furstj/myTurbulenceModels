@@ -135,7 +135,9 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Validation/flatPlateTransitionalBoundaryLayer.html">Validation cases</a></li><li class="breadcrumb-item"><a href="../Validation/flatPlateTransitionalBoundaryLayerWithSeparation.html">Flat plate transitional boundary layer with separation</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      myTurbulenceModels
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -393,14 +395,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Validation/flatPlateTransitionalBoundaryLayer.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Flat plate transitional boundary layer</span></a>
+  <a href="../testCases/README.md" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">README</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Validation/flatPlateTransitionalBoundaryLayerWithSeparation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Flat plate transitional boundary layer with separation</span></a>
+  <a href="../Validation/kOmegaSSTLM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">kOmegaSSTLM results</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Validation/EARSMlm2009.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">EARSMlm2009 results</span></a>
   </div>
 </li>
       </ul>
@@ -425,7 +433,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Validation/flatPlateTransitionalBoundaryLayer.html">Validation cases</a></li><li class="breadcrumb-item"><a href="../Validation/flatPlateTransitionalBoundaryLayerWithSeparation.html">Flat plate transitional boundary layer with separation</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Flat plate transitional boundary layer with separation</h1>
 </div>
@@ -580,7 +588,7 @@ Volino, Ralph J., and Lennart S. Hultgren. 2001. <span>“Measurements in Separa
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/furstj\.github\.io\/myTurbulenceModels\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
