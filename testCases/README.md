@@ -2,77 +2,27 @@
 
 **Note:** Tests are intended for validation/verification of turbulence models. The relaxation factors, tolerances, and schemes are not set to optimal values! 
 
-## Flat Plate Flows
+## Flat plate transitional flows 
 
-### T3A
-- **Description:** Flat plate transitional flows without pressure gradient.
-- **Turbulence Intensity:** 3%
-- **Link to Case Directory:** [T3A](T3A/)
+Classical ERCOFTAC test cases, see [ERCOFTAC database](http://cfd.mace.manchester.ac.uk/ercoftac/doku.php?id=cases:case020)
 
-### T3B
-- **Description:** Flat plate transitional flows without pressure gradient.
-- **Turbulence Intensity:** 6%
-- **Link to Case Directory:** [T3B](T3B/)
+- [T3A](Coupland/T3A/): $U=5.4$ m/s,  $Tu=3$ %, no pressure gradient
+- [T3B](Coupland/T3B/): $U=9.4$ m/s,  $Tu=6$ %, no pressure gradient
+- [T3A-](Coupland/T3A/): $U=19.8$ m/s,  $Tu=0.9$ %, no pressure gradient
+- [T3C1](Coupland/T3A/): $U=5.9$ m/s,  $Tu=6.6$ %, with pressure gradient
+- [T3C2](Coupland/T3A/): $U=5.0$ m/s,  $Tu=3$ %, with pressure gradient
+- [T3C3](Coupland/T3A/): $U=3.7$ m/s,  $Tu=3$ %, with pressure gradient
+- [T3C4](Coupland/T3A/): $U=1.2$ m/s,  $Tu=3$ %, with pressure gradient
+- [T3C5](Coupland/T3A/): $U=8.4$ m/s,  $Tu=3$ %, with pressure gradient
 
-### T3AM
-- **Description:** Flat plate transitional flows without pressure gradient.
-- **Turbulence Intensity:** 0.9%
-- **Link to Case Directory:** [T3AM](T3AM/)
+* Flat plate transitional flows with separation
 
-### T3C
-#### T3C1
-- **Description:** Flat plate transitional flows with pressure gradient.
-- **Turbulence Intensity:** 6.6%
-- **Link to Case Directory:** [T3C1](T3C1/)
-
-#### T3C2
-- **Description:** Flat plate transitional flows with pressure gradient.
-- **Turbulence Intensity:** 3%
-- **Link to Case Directory:** [T3C2](T3C2/)
-
-#### T3C3
-- **Description:** Flat plate transitional flows with pressure gradient.
-- **Turbulence Intensity:** 3%
-- **Link to Case Directory:** [T3C3](T3C3/)
-
-
-#### T3C4
-- **Description:** Flat plate transitional flows with pressure gradient.
-- **Turbulence Intensity:** 3%
-- **Link to Case Directory:** [T3C4](T3C4/)
-
-
-#### T3C5
-- **Description:** Flat plate transitional flows with pressure gradient.
-- **Turbulence Intensity:** 3%
-- **Link to Case Directory:** [T3C5](T3C5/)
-
-### HultgrenVolino
-Flat plate flows with separation.
+## Flat plate transitional flows with separation
+see **Volino, R. J., & Hultgren, L. S.** (2001). *Measurements in Separated and Transitional Boundary Layers Under Low-Pressure Turbine Airfoil Conditions.* Journal of Turbomachinery, 123(2), 189–197. [https://doi.org/10.1115/1.1350408](https://doi.org/10.1115/1.1350408)
 
 **Note:** Experimental data are obtained by digitization of graphs from literature. It is not accurate 
 
-#### Re300k_lowTI
-- **Description:** Flat plate transitional flow with separation bubble
-- **Reynolds number:** 300 000
-- **Turbulence Intensity:** 0.2%
-- **Link to Case Directory:** [HulgrenVolino/Re300k_lowTI](HulgrenVolino/Re300k_lowTI/)
-
-#### Re300k_highTI
-- **Description:** Flat plate transitional flow with separation bubble
-- **Reynolds number:** 300 000
-- **Turbulence Intensity:** 2.5% (reference value is 7%)
-- **Link to Case Directory:** [HulgrenVolino/Re300k_highTI](HulgrenVolino/Re300k_highTI/)
-
-#### Re50k_lowTI
-- **Description:** Flat plate transitional flow with separation bubble
-- **Reynolds number:** 50 000
-- **Turbulence Intensity:** 0.2%
-- **Link to Case Directory:** [HulgrenVolino/Re50k_lowTI](HulgrenVolino/Re50k_lowTI/)
-
-#### Re50k_highTI
-- **Description:** Flat plate transitional flow with separation bubble
-- **Reynolds number:** 50 000
-- **Turbulence Intensity:** 2.5% (reference value is 7%)
-- **Link to Case Directory:** [HulgrenVolino/Re50k_highTI](HulgrenVolino/Re50k_highTI/)
-
+- [Re300k_lowTI](HulgrenVolino/Re300k_lowTI): $Re=300000$, $Tu=0.2$ %
+- [Re300k_highTI](HulgrenVolino/Re300k_highTI): $Re=300000$, $Tu=2.5$ %
+- [Re50k_lowTI](HulgrenVolino/Re50k_lowTI): $Re=50000$, $Tu=0.2$ %
+- [Re50k_lowTI](HulgrenVolino/Re50k_highTI): $Re=50000$, $Tu=2.5$ %
