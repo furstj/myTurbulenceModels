@@ -3,12 +3,13 @@
 For reference, see the classical ERCOFTAC test case in the [ERCOFTAC database](http://cfd.mace.manchester.ac.uk/ercoftac/doku.php?id=cases:case020).
 
 The case is solved in a domain spanning from $x = -0.15$ m to $x = 1.7$ m. The leading edge of the plate is located at $x = 0$ m ant he height of the domain is taken from Suluksna et al. (2009) as
-$$
+
+$
 h(y) = 0.3 \min\left(
       1.231 x^6 - 6.705 x^5 + 14.061 x^4 - 14.113 x^3 + 7.109 x^2 - 1.900 x + 0.950
       , 1
 \right)
-$$
+$
 
 Three different meshes were prepared: coarse, medium, and fine. Values of $y^+_1$ are calculated witt the `kOmegaSSTLM` turbulence model. The mesh details are summarized in the following table:
 
