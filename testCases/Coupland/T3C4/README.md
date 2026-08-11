@@ -3,6 +3,7 @@
 For reference, see the classical ERCOFTAC test case in the [ERCOFTAC database](http://cfd.mace.manchester.ac.uk/ercoftac/doku.php?id=cases:case020).
 
 The case is solved in a domain spanning from $x = -0.15$ m to $x = 1.7$ m. The leading edge of the plate is located at $x = 0$ m ant he height of the domain is taken from Suluksna et al. (2009) as
+
 $$
 h(y) = 0.3 \min\left(
       1.356 x^6 - 7.591 x^5 + 16.513 x^4 - 17.510 x^3 + 9.486 x^2 - 2.657 x + 0.991
