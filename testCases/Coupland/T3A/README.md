@@ -17,9 +17,9 @@ An incompressible fluid with constant density and constant viscosity $\nu=1.5\ti
 Boundary conditions are set as follows:
 * inlet ($x=-0.15$ m)
     - $U=5.4\,m/s$
-    - $Tu=3.3\,\%$
+    - $Tu=3.3~\percent$
     - $\nu_t/\nu = 12$
-    
+
 One can run the simulation with 
 
 ```
