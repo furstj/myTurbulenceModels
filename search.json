@@ -30,612 +30,46 @@
     ]
   },
   {
-    "objectID": "Validation/EARSMlm2009.html",
-    "href": "Validation/EARSMlm2009.html",
-    "title": "EARSMlm2009 validation",
+    "objectID": "Validation/HultgrenVolino/Re50k_lowTI/index.html",
+    "href": "Validation/HultgrenVolino/Re50k_lowTI/index.html",
+    "title": "myTurbulenceModels",
     "section": "",
-    "text": "The model is described in EARSMlm2009.",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
+    "text": "To be written…"
   },
   {
-    "objectID": "Validation/EARSMlm2009.html#t3a-case",
-    "href": "Validation/EARSMlm2009.html#t3a-case",
-    "title": "EARSMlm2009 validation",
-    "section": "T3A case",
-    "text": "T3A case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
-  },
-  {
-    "objectID": "Validation/EARSMlm2009.html#t3a--case",
-    "href": "Validation/EARSMlm2009.html#t3a--case",
-    "title": "EARSMlm2009 validation",
-    "section": "T3A- case",
-    "text": "T3A- case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
-  },
-  {
-    "objectID": "Validation/EARSMlm2009.html#t3b-case",
-    "href": "Validation/EARSMlm2009.html#t3b-case",
-    "title": "EARSMlm2009 validation",
-    "section": "T3B case",
-    "text": "T3B case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
-  },
-  {
-    "objectID": "Validation/EARSMlm2009.html#t3c1-case",
-    "href": "Validation/EARSMlm2009.html#t3c1-case",
-    "title": "EARSMlm2009 validation",
-    "section": "T3C1 case",
-    "text": "T3C1 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
-  },
-  {
-    "objectID": "Validation/EARSMlm2009.html#t3c2-case",
-    "href": "Validation/EARSMlm2009.html#t3c2-case",
-    "title": "EARSMlm2009 validation",
-    "section": "T3C2 case",
-    "text": "T3C2 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
-  },
-  {
-    "objectID": "Validation/EARSMlm2009.html#t3c3-case",
-    "href": "Validation/EARSMlm2009.html#t3c3-case",
-    "title": "EARSMlm2009 validation",
-    "section": "T3C3 case",
-    "text": "T3C3 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
-  },
-  {
-    "objectID": "Validation/EARSMlm2009.html#t3c4-case",
-    "href": "Validation/EARSMlm2009.html#t3c4-case",
-    "title": "EARSMlm2009 validation",
-    "section": "T3C4 case",
-    "text": "T3C4 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
-  },
-  {
-    "objectID": "Validation/EARSMlm2009.html#t3c5-case",
-    "href": "Validation/EARSMlm2009.html#t3c5-case",
-    "title": "EARSMlm2009 validation",
-    "section": "T3C5 case",
-    "text": "T3C5 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
-  },
-  {
-    "objectID": "Validation/EARSMlm2009.html#sec-validation-hv300h",
-    "href": "Validation/EARSMlm2009.html#sec-validation-hv300h",
-    "title": "EARSMlm2009 validation",
-    "section": "Re=300 000, highTI",
-    "text": "Re=300 000, highTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
-  },
-  {
-    "objectID": "Validation/EARSMlm2009.html#sec-validation-hv300l",
-    "href": "Validation/EARSMlm2009.html#sec-validation-hv300l",
-    "title": "EARSMlm2009 validation",
-    "section": "Re=300 000, lowTI",
-    "text": "Re=300 000, lowTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
-  },
-  {
-    "objectID": "Validation/EARSMlm2009.html#sec-validation-hv50h",
-    "href": "Validation/EARSMlm2009.html#sec-validation-hv50h",
-    "title": "EARSMlm2009 validation",
-    "section": "Re=50 000, highTI",
-    "text": "Re=50 000, highTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
-  },
-  {
-    "objectID": "Validation/EARSMlm2009.html#sec-validation-hv50l",
-    "href": "Validation/EARSMlm2009.html#sec-validation-hv50l",
-    "title": "EARSMlm2009 validation",
-    "section": "Re=50 000, lowTI",
-    "text": "Re=50 000, lowTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
-    "crumbs": [
-      "Validation cases",
-      "EARSMlm2009 results"
-    ]
-  },
-  {
-    "objectID": "Transition/kv2Omega.html",
-    "href": "Transition/kv2Omega.html",
-    "title": "kv2Omega model",
+    "objectID": "Validation/HultgrenVolino/Re300k_highTI/index.html",
+    "href": "Validation/HultgrenVolino/Re300k_highTI/index.html",
+    "title": "myTurbulenceModels",
     "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the model is not yet written.",
-    "crumbs": [
-      "Development and experimental models",
-      "kv2Omega"
-    ]
+    "text": "To be written…"
   },
   {
-    "objectID": "Transition/kOmegaSSTLMRough.html",
-    "href": "Transition/kOmegaSSTLMRough.html",
-    "title": "kOmegaSSTLMRough model",
+    "objectID": "Validation/Coupland/T3C4/index.html",
+    "href": "Validation/Coupland/T3C4/index.html",
+    "title": "Flat-plate transitional flow - T3C4 case",
     "section": "",
-    "text": "The transition model on rough walls is based on a combination of the four-equation transition model \\(\\gamma - \\tilde{Re}_\\theta\\) according to Langtry and Menter (Langtry and Menter 2009) with an additional equation for the amplification factor \\(A_r\\) according to Dassler et al. (Dassler et al. 2010). In subsequent publications, this model has been presented in various variants and calibrations, e.g., Langel et al. (Langel, Chow, C. P. Van Dam, et al. 2017) or Kožulović et al. (Kožulovič et al. 2022).",
-    "crumbs": [
-      "Transitional models",
-      "kOmegaSSTLMRough"
-    ]
+    "text": "Flat-plate transitional flow - T3C4 case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.356 x^6 - 7.591 x^5 + 16.513 x^4 - 17.510 x^3 + 9.486 x^2 - 2.657 x + 0.991\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=1.25\\) m/s\n\\(Tu=3.1\\) %\n\\(\\nu_t/\\nu = 2.5\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\nSee Suluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
   },
   {
-    "objectID": "Transition/kOmegaSSTLMRough.html#model-equations",
-    "href": "Transition/kOmegaSSTLMRough.html#model-equations",
-    "title": "kOmegaSSTLMRough model",
-    "section": "Model Equations",
-    "text": "Model Equations\nThe transition model according to Dassler et al. contains the following three equations: \\[\n\\begin{aligned}\n\\frac{\\partial (\\rho \\gamma)}{\\partial t} + \\frac{\\partial (\\rho u_j \\gamma)}{\\partial x_j} &= P_\\gamma - E_\\gamma + \\frac{\\partial}{\\partial x_j} \\left[ \\left( \\mu + \\frac{\\mu_t}{\\sigma_f} \\right) \\frac{\\partial \\gamma}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\tilde{Re}_\\theta)}{\\partial t} + \\frac{\\partial (\\rho u_j \\tilde{Re}_\\theta)}{\\partial x_j} &= P_\\theta + \\frac{\\partial}{\\partial x_j} \\left[ \\sigma_\\theta \\left( \\mu + \\mu_t \\right) \\frac{\\partial \\tilde{Re}_\\theta}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho A_r)}{\\partial t} + \\frac{\\partial (\\rho u_j A_r)}{\\partial x_j} &= P_{A_r} + \\frac{\\partial}{\\partial x_j} \\left[ \\sigma_{A_r} \\left( \\mu + \\mu_t\\right) \\frac{\\partial A_r}{\\partial x_j} \\right].\n\\end{aligned}\n\\]\n\n\n\n\n\n\nNoteNote\n\n\n\nThe role of \\(\\sigma_f\\) and other \\(\\sigma\\) coefficients in the formulas is different! However, the value of \\(\\sigma_f\\) is 1, so it probably doesn’t matter.\n\n\nIn the original article (Dassler et al. 2010), the source term in the equation for \\(A_r\\) is applied in the first layer of cells near the wall. This does not make sense from a mathematical point of view, and therefore this original model was not tested. In a later article (Dassler et al. 2012), a version is presented where a boundary condition for \\(A_r\\) is prescribed at the wall and the source term is applied throughout the entire computational domain. In this model, the value is \\(\\sigma_{A_r} = 10\\) and at the wall, the following boundary condition for \\(A_r\\) is considered \\[\nA_{r,w} = 8 k_s^+, \\quad \\text{kde } k_s^+ = \\frac{u_\\tau k_s}{\\nu}.\n\\]\nThe original source term in the equation for \\(\\tilde{Re}_\\theta\\) \\[\nP_\\theta = c_{\\theta t}\\frac{\\rho}{T}\\left(Re_{\\theta} - \\tilde{Re}_\\theta \\right)\n(1 - F_{\\theta t})\n\\tag{1}\\]\nwas modified to the form \\[\nP_\\theta = c_{\\theta t}\\frac{\\rho}{T}\\left[\\left(Re_{\\theta} - \\tilde{Re}_\\theta \\right)\n(1 - F_{\\theta t}) - Arg_r\\right],\n\\] where \\(Arg_r\\) is a function dependent on \\(A_r\\), which shifts the transition onset towards lower values of \\(\\tilde{Re}_\\theta\\) depending on the wall roughness.\nHowever, the functional form of \\(Arg_r\\) is not published in the article. Therefore, this model was not further tested.\n\nModel according to Langel et al. (2017) (Langel2017)\nThe model according to Langel et al. (Langel, Chow, C. P. Van Dam, et al. 2017) uses the same approach as Dassler et al., but with different calibration and provides a specific functional form for \\(Arg_r\\). In this model, the value is \\(\\sigma_{A_r} = 30\\) and the boundary condition at the wall is for the case of flat plate flow (see (Langel, Chow, C. P. Van Dam, et al. 2017, 109)) \\[\nA_{r,w} = \\frac{20000}{1 + e^{13.5 - k_s^+}}.\n\\]\n\n\n\n\n\nDependence of boundary condition \\(A_{r,w}\\) on dimensionless roughness \\(k_s^+\\) according to (Langel, Chow, C. P. Van Dam, et al. 2017).\n\n\n\n\n\n\n\n\n\n\nNoteNote\n\n\n\nThere is apparently an error in the notation of the boundary condition for \\(A_{r,w}\\) in the original article (Langel, Chow, C. P. Van Dam, et al. 2017), see comparison with the graph on page 103 in (Langel, Chow, C. P. Van Dam, et al. 2017). The above version corresponds to this graph.\n\n\n\n\n\n\n\n\nNoteNote\n\n\n\nFor airfoil flow, a different correlation is used for the boundary condition. The value 13.5 in the exponent is replaced by approximately 27, see the graph on page 103 in (Langel, Chow, C. P. Van Dam, et al. 2017).\n\n\nThe source term in the equation for \\(\\tilde{Re}_\\theta\\) is modified as \\[\nP_\\theta = c_{\\theta t}\\frac{\\rho}{T}\\left[\\left(Re_{\\theta} - \\tilde{Re}_\\theta \\right)\n(1 - F_{\\theta t}) - b F_{A_r}\\right]\n\\] kde \\[\nF_{A_r} = \\begin{cases}\n4 A_r^{0.42} + 4 A_r \\left(\\frac{1}{F(\\lambda_\\theta)}\\right)(1 - F_{\\theta t}), & \\text{for } F(\\lambda_\\theta) \\le 1, \\\\\n4 A_r^{0.42} + 4 A_r \\left(\\frac{1}{F(\\lambda_\\theta)}\\right)^{0.6}(1 - F_{\\theta t}), & \\text{for } F(\\lambda_\\theta) &gt; 1.\n\\end{cases}\n\\]\nThe function \\(F(\\lambda_\\theta)\\) is defined as in the original model by Langtry and Menter Langtry and Menter (2009) as \\[\nF(\\lambda_\\theta) = \\begin{cases}\n1 + (12.986 \\lambda_\\theta + 123.66 \\lambda_\\theta^2 + 405.689 \\lambda_\\theta^3) e^{-\\left(Tu/1.5\\right)^{1.5}} , & \\text{for } \\lambda_\\theta \\le 0, \\\\\n1 + 0.275\\left(1 - e^{-35\\lambda_\\theta}\\right)e^{-\\left(Tu/0.5\\right)}, & \\text{for } \\lambda_\\theta &gt; 0,\n\\end{cases}\n\\]\n\n\n\n\n\nDependence of function \\(F(λ_θ)\\) according to (Langel, Chow, C. P. Van Dam, et al. 2017) for different values of \\(Tu\\).\n\n\n\n\nThe damping factor \\(b\\) is given by the relation \\[\nb = 0.5\\sin\\left(\\frac{\\pi}{155}\\tilde{Re}_\\theta - \\frac{97\\pi}{155}\\right) + 0.5.\n\\] In this function, it is apparently appropriate to limit the value of \\(\\tilde{Re}_\\theta\\) to the interval \\([19.5, 174.5]\\), i.e., \\[\nb = 0.5\\sin\\left(\\frac{\\pi}{155}\\max(\\min(\\tilde{Re}_\\theta, 174.5), 19.5) - \\frac{97\\pi}{155}\\right) + 0.5.\n\\tag{2}\\]\n\n\n\n\n\nDependence of damping factor \\(b\\) on the value of \\(Re_θ\\) according to (Langel, Chow, C. P. Van Dam, et al. 2017).\n\n\n\n\nFurthermore, a modified boundary condition for \\(\\omega\\) at the wall is used according to (Langel, Chow, C. P. Van Dam, et al. 2017) based on the work of (Wilcox 1994): \\[\n\\omega_w = \\frac{u_\\tau^2 S_r}{\\nu},\n\\] kde \\[\nS_r = \\begin{cases}\n\\left(\\frac{50}{k_s^+}\\right)^2 & \\text{for } k_s^+ \\le 25, \\\\\n\\frac{100}{k_s^+} & \\text{for } k_s^+ &gt; 25.\n\\end{cases}\n\\tag{3}\\]\nCompared to the model according to (Langel, Chow, C. P. Van Dam, et al. 2017), a modification of the boundary condition for \\(\\omega\\) in the case of a smooth wall is used in the implementation \\[\n\\omega_w = \\begin{cases}\n10 \\frac{6\\nu}{\\beta_1 y_1^2} & \\text{for } k_s^+ \\le \\sqrt{\\frac{2500\\beta_1}{60}} y^+_1, \\\\\n\\frac{u_\\tau^2 S_r}{\\nu} & \\text{for } k_s^+ &gt; \\sqrt{\\frac{2500\\beta_1}{60}} y^+_1.\n\\end{cases}\n\\tag{4}\\]\nIn the newer edition of the book (Wilcox 2006), this boundary condition for a smooth wall is given in the form \\[\nS_r = \\begin{cases}\n\\left(\\frac{200}{k_s^+}\\right)^2 & \\text{for } k_s^+ \\le 5, \\\\\n\\frac{100}{k_s^+} + \\left[ \\left(\\frac{200}{k_s^+}\\right)^2 - \\frac{100}{k_s^+}\\right]\ne^{5-k_s^+}& \\text{for } k_s^+ &gt; 5.\n\\end{cases}\n\\]\nHowever, this form of boundary condition was not used in the calculations. Furthermore, (Wilcox 2006) presents a boundary condition for a rough wall for the low Reynolds version of the model. It differs from the above condition only in the coefficient of the second branch, where 60 is used instead of 100 (in both places). This version was also not used in the calculations.\n\n\n\n\n\nDependence of factor \\(S_r\\) for omega boundary condition according to (Langel, Chow, C. P. Van Dam, et al. 2017) and (Wilcox 2006).\n\n\n\n\n\n\nModel according to Langel et al. (2017a) (Langel2017a)\nIn another publication (Langel, Chow, Case P. Van Dam, et al. 2017), a different version of the Langel2017 model is presented, which uses different calibrations and a boundary condition for \\(A_r\\) at the wall. The value of \\(\\sigma_{A_r}\\) in this model is set to \\(\\sigma_{A_r} = 10\\) and the boundary condition at the wall is \\[\nA_{r,w} = c_{r1} k_s^+,\n\\] where \\(c_{r1} = 8\\). The function \\(F_{A_r}\\) in the equation for \\(\\tilde{Re}_\\theta\\) is \\[\nF_{A_r} = \\begin{cases}\nc_{r2} Ar^3, & \\text{for } Ar &lt; C_{Ar}, \\\\\nc_{r3} (Ar - C_{Ar}) + c_{r2} C_{Ar}^3, & \\text{for } Ar \\ge C_{Ar},\n\\end{cases}\n\\] where \\(c_{r2} = 0.0005\\), \\(c_{r3} = 2\\) and \\(C_{Ar} = \\sqrt{c_{r3}/3c_{r2}}\\), see (Langel, Chow, Case P. Van Dam, et al. 2017) [p. 65]. The coefficient \\(b\\) in this version of the model is given by the relation (compare with Equation 2) \\[\nb = \\left(\\frac{1}{2}\\sin\\left(\\frac{\\pi}{155}\\widetilde{Re}_\\theta - \\frac{97\\pi}{155}\\right) + \\frac{1}{2}\\right)^2.\n\\tag{5}\\] As with the Langel2017 model, it is appropriate to limit the value of \\(\\tilde{Re}_\\theta\\) to the interval \\([19.5, 174.5]\\) in this relation.\n\n\n\n\n\nDependence of damping factor \\(b\\) on the value of \\(Re_θ\\) according to (Langel, Chow, Case P. Van Dam, et al. 2017).\n\n\n\n\n\n\nModel according to Kožulović et al. (2022) (Kozulovic2022)\nIn the most recent publication (Kožulovič et al. 2022), another version of the transition model on rough walls is presented with different calibration and a boundary condition for \\(A_r\\) at the wall. The model apparently originates from the publication (Dassler et al. 2012) and supplements some correlations that were not included in the original publication.\nThe source term in the equation for \\(\\tilde{Re}_\\theta\\) is defined by Equation 1 with the function \\(Arg_r\\) defined as \\[\nArg_r = \\begin{cases}\nA_r^3\\cdot 0.000025, & \\text{for } A_r &lt; A_{r,s}, \\\\\n0.24 \\cdot A_r - 9.05094, & \\text{for } A_r \\ge A_{r,s},\n\\end{cases}\n\\] where \\(A_{r,s} = \\sqrt{0.24/3/0.000025} \\approx 56.5685\\).\nThe boundary condition for \\(A_r\\) at the wall is the same as in the Langel2017a model, i.e., \\[\nA_{r,w} = 8 k_s^+.\n\\]\nThe value of \\(\\sigma_{A_r}\\) is not specified in the article, but apparently the value \\(\\sigma_{A_r} = 10\\) is used, as in the model according to (Dassler et al. 2012). In the original model according to (Dassler et al. 2012), the damping function \\(b\\) is also mentioned in the text. However, its functional form is not given. Therefore, the function according to Equation 5 was used. Furthermore, for reasonable agreement with experiment, it was necessary to multiply \\(Arg_r\\) by a coefficient of 10, i.e., \\[\nP_\\theta = c_{\\theta t}\\frac{\\rho}{T}\\left[\\left(Re_{\\theta} - \\tilde{Re}_\\theta \\right)\n(1 - F_{\\theta t}) - 10 b \\cdot Arg_r\\right].\n\\tag{6}\\]\n\n\nModel Comparison\nThe models differ both in the values of \\(\\sigma_{A_r}\\) and the boundary condition for \\(A_r\\) at the wall, as well as in the modification of the source term in the equation for \\(\\tilde{Re}_\\theta\\). The graph below shows a comparison of the function \\(F_{A_r}\\) or \\(Arg_r\\) for different models (for \\(b=1\\) and \\(F_\\theta=0\\)).\n\n\n\n\n\nComparison of functions \\(F_{A_r}\\) and \\(Arg_r\\) for different transition models on rough walls.",
-    "crumbs": [
-      "Transitional models",
-      "kOmegaSSTLMRough"
-    ]
-  },
-  {
-    "objectID": "Transition/EARSMTrans.html",
-    "href": "Transition/EARSMTrans.html",
-    "title": "EARSMTrans model",
+    "objectID": "Validation/Coupland/T3C2/index.html",
+    "href": "Validation/Coupland/T3C2/index.html",
+    "title": "Flat-plate transitional flow - T3C2case",
     "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the model is not yet written.",
-    "crumbs": [
-      "Deprecated models",
-      "EARSMTrans"
-    ]
+    "text": "Flat-plate transitional flow - T3C2case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.231 x^6 - 6.705 x^5 + 14.061 x^4 - 14.113 x^3 + 7.109 x^2 - 1.900 x + 0.950\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=5.0\\) m/s\n\\(Tu=3.1\\) %\n\\(\\nu_t/\\nu = 9\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\nSee Suluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
   },
   {
-    "objectID": "RANS/kOmegaTNT.html",
-    "href": "RANS/kOmegaTNT.html",
-    "title": "kOmegaTNT model",
+    "objectID": "Validation/Coupland/T3AM/index.html",
+    "href": "Validation/Coupland/T3AM/index.html",
+    "title": "Flat-plate transitional flow - T3A- case",
     "section": "",
-    "text": "The kOmegaTNT model is a simple two-equation RANS turbulence model developed by J. C. Kok (Kok 2000). It is a modification of the original Wilcox k-ω model (Wilcox 1994), designed to remove strong dependency on the free-stream value of ω. This is achieved by including a cross-diffusion term in the ω equation, similar to the SST model by Menter (Menter 1994), and by re-calibration of model coefficients.",
-    "crumbs": [
-      "RANS models",
-      "kOmegaTNT"
-    ]
+    "text": "Flat-plate transitional flow - T3A- case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a rectangular domain spanning from \\(x = -0.15\\) m to \\(x = 2.9\\) m. The height of the domain is \\(h = 0.3\\) m, and the leading edge of the plate is located at \\(x = 0\\) m.\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=19.8\\) m/s\n\\(Tu=0.874\\) %\n\\(\\nu_t/\\nu = 8.72\\)\n\nThe other boundary conditions are set as follows:\n\nflat plate (\\(x&gt;0\\) m, \\(y=0\\) m): no-slip wall\nlower symmetry (\\(x&lt;0\\) m, \\(y=0\\) m): symmetry\ntop wall (\\(y=0.3\\) m): slip\noutlet (\\(x=2.9\\) m): pressure outlet with \\(p=0\\) Pa\n\nThe simulation can be run on the medium mesh with\n./Allrun medium"
   },
   {
-    "objectID": "RANS/kOmegaTNT.html#model-equations",
-    "href": "RANS/kOmegaTNT.html#model-equations",
-    "title": "kOmegaTNT model",
-    "section": "Model Equations",
-    "text": "Model Equations\nThe transport equations for the kOmegaTNT model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\nP_\\omega &= \\frac{\\alpha_\\omega \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\max\\left[\\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}, 0\\right].\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\rho \\frac{k}{\\omega}.\n\\]",
-    "crumbs": [
-      "RANS models",
-      "kOmegaTNT"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaTNT.html#model-coefficients",
-    "href": "RANS/kOmegaTNT.html#model-coefficients",
-    "title": "kOmegaTNT model",
-    "section": "Model Coefficients",
-    "text": "Model Coefficients\nThe model coefficients are set to the following values:\n\n\\(\\beta^* = 0.09\\)\n\\(\\beta = 0.075\\)\n\\(\\sigma_k = \\frac{2}{3}\\)\n\\(\\sigma_\\omega = 0.5\\)\n\\(\\alpha_\\omega = 5/9\\)\n\\(\\sigma_d = 0.5\\)",
-    "crumbs": [
-      "RANS models",
-      "kOmegaTNT"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaTNT.html#modifications",
-    "href": "RANS/kOmegaTNT.html#modifications",
-    "title": "kOmegaTNT model",
-    "section": "Modifications",
-    "text": "Modifications\nThere are two optional modifications available for the kOmegaTNT model:\n\nproduction limiter: Limits the production term \\(P_k\\) to prevent excessive turbulence generation in adverse pressure gradient flows. The limiter is applied to the equation for \\(k\\) where it replaces \\(P_k\\) with: \\[\n\\tilde{P}_k = \\min\\left(P_k, 20 \\beta^* \\rho k \\omega\\right).\n\\]\nshock limiter: Reduces the turbulent viscosity in the presence of shocks to avoid nonphysical results. The limiter is applied to the equation for \\(k\\) where it replaces \\(P_k\\) with: \\[\n\\tilde{P}_k = \\min\\left(P_k, k \\sqrt{S_{ij} S_{ij}}\\right).\n\\]\n\nThe source term in the \\(\\omega\\) equation is left unmodified.",
-    "crumbs": [
-      "RANS models",
-      "kOmegaTNT"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaTNT.html#notes-on-openfoam-implementation",
-    "href": "RANS/kOmegaTNT.html#notes-on-openfoam-implementation",
-    "title": "kOmegaTNT model",
-    "section": "Notes on OpenFOAM implementation",
-    "text": "Notes on OpenFOAM implementation\nOpenFOAM implementation uses slightly different notation for some coefficients:\n\nCmu is used for \\(\\beta^*\\)\nbeta is used for \\(\\beta\\)\ngamma is used for \\(\\alpha_\\omega\\)\nalphaK is used for \\(\\sigma_k\\)\nalphaOmega is used for \\(\\sigma_\\omega\\)\nalphaD is used for \\(\\sigma_d\\)\n\nMoreover, OpenFOAM works with kinematic turbulent viscosity nut multiplied by density instead of turbulent viscosity mu_t.",
-    "crumbs": [
-      "RANS models",
-      "kOmegaTNT"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaSSTCC.html",
-    "href": "RANS/kOmegaSSTCC.html",
-    "title": "kOmegaSSTCC model",
+    "objectID": "Validation/Coupland/T3A/index.html",
+    "href": "Validation/Coupland/T3A/index.html",
+    "title": "Flat-plate transitional flow - T3A case",
     "section": "",
-    "text": "The kOmegaSSTCC is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter (Menter et al. 2003) as included in standard OpenFOAM distribution. It incorporates a curvature correction (CC) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Smirnov and Menter (Smirnov and Menter 2009).",
-    "crumbs": [
-      "RANS models",
-      "kOmegaSSTCC"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaSSTCC.html#model-equations",
-    "href": "RANS/kOmegaSSTCC.html#model-equations",
-    "title": "kOmegaSSTCC model",
-    "section": "Model Equations",
-    "text": "Model Equations\nThe transport equations for the kOmegaSSTCC model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k f_{r1} - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega f_{r1}- \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\n\\tau_{ij} &= \\mu_t \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right) - \\frac{2}{3} \\rho k \\delta_{ij}, \\\\\nS_{ij} &= \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right), \\\\\nP_\\omega &= \\frac{\\gamma \\rho}{\\mu_t} P_k, \\\\\nC_D &= 2(1 - F_1)\\frac{\\rho \\sigma_{\\omega 2}}{\\omega} \\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}.\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\frac{a_1 \\rho k}{\\max(a_1 \\omega, S F_2)}\n\\] with \\(S = \\sqrt{2 S_{ij} S_{ij}}\\).\nThe curvature correction function \\(f_{r1}\\) is defined as: \\[\nf_{r1} = \\max\\left[\\min\\left(f_{r}, 1.25\\right), 0\\right]\n\\] where \\[\nf_{r} = (1 + c_{r1})\\frac{2r^*}{1+r^*}\\left[1 - c_{r3} \\arctan\\left( c_{r2} \\tilde{r} \\right)\\right] - c_{r1}\n\\] with \\[\n\\begin{aligned}\nr^* &= \\frac{S}{\\Omega}, \\\\\n\\tilde{r} &= 2 \\Omega_{ik}S_{kj} \\left[\\frac{D S_{ij}}{D t} + (\\epsilon_{imn}S_{jn} + \\epsilon_{jmn}S_{in})\\Omega_m^{rot}\\right]\\frac{1}{\\Omega D^3} \\\\\n\\Omega_{ij} &= \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} - \\frac{\\partial u_j}{\\partial x_i}  - 2 \\epsilon_{mji}\\Omega_m^{rot}\\right), \\\\\n\\Omega &= \\sqrt{2 \\Omega_{ij} \\Omega_{ij}}, \\\\\nD^2 &= \\max(S^2, 0.09 \\omega^2).\n\\end{aligned}\n\\] Here \\(\\Omega_m^{rot}\\) is the system rotation rate.",
-    "crumbs": [
-      "RANS models",
-      "kOmegaSSTCC"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaSSTCC.html#model-coefficients",
-    "href": "RANS/kOmegaSSTCC.html#model-coefficients",
-    "title": "kOmegaSSTCC model",
-    "section": "Model Coefficients",
-    "text": "Model Coefficients\nFor the standars kOmegaSST model coefficients see (Menter et al. 2003) or the OpenFOAM manual. The curvature correction coefficients are set to:\n\n\\(c_{r1} = 1.0\\)\n\\(c_{r2} = 2.0\\)\n\\(c_{r3} = 1.0\\)",
-    "crumbs": [
-      "RANS models",
-      "kOmegaSSTCC"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaSSTCC.html#notes-on-openfoam-implementation",
-    "href": "RANS/kOmegaSSTCC.html#notes-on-openfoam-implementation",
-    "title": "kOmegaSSTCC model",
-    "section": "Notes on OpenFOAM implementation",
-    "text": "Notes on OpenFOAM implementation\n\n\n\n\n\n\nNote\n\n\n\nCurrent implementation does not include the system rotation \\(\\Omega_m^{rot}\\) in the calculation of \\(\\Omega_{ij}\\).\n\n\nSee the OpenFOAM manual for details on basic kOmegaSST model implementation.",
-    "crumbs": [
-      "RANS models",
-      "kOmegaSSTCC"
-    ]
-  },
-  {
-    "objectID": "RANS/EARSMHellsten.html",
-    "href": "RANS/EARSMHellsten.html",
-    "title": "EARSM model",
-    "section": "",
-    "text": "The EARSM (Explicit Algebraic Reynolds Stress Model) is a RANS turbulence model developed by Hellsten (Hellsten 2005). It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models.\n\n\n\n\n\n\nWarning\n\n\n\nThe documentation for EARSM model is not yet complete. Please refer to the original publication (Hellsten 2005) or to (NASA turbulent resources)[https://turbmodels.larc.nasa.gov/] for detailed information on the model formulation.\n\n\n\n\n\n\nReferences\n\nHellsten, Antti K. 2005. “New Advanced k-w Turbulence Model for High-Lift Aerodynamics.” AIAA Journal 43: 1857–69. https://doi.org/10.2514/1.13754.",
-    "crumbs": [
-      "Deprecated models",
-      "EARSMHellsten"
-    ]
-  },
-  {
-    "objectID": "LES/XLES.html",
-    "href": "LES/XLES.html",
-    "title": "XLES model",
-    "section": "",
-    "text": "The X-LES (eXtra Large Eddy Simulation) model is an advanced LES turbulence model developed by J. C. Kok and H. Ven (Kok and Ven 2010). It extends the traditional LES approach by incorporating additional subgrid-scale modeling techniques to better capture the effects of unresolved scales on the resolved flow field. The X-LES model is a particular variant of DES (Detached Eddy Simulation) that uses a combination of two-equation k-ω RANS model with k-equation LES model. In order to speed up creation of small scale structures, a stochastic subgrid-scale model is used.",
-    "crumbs": [
-      "LES models",
-      "XLES"
-    ]
-  },
-  {
-    "objectID": "LES/XLES.html#model-equations",
-    "href": "LES/XLES.html#model-equations",
-    "title": "XLES model",
-    "section": "Model Equations",
-    "text": "Model Equations\nThe RANS part of the X-LES model is based on the TNT model described in the kOmegaTNT documentation: \\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\rho\\epsilon + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\nP_\\omega &= \\frac{\\alpha_\\omega \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\max\\left[\\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}, 0\\right], \\\\\n\\epsilon &= \\frac{k^{3/2}}{l_t},\n\\end{aligned}\n\\]\nThe X-LES length scale \\(l_t\\) is defined as: \\[\nl_t = \\min\\left( C_{DES} \\Delta, \\frac{k^{1/2}}{\\beta^* \\omega} \\right),\n\\]\nand the turbulent viscosity is computed as: \\[\n\\nu_t = \\beta^* l_t \\sqrt{k}.\n\\]\nThe model contains also an optional stochastic forcing term to enhance the generation of small scale structures in LES mode, as described in Kok and Ven (2010). In that case, the turbulent viscosity is calculated as: \\[\n\\nu_t = \\begin{cases}\n\\frac{k}{\\omega} & \\text{if } l_t &lt; C_{DES} \\Delta (\\text{ i.e. in RANS region} ), \\\\\n\\xi^2 \\beta^* l_t \\sqrt{k} & \\text{if } l_t = C_{DES} \\Delta (\\text{ i.e. in LES region} ),\n\\end{cases}\n\\] where \\(\\xi \\approx \\mathcal{N}(0,1)\\) is a random variable with stochastic variable with normal zero-mean normal distribution and unit variance.",
-    "crumbs": [
-      "LES models",
-      "XLES"
-    ]
-  },
-  {
-    "objectID": "LES/XLES.html#model-coefficients",
-    "href": "LES/XLES.html#model-coefficients",
-    "title": "XLES model",
-    "section": "Model Coefficients",
-    "text": "Model Coefficients\nThe model coefficients are set to the following values:\n\n\\(\\beta^* = 0.09\\)\n\\(\\beta = 0.075\\)\n\\(\\sigma_k = \\frac{2}{3}\\)\n\\(\\sigma_\\omega = 0.5\\)\n\\(\\alpha_\\omega = 5/9\\)\n\\(\\sigma_d = 0.5\\)\n\\(C_{DES} = 0.61\\)",
-    "crumbs": [
-      "LES models",
-      "XLES"
-    ]
-  },
-  {
-    "objectID": "LES/XLES.html#notes-on-openfoam-implementation",
-    "href": "LES/XLES.html#notes-on-openfoam-implementation",
-    "title": "XLES model",
-    "section": "Notes on OpenFOAM implementation",
-    "text": "Notes on OpenFOAM implementation\nThe original article uses slightly different notation. The length scale does not include the \\(\\beta^*\\) coefficient, i.e. it is defined as: \\[\nl_t = \\min\\left( C_1 \\Delta, \\frac{k^{1/2}}{\\omega} \\right).\n\\] with \\(C_1 = C_{DES} \\beta^*\\). Other quantities are changed accordingly. Moreover, the default value of \\(C_{DES}\\) was set to 0.65 in the OpenFOAM implementation.",
-    "crumbs": [
-      "LES models",
-      "XLES"
-    ]
-  },
-  {
-    "objectID": "BoCos/roughnessAmplification.html",
-    "href": "BoCos/roughnessAmplification.html",
-    "title": "??? boundary condition",
-    "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
-    "crumbs": [
-      "Boundary conditions",
-      "roughnessAmplification"
-    ]
-  },
-  {
-    "objectID": "BoCos/omegaViscosityRatio.html",
-    "href": "BoCos/omegaViscosityRatio.html",
-    "title": "??? boundary condition",
-    "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
-    "crumbs": [
-      "Boundary conditions",
-      "omegaViscosityRatio"
-    ]
-  },
-  {
-    "objectID": "BoCos/nutUKnoppWallFunction.html",
-    "href": "BoCos/nutUKnoppWallFunction.html",
-    "title": "??? boundary condition",
-    "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
-    "crumbs": [
-      "Boundary conditions",
-      "nutUKnoppWallFunction"
-    ]
-  },
-  {
-    "objectID": "BoCos/ReThetatInlet.html",
-    "href": "BoCos/ReThetatInlet.html",
-    "title": "??? boundary condition",
-    "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
-    "crumbs": [
-      "Boundary conditions",
-      "ReThetatInlet"
-    ]
-  },
-  {
-    "objectID": "BoCos/boundedTurbulentIntensityKineticEnergyInlet.html",
-    "href": "BoCos/boundedTurbulentIntensityKineticEnergyInlet.html",
-    "title": "??? boundary condition",
-    "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
-    "crumbs": [
-      "Boundary conditions",
-      "boundedTurbulentIntensityKineticEnergyInlet"
-    ]
-  },
-  {
-    "objectID": "BoCos/omegaRoughWallFunction.html",
-    "href": "BoCos/omegaRoughWallFunction.html",
-    "title": "??? boundary condition",
-    "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
-    "crumbs": [
-      "Boundary conditions",
-      "omegaRoughWallFunction"
-    ]
-  },
-  {
-    "objectID": "BoCos/omegaWilcoxRoughWallFunction.html",
-    "href": "BoCos/omegaWilcoxRoughWallFunction.html",
-    "title": "??? boundary condition",
-    "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
-    "crumbs": [
-      "Boundary conditions",
-      "omegaWilcoxRoughWallFunction"
-    ]
-  },
-  {
-    "objectID": "BoCos/roughnessAmplificationLangel.html",
-    "href": "BoCos/roughnessAmplificationLangel.html",
-    "title": "??? boundary condition",
-    "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
-    "crumbs": [
-      "Boundary conditions",
-      "roughnessAmplificationLangel"
-    ]
-  },
-  {
-    "objectID": "RANS/EARSM.html",
-    "href": "RANS/EARSM.html",
-    "title": "EARSM models",
-    "section": "",
-    "text": "The EARSM (Explicit Algebraic Reynolds Stress) models is a class of RANS turbulence models developed by Wallin and Johanson (Wallin and Johanson 2000). It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models.\nThe EARSM formulation consists of non-linear formulation of the Reynolds stress tensor, which is expressed in terms of the mean strain-rate and rotation-rate tensors. The model is closed by an two-equation k-ω turbulence model.The model is particularly suitable for flows with strong streamline curvature, rotation, and separation, where traditional linear eddy-viscosity models may fail to provide accurate predictions."
-  },
-  {
-    "objectID": "RANS/EARSM.html#model-coefficients",
-    "href": "RANS/EARSM.html#model-coefficients",
-    "title": "EARSM models",
-    "section": "Model coefficients",
-    "text": "Model coefficients\nModel coefficients for EARSM model are given as:\n\n\\(C_\\tau = 6\\)\n\\(c_1 = 1.8\\)\n\\(C_{diff} = 2.2\\)\n\\(\\beta_1 = - \\frac{N(2N^2 - 7 I\\!|_\\Omega)}{Q}\\)\n\\(\\beta_3 = - \\frac{12 I\\!V}{N Q}\\)\n\\(\\beta_4 = \\frac{2(N^2 - 2I\\!|_\\Omega}{Q}\\)\n\\(\\beta_6 = - \\frac{6N}{Q}\\)\n\\(\\beta_9 = \\frac{6}{Q}\\)"
-  },
-  {
-    "objectID": "RANS/EARSMWallin.html",
-    "href": "RANS/EARSMWallin.html",
-    "title": "EARSMWallin model",
-    "section": "",
-    "text": "The EARSMWallin (Explicit Algebraic Reynolds Stress Model) is a RANS turbulence model developed by Wallin and Johanson (Wallin and Johanson 2000). It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models. The model uses k-omega TNT by Kok (Kok 2000) as the underlying turbulence model.",
-    "crumbs": [
-      "Deprecated models",
-      "EARSMWallin"
-    ]
-  },
-  {
-    "objectID": "RANS/EARSMWallin.html#model-equations",
-    "href": "RANS/EARSMWallin.html#model-equations",
-    "title": "EARSMWallin model",
-    "section": "Model Equations",
-    "text": "Model Equations\nThe transport equations for the kOmegaTNT model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\nP_\\omega &= \\frac{\\alpha_\\omega \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\max\\left[\\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}, 0\\right].\n\\end{aligned}\n\\]\nReynolds stress tensor is computed as: \\[\n\\tau_{ij} = 2 \\mu_t S_{ij}^* - \\frac{2}{3} \\rho k \\delta_{ij} - \\rho k a_{ij}^{ex},\n\\] where \\(a_{ij}^{ex}\\) is the extra anisotropy tensor and \\[\nS_{ij}^* = \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i}  - \\frac{2}{3} \\delta_{ij} \\frac{\\partial u_k}{\\partial x_k} \\right)\n\\] and \\[\n\\Omega_{ij}^* = \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} - \\frac{\\partial u_j}{\\partial x_i} \\right).\n\\]\nThe extra anisotropy tensor \\(a_{ij}^{ex}\\) is given by: \\[\n\\begin{aligned}\na_{ij}^{ex} =& \\beta_3\\left(\\mathbf{\\Omega}^2 - \\frac{1}{3} I\\!I_\\Omega\\,\\mathbf{I}\\right)\n+ \\beta_4\\left(\\mathbf{S\\Omega} - \\mathbf{\\Omega S}\\right) + \\\\\n&+ \\beta_6\\left(\\mathbf{S\\Omega^2} \\mathbf{\\Omega^2S} - I\\!I_S\\,\\mathbf{S} -\n\\frac{2}{3} I\\!V\\, \\mathbf{I}\\right) + \\\\\n&+ \\beta_9\\left(\\mathbf{\\Omega S\\Omega^2} - \\mathbf{\\Omega^2 S \\Omega}\\right).\n\\end{aligned}\n\\]\nHere \\(\\mathbf{S}\\) and \\(\\mathbf{\\Omega}\\) are the second order tensors. The inner products are defined as \\(\\mathbf{\\Omega}^2_{ij} = \\Omega_{ik} \\Omega_{kj}\\).\nNormalized mean strain-rate and rotation-rate tensors are defined as: \\[\n\\mathbf{S} = \\tau S_{ij}^*, \\quad \\mathbf{\\Omega} = \\tau \\Omega_{ij}^*,\n\\] where \\[\\tau = \\max\\left(\\frac{k}{\\epsilon}, C_\\tau\\sqrt{\\frac{\\mu}{\\rho \\epsilon}}\\right)\n\\] is the turbulence time scale (\\(\\epsilon=\\beta^* k \\omega\\)). The invariants of the tensors are given by: \\[\nI\\!I_S = S_{ij} S_{ji}, \\quad I\\!I_\\Omega = \\Omega_{ij} \\Omega_{ji}, \\quad I\\!V = S_{ik} \\Omega_{kj} \\Omega_{ji}.\n\\]\nThe eddy viscosity is computed as: \\[\n\\mu_t = - \\frac{1}{2} (\\beta_1 + I\\!I_\\Omega \\beta_6) \\rho k \\tau.\n\\]",
-    "crumbs": [
-      "Deprecated models",
-      "EARSMWallin"
-    ]
-  },
-  {
-    "objectID": "RANS/EARSMWallin.html#model-coefficients",
-    "href": "RANS/EARSMWallin.html#model-coefficients",
-    "title": "EARSMWallin model",
-    "section": "Model coefficients",
-    "text": "Model coefficients\nThe model coefficients for TNT model are defined as:\n\n\\(\\beta^* = 0.09\\)\n\\(\\beta = 0.075\\)\n\\(\\sigma_k = \\frac{2}{3}\\)\n\\(\\sigma_\\omega = 0.5\\)\n\\(\\alpha_\\omega = 5/9\\)\n\\(\\sigma_d = 0.5\\)\n\nAdditional coefficients for EARSM model are given as:\n\n\\(C_\\tau = 6\\)\n\\(\\beta_1 = - \\frac{N(2N^2 - 7 I\\!|_\\Omega)}{Q}\\)\n\\(\\beta_3 = - \\frac{12 I\\!V}{N Q}\\)\n\\(\\beta_4 = \\frac{2(N^2 - 2I\\!|_\\Omega}{Q}\\)\n\\(\\beta_6 = - \\frac{6N}{Q}\\)\n\\(\\beta_9 = \\frac{6}{Q}\\)\n\nwhere\n\\[\n\\begin{aligned}\nQ &= \\frac{5}{6}(N^2 - 2 I\\!I_\\Omega)(2N^2 - I\\!I_\\Omega), \\\\\nN &= \\begin{cases}\n\\frac{C_1'}{3} + (P_1 + \\sqrt{P_2})^{1/3} + \\text{sign}(P_1 - \\sqrt{P_2})|P_1 - \\sqrt{P_2}|^{1/3} & \\text{if } P_2 \\geq 0, \\\\\n\\frac{C_1'}{3} + 2 \\sqrt{P_1} \\cos\\left(\\frac{1}{3} \\arccos\\left(\\frac{P_1}{\\sqrt{P_1^2 - P_2}}\\right)\\right) & \\text{if } P_2 &lt; 0,\n\\end{cases} \\\\\nP_1 &= \\left(\\frac{C_1'^2}{27} + \\frac{9}{20}I\\!I_S - \\frac{2}{3}I\\!I_\\Omega\\right)C_1', \\\\\nP_2 &= P_1^2 - \\left(\\frac{C_1'^2}{9} + \\frac{9}{10}I\\!I_S + \\frac{2}{3}I\\!I_\\Omega\\right)^3, \\\\\nC_1' &= \\frac{9}{4}\\left[c_1 - 1 + C_{diff} \\max(1 + \\beta_1^{eq} I\\!I_S,0)\\right], \\\\\n\\beta_1^{eq} &= -\\frac{6}{5} \\frac{N^{eq}}{(N^{eq})^2 - 2I\\!I_\\Omega}, \\\\\nN^{eq} &= \\frac{9c_1}{4} = \\frac{81}{20}.\n\\end{aligned}\n\\] Here \\(c_1 = 1.8\\) and \\(C_{diff} = 2.2\\).",
-    "crumbs": [
-      "Deprecated models",
-      "EARSMWallin"
-    ]
-  },
-  {
-    "objectID": "RANS/EARSMWallin.html#notes-on-openfoam-implementation",
-    "href": "RANS/EARSMWallin.html#notes-on-openfoam-implementation",
-    "title": "EARSMWallin model",
-    "section": "Notes on OpenFOAM implementation",
-    "text": "Notes on OpenFOAM implementation\nOpenFOAM implementation uses slightly different notation for some coefficients:\n\nCmu is used for \\(\\beta^*\\)\nbeta is used for \\(\\beta\\)\ngamma is used for \\(\\alpha_\\omega\\)\nalphaK is used for \\(\\sigma_k\\)\nalphaOmega is used for \\(\\sigma_\\omega\\)\nalphaD is used for \\(\\sigma_d\\)\nCtau is used for \\(C_\\tau\\)",
-    "crumbs": [
-      "Deprecated models",
-      "EARSMWallin"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaSSTCCM.html",
-    "href": "RANS/kOmegaSSTCCM.html",
-    "title": "kOmegaSSTCCM model",
-    "section": "",
-    "text": "The kOmegaSSTCC is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter (Menter et al. 2003) as included in standard OpenFOAM distribution. It incorporates a curvature correction (CCM) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Zhang and Yang (Zhang and Yang 2013).",
-    "crumbs": [
-      "RANS models",
-      "kOmegaSSTCCM"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaSSTCCM.html#model-equations",
-    "href": "RANS/kOmegaSSTCCM.html#model-equations",
-    "title": "kOmegaSSTCCM model",
-    "section": "Model Equations",
-    "text": "Model Equations\nThe transport equations for the kOmegaSSTCCM model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k f_{r1} - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega f_{r1}- \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\n\\tau_{ij} &= \\mu_t \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right) - \\frac{2}{3} \\rho k \\delta_{ij}, \\\\\nS_{ij} &= \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right), \\\\\nP_\\omega &= \\frac{\\gamma \\rho}{\\mu_t} P_k, \\\\\nC_D &= 2(1 - F_1)\\frac{\\rho \\sigma_{\\omega 2}}{\\omega} \\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}.\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\frac{a_1 \\rho k}{\\max(a_1 \\omega, S F_2)}\n\\] with \\(S = \\sqrt{2 S_{ij} S_{ij}}\\).\nThe curvature correction function \\(f_{r1}\\) is defined as: \\[\nf_{r1} = \\max\\left[\\min\\left(f_{r}, 1.25\\right), 0\\right]\n\\] where \\[\nf_{r} = (1 + c_{r1})\\frac{2r^*}{1+r^*}\\left[1 - c_{r3} \\arctan\\left( c_{r2} \\tilde{r} \\right)\\right] - c_{r1}\n\\] with \\[\n\\begin{aligned}\nr^* &= \\frac{S}{\\Omega}, \\\\\n\\tilde{r} &= \\frac{\\Omega}{S}\\left(\\frac{\\Omega}{S} - 1\\right).\n\\end{aligned}\n\\]",
-    "crumbs": [
-      "RANS models",
-      "kOmegaSSTCCM"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaSSTCCM.html#model-coefficients",
-    "href": "RANS/kOmegaSSTCCM.html#model-coefficients",
-    "title": "kOmegaSSTCCM model",
-    "section": "Model Coefficients",
-    "text": "Model Coefficients\nFor the standars kOmegaSST model coefficients see (Menter et al. 2003) or the OpenFOAM manual. The curvature correction coefficients are set to:\n\n\\(c_{r1} = 1.0\\)\n\\(c_{r2} = 2.0\\)\n\\(c_{r3} = 1.0\\)",
-    "crumbs": [
-      "RANS models",
-      "kOmegaSSTCCM"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaSSTCCM.html#notes-on-openfoam-implementation",
-    "href": "RANS/kOmegaSSTCCM.html#notes-on-openfoam-implementation",
-    "title": "kOmegaSSTCCM model",
-    "section": "Notes on OpenFOAM implementation",
-    "text": "Notes on OpenFOAM implementation\nSee the OpenFOAM manual for details on basic kOmegaSST model implementation.",
-    "crumbs": [
-      "RANS models",
-      "kOmegaSSTCCM"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaWilcox06.html",
-    "href": "RANS/kOmegaWilcox06.html",
-    "title": "kOmegaWilcox06 model",
-    "section": "",
-    "text": "The kOmegaWilcox06 model is a simple two-equation RANS turbulence model by Wilcox (Wilcox 2006). It is an improved variant of the original Wilcox k-ω model (Wilcox 1994).",
-    "crumbs": [
-      "RANS models",
-      "kOmegaWilcox06"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaWilcox06.html#model-equations",
-    "href": "RANS/kOmegaWilcox06.html#model-equations",
-    "title": "kOmegaWilcox06 model",
-    "section": "Model Equations",
-    "text": "Model Equations\nThe transport equations for the kOmegaWilcox06 model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\frac{\\rho k}{\\omega}) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\frac{\\rho k}{\\omega}) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\n\\tau_{ij} &= \\mu_t \\left(2 S_{ij} - \\frac{2}{3} \\delta_{ij} \\frac{\\partial u_k}{\\partial x_k}\\right) - \\frac{2}{3} \\rho k \\delta_{ij}, \\\\\nS_{ij} &= \\frac{1}{2} \\left(\\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i}\\right), \\\\\n\\overline{S}_{ij} &= S_{ij} - \\frac{1}{3} \\delta_{ij} S_{kk}, \\\\\nP_\\omega &= \\frac{\\gamma \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}.\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\rho \\frac{k}{\\hat{\\omega}},\n\\] with \\[\n\\hat{\\omega} = \\max\\left[\\omega, C_{lim} \\sqrt{\\frac{2 \\overline{S}_{ij}\n\\overline{S}_{ij}}{\\beta^*}}\\right].\n\\]",
-    "crumbs": [
-      "RANS models",
-      "kOmegaWilcox06"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaWilcox06.html#model-coefficients",
-    "href": "RANS/kOmegaWilcox06.html#model-coefficients",
-    "title": "kOmegaWilcox06 model",
-    "section": "Model Coefficients",
-    "text": "Model Coefficients\nThe model coefficients are set to the following values:\n\n\\(\\beta^* = 0.09\\)\n\\(\\gamma = 13/25\\)\n\\(C_{lim} = 7/8\\)\n\\(\\beta = \\beta_0 f_\\beta\\,\\) where \\(\\beta_0 = 0.0708\\)\n\\(f_\\beta = \\frac{1 + 85 \\chi_\\omega}{1 + 100 \\chi_\\omega}\\)\n\\(\\chi_\\omega = \\left|\\frac{\\Omega_{ij} \\Omega_{jk} \\hat{S}_{ki}}{(\\beta^* \\omega)^3}\\right|\\)\n\\(\\Omega_{ij} = \\frac{1}{2} \\left(\\frac{\\partial u_i}{\\partial x_j} - \\frac{\\partial u_j}{\\partial x_i}\\right)\\)\n\\(\\hat{S}_{ij} = S_{ij} - \\frac{1}{2} \\delta_{ij} S_{kk}\\)\n\\(\\sigma_k = 0.6\\)\n\\(\\sigma_\\omega = 0.5\\)\n\\(\\sigma_d = \\frac{1}{8}\\) for \\(\\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j} &gt; 0\\), else 0.",
-    "crumbs": [
-      "RANS models",
-      "kOmegaWilcox06"
-    ]
-  },
-  {
-    "objectID": "RANS/kOmegaWilcox06.html#notes-on-openfoam-implementation",
-    "href": "RANS/kOmegaWilcox06.html#notes-on-openfoam-implementation",
-    "title": "kOmegaWilcox06 model",
-    "section": "Notes on OpenFOAM implementation",
-    "text": "Notes on OpenFOAM implementation\nOpenFOAM implementation uses slightly different notation for some coefficients:\n\nbetaStar is used for \\(\\beta^*\\)\nbeta is used for \\(\\beta_0\\)\ngamma is used for \\(\\alpha_\\omega\\)\nsigmaK is used for \\(\\sigma_k\\)\nsigmaOmega is used for \\(\\sigma_\\omega\\)\nsigmaD is used for \\(\\sigma_d\\)\nalphaOmega is used for \\(\\gamma\\)\nClim is used for \\(C_{lim}\\)\n\nMoreover, OpenFOAM works with kinematic turbulent viscosity nut multiplied by density instead of turbulent viscosity mu_t.",
-    "crumbs": [
-      "RANS models",
-      "kOmegaWilcox06"
-    ]
-  },
-  {
-    "objectID": "Transition/gammaSST.html",
-    "href": "Transition/gammaSST.html",
-    "title": "gammaSST model",
-    "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the model is not yet written.",
-    "crumbs": [
-      "Transitional models",
-      "gammaSST"
-    ]
-  },
-  {
-    "objectID": "Transition/kOmegaTrans.html",
-    "href": "Transition/kOmegaTrans.html",
-    "title": "kOmegaTrans model",
-    "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the model is not yet written.",
-    "crumbs": [
-      "Deprecated models",
-      "kOmegaTrans"
-    ]
-  },
-  {
-    "objectID": "Transition/mykkLOmega.html",
-    "href": "Transition/mykkLOmega.html",
-    "title": "mykkLOmega model",
-    "section": "",
-    "text": "Warning\n\n\n\nThe documentation for the model is not yet written.",
-    "crumbs": [
-      "Transitional models",
-      "mykkLOmega"
-    ]
+    "text": "Flat-plate transitional flow - T3A case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a rectangular domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The height of the domain is \\(h = 0.3\\) m, and the leading edge of the plate is located at \\(x = 0\\) m.\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\\(0.17\\)\n\\(0.94\\)\n\\(0.24\\)\n\n\nmedium\n314 x 250\n\\(0.09\\)\n\\(0.56\\)\n\\(0.13\\)\n\n\nfine\n618 x 500\n\\(0.06\\)\n\\(0.33\\)\n\\(0.07\\)\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=5.4\\) m/s\n\\(Tu=3.3\\) %\n\\(\\nu_t/\\nu = 12\\)\n\nThe other boundary conditions are set as follows:\n\nflat plate (\\(x&gt;0\\) m, \\(y=0\\) m): no-slip wall\nlower symmetry (\\(x&lt;0\\) m, \\(y=0\\) m): symmetry\ntop wall (\\(y=0.3\\) m): slip\noutlet (\\(x=1.7\\) m): pressure outlet with \\(p=0\\) Pa\n\nThe simulation can be run on the medium mesh with\n./Allrun medium"
   },
   {
     "objectID": "Validation/kOmegaSSTLM.html",
@@ -779,5 +213,688 @@
       "Validation cases",
       "kOmegaSSTLM results"
     ]
+  },
+  {
+    "objectID": "BoCos/omegaWilcoxRoughWallFunction.html",
+    "href": "BoCos/omegaWilcoxRoughWallFunction.html",
+    "title": "??? boundary condition",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
+    "crumbs": [
+      "Boundary conditions",
+      "omegaWilcoxRoughWallFunction"
+    ]
+  },
+  {
+    "objectID": "BoCos/nutUKnoppWallFunction.html",
+    "href": "BoCos/nutUKnoppWallFunction.html",
+    "title": "??? boundary condition",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
+    "crumbs": [
+      "Boundary conditions",
+      "nutUKnoppWallFunction"
+    ]
+  },
+  {
+    "objectID": "BoCos/roughnessAmplification.html",
+    "href": "BoCos/roughnessAmplification.html",
+    "title": "??? boundary condition",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
+    "crumbs": [
+      "Boundary conditions",
+      "roughnessAmplification"
+    ]
+  },
+  {
+    "objectID": "BoCos/boundedTurbulentIntensityKineticEnergyInlet.html",
+    "href": "BoCos/boundedTurbulentIntensityKineticEnergyInlet.html",
+    "title": "??? boundary condition",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
+    "crumbs": [
+      "Boundary conditions",
+      "boundedTurbulentIntensityKineticEnergyInlet"
+    ]
+  },
+  {
+    "objectID": "Transition/gammaSST.html",
+    "href": "Transition/gammaSST.html",
+    "title": "gammaSST model",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the model is not yet written.",
+    "crumbs": [
+      "Transitional models",
+      "gammaSST"
+    ]
+  },
+  {
+    "objectID": "Transition/kv2Omega.html",
+    "href": "Transition/kv2Omega.html",
+    "title": "kv2Omega model",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the model is not yet written.",
+    "crumbs": [
+      "Development and experimental models",
+      "kv2Omega"
+    ]
+  },
+  {
+    "objectID": "Transition/kOmegaTrans.html",
+    "href": "Transition/kOmegaTrans.html",
+    "title": "kOmegaTrans model",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the model is not yet written.",
+    "crumbs": [
+      "Deprecated models",
+      "kOmegaTrans"
+    ]
+  },
+  {
+    "objectID": "LES/XLES.html",
+    "href": "LES/XLES.html",
+    "title": "XLES model",
+    "section": "",
+    "text": "The X-LES (eXtra Large Eddy Simulation) model is an advanced LES turbulence model developed by J. C. Kok and H. Ven (Kok and Ven 2010). It extends the traditional LES approach by incorporating additional subgrid-scale modeling techniques to better capture the effects of unresolved scales on the resolved flow field. The X-LES model is a particular variant of DES (Detached Eddy Simulation) that uses a combination of two-equation k-ω RANS model with k-equation LES model. In order to speed up creation of small scale structures, a stochastic subgrid-scale model is used.",
+    "crumbs": [
+      "LES models",
+      "XLES"
+    ]
+  },
+  {
+    "objectID": "LES/XLES.html#model-equations",
+    "href": "LES/XLES.html#model-equations",
+    "title": "XLES model",
+    "section": "Model Equations",
+    "text": "Model Equations\nThe RANS part of the X-LES model is based on the TNT model described in the kOmegaTNT documentation: \\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\rho\\epsilon + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\nP_\\omega &= \\frac{\\alpha_\\omega \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\max\\left[\\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}, 0\\right], \\\\\n\\epsilon &= \\frac{k^{3/2}}{l_t},\n\\end{aligned}\n\\]\nThe X-LES length scale \\(l_t\\) is defined as: \\[\nl_t = \\min\\left( C_{DES} \\Delta, \\frac{k^{1/2}}{\\beta^* \\omega} \\right),\n\\]\nand the turbulent viscosity is computed as: \\[\n\\nu_t = \\beta^* l_t \\sqrt{k}.\n\\]\nThe model contains also an optional stochastic forcing term to enhance the generation of small scale structures in LES mode, as described in Kok and Ven (2010). In that case, the turbulent viscosity is calculated as: \\[\n\\nu_t = \\begin{cases}\n\\frac{k}{\\omega} & \\text{if } l_t &lt; C_{DES} \\Delta (\\text{ i.e. in RANS region} ), \\\\\n\\xi^2 \\beta^* l_t \\sqrt{k} & \\text{if } l_t = C_{DES} \\Delta (\\text{ i.e. in LES region} ),\n\\end{cases}\n\\] where \\(\\xi \\approx \\mathcal{N}(0,1)\\) is a random variable with stochastic variable with normal zero-mean normal distribution and unit variance.",
+    "crumbs": [
+      "LES models",
+      "XLES"
+    ]
+  },
+  {
+    "objectID": "LES/XLES.html#model-coefficients",
+    "href": "LES/XLES.html#model-coefficients",
+    "title": "XLES model",
+    "section": "Model Coefficients",
+    "text": "Model Coefficients\nThe model coefficients are set to the following values:\n\n\\(\\beta^* = 0.09\\)\n\\(\\beta = 0.075\\)\n\\(\\sigma_k = \\frac{2}{3}\\)\n\\(\\sigma_\\omega = 0.5\\)\n\\(\\alpha_\\omega = 5/9\\)\n\\(\\sigma_d = 0.5\\)\n\\(C_{DES} = 0.61\\)",
+    "crumbs": [
+      "LES models",
+      "XLES"
+    ]
+  },
+  {
+    "objectID": "LES/XLES.html#notes-on-openfoam-implementation",
+    "href": "LES/XLES.html#notes-on-openfoam-implementation",
+    "title": "XLES model",
+    "section": "Notes on OpenFOAM implementation",
+    "text": "Notes on OpenFOAM implementation\nThe original article uses slightly different notation. The length scale does not include the \\(\\beta^*\\) coefficient, i.e. it is defined as: \\[\nl_t = \\min\\left( C_1 \\Delta, \\frac{k^{1/2}}{\\omega} \\right).\n\\] with \\(C_1 = C_{DES} \\beta^*\\). Other quantities are changed accordingly. Moreover, the default value of \\(C_{DES}\\) was set to 0.65 in the OpenFOAM implementation.",
+    "crumbs": [
+      "LES models",
+      "XLES"
+    ]
+  },
+  {
+    "objectID": "RANS/EARSM.html",
+    "href": "RANS/EARSM.html",
+    "title": "EARSM models",
+    "section": "",
+    "text": "The EARSM (Explicit Algebraic Reynolds Stress) models is a class of RANS turbulence models developed by Wallin and Johanson (Wallin and Johanson 2000). It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models.\nThe EARSM formulation consists of non-linear formulation of the Reynolds stress tensor, which is expressed in terms of the mean strain-rate and rotation-rate tensors. The model is closed by an two-equation k-ω turbulence model.The model is particularly suitable for flows with strong streamline curvature, rotation, and separation, where traditional linear eddy-viscosity models may fail to provide accurate predictions."
+  },
+  {
+    "objectID": "RANS/EARSM.html#model-coefficients",
+    "href": "RANS/EARSM.html#model-coefficients",
+    "title": "EARSM models",
+    "section": "Model coefficients",
+    "text": "Model coefficients\nModel coefficients for EARSM model are given as:\n\n\\(C_\\tau = 6\\)\n\\(c_1 = 1.8\\)\n\\(C_{diff} = 2.2\\)\n\\(\\beta_1 = - \\frac{N(2N^2 - 7 I\\!|_\\Omega)}{Q}\\)\n\\(\\beta_3 = - \\frac{12 I\\!V}{N Q}\\)\n\\(\\beta_4 = \\frac{2(N^2 - 2I\\!|_\\Omega}{Q}\\)\n\\(\\beta_6 = - \\frac{6N}{Q}\\)\n\\(\\beta_9 = \\frac{6}{Q}\\)"
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCCM.html",
+    "href": "RANS/kOmegaSSTCCM.html",
+    "title": "kOmegaSSTCCM model",
+    "section": "",
+    "text": "The kOmegaSSTCC is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter (Menter et al. 2003) as included in standard OpenFOAM distribution. It incorporates a curvature correction (CCM) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Zhang and Yang (Zhang and Yang 2013).",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCCM"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCCM.html#model-equations",
+    "href": "RANS/kOmegaSSTCCM.html#model-equations",
+    "title": "kOmegaSSTCCM model",
+    "section": "Model Equations",
+    "text": "Model Equations\nThe transport equations for the kOmegaSSTCCM model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k f_{r1} - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega f_{r1}- \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\n\\tau_{ij} &= \\mu_t \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right) - \\frac{2}{3} \\rho k \\delta_{ij}, \\\\\nS_{ij} &= \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right), \\\\\nP_\\omega &= \\frac{\\gamma \\rho}{\\mu_t} P_k, \\\\\nC_D &= 2(1 - F_1)\\frac{\\rho \\sigma_{\\omega 2}}{\\omega} \\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}.\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\frac{a_1 \\rho k}{\\max(a_1 \\omega, S F_2)}\n\\] with \\(S = \\sqrt{2 S_{ij} S_{ij}}\\).\nThe curvature correction function \\(f_{r1}\\) is defined as: \\[\nf_{r1} = \\max\\left[\\min\\left(f_{r}, 1.25\\right), 0\\right]\n\\] where \\[\nf_{r} = (1 + c_{r1})\\frac{2r^*}{1+r^*}\\left[1 - c_{r3} \\arctan\\left( c_{r2} \\tilde{r} \\right)\\right] - c_{r1}\n\\] with \\[\n\\begin{aligned}\nr^* &= \\frac{S}{\\Omega}, \\\\\n\\tilde{r} &= \\frac{\\Omega}{S}\\left(\\frac{\\Omega}{S} - 1\\right).\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCCM"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCCM.html#model-coefficients",
+    "href": "RANS/kOmegaSSTCCM.html#model-coefficients",
+    "title": "kOmegaSSTCCM model",
+    "section": "Model Coefficients",
+    "text": "Model Coefficients\nFor the standars kOmegaSST model coefficients see (Menter et al. 2003) or the OpenFOAM manual. The curvature correction coefficients are set to:\n\n\\(c_{r1} = 1.0\\)\n\\(c_{r2} = 2.0\\)\n\\(c_{r3} = 1.0\\)",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCCM"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCCM.html#notes-on-openfoam-implementation",
+    "href": "RANS/kOmegaSSTCCM.html#notes-on-openfoam-implementation",
+    "title": "kOmegaSSTCCM model",
+    "section": "Notes on OpenFOAM implementation",
+    "text": "Notes on OpenFOAM implementation\nSee the OpenFOAM manual for details on basic kOmegaSST model implementation.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCCM"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaWilcox06.html",
+    "href": "RANS/kOmegaWilcox06.html",
+    "title": "kOmegaWilcox06 model",
+    "section": "",
+    "text": "The kOmegaWilcox06 model is a simple two-equation RANS turbulence model by Wilcox (Wilcox 2006). It is an improved variant of the original Wilcox k-ω model (Wilcox 1994).",
+    "crumbs": [
+      "RANS models",
+      "kOmegaWilcox06"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaWilcox06.html#model-equations",
+    "href": "RANS/kOmegaWilcox06.html#model-equations",
+    "title": "kOmegaWilcox06 model",
+    "section": "Model Equations",
+    "text": "Model Equations\nThe transport equations for the kOmegaWilcox06 model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\frac{\\rho k}{\\omega}) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\frac{\\rho k}{\\omega}) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\n\\tau_{ij} &= \\mu_t \\left(2 S_{ij} - \\frac{2}{3} \\delta_{ij} \\frac{\\partial u_k}{\\partial x_k}\\right) - \\frac{2}{3} \\rho k \\delta_{ij}, \\\\\nS_{ij} &= \\frac{1}{2} \\left(\\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i}\\right), \\\\\n\\overline{S}_{ij} &= S_{ij} - \\frac{1}{3} \\delta_{ij} S_{kk}, \\\\\nP_\\omega &= \\frac{\\gamma \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}.\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\rho \\frac{k}{\\hat{\\omega}},\n\\] with \\[\n\\hat{\\omega} = \\max\\left[\\omega, C_{lim} \\sqrt{\\frac{2 \\overline{S}_{ij}\n\\overline{S}_{ij}}{\\beta^*}}\\right].\n\\]",
+    "crumbs": [
+      "RANS models",
+      "kOmegaWilcox06"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaWilcox06.html#model-coefficients",
+    "href": "RANS/kOmegaWilcox06.html#model-coefficients",
+    "title": "kOmegaWilcox06 model",
+    "section": "Model Coefficients",
+    "text": "Model Coefficients\nThe model coefficients are set to the following values:\n\n\\(\\beta^* = 0.09\\)\n\\(\\gamma = 13/25\\)\n\\(C_{lim} = 7/8\\)\n\\(\\beta = \\beta_0 f_\\beta\\,\\) where \\(\\beta_0 = 0.0708\\)\n\\(f_\\beta = \\frac{1 + 85 \\chi_\\omega}{1 + 100 \\chi_\\omega}\\)\n\\(\\chi_\\omega = \\left|\\frac{\\Omega_{ij} \\Omega_{jk} \\hat{S}_{ki}}{(\\beta^* \\omega)^3}\\right|\\)\n\\(\\Omega_{ij} = \\frac{1}{2} \\left(\\frac{\\partial u_i}{\\partial x_j} - \\frac{\\partial u_j}{\\partial x_i}\\right)\\)\n\\(\\hat{S}_{ij} = S_{ij} - \\frac{1}{2} \\delta_{ij} S_{kk}\\)\n\\(\\sigma_k = 0.6\\)\n\\(\\sigma_\\omega = 0.5\\)\n\\(\\sigma_d = \\frac{1}{8}\\) for \\(\\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j} &gt; 0\\), else 0.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaWilcox06"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaWilcox06.html#notes-on-openfoam-implementation",
+    "href": "RANS/kOmegaWilcox06.html#notes-on-openfoam-implementation",
+    "title": "kOmegaWilcox06 model",
+    "section": "Notes on OpenFOAM implementation",
+    "text": "Notes on OpenFOAM implementation\nOpenFOAM implementation uses slightly different notation for some coefficients:\n\nbetaStar is used for \\(\\beta^*\\)\nbeta is used for \\(\\beta_0\\)\ngamma is used for \\(\\alpha_\\omega\\)\nsigmaK is used for \\(\\sigma_k\\)\nsigmaOmega is used for \\(\\sigma_\\omega\\)\nsigmaD is used for \\(\\sigma_d\\)\nalphaOmega is used for \\(\\gamma\\)\nClim is used for \\(C_{lim}\\)\n\nMoreover, OpenFOAM works with kinematic turbulent viscosity nut multiplied by density instead of turbulent viscosity mu_t.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaWilcox06"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaTNT.html",
+    "href": "RANS/kOmegaTNT.html",
+    "title": "kOmegaTNT model",
+    "section": "",
+    "text": "The kOmegaTNT model is a simple two-equation RANS turbulence model developed by J. C. Kok (Kok 2000). It is a modification of the original Wilcox k-ω model (Wilcox 1994), designed to remove strong dependency on the free-stream value of ω. This is achieved by including a cross-diffusion term in the ω equation, similar to the SST model by Menter (Menter 1994), and by re-calibration of model coefficients.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaTNT"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaTNT.html#model-equations",
+    "href": "RANS/kOmegaTNT.html#model-equations",
+    "title": "kOmegaTNT model",
+    "section": "Model Equations",
+    "text": "Model Equations\nThe transport equations for the kOmegaTNT model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\nP_\\omega &= \\frac{\\alpha_\\omega \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\max\\left[\\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}, 0\\right].\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\rho \\frac{k}{\\omega}.\n\\]",
+    "crumbs": [
+      "RANS models",
+      "kOmegaTNT"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaTNT.html#model-coefficients",
+    "href": "RANS/kOmegaTNT.html#model-coefficients",
+    "title": "kOmegaTNT model",
+    "section": "Model Coefficients",
+    "text": "Model Coefficients\nThe model coefficients are set to the following values:\n\n\\(\\beta^* = 0.09\\)\n\\(\\beta = 0.075\\)\n\\(\\sigma_k = \\frac{2}{3}\\)\n\\(\\sigma_\\omega = 0.5\\)\n\\(\\alpha_\\omega = 5/9\\)\n\\(\\sigma_d = 0.5\\)",
+    "crumbs": [
+      "RANS models",
+      "kOmegaTNT"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaTNT.html#modifications",
+    "href": "RANS/kOmegaTNT.html#modifications",
+    "title": "kOmegaTNT model",
+    "section": "Modifications",
+    "text": "Modifications\nThere are two optional modifications available for the kOmegaTNT model:\n\nproduction limiter: Limits the production term \\(P_k\\) to prevent excessive turbulence generation in adverse pressure gradient flows. The limiter is applied to the equation for \\(k\\) where it replaces \\(P_k\\) with: \\[\n\\tilde{P}_k = \\min\\left(P_k, 20 \\beta^* \\rho k \\omega\\right).\n\\]\nshock limiter: Reduces the turbulent viscosity in the presence of shocks to avoid nonphysical results. The limiter is applied to the equation for \\(k\\) where it replaces \\(P_k\\) with: \\[\n\\tilde{P}_k = \\min\\left(P_k, k \\sqrt{S_{ij} S_{ij}}\\right).\n\\]\n\nThe source term in the \\(\\omega\\) equation is left unmodified.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaTNT"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaTNT.html#notes-on-openfoam-implementation",
+    "href": "RANS/kOmegaTNT.html#notes-on-openfoam-implementation",
+    "title": "kOmegaTNT model",
+    "section": "Notes on OpenFOAM implementation",
+    "text": "Notes on OpenFOAM implementation\nOpenFOAM implementation uses slightly different notation for some coefficients:\n\nCmu is used for \\(\\beta^*\\)\nbeta is used for \\(\\beta\\)\ngamma is used for \\(\\alpha_\\omega\\)\nalphaK is used for \\(\\sigma_k\\)\nalphaOmega is used for \\(\\sigma_\\omega\\)\nalphaD is used for \\(\\sigma_d\\)\n\nMoreover, OpenFOAM works with kinematic turbulent viscosity nut multiplied by density instead of turbulent viscosity mu_t.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaTNT"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCC.html",
+    "href": "RANS/kOmegaSSTCC.html",
+    "title": "kOmegaSSTCC model",
+    "section": "",
+    "text": "The kOmegaSSTCC is a two-equation RANS turbulence model based on the Shear Stress Transport (SST) k-ω model developed by Menter (Menter et al. 2003) as included in standard OpenFOAM distribution. It incorporates a curvature correction (CC) to account for the effects of streamline curvature and system rotation on turbulence production, following the approach proposed by Smirnov and Menter (Smirnov and Menter 2009).",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCC"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCC.html#model-equations",
+    "href": "RANS/kOmegaSSTCC.html#model-equations",
+    "title": "kOmegaSSTCC model",
+    "section": "Model Equations",
+    "text": "Model Equations\nThe transport equations for the kOmegaSSTCC model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k f_{r1} - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega f_{r1}- \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\n\\tau_{ij} &= \\mu_t \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right) - \\frac{2}{3} \\rho k \\delta_{ij}, \\\\\nS_{ij} &= \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right), \\\\\nP_\\omega &= \\frac{\\gamma \\rho}{\\mu_t} P_k, \\\\\nC_D &= 2(1 - F_1)\\frac{\\rho \\sigma_{\\omega 2}}{\\omega} \\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}.\n\\end{aligned}\n\\]\nTurbulent viscosity is computed as: \\[\n\\mu_t = \\frac{a_1 \\rho k}{\\max(a_1 \\omega, S F_2)}\n\\] with \\(S = \\sqrt{2 S_{ij} S_{ij}}\\).\nThe curvature correction function \\(f_{r1}\\) is defined as: \\[\nf_{r1} = \\max\\left[\\min\\left(f_{r}, 1.25\\right), 0\\right]\n\\] where \\[\nf_{r} = (1 + c_{r1})\\frac{2r^*}{1+r^*}\\left[1 - c_{r3} \\arctan\\left( c_{r2} \\tilde{r} \\right)\\right] - c_{r1}\n\\] with \\[\n\\begin{aligned}\nr^* &= \\frac{S}{\\Omega}, \\\\\n\\tilde{r} &= 2 \\Omega_{ik}S_{kj} \\left[\\frac{D S_{ij}}{D t} + (\\epsilon_{imn}S_{jn} + \\epsilon_{jmn}S_{in})\\Omega_m^{rot}\\right]\\frac{1}{\\Omega D^3} \\\\\n\\Omega_{ij} &= \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} - \\frac{\\partial u_j}{\\partial x_i}  - 2 \\epsilon_{mji}\\Omega_m^{rot}\\right), \\\\\n\\Omega &= \\sqrt{2 \\Omega_{ij} \\Omega_{ij}}, \\\\\nD^2 &= \\max(S^2, 0.09 \\omega^2).\n\\end{aligned}\n\\] Here \\(\\Omega_m^{rot}\\) is the system rotation rate.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCC"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCC.html#model-coefficients",
+    "href": "RANS/kOmegaSSTCC.html#model-coefficients",
+    "title": "kOmegaSSTCC model",
+    "section": "Model Coefficients",
+    "text": "Model Coefficients\nFor the standars kOmegaSST model coefficients see (Menter et al. 2003) or the OpenFOAM manual. The curvature correction coefficients are set to:\n\n\\(c_{r1} = 1.0\\)\n\\(c_{r2} = 2.0\\)\n\\(c_{r3} = 1.0\\)",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCC"
+    ]
+  },
+  {
+    "objectID": "RANS/kOmegaSSTCC.html#notes-on-openfoam-implementation",
+    "href": "RANS/kOmegaSSTCC.html#notes-on-openfoam-implementation",
+    "title": "kOmegaSSTCC model",
+    "section": "Notes on OpenFOAM implementation",
+    "text": "Notes on OpenFOAM implementation\n\n\n\n\n\n\nNote\n\n\n\nCurrent implementation does not include the system rotation \\(\\Omega_m^{rot}\\) in the calculation of \\(\\Omega_{ij}\\).\n\n\nSee the OpenFOAM manual for details on basic kOmegaSST model implementation.",
+    "crumbs": [
+      "RANS models",
+      "kOmegaSSTCC"
+    ]
+  },
+  {
+    "objectID": "RANS/EARSMWallin.html",
+    "href": "RANS/EARSMWallin.html",
+    "title": "EARSMWallin model",
+    "section": "",
+    "text": "The EARSMWallin (Explicit Algebraic Reynolds Stress Model) is a RANS turbulence model developed by Wallin and Johanson (Wallin and Johanson 2000). It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models. The model uses k-omega TNT by Kok (Kok 2000) as the underlying turbulence model.",
+    "crumbs": [
+      "Deprecated models",
+      "EARSMWallin"
+    ]
+  },
+  {
+    "objectID": "RANS/EARSMWallin.html#model-equations",
+    "href": "RANS/EARSMWallin.html#model-equations",
+    "title": "EARSMWallin model",
+    "section": "Model Equations",
+    "text": "Model Equations\nThe transport equations for the kOmegaTNT model are given by:\n\\[\n\\begin{aligned}\n\\frac{\\partial (\\rho k)}{\\partial t} + \\frac{\\partial (\\rho k u_j)}{\\partial x_j} &= P_k - \\beta^* \\rho k \\omega + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_k \\mu_t) \\frac{\\partial k}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\omega)}{\\partial t} + \\frac{\\partial (\\rho \\omega u_j)}{\\partial x_j} &= P_\\omega - \\beta \\rho \\omega^2 + \\frac{\\partial}{\\partial x_j} \\left[ (\\mu + \\sigma_\\omega \\mu_t) \\frac{\\partial \\omega}{\\partial x_j} \\right] + C_D,\n\\end{aligned}\n\\] where: \\[\n\\begin{aligned}\nP_k &= \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}, \\\\\nP_\\omega &= \\frac{\\alpha_\\omega \\omega}{k} P_k, \\\\\nC_D &= \\frac{\\sigma_d \\rho}{\\omega} \\max\\left[\\frac{\\partial k}{\\partial x_j} \\frac{\\partial \\omega}{\\partial x_j}, 0\\right].\n\\end{aligned}\n\\]\nReynolds stress tensor is computed as: \\[\n\\tau_{ij} = 2 \\mu_t S_{ij}^* - \\frac{2}{3} \\rho k \\delta_{ij} - \\rho k a_{ij}^{ex},\n\\] where \\(a_{ij}^{ex}\\) is the extra anisotropy tensor and \\[\nS_{ij}^* = \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i}  - \\frac{2}{3} \\delta_{ij} \\frac{\\partial u_k}{\\partial x_k} \\right)\n\\] and \\[\n\\Omega_{ij}^* = \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} - \\frac{\\partial u_j}{\\partial x_i} \\right).\n\\]\nThe extra anisotropy tensor \\(a_{ij}^{ex}\\) is given by: \\[\n\\begin{aligned}\na_{ij}^{ex} =& \\beta_3\\left(\\mathbf{\\Omega}^2 - \\frac{1}{3} I\\!I_\\Omega\\,\\mathbf{I}\\right)\n+ \\beta_4\\left(\\mathbf{S\\Omega} - \\mathbf{\\Omega S}\\right) + \\\\\n&+ \\beta_6\\left(\\mathbf{S\\Omega^2} \\mathbf{\\Omega^2S} - I\\!I_S\\,\\mathbf{S} -\n\\frac{2}{3} I\\!V\\, \\mathbf{I}\\right) + \\\\\n&+ \\beta_9\\left(\\mathbf{\\Omega S\\Omega^2} - \\mathbf{\\Omega^2 S \\Omega}\\right).\n\\end{aligned}\n\\]\nHere \\(\\mathbf{S}\\) and \\(\\mathbf{\\Omega}\\) are the second order tensors. The inner products are defined as \\(\\mathbf{\\Omega}^2_{ij} = \\Omega_{ik} \\Omega_{kj}\\).\nNormalized mean strain-rate and rotation-rate tensors are defined as: \\[\n\\mathbf{S} = \\tau S_{ij}^*, \\quad \\mathbf{\\Omega} = \\tau \\Omega_{ij}^*,\n\\] where \\[\\tau = \\max\\left(\\frac{k}{\\epsilon}, C_\\tau\\sqrt{\\frac{\\mu}{\\rho \\epsilon}}\\right)\n\\] is the turbulence time scale (\\(\\epsilon=\\beta^* k \\omega\\)). The invariants of the tensors are given by: \\[\nI\\!I_S = S_{ij} S_{ji}, \\quad I\\!I_\\Omega = \\Omega_{ij} \\Omega_{ji}, \\quad I\\!V = S_{ik} \\Omega_{kj} \\Omega_{ji}.\n\\]\nThe eddy viscosity is computed as: \\[\n\\mu_t = - \\frac{1}{2} (\\beta_1 + I\\!I_\\Omega \\beta_6) \\rho k \\tau.\n\\]",
+    "crumbs": [
+      "Deprecated models",
+      "EARSMWallin"
+    ]
+  },
+  {
+    "objectID": "RANS/EARSMWallin.html#model-coefficients",
+    "href": "RANS/EARSMWallin.html#model-coefficients",
+    "title": "EARSMWallin model",
+    "section": "Model coefficients",
+    "text": "Model coefficients\nThe model coefficients for TNT model are defined as:\n\n\\(\\beta^* = 0.09\\)\n\\(\\beta = 0.075\\)\n\\(\\sigma_k = \\frac{2}{3}\\)\n\\(\\sigma_\\omega = 0.5\\)\n\\(\\alpha_\\omega = 5/9\\)\n\\(\\sigma_d = 0.5\\)\n\nAdditional coefficients for EARSM model are given as:\n\n\\(C_\\tau = 6\\)\n\\(\\beta_1 = - \\frac{N(2N^2 - 7 I\\!|_\\Omega)}{Q}\\)\n\\(\\beta_3 = - \\frac{12 I\\!V}{N Q}\\)\n\\(\\beta_4 = \\frac{2(N^2 - 2I\\!|_\\Omega}{Q}\\)\n\\(\\beta_6 = - \\frac{6N}{Q}\\)\n\\(\\beta_9 = \\frac{6}{Q}\\)\n\nwhere\n\\[\n\\begin{aligned}\nQ &= \\frac{5}{6}(N^2 - 2 I\\!I_\\Omega)(2N^2 - I\\!I_\\Omega), \\\\\nN &= \\begin{cases}\n\\frac{C_1'}{3} + (P_1 + \\sqrt{P_2})^{1/3} + \\text{sign}(P_1 - \\sqrt{P_2})|P_1 - \\sqrt{P_2}|^{1/3} & \\text{if } P_2 \\geq 0, \\\\\n\\frac{C_1'}{3} + 2 \\sqrt{P_1} \\cos\\left(\\frac{1}{3} \\arccos\\left(\\frac{P_1}{\\sqrt{P_1^2 - P_2}}\\right)\\right) & \\text{if } P_2 &lt; 0,\n\\end{cases} \\\\\nP_1 &= \\left(\\frac{C_1'^2}{27} + \\frac{9}{20}I\\!I_S - \\frac{2}{3}I\\!I_\\Omega\\right)C_1', \\\\\nP_2 &= P_1^2 - \\left(\\frac{C_1'^2}{9} + \\frac{9}{10}I\\!I_S + \\frac{2}{3}I\\!I_\\Omega\\right)^3, \\\\\nC_1' &= \\frac{9}{4}\\left[c_1 - 1 + C_{diff} \\max(1 + \\beta_1^{eq} I\\!I_S,0)\\right], \\\\\n\\beta_1^{eq} &= -\\frac{6}{5} \\frac{N^{eq}}{(N^{eq})^2 - 2I\\!I_\\Omega}, \\\\\nN^{eq} &= \\frac{9c_1}{4} = \\frac{81}{20}.\n\\end{aligned}\n\\] Here \\(c_1 = 1.8\\) and \\(C_{diff} = 2.2\\).",
+    "crumbs": [
+      "Deprecated models",
+      "EARSMWallin"
+    ]
+  },
+  {
+    "objectID": "RANS/EARSMWallin.html#notes-on-openfoam-implementation",
+    "href": "RANS/EARSMWallin.html#notes-on-openfoam-implementation",
+    "title": "EARSMWallin model",
+    "section": "Notes on OpenFOAM implementation",
+    "text": "Notes on OpenFOAM implementation\nOpenFOAM implementation uses slightly different notation for some coefficients:\n\nCmu is used for \\(\\beta^*\\)\nbeta is used for \\(\\beta\\)\ngamma is used for \\(\\alpha_\\omega\\)\nalphaK is used for \\(\\sigma_k\\)\nalphaOmega is used for \\(\\sigma_\\omega\\)\nalphaD is used for \\(\\sigma_d\\)\nCtau is used for \\(C_\\tau\\)",
+    "crumbs": [
+      "Deprecated models",
+      "EARSMWallin"
+    ]
+  },
+  {
+    "objectID": "RANS/EARSMHellsten.html",
+    "href": "RANS/EARSMHellsten.html",
+    "title": "EARSM model",
+    "section": "",
+    "text": "The EARSM (Explicit Algebraic Reynolds Stress Model) is a RANS turbulence model developed by Hellsten (Hellsten 2005). It is based on the Boussinesq approximation but goes beyond the linear eddy-viscosity concept by providing an explicit algebraic formulation for the Reynolds stress tensor. This allows the model to capture anisotropic turbulence effects more accurately than traditional two-equation models.\n\n\n\n\n\n\nWarning\n\n\n\nThe documentation for EARSM model is not yet complete. Please refer to the original publication (Hellsten 2005) or to (NASA turbulent resources)[https://turbmodels.larc.nasa.gov/] for detailed information on the model formulation.\n\n\n\n\n\n\nReferences\n\nHellsten, Antti K. 2005. “New Advanced k-w Turbulence Model for High-Lift Aerodynamics.” AIAA Journal 43: 1857–69. https://doi.org/10.2514/1.13754.",
+    "crumbs": [
+      "Deprecated models",
+      "EARSMHellsten"
+    ]
+  },
+  {
+    "objectID": "Transition/EARSMTrans.html",
+    "href": "Transition/EARSMTrans.html",
+    "title": "EARSMTrans model",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the model is not yet written.",
+    "crumbs": [
+      "Deprecated models",
+      "EARSMTrans"
+    ]
+  },
+  {
+    "objectID": "Transition/kOmegaSSTLMRough.html",
+    "href": "Transition/kOmegaSSTLMRough.html",
+    "title": "kOmegaSSTLMRough model",
+    "section": "",
+    "text": "The transition model on rough walls is based on a combination of the four-equation transition model \\(\\gamma - \\tilde{Re}_\\theta\\) according to Langtry and Menter (Langtry and Menter 2009) with an additional equation for the amplification factor \\(A_r\\) according to Dassler et al. (Dassler et al. 2010). In subsequent publications, this model has been presented in various variants and calibrations, e.g., Langel et al. (Langel, Chow, C. P. Van Dam, et al. 2017) or Kožulović et al. (Kožulovič et al. 2022).",
+    "crumbs": [
+      "Transitional models",
+      "kOmegaSSTLMRough"
+    ]
+  },
+  {
+    "objectID": "Transition/kOmegaSSTLMRough.html#model-equations",
+    "href": "Transition/kOmegaSSTLMRough.html#model-equations",
+    "title": "kOmegaSSTLMRough model",
+    "section": "Model Equations",
+    "text": "Model Equations\nThe transition model according to Dassler et al. contains the following three equations: \\[\n\\begin{aligned}\n\\frac{\\partial (\\rho \\gamma)}{\\partial t} + \\frac{\\partial (\\rho u_j \\gamma)}{\\partial x_j} &= P_\\gamma - E_\\gamma + \\frac{\\partial}{\\partial x_j} \\left[ \\left( \\mu + \\frac{\\mu_t}{\\sigma_f} \\right) \\frac{\\partial \\gamma}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho \\tilde{Re}_\\theta)}{\\partial t} + \\frac{\\partial (\\rho u_j \\tilde{Re}_\\theta)}{\\partial x_j} &= P_\\theta + \\frac{\\partial}{\\partial x_j} \\left[ \\sigma_\\theta \\left( \\mu + \\mu_t \\right) \\frac{\\partial \\tilde{Re}_\\theta}{\\partial x_j} \\right],\n\\\\\n\\frac{\\partial (\\rho A_r)}{\\partial t} + \\frac{\\partial (\\rho u_j A_r)}{\\partial x_j} &= P_{A_r} + \\frac{\\partial}{\\partial x_j} \\left[ \\sigma_{A_r} \\left( \\mu + \\mu_t\\right) \\frac{\\partial A_r}{\\partial x_j} \\right].\n\\end{aligned}\n\\]\n\n\n\n\n\n\nNoteNote\n\n\n\nThe role of \\(\\sigma_f\\) and other \\(\\sigma\\) coefficients in the formulas is different! However, the value of \\(\\sigma_f\\) is 1, so it probably doesn’t matter.\n\n\nIn the original article (Dassler et al. 2010), the source term in the equation for \\(A_r\\) is applied in the first layer of cells near the wall. This does not make sense from a mathematical point of view, and therefore this original model was not tested. In a later article (Dassler et al. 2012), a version is presented where a boundary condition for \\(A_r\\) is prescribed at the wall and the source term is applied throughout the entire computational domain. In this model, the value is \\(\\sigma_{A_r} = 10\\) and at the wall, the following boundary condition for \\(A_r\\) is considered \\[\nA_{r,w} = 8 k_s^+, \\quad \\text{kde } k_s^+ = \\frac{u_\\tau k_s}{\\nu}.\n\\]\nThe original source term in the equation for \\(\\tilde{Re}_\\theta\\) \\[\nP_\\theta = c_{\\theta t}\\frac{\\rho}{T}\\left(Re_{\\theta} - \\tilde{Re}_\\theta \\right)\n(1 - F_{\\theta t})\n\\tag{1}\\]\nwas modified to the form \\[\nP_\\theta = c_{\\theta t}\\frac{\\rho}{T}\\left[\\left(Re_{\\theta} - \\tilde{Re}_\\theta \\right)\n(1 - F_{\\theta t}) - Arg_r\\right],\n\\] where \\(Arg_r\\) is a function dependent on \\(A_r\\), which shifts the transition onset towards lower values of \\(\\tilde{Re}_\\theta\\) depending on the wall roughness.\nHowever, the functional form of \\(Arg_r\\) is not published in the article. Therefore, this model was not further tested.\n\nModel according to Langel et al. (2017) (Langel2017)\nThe model according to Langel et al. (Langel, Chow, C. P. Van Dam, et al. 2017) uses the same approach as Dassler et al., but with different calibration and provides a specific functional form for \\(Arg_r\\). In this model, the value is \\(\\sigma_{A_r} = 30\\) and the boundary condition at the wall is for the case of flat plate flow (see (Langel, Chow, C. P. Van Dam, et al. 2017, 109)) \\[\nA_{r,w} = \\frac{20000}{1 + e^{13.5 - k_s^+}}.\n\\]\n\n\n\n\n\nDependence of boundary condition \\(A_{r,w}\\) on dimensionless roughness \\(k_s^+\\) according to (Langel, Chow, C. P. Van Dam, et al. 2017).\n\n\n\n\n\n\n\n\n\n\nNoteNote\n\n\n\nThere is apparently an error in the notation of the boundary condition for \\(A_{r,w}\\) in the original article (Langel, Chow, C. P. Van Dam, et al. 2017), see comparison with the graph on page 103 in (Langel, Chow, C. P. Van Dam, et al. 2017). The above version corresponds to this graph.\n\n\n\n\n\n\n\n\nNoteNote\n\n\n\nFor airfoil flow, a different correlation is used for the boundary condition. The value 13.5 in the exponent is replaced by approximately 27, see the graph on page 103 in (Langel, Chow, C. P. Van Dam, et al. 2017).\n\n\nThe source term in the equation for \\(\\tilde{Re}_\\theta\\) is modified as \\[\nP_\\theta = c_{\\theta t}\\frac{\\rho}{T}\\left[\\left(Re_{\\theta} - \\tilde{Re}_\\theta \\right)\n(1 - F_{\\theta t}) - b F_{A_r}\\right]\n\\] kde \\[\nF_{A_r} = \\begin{cases}\n4 A_r^{0.42} + 4 A_r \\left(\\frac{1}{F(\\lambda_\\theta)}\\right)(1 - F_{\\theta t}), & \\text{for } F(\\lambda_\\theta) \\le 1, \\\\\n4 A_r^{0.42} + 4 A_r \\left(\\frac{1}{F(\\lambda_\\theta)}\\right)^{0.6}(1 - F_{\\theta t}), & \\text{for } F(\\lambda_\\theta) &gt; 1.\n\\end{cases}\n\\]\nThe function \\(F(\\lambda_\\theta)\\) is defined as in the original model by Langtry and Menter Langtry and Menter (2009) as \\[\nF(\\lambda_\\theta) = \\begin{cases}\n1 + (12.986 \\lambda_\\theta + 123.66 \\lambda_\\theta^2 + 405.689 \\lambda_\\theta^3) e^{-\\left(Tu/1.5\\right)^{1.5}} , & \\text{for } \\lambda_\\theta \\le 0, \\\\\n1 + 0.275\\left(1 - e^{-35\\lambda_\\theta}\\right)e^{-\\left(Tu/0.5\\right)}, & \\text{for } \\lambda_\\theta &gt; 0,\n\\end{cases}\n\\]\n\n\n\n\n\nDependence of function \\(F(λ_θ)\\) according to (Langel, Chow, C. P. Van Dam, et al. 2017) for different values of \\(Tu\\).\n\n\n\n\nThe damping factor \\(b\\) is given by the relation \\[\nb = 0.5\\sin\\left(\\frac{\\pi}{155}\\tilde{Re}_\\theta - \\frac{97\\pi}{155}\\right) + 0.5.\n\\] In this function, it is apparently appropriate to limit the value of \\(\\tilde{Re}_\\theta\\) to the interval \\([19.5, 174.5]\\), i.e., \\[\nb = 0.5\\sin\\left(\\frac{\\pi}{155}\\max(\\min(\\tilde{Re}_\\theta, 174.5), 19.5) - \\frac{97\\pi}{155}\\right) + 0.5.\n\\tag{2}\\]\n\n\n\n\n\nDependence of damping factor \\(b\\) on the value of \\(Re_θ\\) according to (Langel, Chow, C. P. Van Dam, et al. 2017).\n\n\n\n\nFurthermore, a modified boundary condition for \\(\\omega\\) at the wall is used according to (Langel, Chow, C. P. Van Dam, et al. 2017) based on the work of (Wilcox 1994): \\[\n\\omega_w = \\frac{u_\\tau^2 S_r}{\\nu},\n\\] kde \\[\nS_r = \\begin{cases}\n\\left(\\frac{50}{k_s^+}\\right)^2 & \\text{for } k_s^+ \\le 25, \\\\\n\\frac{100}{k_s^+} & \\text{for } k_s^+ &gt; 25.\n\\end{cases}\n\\tag{3}\\]\nCompared to the model according to (Langel, Chow, C. P. Van Dam, et al. 2017), a modification of the boundary condition for \\(\\omega\\) in the case of a smooth wall is used in the implementation \\[\n\\omega_w = \\begin{cases}\n10 \\frac{6\\nu}{\\beta_1 y_1^2} & \\text{for } k_s^+ \\le \\sqrt{\\frac{2500\\beta_1}{60}} y^+_1, \\\\\n\\frac{u_\\tau^2 S_r}{\\nu} & \\text{for } k_s^+ &gt; \\sqrt{\\frac{2500\\beta_1}{60}} y^+_1.\n\\end{cases}\n\\tag{4}\\]\nIn the newer edition of the book (Wilcox 2006), this boundary condition for a smooth wall is given in the form \\[\nS_r = \\begin{cases}\n\\left(\\frac{200}{k_s^+}\\right)^2 & \\text{for } k_s^+ \\le 5, \\\\\n\\frac{100}{k_s^+} + \\left[ \\left(\\frac{200}{k_s^+}\\right)^2 - \\frac{100}{k_s^+}\\right]\ne^{5-k_s^+}& \\text{for } k_s^+ &gt; 5.\n\\end{cases}\n\\]\nHowever, this form of boundary condition was not used in the calculations. Furthermore, (Wilcox 2006) presents a boundary condition for a rough wall for the low Reynolds version of the model. It differs from the above condition only in the coefficient of the second branch, where 60 is used instead of 100 (in both places). This version was also not used in the calculations.\n\n\n\n\n\nDependence of factor \\(S_r\\) for omega boundary condition according to (Langel, Chow, C. P. Van Dam, et al. 2017) and (Wilcox 2006).\n\n\n\n\n\n\nModel according to Langel et al. (2017a) (Langel2017a)\nIn another publication (Langel, Chow, Case P. Van Dam, et al. 2017), a different version of the Langel2017 model is presented, which uses different calibrations and a boundary condition for \\(A_r\\) at the wall. The value of \\(\\sigma_{A_r}\\) in this model is set to \\(\\sigma_{A_r} = 10\\) and the boundary condition at the wall is \\[\nA_{r,w} = c_{r1} k_s^+,\n\\] where \\(c_{r1} = 8\\). The function \\(F_{A_r}\\) in the equation for \\(\\tilde{Re}_\\theta\\) is \\[\nF_{A_r} = \\begin{cases}\nc_{r2} Ar^3, & \\text{for } Ar &lt; C_{Ar}, \\\\\nc_{r3} (Ar - C_{Ar}) + c_{r2} C_{Ar}^3, & \\text{for } Ar \\ge C_{Ar},\n\\end{cases}\n\\] where \\(c_{r2} = 0.0005\\), \\(c_{r3} = 2\\) and \\(C_{Ar} = \\sqrt{c_{r3}/3c_{r2}}\\), see (Langel, Chow, Case P. Van Dam, et al. 2017) [p. 65]. The coefficient \\(b\\) in this version of the model is given by the relation (compare with Equation 2) \\[\nb = \\left(\\frac{1}{2}\\sin\\left(\\frac{\\pi}{155}\\widetilde{Re}_\\theta - \\frac{97\\pi}{155}\\right) + \\frac{1}{2}\\right)^2.\n\\tag{5}\\] As with the Langel2017 model, it is appropriate to limit the value of \\(\\tilde{Re}_\\theta\\) to the interval \\([19.5, 174.5]\\) in this relation.\n\n\n\n\n\nDependence of damping factor \\(b\\) on the value of \\(Re_θ\\) according to (Langel, Chow, Case P. Van Dam, et al. 2017).\n\n\n\n\n\n\nModel according to Kožulović et al. (2022) (Kozulovic2022)\nIn the most recent publication (Kožulovič et al. 2022), another version of the transition model on rough walls is presented with different calibration and a boundary condition for \\(A_r\\) at the wall. The model apparently originates from the publication (Dassler et al. 2012) and supplements some correlations that were not included in the original publication.\nThe source term in the equation for \\(\\tilde{Re}_\\theta\\) is defined by Equation 1 with the function \\(Arg_r\\) defined as \\[\nArg_r = \\begin{cases}\nA_r^3\\cdot 0.000025, & \\text{for } A_r &lt; A_{r,s}, \\\\\n0.24 \\cdot A_r - 9.05094, & \\text{for } A_r \\ge A_{r,s},\n\\end{cases}\n\\] where \\(A_{r,s} = \\sqrt{0.24/3/0.000025} \\approx 56.5685\\).\nThe boundary condition for \\(A_r\\) at the wall is the same as in the Langel2017a model, i.e., \\[\nA_{r,w} = 8 k_s^+.\n\\]\nThe value of \\(\\sigma_{A_r}\\) is not specified in the article, but apparently the value \\(\\sigma_{A_r} = 10\\) is used, as in the model according to (Dassler et al. 2012). In the original model according to (Dassler et al. 2012), the damping function \\(b\\) is also mentioned in the text. However, its functional form is not given. Therefore, the function according to Equation 5 was used. Furthermore, for reasonable agreement with experiment, it was necessary to multiply \\(Arg_r\\) by a coefficient of 10, i.e., \\[\nP_\\theta = c_{\\theta t}\\frac{\\rho}{T}\\left[\\left(Re_{\\theta} - \\tilde{Re}_\\theta \\right)\n(1 - F_{\\theta t}) - 10 b \\cdot Arg_r\\right].\n\\tag{6}\\]\n\n\nModel Comparison\nThe models differ both in the values of \\(\\sigma_{A_r}\\) and the boundary condition for \\(A_r\\) at the wall, as well as in the modification of the source term in the equation for \\(\\tilde{Re}_\\theta\\). The graph below shows a comparison of the function \\(F_{A_r}\\) or \\(Arg_r\\) for different models (for \\(b=1\\) and \\(F_\\theta=0\\)).\n\n\n\n\n\nComparison of functions \\(F_{A_r}\\) and \\(Arg_r\\) for different transition models on rough walls.",
+    "crumbs": [
+      "Transitional models",
+      "kOmegaSSTLMRough"
+    ]
+  },
+  {
+    "objectID": "Transition/mykkLOmega.html",
+    "href": "Transition/mykkLOmega.html",
+    "title": "mykkLOmega model",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the model is not yet written.",
+    "crumbs": [
+      "Transitional models",
+      "mykkLOmega"
+    ]
+  },
+  {
+    "objectID": "BoCos/omegaViscosityRatio.html",
+    "href": "BoCos/omegaViscosityRatio.html",
+    "title": "??? boundary condition",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
+    "crumbs": [
+      "Boundary conditions",
+      "omegaViscosityRatio"
+    ]
+  },
+  {
+    "objectID": "BoCos/ReThetatInlet.html",
+    "href": "BoCos/ReThetatInlet.html",
+    "title": "??? boundary condition",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
+    "crumbs": [
+      "Boundary conditions",
+      "ReThetatInlet"
+    ]
+  },
+  {
+    "objectID": "BoCos/roughnessAmplificationLangel.html",
+    "href": "BoCos/roughnessAmplificationLangel.html",
+    "title": "??? boundary condition",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
+    "crumbs": [
+      "Boundary conditions",
+      "roughnessAmplificationLangel"
+    ]
+  },
+  {
+    "objectID": "BoCos/omegaRoughWallFunction.html",
+    "href": "BoCos/omegaRoughWallFunction.html",
+    "title": "??? boundary condition",
+    "section": "",
+    "text": "Warning\n\n\n\nThe documentation for the boundary condition is not yet written.",
+    "crumbs": [
+      "Boundary conditions",
+      "omegaRoughWallFunction"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html",
+    "href": "Validation/EARSMlm2009.html",
+    "title": "EARSMlm2009 validation",
+    "section": "",
+    "text": "The model is described in EARSMlm2009.",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html#t3a-case",
+    "href": "Validation/EARSMlm2009.html#t3a-case",
+    "title": "EARSMlm2009 validation",
+    "section": "T3A case",
+    "text": "T3A case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html#t3a--case",
+    "href": "Validation/EARSMlm2009.html#t3a--case",
+    "title": "EARSMlm2009 validation",
+    "section": "T3A- case",
+    "text": "T3A- case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html#t3b-case",
+    "href": "Validation/EARSMlm2009.html#t3b-case",
+    "title": "EARSMlm2009 validation",
+    "section": "T3B case",
+    "text": "T3B case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html#t3c1-case",
+    "href": "Validation/EARSMlm2009.html#t3c1-case",
+    "title": "EARSMlm2009 validation",
+    "section": "T3C1 case",
+    "text": "T3C1 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html#t3c2-case",
+    "href": "Validation/EARSMlm2009.html#t3c2-case",
+    "title": "EARSMlm2009 validation",
+    "section": "T3C2 case",
+    "text": "T3C2 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html#t3c3-case",
+    "href": "Validation/EARSMlm2009.html#t3c3-case",
+    "title": "EARSMlm2009 validation",
+    "section": "T3C3 case",
+    "text": "T3C3 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html#t3c4-case",
+    "href": "Validation/EARSMlm2009.html#t3c4-case",
+    "title": "EARSMlm2009 validation",
+    "section": "T3C4 case",
+    "text": "T3C4 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html#t3c5-case",
+    "href": "Validation/EARSMlm2009.html#t3c5-case",
+    "title": "EARSMlm2009 validation",
+    "section": "T3C5 case",
+    "text": "T3C5 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html#sec-validation-hv300h",
+    "href": "Validation/EARSMlm2009.html#sec-validation-hv300h",
+    "title": "EARSMlm2009 validation",
+    "section": "Re=300 000, highTI",
+    "text": "Re=300 000, highTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html#sec-validation-hv300l",
+    "href": "Validation/EARSMlm2009.html#sec-validation-hv300l",
+    "title": "EARSMlm2009 validation",
+    "section": "Re=300 000, lowTI",
+    "text": "Re=300 000, lowTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html#sec-validation-hv50h",
+    "href": "Validation/EARSMlm2009.html#sec-validation-hv50h",
+    "title": "EARSMlm2009 validation",
+    "section": "Re=50 000, highTI",
+    "text": "Re=50 000, highTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMlm2009.html#sec-validation-hv50l",
+    "href": "Validation/EARSMlm2009.html#sec-validation-hv50l",
+    "title": "EARSMlm2009 validation",
+    "section": "Re=50 000, lowTI",
+    "text": "Re=50 000, lowTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
+    "crumbs": [
+      "Validation cases",
+      "EARSMlm2009 results"
+    ]
+  },
+  {
+    "objectID": "Validation/index.html",
+    "href": "Validation/index.html",
+    "title": "Test Cases for myTurbulenceModels",
+    "section": "",
+    "text": "Note: Tests are intended for validation/verification of turbulence models. The relaxation factors, tolerances, and schemes are not set to optimal values!\n\n\nClassical ERCOFTAC test cases, see ERCOFTAC database\n\nT3A: \\(U=5.4\\) m/s, \\(Tu=3\\) %, no pressure gradient\nT3B: \\(U=9.4\\) m/s, \\(Tu=6\\) %, no pressure gradient\nT3A-: \\(U=19.8\\) m/s, \\(Tu=0.9\\) %, no pressure gradient\nT3C1: \\(U=5.9\\) m/s, \\(Tu=6.6\\) %, with pressure gradient\nT3C2: \\(U=5.0\\) m/s, \\(Tu=3\\) %, with pressure gradient\nT3C3: \\(U=3.7\\) m/s, \\(Tu=3\\) %, with pressure gradient\nT3C4: \\(U=1.2\\) m/s, \\(Tu=3\\) %, with pressure gradient\nT3C5: \\(U=8.4\\) m/s, \\(Tu=3\\) %, with pressure gradient\nFlat plate transitional flows with separation\n\n\n\n\nsee Volino, R. J., & Hultgren, L. S. (2001). Measurements in Separated and Transitional Boundary Layers Under Low-Pressure Turbine Airfoil Conditions. Journal of Turbomachinery, 123(2), 189–197. https://doi.org/10.1115/1.1350408\nNote: Experimental data are obtained by digitization of graphs from literature. It is not accurate\n\nRe300k_lowTI: \\(Re=300000\\), \\(Tu=0.2\\) %\nRe300k_highTI: \\(Re=300000\\), \\(Tu=2.5\\) %\nRe50k_lowTI: \\(Re=50000\\), \\(Tu=0.2\\) %\nRe50k_lowTI: \\(Re=50000\\), \\(Tu=2.5\\) %",
+    "crumbs": [
+      "Validation cases",
+      "README"
+    ]
+  },
+  {
+    "objectID": "Validation/index.html#flat-plate-transitional-flows",
+    "href": "Validation/index.html#flat-plate-transitional-flows",
+    "title": "Test Cases for myTurbulenceModels",
+    "section": "",
+    "text": "Classical ERCOFTAC test cases, see ERCOFTAC database\n\nT3A: \\(U=5.4\\) m/s, \\(Tu=3\\) %, no pressure gradient\nT3B: \\(U=9.4\\) m/s, \\(Tu=6\\) %, no pressure gradient\nT3A-: \\(U=19.8\\) m/s, \\(Tu=0.9\\) %, no pressure gradient\nT3C1: \\(U=5.9\\) m/s, \\(Tu=6.6\\) %, with pressure gradient\nT3C2: \\(U=5.0\\) m/s, \\(Tu=3\\) %, with pressure gradient\nT3C3: \\(U=3.7\\) m/s, \\(Tu=3\\) %, with pressure gradient\nT3C4: \\(U=1.2\\) m/s, \\(Tu=3\\) %, with pressure gradient\nT3C5: \\(U=8.4\\) m/s, \\(Tu=3\\) %, with pressure gradient\nFlat plate transitional flows with separation",
+    "crumbs": [
+      "Validation cases",
+      "README"
+    ]
+  },
+  {
+    "objectID": "Validation/index.html#flat-plate-transitional-flows-with-separation",
+    "href": "Validation/index.html#flat-plate-transitional-flows-with-separation",
+    "title": "Test Cases for myTurbulenceModels",
+    "section": "",
+    "text": "see Volino, R. J., & Hultgren, L. S. (2001). Measurements in Separated and Transitional Boundary Layers Under Low-Pressure Turbine Airfoil Conditions. Journal of Turbomachinery, 123(2), 189–197. https://doi.org/10.1115/1.1350408\nNote: Experimental data are obtained by digitization of graphs from literature. It is not accurate\n\nRe300k_lowTI: \\(Re=300000\\), \\(Tu=0.2\\) %\nRe300k_highTI: \\(Re=300000\\), \\(Tu=2.5\\) %\nRe50k_lowTI: \\(Re=50000\\), \\(Tu=0.2\\) %\nRe50k_lowTI: \\(Re=50000\\), \\(Tu=2.5\\) %",
+    "crumbs": [
+      "Validation cases",
+      "README"
+    ]
+  },
+  {
+    "objectID": "Validation/Coupland/T3B/index.html",
+    "href": "Validation/Coupland/T3B/index.html",
+    "title": "Flat-plate transitional flow - T3B case",
+    "section": "",
+    "text": "Flat-plate transitional flow - T3B case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a rectangular domain spanning from \\(x = -0.15\\) m to \\(x = 2.9\\) m. The height of the domain is \\(h = 0.3\\) m, and the leading edge of the plate is located at \\(x = 0\\) m.\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=9.4\\) m/s\n\\(Tu=6.5\\) %\n\\(\\nu_t/\\nu = 100\\)\n\nThe other boundary conditions are set as follows:\n\nflat plate (\\(x&gt;0\\) m, \\(y=0\\) m): no-slip wall\nlower symmetry (\\(x&lt;0\\) m, \\(y=0\\) m): symmetry\ntop wall (\\(y=0.3\\) m): slip\noutlet (\\(x=2.9\\) m): pressure outlet with \\(p=0\\) Pa\n\nThe simulation can be run on the medium mesh with\n./Allrun medium"
+  },
+  {
+    "objectID": "Validation/Coupland/T3C1/index.html",
+    "href": "Validation/Coupland/T3C1/index.html",
+    "title": "Flat-plate transitional flow - T3C1 case",
+    "section": "",
+    "text": "Flat-plate transitional flow - T3C1 case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.231 x^6 - 6.705 x^5 + 14.061 x^4 - 14.113 x^3 + 7.109 x^2 - 1.900 x + 0.950\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=5.9\\) m/s\n\\(Tu=7.78\\) %\n\\(\\nu_t/\\nu = 44\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\nSee Suluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+  },
+  {
+    "objectID": "Validation/Coupland/T3C3/index.html",
+    "href": "Validation/Coupland/T3C3/index.html",
+    "title": "Flat-plate transitional flow - T3C3 case",
+    "section": "",
+    "text": "Flat-plate transitional flow - T3C3 case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.231*x^6 - 6.705*x^5 + 14.061*x^4 - 14.113*x^3 + 7.109*x^2 - 1.900*x + 0.950\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=3.7\\) m/s\n\\(Tu=3.1\\) %\n\\(\\nu_t/\\nu = 6\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\nSee Suluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+  },
+  {
+    "objectID": "Validation/Coupland/T3C5/index.html",
+    "href": "Validation/Coupland/T3C5/index.html",
+    "title": "Flat-plate transitional flow - T3C5 case",
+    "section": "",
+    "text": "Flat-plate transitional flow - T3C5 case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.231 x^6 - 6.705 x^5 + 14.061 x^4 - 14.113 x^3 + 7.109 x^2 - 1.900 x + 0.950\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=8.5\\) m/s\n\\(Tu=3.7\\) %\n\\(\\nu_t/\\nu = 15\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\nSee Suluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+  },
+  {
+    "objectID": "Validation/HultgrenVolino/Re300k_lowTI/index.html",
+    "href": "Validation/HultgrenVolino/Re300k_lowTI/index.html",
+    "title": "myTurbulenceModels",
+    "section": "",
+    "text": "To be written…"
+  },
+  {
+    "objectID": "Validation/HultgrenVolino/Re50k_highTI/index.html",
+    "href": "Validation/HultgrenVolino/Re50k_highTI/index.html",
+    "title": "myTurbulenceModels",
+    "section": "",
+    "text": "To be written…"
   }
 ]
