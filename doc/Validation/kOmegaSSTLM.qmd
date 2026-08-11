@@ -7,7 +7,7 @@ The `kOmegaSSTLM` model [@Langtry2009] is from standard OpenFOAM distribution.
 # Coupland T3A-T3C5 cases
 
 ## T3A case
-See [description](/testCases/Coupland/T3A/README.md).
+See [description](/Validation/Coupland/T3A/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3A/kOmegaSSTLM/results/cf_plot_T3A_kOmegaSSTLM.png)
@@ -17,7 +17,7 @@ See [description](/testCases/Coupland/T3A/README.md).
 
 
 ## T3A- case
-See [description](/testCases/Coupland/T3AM/README.md).
+See [description](/Validation/Coupland/T3AM/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3AM/kOmegaSSTLM/results/cf_plot_T3AM_kOmegaSSTLM.png)
@@ -27,7 +27,7 @@ See [description](/testCases/Coupland/T3AM/README.md).
 
 
 ## T3B case
-See [description](/testCases/Coupland/T3B/README.md).
+See [description](/Validation/Coupland/T3B/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3B/kOmegaSSTLM/results/cf_plot_T3B_kOmegaSSTLM.png)
@@ -37,7 +37,7 @@ See [description](/testCases/Coupland/T3B/README.md).
 
 
 ## T3C1 case
-See [description](/testCases/Coupland/T3C1/README.md).
+See [description](/Validation/Coupland/T3C1/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3C1/kOmegaSSTLM/results/cf_plot_T3C1_kOmegaSSTLM.png)
@@ -49,7 +49,7 @@ See [description](/testCases/Coupland/T3C1/README.md).
 
 
 ## T3C2 case
-See [description](/testCases/Coupland/T3C2/README.md).
+See [description](/Validation/Coupland/T3C2/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3C2/kOmegaSSTLM/results/cf_plot_T3C2_kOmegaSSTLM.png)
@@ -61,7 +61,7 @@ See [description](/testCases/Coupland/T3C2/README.md).
 
 
 ## T3C3 case
-See [description](/testCases/Coupland/T3C3/README.md).
+See [description](/Validation/Coupland/T3C3/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3C3/kOmegaSSTLM/results/cf_plot_T3C3_kOmegaSSTLM.png)
@@ -73,7 +73,7 @@ See [description](/testCases/Coupland/T3C3/README.md).
 
 
 ## T3C4 case
-See [description](/testCases/Coupland/T3C4/README.md).
+See [description](/Validation/Coupland/T3C4/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3C4/kOmegaSSTLM/results/cf_plot_T3C4_kOmegaSSTLM.png)
@@ -85,7 +85,7 @@ See [description](/testCases/Coupland/T3C4/README.md).
 
 
 ## T3C5 case
-See [description](/testCases/Coupland/T3C5/README.md).
+See [description](/Validation/Coupland/T3C5/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3C5/kOmegaSSTLM/results/cf_plot_T3C5_kOmegaSSTLM.png)
@@ -98,7 +98,7 @@ See [description](/testCases/Coupland/T3C5/README.md).
 # Hulgren and Volino cases
 
 ## Re=300 000, highTI {#sec-validation-hv300h}
-See [description](/testCases/HultgrenVolino/Re300k_highTI/README.md).
+See [description](/Validation/HultgrenVolino/Re300k_highTI/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/HultgrenVolino/Re300k_highTI/kOmegaSSTLM/results/cf_plot_Re300k_highTI_kOmegaSSTLM.png)
@@ -114,7 +114,7 @@ See [description](/testCases/HultgrenVolino/Re300k_highTI/README.md).
 
 
 ## Re=300 000, lowTI {#sec-validation-hv300l}
-See [description](/testCases/HultgrenVolino/Re300k_lowTI/README.md).
+See [description](/Validation/HultgrenVolino/Re300k_lowTI/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/HultgrenVolino/Re300k_lowTI/kOmegaSSTLM/results/cf_plot_Re300k_lowTI_kOmegaSSTLM.png)
@@ -130,7 +130,7 @@ See [description](/testCases/HultgrenVolino/Re300k_lowTI/README.md).
 
 
 ## Re=50 000, highTI {#sec-validation-hv50h}
-See [description](/testCases/HultgrenVolino/Re50k_highTI/README.md).
+See [description](/Validation/HultgrenVolino/Re50k_highTI/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/HultgrenVolino/Re50k_highTI/kOmegaSSTLM/results/cf_plot_Re50k_highTI_kOmegaSSTLM.png)
@@ -146,7 +146,7 @@ See [description](/testCases/HultgrenVolino/Re50k_highTI/README.md).
 
 
 ## Re=50 000, lowTI {#sec-validation-hv50l}
-See [description](/testCases/HultgrenVolino/Re50k_lowTI/README.md).
+See [description](/Validation/HultgrenVolino/Re50k_lowTI/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/HultgrenVolino/Re50k_lowTI/kOmegaSSTLM/results/cf_plot_Re50k_lowTI_kOmegaSSTLM.png)

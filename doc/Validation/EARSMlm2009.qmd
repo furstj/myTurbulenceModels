@@ -7,7 +7,7 @@ The model is described in [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009).
 # Coupland T3A-T3C5 cases
 
 ## T3A case
-See [description](/testCases/Coupland/T3A/README.md).
+See [description](/Validation/Coupland/T3A/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3A/EARSMlm2009/results/cf_plot_T3A_EARSMlm2009.png)
@@ -17,7 +17,7 @@ See [description](/testCases/Coupland/T3A/README.md).
 
 
 ## T3A- case
-See [description](/testCases/Coupland/T3AM/README.md).
+See [description](/Validation/Coupland/T3AM/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3AM/EARSMlm2009/results/cf_plot_T3AM_EARSMlm2009.png)
@@ -27,7 +27,7 @@ See [description](/testCases/Coupland/T3AM/README.md).
 
 
 ## T3B case
-See [description](/testCases/Coupland/T3B/README.md).
+See [description](/Validation/Coupland/T3B/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3B/EARSMlm2009/results/cf_plot_T3B_EARSMlm2009.png)
@@ -37,7 +37,7 @@ See [description](/testCases/Coupland/T3B/README.md).
 
 
 ## T3C1 case
-See [description](/testCases/Coupland/T3C1/README.md).
+See [description](/Validation/Coupland/T3C1/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3C1/EARSMlm2009/results/cf_plot_T3C1_EARSMlm2009.png)
@@ -49,7 +49,7 @@ See [description](/testCases/Coupland/T3C1/README.md).
 
 
 ## T3C2 case
-See [description](/testCases/Coupland/T3C2/README.md).
+See [description](/Validation/Coupland/T3C2/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3C2/EARSMlm2009/results/cf_plot_T3C2_EARSMlm2009.png)
@@ -61,7 +61,7 @@ See [description](/testCases/Coupland/T3C2/README.md).
 
 
 ## T3C3 case
-See [description](/testCases/Coupland/T3C3/README.md).
+See [description](/Validation/Coupland/T3C3/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3C3/EARSMlm2009/results/cf_plot_T3C3_EARSMlm2009.png)
@@ -73,7 +73,7 @@ See [description](/testCases/Coupland/T3C3/README.md).
 
 
 ## T3C4 case
-See [description](/testCases/Coupland/T3C4/README.md).
+See [description](/Validation/Coupland/T3C4/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3C4/EARSMlm2009/results/cf_plot_T3C4_EARSMlm2009.png)
@@ -85,7 +85,7 @@ See [description](/testCases/Coupland/T3C4/README.md).
 
 
 ## T3C5 case
-See [description](/testCases/Coupland/T3C5/README.md).
+See [description](/Validation/Coupland/T3C5/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/Coupland/T3C5/EARSMlm2009/results/cf_plot_T3C5_EARSMlm2009.png)
@@ -98,7 +98,7 @@ See [description](/testCases/Coupland/T3C5/README.md).
 # Hulgren and Volino cases
 
 ## Re=300 000, highTI {#sec-validation-hv300h}
-See [description](/testCases/HultgrenVolino/Re300k_highTI/README.md).
+See [description](/Validation/HultgrenVolino/Re300k_highTI/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/HultgrenVolino/Re300k_highTI/EARSMlm2009/results/cf_plot_Re300k_highTI_EARSMlm2009.png)
@@ -114,7 +114,7 @@ See [description](/testCases/HultgrenVolino/Re300k_highTI/README.md).
 
 
 ## Re=300 000, lowTI {#sec-validation-hv300l}
-See [description](/testCases/HultgrenVolino/Re300k_lowTI/README.md).
+See [description](/Validation/HultgrenVolino/Re300k_lowTI/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/HultgrenVolino/Re300k_lowTI/EARSMlm2009/results/cf_plot_Re300k_lowTI_EARSMlm2009.png)
@@ -130,7 +130,7 @@ See [description](/testCases/HultgrenVolino/Re300k_lowTI/README.md).
 
 
 ## Re=50 000, highTI {#sec-validation-hv50h}
-See [description](/testCases/HultgrenVolino/Re50k_highTI/README.md).
+See [description](/Validation/HultgrenVolino/Re50k_highTI/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/HultgrenVolino/Re50k_highTI/EARSMlm2009/results/cf_plot_Re50k_highTI_EARSMlm2009.png)
@@ -146,7 +146,7 @@ See [description](/testCases/HultgrenVolino/Re50k_highTI/README.md).
 
 
 ## Re=50 000, lowTI {#sec-validation-hv50l}
-See [description](/testCases/HultgrenVolino/Re50k_lowTI/README.md).
+See [description](/Validation/HultgrenVolino/Re50k_lowTI/index.qmd).
 
 :::{layout-ncol=2}
 ![Skin friction coefficient](/testCases/HultgrenVolino/Re50k_lowTI/EARSMlm2009/results/cf_plot_Re50k_lowTI_EARSMlm2009.png)
@@ -159,4 +159,3 @@ See [description](/testCases/HultgrenVolino/Re50k_lowTI/README.md).
 :::
 
 ![Velocity profiles](/testCases/HultgrenVolino/Re50k_lowTI/EARSMlm2009/results/U_Re50k_lowTI_EARSMlm2009.png)
-
