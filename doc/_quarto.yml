@@ -1,7 +1,6 @@
 project:
   type: website
 
-
 website:
   title: "myTurbulenceModels"
   sidebar:
@@ -74,7 +73,7 @@ website:
       - section: "Validation cases"
         contents:
           - text: "README"
-            href: testCases/README.md
+            href: Validation/index.qmd
           - text: "kOmegaSSTLM results"
             href: Validation/kOmegaSSTLM.qmd
           - text: "EARSMlm2009 results"
