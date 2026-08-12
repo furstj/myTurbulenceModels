@@ -34,5 +34,7 @@ For example, the simulation can be run on the medium mesh with
 ./Allrun medium
 ```
 
-See
-***Suluksna, K., Dechaumphai, P., & Juntasaro, E.** (2009). *Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. [https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004](https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004)
+## References
+
+1. [ERCOFTAC database](http://cfd.mace.manchester.ac.uk/ercoftac/doku.php?id=cases:case020)
+2. **Suluksna, K., Dechaumphai, P., & Juntasaro, E.** (2009). *Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. [https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004](https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004)

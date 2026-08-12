@@ -8,9 +8,9 @@ Three different meshes were prepared: coarse, medium, and fine. Values of $y^+_1
 
 | Mesh | Size | min $y^+_1$ | max $y^+_1$ | avg $y^+_1$ |
 |------|------|-------------|-------------|-------------|
-| coarse | 157 x 125 |        |        |        |
-| medium | 314 x 250 |        |        |        |
-| fine   | 618 x 500 |        |        |        |
+| coarse | 157 x 125 | $0.36$ | $2.22$ | $0.58$ |
+| medium | 314 x 250 | $0.18$ | $1.31$ | $0.29$ |
+| fine   | 618 x 500 | $0.09$ | $0.78$ | $0.15$ |
 
 An incompressible fluid with constant density and constant viscosity, $\nu = 1.5\times 10^{-5}$ m$^2$/s, is assumed.
 
@@ -32,3 +32,8 @@ The simulation can be run on the medium mesh with
 ```
 ./Allrun medium
 ```
+
+## References
+
+1. [ERCOFTAC database](http://cfd.mace.manchester.ac.uk/ercoftac/doku.php?id=cases:case020)
+2. **Suluksna, K., Dechaumphai, P., & Juntasaro, E.** (2009). *Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. [https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004](https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004)

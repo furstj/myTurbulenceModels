@@ -1,0 +1,165 @@
+---
+title: "`gammaSST` validation"
+---
+
+The `gammaSST` model [@Menter2015] is from Turbulence Community (TC) repository and is not part of standard OpenFOAM distribution. Nevertheless, the `myTurbulenceModels` library can include it. See [Introduction](/index.qmd) for more details.
+
+# Coupland T3A-T3C5 cases
+
+Results for the Coupland T3A-T3C5 showed bellow are obtained with medium mesh resolution. 
+
+## T3A case
+See [description](/Validation/Coupland/T3A/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3A/gammaSST/results/cf_plot_T3A_gammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3A/gammaSST/results/tu_plot_T3A_gammaSST.png)
+:::
+
+## T3A- case
+See [description](/Validation/Coupland/T3AM/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3AM/gammaSST/results/cf_plot_T3AM_gammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3AM/gammaSST/results/tu_plot_T3AM_gammaSST.png)
+:::
+
+
+## T3B case
+See [description](/Validation/Coupland/T3B/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3B/gammaSST/results/cf_plot_T3B_gammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3B/gammaSST/results/tu_plot_T3B_gammaSST.png)
+:::
+
+<!--
+
+## T3C1 case
+See [description](/Validation/Coupland/T3C1/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3C1/gammaSST/results/cf_plot_T3C1_gammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3C1/gammaSST/results/tu_plot_T3C1_gammaSST.png)
+
+![Freestream velocity](/testCases/Coupland/T3C1/gammaSST/results/u_plot_T3C1_gammaSST.png)
+:::
+
+
+## T3C2 case
+See [description](/Validation/Coupland/T3C2/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3C2/gammaSST/results/cf_plot_T3C2_gammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3C2/gammaSST/results/tu_plot_T3C2_gammaSST.png)
+
+![Freestream velocity](/testCases/Coupland/T3C2/gammaSST/results/u_plot_T3C2_gammaSST.png)
+:::
+
+
+## T3C3 case
+See [description](/Validation/Coupland/T3C3/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3C3/gammaSST/results/cf_plot_T3C3_gammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3C3/gammaSST/results/tu_plot_T3C3_gammaSST.png)
+
+![Freestream velocity](/testCases/Coupland/T3C3/gammaSST/results/u_plot_T3C3_gammaSST.png)
+:::
+
+
+## T3C4 case
+See [description](/Validation/Coupland/T3C4/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3C4/gammaSST/results/cf_plot_T3C4_gammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3C4/gammaSST/results/tu_plot_T3C4_gammaSST.png)
+
+![Freestream velocity](/testCases/Coupland/T3C4/gammaSST/results/u_plot_T3C4_gammaSST.png)
+:::
+
+
+## T3C5 case
+See [description](/Validation/Coupland/T3C5/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3C5/gammaSST/results/cf_plot_T3C5_gammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3C5/gammaSST/results/tu_plot_T3C5_gammaSST.png)
+
+![Freestream velocity](/testCases/Coupland/T3C5/gammaSST/results/u_plot_T3C5_gammaSST.png)
+:::
+
+# Hulgren and Volino cases
+
+## Re=300 000, highTI {#sec-validation-hv300h}
+See [description](/Validation/HultgrenVolino/Re300k_highTI/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re300k_highTI/gammaSST/results/cf_plot_Re300k_highTI_gammaSST.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re300k_highTI/gammaSST/results/Tu_plot_Re300k_highTI_gammaSST.png)
+
+![External velocity](/testCases/HultgrenVolino/Re300k_highTI/gammaSST/results/Ue_plot_Re300k_highTI_gammaSST.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re300k_highTI/gammaSST/results/cp_plot_Re300k_highTI_gammaSST.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re300k_highTI/gammaSST/results/U_Re300k_highTI_gammaSST.png)
+
+
+## Re=300 000, lowTI {#sec-validation-hv300l}
+See [description](/Validation/HultgrenVolino/Re300k_lowTI/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re300k_lowTI/gammaSST/results/cf_plot_Re300k_lowTI_gammaSST.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re300k_lowTI/gammaSST/results/Tu_plot_Re300k_lowTI_gammaSST.png)
+
+![External velocity](/testCases/HultgrenVolino/Re300k_lowTI/gammaSST/results/Ue_plot_Re300k_lowTI_gammaSST.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re300k_lowTI/gammaSST/results/cp_plot_Re300k_lowTI_gammaSST.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re300k_lowTI/gammaSST/results/U_Re300k_lowTI_gammaSST.png)
+
+
+## Re=50 000, highTI {#sec-validation-hv50h}
+See [description](/Validation/HultgrenVolino/Re50k_highTI/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re50k_highTI/gammaSST/results/cf_plot_Re50k_highTI_gammaSST.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re50k_highTI/gammaSST/results/Tu_plot_Re50k_highTI_gammaSST.png)
+
+![External velocity](/testCases/HultgrenVolino/Re50k_highTI/gammaSST/results/Ue_plot_Re50k_highTI_gammaSST.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re50k_highTI/gammaSST/results/cp_plot_Re50k_highTI_gammaSST.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re50k_highTI/gammaSST/results/U_Re50k_highTI_gammaSST.png)
+
+
+## Re=50 000, lowTI {#sec-validation-hv50l}
+See [description](/Validation/HultgrenVolino/Re50k_lowTI/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re50k_lowTI/gammaSST/results/cf_plot_Re50k_lowTI_gammaSST.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re50k_lowTI/gammaSST/results/Tu_plot_Re50k_lowTI_gammaSST.png)
+
+![External velocity](/testCases/HultgrenVolino/Re50k_lowTI/gammaSST/results/Ue_plot_Re50k_lowTI_gammaSST.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re50k_lowTI/gammaSST/results/cp_plot_Re50k_lowTI_gammaSST.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re50k_lowTI/gammaSST/results/U_Re50k_lowTI_gammaSST.png)
+
+-->

@@ -78,7 +78,9 @@ website:
             href: Validation/kOmegaSSTLM.qmd
           - text: "EARSMlm2009 results"
             href: Validation/EARSMlm2009.qmd
-            
+          - text: "gammaSST results"
+            href: Validation/gammaSST.qmd
+
 format:            
   html:
     theme:

@@ -7,8 +7,9 @@ base_dir = os.getcwd()
 case_name = base_dir.split('/')[-2]
 model_name = base_dir.split('/')[-1]
 
+
 # Read wall shear stress data from the postProcessing directory
-wss = np.loadtxt("postProcessing/surfaces/5000/wallShearStress_plate.raw")
+wss = np.loadtxt(f"postProcessing/surfaces/5000/wallShearStress_plate.raw")
 wx = wss[:, 0]
 tau_xy = wss[:, 3]
 
@@ -19,12 +20,12 @@ tau_xy = tau_xy[sorted_indices]
 
 # Read velocity from the postProcessing directory
 if "kkLOmega" in model_name:
-    velocity = np.loadtxt("postProcessing/line_z5/5000/line_kl_kt_omega_U.xy")
+    velocity = np.loadtxt(f"postProcessing/line_z5/5000/line_kl_kt_omega_U.xy")
     tx = velocity[:, 0]
     k  = velocity[:, 1] + velocity[:, 2]
     u  = velocity[:, 4]
 else:
-    velocity = np.loadtxt("postProcessing/line_z5/5000/line_k_omega_U.xy")
+    velocity = np.loadtxt(f"postProcessing/line_z5/5000/line_k_omega_U.xy")
     tx = velocity[:, 0]
     k  = velocity[:, 1]
     u  = velocity[:, 3]

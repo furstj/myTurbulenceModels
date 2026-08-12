@@ -6,6 +6,8 @@ The `kOmegaSSTLM` model [@Langtry2009] is from standard OpenFOAM distribution.
 
 # Coupland T3A-T3C5 cases
 
+Results for the Coupland T3A-T3C5 showed bellow are obtained with medium mesh resolution. 
+
 ## T3A case
 See [description](/Validation/Coupland/T3A/index.qmd).
 

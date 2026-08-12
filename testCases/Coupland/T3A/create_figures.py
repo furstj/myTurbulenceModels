@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -57,6 +59,7 @@ plt.xlabel('Reynolds Number $Re_x$')
 plt.ylabel('Skin Friction Coefficient $C_f$')
 plt.title(f'Skin Friction Coefficient vs Reynolds Number\nCase: {case_name}, Model: {model_name}')
 plt.ylim(0,0.01)
+plt.xlim(-20000,650000)
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
@@ -70,6 +73,7 @@ plt.xlabel('Reynolds Number $Re_x$')
 plt.ylabel('Turbulence Intensity $Tu$ (%)')
 plt.title(f'Turbulence Intensity vs Reynolds Number\nCase: {case_name}, Model: {model_name}')
 plt.ylim(0,5)
+plt.xlim(-20000,650000)
 plt.grid(True)
 plt.legend()
 plt.tight_layout()

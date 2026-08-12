@@ -6,3 +6,5 @@
 cleanCase
 
 rm -f *.png
+rm -rf 0
+rm -rf system

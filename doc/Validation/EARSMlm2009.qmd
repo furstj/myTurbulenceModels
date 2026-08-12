@@ -6,6 +6,8 @@ The model is described in [`EARSMlm2009`](../RANS/EARSM.qmd#sec-earsmlm2009).
 
 # Coupland T3A-T3C5 cases
 
+Results for the Coupland T3A-T3C5 showed bellow are obtained with medium mesh resolution. 
+
 ## T3A case
 See [description](/Validation/Coupland/T3A/index.qmd).
 
