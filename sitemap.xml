@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/Validation/EARSMgammaSST.html</loc>
+    <lastmod>2026-08-13T14:28:46.466Z</lastmod>
+  </url>
+  <url>
     <loc>https://furstj.github.io/myTurbulenceModels/Validation/kOmegaSSTLM.html</loc>
-    <lastmod>2026-08-11T16:36:42.116Z</lastmod>
+    <lastmod>2026-08-11T17:07:16.309Z</lastmod>
   </url>
   <url>
     <loc>https://furstj.github.io/myTurbulenceModels/Validation/HultgrenVolino/Re50k_lowTI/index.html</loc>
@@ -14,7 +18,7 @@
   </url>
   <url>
     <loc>https://furstj.github.io/myTurbulenceModels/Validation/EARSMlm2009.html</loc>
-    <lastmod>2026-08-11T16:38:53.625Z</lastmod>
+    <lastmod>2026-08-11T16:50:17.760Z</lastmod>
   </url>
   <url>
     <loc>https://furstj.github.io/myTurbulenceModels/Validation/Coupland/T3C4/index.html</loc>
@@ -151,5 +155,9 @@
   <url>
     <loc>https://furstj.github.io/myTurbulenceModels/Validation/index.html</loc>
     <lastmod>2026-08-11T16:30:04.336Z</lastmod>
+  </url>
+  <url>
+    <loc>https://furstj.github.io/myTurbulenceModels/Validation/gammaSST.html</loc>
+    <lastmod>2026-08-13T07:36:54.237Z</lastmod>
   </url>
 </urlset>

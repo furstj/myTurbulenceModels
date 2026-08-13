@@ -1,5 +1,148 @@
 [
   {
+    "objectID": "Validation/EARSMgammaSST.html",
+    "href": "Validation/EARSMgammaSST.html",
+    "title": "EARSMgammaSST validation",
+    "section": "",
+    "text": "The model is described in EARSMgammaSST.",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMgammaSST.html#t3a-case",
+    "href": "Validation/EARSMgammaSST.html#t3a-case",
+    "title": "EARSMgammaSST validation",
+    "section": "T3A case",
+    "text": "T3A case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMgammaSST.html#t3a--case",
+    "href": "Validation/EARSMgammaSST.html#t3a--case",
+    "title": "EARSMgammaSST validation",
+    "section": "T3A- case",
+    "text": "T3A- case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMgammaSST.html#t3b-case",
+    "href": "Validation/EARSMgammaSST.html#t3b-case",
+    "title": "EARSMgammaSST validation",
+    "section": "T3B case",
+    "text": "T3B case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMgammaSST.html#t3c1-case",
+    "href": "Validation/EARSMgammaSST.html#t3c1-case",
+    "title": "EARSMgammaSST validation",
+    "section": "T3C1 case",
+    "text": "T3C1 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMgammaSST.html#t3c2-case",
+    "href": "Validation/EARSMgammaSST.html#t3c2-case",
+    "title": "EARSMgammaSST validation",
+    "section": "T3C2 case",
+    "text": "T3C2 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMgammaSST.html#t3c3-case",
+    "href": "Validation/EARSMgammaSST.html#t3c3-case",
+    "title": "EARSMgammaSST validation",
+    "section": "T3C3 case",
+    "text": "T3C3 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMgammaSST.html#t3c4-case",
+    "href": "Validation/EARSMgammaSST.html#t3c4-case",
+    "title": "EARSMgammaSST validation",
+    "section": "T3C4 case",
+    "text": "T3C4 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMgammaSST.html#t3c5-case",
+    "href": "Validation/EARSMgammaSST.html#t3c5-case",
+    "title": "EARSMgammaSST validation",
+    "section": "T3C5 case",
+    "text": "T3C5 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMgammaSST.html#sec-validation-hv300h",
+    "href": "Validation/EARSMgammaSST.html#sec-validation-hv300h",
+    "title": "EARSMgammaSST validation",
+    "section": "Re=300 000, highTI",
+    "text": "Re=300 000, highTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMgammaSST.html#sec-validation-hv300l",
+    "href": "Validation/EARSMgammaSST.html#sec-validation-hv300l",
+    "title": "EARSMgammaSST validation",
+    "section": "Re=300 000, lowTI",
+    "text": "Re=300 000, lowTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMgammaSST.html#sec-validation-hv50h",
+    "href": "Validation/EARSMgammaSST.html#sec-validation-hv50h",
+    "title": "EARSMgammaSST validation",
+    "section": "Re=50 000, highTI",
+    "text": "Re=50 000, highTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/EARSMgammaSST.html#sec-validation-hv50l",
+    "href": "Validation/EARSMgammaSST.html#sec-validation-hv50l",
+    "title": "EARSMgammaSST validation",
+    "section": "Re=50 000, lowTI",
+    "text": "Re=50 000, lowTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
+    "crumbs": [
+      "Validation cases",
+      "EARSMgammaSST results"
+    ]
+  },
+  {
     "objectID": "Validation/kOmegaSSTLM.html",
     "href": "Validation/kOmegaSSTLM.html",
     "title": "kOmegaSSTLM validation",
@@ -304,28 +447,56 @@
     "href": "Validation/Coupland/T3C4/index.html",
     "title": "Flat-plate transitional flow - T3C4 case",
     "section": "",
-    "text": "Flat-plate transitional flow - T3C4 case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.356 x^6 - 7.591 x^5 + 16.513 x^4 - 17.510 x^3 + 9.486 x^2 - 2.657 x + 0.991\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=1.25\\) m/s\n\\(Tu=3.1\\) %\n\\(\\nu_t/\\nu = 2.5\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\nSee Suluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+    "text": "For reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.356 x^6 - 7.591 x^5 + 16.513 x^4 - 17.510 x^3 + 9.486 x^2 - 2.657 x + 0.991\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=1.25\\) m/s\n\\(Tu=3.1\\) %\n\\(\\nu_t/\\nu = 2.5\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\n\n\n\nERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+  },
+  {
+    "objectID": "Validation/Coupland/T3C4/index.html#references",
+    "href": "Validation/Coupland/T3C4/index.html#references",
+    "title": "Flat-plate transitional flow - T3C4 case",
+    "section": "",
+    "text": "ERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
   },
   {
     "objectID": "Validation/Coupland/T3C2/index.html",
     "href": "Validation/Coupland/T3C2/index.html",
     "title": "Flat-plate transitional flow - T3C2case",
     "section": "",
-    "text": "Flat-plate transitional flow - T3C2case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.231 x^6 - 6.705 x^5 + 14.061 x^4 - 14.113 x^3 + 7.109 x^2 - 1.900 x + 0.950\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=5.0\\) m/s\n\\(Tu=3.1\\) %\n\\(\\nu_t/\\nu = 9\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\nSee Suluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+    "text": "For reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.231 x^6 - 6.705 x^5 + 14.061 x^4 - 14.113 x^3 + 7.109 x^2 - 1.900 x + 0.950\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\\(0.04\\)\n\\(0.51\\)\n\\(0.11\\)\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=5.0\\) m/s\n\\(Tu=3.1\\) %\n\\(\\nu_t/\\nu = 9\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\n\n\n\nERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+  },
+  {
+    "objectID": "Validation/Coupland/T3C2/index.html#references",
+    "href": "Validation/Coupland/T3C2/index.html#references",
+    "title": "Flat-plate transitional flow - T3C2case",
+    "section": "",
+    "text": "ERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
   },
   {
     "objectID": "Validation/Coupland/T3B/index.html",
     "href": "Validation/Coupland/T3B/index.html",
     "title": "Flat-plate transitional flow - T3B case",
     "section": "",
-    "text": "Flat-plate transitional flow - T3B case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a rectangular domain spanning from \\(x = -0.15\\) m to \\(x = 2.9\\) m. The height of the domain is \\(h = 0.3\\) m, and the leading edge of the plate is located at \\(x = 0\\) m.\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=9.4\\) m/s\n\\(Tu=6.5\\) %\n\\(\\nu_t/\\nu = 100\\)\n\nThe other boundary conditions are set as follows:\n\nflat plate (\\(x&gt;0\\) m, \\(y=0\\) m): no-slip wall\nlower symmetry (\\(x&lt;0\\) m, \\(y=0\\) m): symmetry\ntop wall (\\(y=0.3\\) m): slip\noutlet (\\(x=2.9\\) m): pressure outlet with \\(p=0\\) Pa\n\nThe simulation can be run on the medium mesh with\n./Allrun medium"
+    "text": "For reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a rectangular domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The height of the domain is \\(h = 0.3\\) m, and the leading edge of the plate is located at \\(x = 0\\) m.\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\\(0.40\\)\n\\(1.38\\)\n\\(0.47\\)\n\n\nmedium\n314 x 250\n\\(0.20\\)\n\\(0.75\\)\n\\(0.23\\)\n\n\nfine\n618 x 500\n\\(0.11\\)\n\\(0.49\\)\n\\(0.12\\)\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=9.4\\) m/s\n\\(Tu=6.5\\) %\n\\(\\nu_t/\\nu = 100\\)\n\nThe other boundary conditions are set as follows:\n\nflat plate (\\(x&gt;0\\) m, \\(y=0\\) m): no-slip wall\nlower symmetry (\\(x&lt;0\\) m, \\(y=0\\) m): symmetry\ntop wall (\\(y=0.3\\) m): slip\noutlet (\\(x=1.7\\) m): pressure outlet with \\(p=0\\) Pa\n\nThe simulation can be run on the medium mesh with\n./Allrun medium\n\n\n\nERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+  },
+  {
+    "objectID": "Validation/Coupland/T3B/index.html#references",
+    "href": "Validation/Coupland/T3B/index.html#references",
+    "title": "Flat-plate transitional flow - T3B case",
+    "section": "",
+    "text": "ERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
   },
   {
     "objectID": "Validation/Coupland/T3A/index.html",
     "href": "Validation/Coupland/T3A/index.html",
     "title": "Flat-plate transitional flow - T3A case",
     "section": "",
-    "text": "Flat-plate transitional flow - T3A case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a rectangular domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The height of the domain is \\(h = 0.3\\) m, and the leading edge of the plate is located at \\(x = 0\\) m.\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\\(0.17\\)\n\\(0.94\\)\n\\(0.24\\)\n\n\nmedium\n314 x 250\n\\(0.09\\)\n\\(0.56\\)\n\\(0.13\\)\n\n\nfine\n618 x 500\n\\(0.06\\)\n\\(0.33\\)\n\\(0.07\\)\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=5.4\\) m/s\n\\(Tu=3.3\\) %\n\\(\\nu_t/\\nu = 12\\)\n\nThe other boundary conditions are set as follows:\n\nflat plate (\\(x&gt;0\\) m, \\(y=0\\) m): no-slip wall\nlower symmetry (\\(x&lt;0\\) m, \\(y=0\\) m): symmetry\ntop wall (\\(y=0.3\\) m): slip\noutlet (\\(x=1.7\\) m): pressure outlet with \\(p=0\\) Pa\n\nThe simulation can be run on the medium mesh with\n./Allrun medium"
+    "text": "For reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a rectangular domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The height of the domain is \\(h = 0.3\\) m, and the leading edge of the plate is located at \\(x = 0\\) m.\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\\(0.18\\)\n\\(0.91\\)\n\\(0.24\\)\n\n\nmedium\n314 x 250\n\\(0.09\\)\n\\(0.56\\)\n\\(0.13\\)\n\n\nfine\n618 x 500\n\\(0.05\\)\n\\(0.33\\)\n\\(0.06\\)\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=5.4\\) m/s\n\\(Tu=4.5\\) %\n\\(\\nu_t/\\nu = 12\\)\n\nThe other boundary conditions are set as follows:\n\nflat plate (\\(x&gt;0\\) m, \\(y=0\\) m): no-slip wall\nlower symmetry (\\(x&lt;0\\) m, \\(y=0\\) m): symmetry\ntop wall (\\(y=0.3\\) m): slip\noutlet (\\(x=1.7\\) m): pressure outlet with \\(p=0\\) Pa\n\nThe simulation can be run on the medium mesh with\n./Allrun medium\n\n\n\nERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+  },
+  {
+    "objectID": "Validation/Coupland/T3A/index.html#references",
+    "href": "Validation/Coupland/T3A/index.html#references",
+    "title": "Flat-plate transitional flow - T3A case",
+    "section": "",
+    "text": "ERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
   },
   {
     "objectID": "Transition/gammaSST.html",
@@ -827,28 +998,56 @@
     "href": "Validation/Coupland/T3AM/index.html",
     "title": "Flat-plate transitional flow - T3A- case",
     "section": "",
-    "text": "Flat-plate transitional flow - T3A- case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a rectangular domain spanning from \\(x = -0.15\\) m to \\(x = 2.9\\) m. The height of the domain is \\(h = 0.3\\) m, and the leading edge of the plate is located at \\(x = 0\\) m.\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=19.8\\) m/s\n\\(Tu=0.874\\) %\n\\(\\nu_t/\\nu = 8.72\\)\n\nThe other boundary conditions are set as follows:\n\nflat plate (\\(x&gt;0\\) m, \\(y=0\\) m): no-slip wall\nlower symmetry (\\(x&lt;0\\) m, \\(y=0\\) m): symmetry\ntop wall (\\(y=0.3\\) m): slip\noutlet (\\(x=2.9\\) m): pressure outlet with \\(p=0\\) Pa\n\nThe simulation can be run on the medium mesh with\n./Allrun medium"
+    "text": "For reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a rectangular domain spanning from \\(x = -0.15\\) m to \\(x = 2.9\\) m. The height of the domain is \\(h = 0.3\\) m, and the leading edge of the plate is located at \\(x = 0\\) m.\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\\(0.36\\)\n\\(2.22\\)\n\\(0.58\\)\n\n\nmedium\n314 x 250\n\\(0.18\\)\n\\(1.31\\)\n\\(0.29\\)\n\n\nfine\n618 x 500\n\\(0.09\\)\n\\(0.78\\)\n\\(0.15\\)\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=19.8\\) m/s\n\\(Tu=0.874\\) %\n\\(\\nu_t/\\nu = 8.72\\)\n\nThe other boundary conditions are set as follows:\n\nflat plate (\\(x&gt;0\\) m, \\(y=0\\) m): no-slip wall\nlower symmetry (\\(x&lt;0\\) m, \\(y=0\\) m): symmetry\ntop wall (\\(y=0.3\\) m): slip\noutlet (\\(x=2.9\\) m): pressure outlet with \\(p=0\\) Pa\n\nThe simulation can be run on the medium mesh with\n./Allrun medium\n\n\n\nERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+  },
+  {
+    "objectID": "Validation/Coupland/T3AM/index.html#references",
+    "href": "Validation/Coupland/T3AM/index.html#references",
+    "title": "Flat-plate transitional flow - T3A- case",
+    "section": "",
+    "text": "ERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
   },
   {
     "objectID": "Validation/Coupland/T3C1/index.html",
     "href": "Validation/Coupland/T3C1/index.html",
     "title": "Flat-plate transitional flow - T3C1 case",
     "section": "",
-    "text": "Flat-plate transitional flow - T3C1 case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.231 x^6 - 6.705 x^5 + 14.061 x^4 - 14.113 x^3 + 7.109 x^2 - 1.900 x + 0.950\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=5.9\\) m/s\n\\(Tu=7.78\\) %\n\\(\\nu_t/\\nu = 44\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\nSee Suluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+    "text": "For reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.231 x^6 - 6.705 x^5 + 14.061 x^4 - 14.113 x^3 + 7.109 x^2 - 1.900 x + 0.950\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\\(0.14\\)\n\\(0.97\\)\n\\(0.27\\)\n\n\nmedium\n314 x 250\n\\(0.07\\)\n\\(0.58\\)\n\\(0.14\\)\n\n\nfine\n618 x 500\n\\(0.04\\)\n\\(0.34\\)\n\\(0.07\\)\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=5.9\\) m/s\n\\(Tu=7.78\\) %\n\\(\\nu_t/\\nu = 44\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\n\n\n\nERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+  },
+  {
+    "objectID": "Validation/Coupland/T3C1/index.html#references",
+    "href": "Validation/Coupland/T3C1/index.html#references",
+    "title": "Flat-plate transitional flow - T3C1 case",
+    "section": "",
+    "text": "ERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
   },
   {
     "objectID": "Validation/Coupland/T3C3/index.html",
     "href": "Validation/Coupland/T3C3/index.html",
     "title": "Flat-plate transitional flow - T3C3 case",
     "section": "",
-    "text": "Flat-plate transitional flow - T3C3 case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.231*x^6 - 6.705*x^5 + 14.061*x^4 - 14.113*x^3 + 7.109*x^2 - 1.900*x + 0.950\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=3.7\\) m/s\n\\(Tu=3.1\\) %\n\\(\\nu_t/\\nu = 6\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\nSee Suluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+    "text": "For reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.231*x^6 - 6.705*x^5 + 14.061*x^4 - 14.113*x^3 + 7.109*x^2 - 1.900*x + 0.950\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\\(0.02\\)\n\\(0.41\\)\n\\(0.08\\)\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=3.7\\) m/s\n\\(Tu=3.1\\) %\n\\(\\nu_t/\\nu = 6\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\n\n\n\nERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+  },
+  {
+    "objectID": "Validation/Coupland/T3C3/index.html#references",
+    "href": "Validation/Coupland/T3C3/index.html#references",
+    "title": "Flat-plate transitional flow - T3C3 case",
+    "section": "",
+    "text": "ERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
   },
   {
     "objectID": "Validation/Coupland/T3C5/index.html",
     "href": "Validation/Coupland/T3C5/index.html",
     "title": "Flat-plate transitional flow - T3C5 case",
     "section": "",
-    "text": "Flat-plate transitional flow - T3C5 case\nFor reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.231 x^6 - 6.705 x^5 + 14.061 x^4 - 14.113 x^3 + 7.109 x^2 - 1.900 x + 0.950\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=8.5\\) m/s\n\\(Tu=3.7\\) %\n\\(\\nu_t/\\nu = 15\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\nSee Suluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient*. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+    "text": "For reference, see the classical ERCOFTAC test case in the ERCOFTAC database.\nThe case is solved in a domain spanning from \\(x = -0.15\\) m to \\(x = 1.7\\) m. The leading edge of the plate is located at \\(x = 0\\) m ant he height of the domain is taken from Suluksna et al. (2009) as\n\\[\nh(y) = 0.3 \\min\\left(\n      1.231 x^6 - 6.705 x^5 + 14.061 x^4 - 14.113 x^3 + 7.109 x^2 - 1.900 x + 0.950\n      , 1\n\\right)\n\\]\nThree different meshes were prepared: coarse, medium, and fine. Values of \\(y^+_1\\) are calculated witt the kOmegaSSTLM turbulence model. The mesh details are summarized in the following table:\n\n\n\nMesh\nSize\nmin \\(y^+_1\\)\nmax \\(y^+_1\\)\navg \\(y^+_1\\)\n\n\n\n\ncoarse\n157 x 125\n\n\n\n\n\nmedium\n314 x 250\n\n\n\n\n\nfine\n618 x 500\n\n\n\n\n\n\nAn incompressible fluid with constant density and constant viscosity, \\(\\nu = 1.5\\times 10^{-5}\\) m\\(^2\\)/s, is assumed.\nThe inlet boundary conditions at \\(x = -0.15\\) m are as follows:\n\n\\(U=8.5\\) m/s\n\\(Tu=3.7\\) %\n\\(\\nu_t/\\nu = 15\\)\n\nFor example, the simulation can be run on the medium mesh with\n./Allrun medium\n\n\n\nERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
+  },
+  {
+    "objectID": "Validation/Coupland/T3C5/index.html#references",
+    "href": "Validation/Coupland/T3C5/index.html#references",
+    "title": "Flat-plate transitional flow - T3C5 case",
+    "section": "",
+    "text": "ERCOFTAC database\nSuluksna, K., Dechaumphai, P., & Juntasaro, E. (2009). Correlations for modeling transitional boundary layers under influences of freestream turbulence and pressure gradient. International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004"
   },
   {
     "objectID": "Validation/HultgrenVolino/Re300k_highTI/index.html",
@@ -895,6 +1094,149 @@
     "crumbs": [
       "Validation cases",
       "README"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html",
+    "href": "Validation/gammaSST.html",
+    "title": "gammaSST validation",
+    "section": "",
+    "text": "The gammaSST model (Menter et al. 2015) is from Turbulence Community (TC) repository and is not part of standard OpenFOAM distribution. Nevertheless, the myTurbulenceModels library can include it. See Introduction for more details.",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html#t3a-case",
+    "href": "Validation/gammaSST.html#t3a-case",
+    "title": "gammaSST validation",
+    "section": "T3A case",
+    "text": "T3A case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html#t3a--case",
+    "href": "Validation/gammaSST.html#t3a--case",
+    "title": "gammaSST validation",
+    "section": "T3A- case",
+    "text": "T3A- case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html#t3b-case",
+    "href": "Validation/gammaSST.html#t3b-case",
+    "title": "gammaSST validation",
+    "section": "T3B case",
+    "text": "T3B case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html#t3c1-case",
+    "href": "Validation/gammaSST.html#t3c1-case",
+    "title": "gammaSST validation",
+    "section": "T3C1 case",
+    "text": "T3C1 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html#t3c2-case",
+    "href": "Validation/gammaSST.html#t3c2-case",
+    "title": "gammaSST validation",
+    "section": "T3C2 case",
+    "text": "T3C2 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html#t3c3-case",
+    "href": "Validation/gammaSST.html#t3c3-case",
+    "title": "gammaSST validation",
+    "section": "T3C3 case",
+    "text": "T3C3 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html#t3c4-case",
+    "href": "Validation/gammaSST.html#t3c4-case",
+    "title": "gammaSST validation",
+    "section": "T3C4 case",
+    "text": "T3C4 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html#t3c5-case",
+    "href": "Validation/gammaSST.html#t3c5-case",
+    "title": "gammaSST validation",
+    "section": "T3C5 case",
+    "text": "T3C5 case\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nFreestream velocity",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html#sec-validation-hv300h",
+    "href": "Validation/gammaSST.html#sec-validation-hv300h",
+    "title": "gammaSST validation",
+    "section": "Re=300 000, highTI",
+    "text": "Re=300 000, highTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html#sec-validation-hv300l",
+    "href": "Validation/gammaSST.html#sec-validation-hv300l",
+    "title": "gammaSST validation",
+    "section": "Re=300 000, lowTI",
+    "text": "Re=300 000, lowTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html#sec-validation-hv50h",
+    "href": "Validation/gammaSST.html#sec-validation-hv50h",
+    "title": "gammaSST validation",
+    "section": "Re=50 000, highTI",
+    "text": "Re=50 000, highTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
+    ]
+  },
+  {
+    "objectID": "Validation/gammaSST.html#sec-validation-hv50l",
+    "href": "Validation/gammaSST.html#sec-validation-hv50l",
+    "title": "gammaSST validation",
+    "section": "Re=50 000, lowTI",
+    "text": "Re=50 000, lowTI\nSee description.\n\n\n\n\n\n\nSkin friction coefficient\n\n\n\n\n\n\n\nTurbulence intensity\n\n\n\n\n\n\n\n\n\nExternal velocity\n\n\n\n\n\n\n\nPressure coefficient\n\n\n\n\n\n\n\n\nVelocity profiles",
+    "crumbs": [
+      "Validation cases",
+      "gammaSST results"
     ]
   }
 ]
