@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 Script to modify OpenFOAM mesh points using formula from
 
@@ -7,9 +8,6 @@ Correlations for modeling transitional boundary layers under influences of frees
 International Journal of Heat and Fluid Flow, 30(1), 66–75. https://doi.org/10.1016/j.ijheatfluidflow.2008.09.004
 
 Formula is valid for T3C4
-
-
- 
 """
 
 import numpy as np

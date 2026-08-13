@@ -16,7 +16,7 @@ Three different meshes were prepared: coarse, medium, and fine. Values of $y^+_1
 | Mesh | Size | min $y^+_1$ | max $y^+_1$ | avg $y^+_1$ |
 |------|------|-------------|-------------|-------------|
 | coarse | 157 x 125 |        |        |        |
-| medium | 314 x 250 |        |        |        |
+| medium | 314 x 250 | $0.02$ | $0.41$ | $0.08$ |
 | fine   | 618 x 500 |        |        |        |
 
 An incompressible fluid with constant density and constant viscosity, $\nu = 1.5\times 10^{-5}$ m$^2$/s, is assumed.
