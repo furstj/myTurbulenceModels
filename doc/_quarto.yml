@@ -80,6 +80,8 @@ website:
             href: Validation/EARSMlm2009.qmd
           - text: "gammaSST results"
             href: Validation/gammaSST.qmd
+          - text: "EARSMgammaSST results"
+            href: Validation/EARSMgammaSST.qmd
 
 format:            
   html:

@@ -1,0 +1,163 @@
+---
+title: "`EARSMgammaSST` validation"
+---
+
+The model is described in [`EARSMgammaSST`](../RANS/EARSM.qmd#sec-earsgammasst).
+
+# Coupland T3A-T3C5 cases
+
+Results for the Coupland T3A-T3C5 showed bellow are obtained with medium mesh resolution. 
+
+## T3A case
+See [description](/Validation/Coupland/T3A/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3A/EARSMgammaSST/results/cf_plot_T3A_EARSMgammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3A/EARSMgammaSST/results/tu_plot_T3A_EARSMgammaSST.png)
+:::
+
+
+## T3A- case
+See [description](/Validation/Coupland/T3AM/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3AM/EARSMgammaSST/results/cf_plot_T3AM_EARSMgammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3AM/EARSMgammaSST/results/tu_plot_T3AM_EARSMgammaSST.png)
+:::
+
+
+## T3B case
+See [description](/Validation/Coupland/T3B/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3B/EARSMgammaSST/results/cf_plot_T3B_EARSMgammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3B/EARSMgammaSST/results/tu_plot_T3B_EARSMgammaSST.png)
+:::
+
+
+## T3C1 case
+See [description](/Validation/Coupland/T3C1/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3C1/EARSMgammaSST/results/cf_plot_T3C1_EARSMgammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3C1/EARSMgammaSST/results/tu_plot_T3C1_EARSMgammaSST.png)
+
+![Freestream velocity](/testCases/Coupland/T3C1/EARSMgammaSST/results/u_plot_T3C1_EARSMgammaSST.png)
+:::
+
+
+## T3C2 case
+See [description](/Validation/Coupland/T3C2/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3C2/EARSMgammaSST/results/cf_plot_T3C2_EARSMgammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3C2/EARSMgammaSST/results/tu_plot_T3C2_EARSMgammaSST.png)
+
+![Freestream velocity](/testCases/Coupland/T3C2/EARSMgammaSST/results/u_plot_T3C2_EARSMgammaSST.png)
+:::
+
+
+## T3C3 case
+See [description](/Validation/Coupland/T3C3/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3C3/EARSMgammaSST/results/cf_plot_T3C3_EARSMgammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3C3/EARSMgammaSST/results/tu_plot_T3C3_EARSMgammaSST.png)
+
+![Freestream velocity](/testCases/Coupland/T3C3/EARSMgammaSST/results/u_plot_T3C3_EARSMgammaSST.png)
+:::
+
+
+## T3C4 case
+See [description](/Validation/Coupland/T3C4/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3C4/EARSMgammaSST/results/cf_plot_T3C4_EARSMgammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3C4/EARSMgammaSST/results/tu_plot_T3C4_EARSMgammaSST.png)
+
+![Freestream velocity](/testCases/Coupland/T3C4/EARSMgammaSST/results/u_plot_T3C4_EARSMgammaSST.png)
+:::
+
+
+## T3C5 case
+See [description](/Validation/Coupland/T3C5/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/Coupland/T3C5/EARSMgammaSST/results/cf_plot_T3C5_EARSMgammaSST.png)
+
+![Turbulence intensity](/testCases/Coupland/T3C5/EARSMgammaSST/results/tu_plot_T3C5_EARSMgammaSST.png)
+
+![Freestream velocity](/testCases/Coupland/T3C5/EARSMgammaSST/results/u_plot_T3C5_EARSMgammaSST.png)
+:::
+
+# Hulgren and Volino cases
+
+## Re=300 000, highTI {#sec-validation-hv300h}
+See [description](/Validation/HultgrenVolino/Re300k_highTI/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re300k_highTI/EARSMgammaSST/results/cf_plot_Re300k_highTI_EARSMgammaSST.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re300k_highTI/EARSMgammaSST/results/Tu_plot_Re300k_highTI_EARSMgammaSST.png)
+
+![External velocity](/testCases/HultgrenVolino/Re300k_highTI/EARSMgammaSST/results/Ue_plot_Re300k_highTI_EARSMgammaSST.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re300k_highTI/EARSMgammaSST/results/cp_plot_Re300k_highTI_EARSMgammaSST.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re300k_highTI/EARSMgammaSST/results/U_Re300k_highTI_EARSMgammaSST.png)
+
+
+## Re=300 000, lowTI {#sec-validation-hv300l}
+See [description](/Validation/HultgrenVolino/Re300k_lowTI/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re300k_lowTI/EARSMgammaSST/results/cf_plot_Re300k_lowTI_EARSMgammaSST.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re300k_lowTI/EARSMgammaSST/results/Tu_plot_Re300k_lowTI_EARSMgammaSST.png)
+
+![External velocity](/testCases/HultgrenVolino/Re300k_lowTI/EARSMgammaSST/results/Ue_plot_Re300k_lowTI_EARSMgammaSST.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re300k_lowTI/EARSMgammaSST/results/cp_plot_Re300k_lowTI_EARSMgammaSST.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re300k_lowTI/EARSMgammaSST/results/U_Re300k_lowTI_EARSMgammaSST.png)
+
+
+## Re=50 000, highTI {#sec-validation-hv50h}
+See [description](/Validation/HultgrenVolino/Re50k_highTI/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re50k_highTI/EARSMgammaSST/results/cf_plot_Re50k_highTI_EARSMgammaSST.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re50k_highTI/EARSMgammaSST/results/Tu_plot_Re50k_highTI_EARSMgammaSST.png)
+
+![External velocity](/testCases/HultgrenVolino/Re50k_highTI/EARSMgammaSST/results/Ue_plot_Re50k_highTI_EARSMgammaSST.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re50k_highTI/EARSMgammaSST/results/cp_plot_Re50k_highTI_EARSMgammaSST.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re50k_highTI/EARSMgammaSST/results/U_Re50k_highTI_EARSMgammaSST.png)
+
+
+## Re=50 000, lowTI {#sec-validation-hv50l}
+See [description](/Validation/HultgrenVolino/Re50k_lowTI/index.qmd).
+
+:::{layout-ncol=2}
+![Skin friction coefficient](/testCases/HultgrenVolino/Re50k_lowTI/EARSMgammaSST/results/cf_plot_Re50k_lowTI_EARSMgammaSST.png)
+
+![Turbulence intensity](/testCases/HultgrenVolino/Re50k_lowTI/EARSMgammaSST/results/Tu_plot_Re50k_lowTI_EARSMgammaSST.png)
+
+![External velocity](/testCases/HultgrenVolino/Re50k_lowTI/EARSMgammaSST/results/Ue_plot_Re50k_lowTI_EARSMgammaSST.png)
+
+![Pressure coefficient](/testCases/HultgrenVolino/Re50k_lowTI/EARSMgammaSST/results/cp_plot_Re50k_lowTI_EARSMgammaSST.png)
+:::
+
+![Velocity profiles](/testCases/HultgrenVolino/Re50k_lowTI/EARSMgammaSST/results/U_Re50k_lowTI_EARSMgammaSST.png)
