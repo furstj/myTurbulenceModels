@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+echo "Use common files for 0/ and system/"
+rm -rf 0 system
+cp -rf ../common/0.orig 0
+cp -rf ../common/system system
+
+# Ask user to choose mesh size
+if [ -n "$1" ]; then
+  meshSize=$1
+else
+  read -p "What mesh size do you want? (fine, medium, coarse): " meshSize
+fi
+
+# Prepare mesh
+foamCleanPolyMesh
+runApplication blockMesh -dict system/blockMeshDict.$meshSize
+
+runApplication ../modify_points.py
+
+# Decompose mesh
+runApplication decomposePar -force
+
+# Run solver 
+runParallel simpleFoam
+
+# Reconstruct data
+runApplication reconstructPar
+rm -rf processor*
+
+# Generate plots with matplotlib
+runApplication ../create_figures.py
+

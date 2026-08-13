@@ -36,7 +36,6 @@ See [description](/Validation/Coupland/T3B/index.qmd).
 ![Turbulence intensity](/testCases/Coupland/T3B/gammaSST/results/tu_plot_T3B_gammaSST.png)
 :::
 
-<!--
 
 ## T3C1 case
 See [description](/Validation/Coupland/T3C1/index.qmd).
@@ -162,4 +161,4 @@ See [description](/Validation/HultgrenVolino/Re50k_lowTI/index.qmd).
 
 ![Velocity profiles](/testCases/HultgrenVolino/Re50k_lowTI/gammaSST/results/U_Re50k_lowTI_gammaSST.png)
 
--->
+
